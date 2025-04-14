@@ -1,0 +1,306 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+.cv-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 15px;
+}
+
+/* Header Banner */
+.header-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #7d0c79;
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header-banner h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-banner h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ecf0f1;
+    text-transform: uppercase;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e5e5e5;
+    margin-top: 10px;
+}
+
+/* Contact Section */
+.contact-section {
+    margin-bottom: 25px;
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Perfectly Sized Icons */
+.whatsapp-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.email-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
+}
+
+.linkedin-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.location-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.contact-list a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-list a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Main Layout */
+.cv-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Section Headers */
+h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Content Sections */
+.profile-section {
+    margin-bottom: 25px;
+}
+
+.profile-section p {
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Projects Section */
+.projects-section {
+    margin-bottom: 25px;
+}
+
+.project-item {
+    margin-bottom: 18px;
+}
+
+.project-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    gap: 5px;
+}
+
+.project-title {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.project-role {
+    font-style: italic;
+    color: #555;
+}
+
+.project-date {
+    color: #777;
+}
+
+.project-details {
+    padding-left: 15px;
+    list-style-position: inside;
+}
+
+.project-details li {
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Education Section - Restored Original Styling */
+.education-section {
+    margin-bottom: 25px;
+}
+
+.education-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.education-table tr:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
+.education-program {
+    font-weight: 500;
+    padding: 8px 0;
+}
+
+.education-institution {
+    font-style: italic;
+    color: #555;
+    padding: 0 0 8px 15px;
+}
+
+.education-date {
+    color: #777;
+    white-space: nowrap;
+    padding: 8px 0;
+}
+
+/* Skills, Languages, Certifications */
+.skills-section,
+.languages-section,
+.certifications-section {
+    margin-bottom: 25px;
+}
+
+.skills-list,
+.languages-list,
+.certifications-list {
+    list-style-position: inside;
+}
+
+.skills-list li,
+.languages-list li,
+.certifications-list li {
+    margin-bottom: 5px;
+}
+
+/* Desktop Overrides */
+@media (min-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .cv-container {
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-banner {
+        flex-direction: row;
+        text-align: left;
+        padding: 20px;
+    }
+
+    .header-banner h1 {
+        font-size: 28px;
+    }
+
+    .header-banner h2 {
+        font-size: 16px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        margin: 0 0 0 20px;
+    }
+
+    .cv-columns {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .cv-left-column {
+        flex: 1;
+        max-width: 250px;
+    }
+
+    .cv-right-column {
+        flex: 2;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .project-header {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .project-title {
+        min-width: 60%;
+    }
+
+    .education-date {
+        text-align: right;
+    }
+
+    /* Slightly larger icons on desktop */
+    .whatsapp-icon,
+    .email-icon {
+        width: 18px;
+        height: 18px;
+    }
+    .linkedin-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
