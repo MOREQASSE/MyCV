@@ -1,0 +1,447 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+.cv-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Banner - Modified for Finisher Header */
+.header-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.header-banner h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.header-banner h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ecf0f1;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 75%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.8);
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Language Selector Styles */
+.language-selector {
+    position: absolute;
+    top: 270px;
+    right: 15px;
+    z-index: 1000;
+}
+
+.language-btn {
+    background: rgba(255,255,255,0.9);
+    border: none;
+    border-radius: 4px;
+    padding: 5px 15px;
+    font-weight: bold;
+    color: #7d0c79;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.language-btn:hover {
+    background: white;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-width: 80px;
+    z-index: 1001;
+    bottom: 100%;
+    top: auto;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.language-dropdown a {
+    display: block;
+    padding: 8px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.language-dropdown a:hover {
+    background: #f0f0f0;
+    color: #7d0c79;
+}
+
+.language-selector:hover .language-dropdown {
+    display: block;
+}
+
+/* Contact Section */
+.contact-section {
+    margin-bottom: 25px;
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Perfectly Sized Icons */
+.whatsapp-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.email-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
+}
+
+.linkedin-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.location-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.contact-list a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-list a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Main Layout */
+.cv-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Section Headers */
+h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Content Sections */
+.profile-section {
+    margin-bottom: 25px;
+}
+
+.profile-section p {
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Projects Section */
+.projects-section {
+    margin-bottom: 25px;
+}
+
+.project-item {
+    margin-bottom: 18px;
+}
+
+.project-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    gap: 5px;
+}
+
+.project-title {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.project-role {
+    font-style: italic;
+    color: #555;
+}
+
+.project-date {
+    color: #777;
+}
+
+.project-details {
+    padding-left: 15px;
+    list-style-position: inside;
+}
+
+.project-details li {
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Education Section - Restored Original Styling */
+.education-section {
+    margin-bottom: 25px;
+}
+
+.education-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.education-table tr:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
+.education-program {
+    font-weight: 500;
+    padding: 8px 0;
+}
+
+.education-institution {
+    font-style: italic;
+    color: #555;
+    padding: 0 0 8px 15px;
+}
+
+.education-date {
+    color: #777;
+    white-space: nowrap;
+    padding: 8px 0;
+}
+
+/* Skills, Languages, Certifications */
+.skills-section,
+.languages-section,
+.certifications-section {
+    margin-bottom: 25px;
+}
+
+.skills-list,
+.languages-list,
+.certifications-list {
+    list-style-position: inside;
+}
+
+.skills-list li,
+.languages-list li,
+.certifications-list li {
+    margin-bottom: 5px;
+}
+
+/* Desktop Overrides */
+@media (min-width: 768px) {
+    .language-selector {
+        bottom: 20px;
+        right: 20px;
+    }
+    body {
+        padding: 20px;
+    }
+
+    .cv-container {
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-banner {
+        flex-direction: row;
+        text-align: left;
+        padding: 20px;
+    }
+
+    .header-banner h1 {
+        font-size: 28px;
+    }
+
+    .header-banner h2 {
+        font-size: 16px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        margin: 0 0 0 20px;
+    }
+
+    .cv-columns {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .cv-left-column {
+        flex: 1;
+        max-width: 250px;
+    }
+
+    .cv-right-column {
+        flex: 2;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .project-header {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .project-title {
+        min-width: 60%;
+    }
+
+    .education-date {
+        text-align: right;
+    }
+
+    /* Slightly larger icons on desktop */
+    .whatsapp-icon,
+    .email-icon {
+        width: 18px;
+        height: 18px;
+    }
+    .linkedin-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Language selector adjustments for desktop */
+    .language-btn {
+        padding: 6px 18px;
+        font-size: 14px;
+    }
+    
+    .language-dropdown {
+        min-width: 90px;
+    }
+    
+    .language-dropdown a {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+/* Finisher Header Overrides */
+.finisher-header {
+    background-color: transparent !important;
+}
+
+.finisher-header .banner-content {
+    position: relative;
+    z-index: 10;
+}
+
+.finisher-header .profile-image {
+    position: relative;
+    z-index: 10;
+}
+
+/* Google Translate Overrides */
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
+.goog-te-menu-value {
+    display: none;
+}
+
+.skiptranslate {
+    display: none !important;
+}
+
+/* Print Styles */
+@media print {
+    .language-selector {
+        display: none;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        z-index: 1000;
+    }
+    
+    body {
+        background: none;
+        padding: 0;
+    }
+    
+    .cv-container {
+        box-shadow: none;
+        padding: 0;
+    }
+}
