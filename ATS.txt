@@ -1,0 +1,225 @@
+# ATS (Applicant Tracking System) Resume Guidelines
+# General Rules for Creating ATS-Friendly Resumes
+
+================================================================================
+FILE FORMAT & SUBMISSION
+================================================================================
+
+- Preferred Formats: .docx (Word) or .pdf (text-based, not scanned/image)
+- Avoid: Scanned PDFs, image-based resumes, .txt files, .rtf
+- File naming: FirstName_LastName_Resume.pdf (no special characters or spaces)
+
+================================================================================
+LAYOUT & STRUCTURE
+================================================================================
+
+- Use single-column layout (ATS reads left-to-right, top-to-bottom)
+- Avoid: Multi-column layouts, tables, text boxes, sidebars
+- Margins: 0.5-1 inch on all sides
+- Page length: 1-2 pages maximum
+
+================================================================================
+FONTS & TYPOGRAPHY
+================================================================================
+
+- Safe Fonts: Arial, Calibri, Cambria, Garamond, Georgia, Helvetica, Times New Roman
+- Font Sizes: 10-12pt for body text, 14-16pt for section headers
+- Avoid: Decorative fonts, script fonts, fonts with special characters
+
+================================================================================
+SECTION HEADERS (Use Standard Naming)
+================================================================================
+
+- WORK EXPERIENCE / PROFESSIONAL EXPERIENCE / EXPERIENCE
+- EDUCATION
+- SKILLS / TECHNICAL SKILLS
+- CERTIFICATIONS
+- SUMMARY / PROFESSIONAL SUMMARY (optional)
+- PROJECTS (optional)
+- LANGUAGES (optional)
+
+Avoid creative headers like "My Journey", "What I Bring", "Career Highlights"
+
+================================================================================
+CONTENT BEST PRACTICES
+================================================================================
+
+KEYWORDS & MATCHING:
+- Use exact keywords from job description
+- Include both acronym and full term: "Software Defined Networking (SDN)"
+- Match job title variations: "Software Engineer" vs "Software Developer"
+- Include industry-specific terminology
+
+SKILLS SECTION:
+- List hard skills separately from soft skills
+- Include technical skills: programming languages, tools, software, methodologies
+- Group by category: Programming, Tools, Languages, Certifications
+- Spell out certifications fully: "Certified Public Accountant" not just "CPA"
+
+EXPERIENCE SECTIONS:
+- Format: Job Title | Company | Location | Dates (MM/YYYY or Month YYYY)
+- Use reverse chronological order (most recent first)
+- Include quantifiable achievements with numbers/metrics
+- Start bullets with strong action verbs
+- 3-5 bullet points per role
+
+DATES:
+- Be consistent: MM/YYYY or Month YYYY format
+- Include months, not just years
+- No gaps without explanation
+
+================================================================================
+WHAT TO AVOID
+================================================================================
+
+GRAPHICS & IMAGES:
+- No profile photos
+- No logos, icons, or graphics
+- No charts, graphs, or infographics
+- No QR codes
+
+FORMATTING:
+- No tables (use tabs or spaces for alignment instead)
+- No text boxes or shapes
+- No headers or footers with important info
+- No columns or side-by-side sections
+- No text wrap around images
+- No watermarks
+
+CHARACTERS & SYMBOLS:
+- Avoid special characters: ♦, ●, ★, ✓, arrows
+- Use standard bullet points: - or •
+- Avoid fractions, subscripts, superscripts
+
+================================================================================
+CONTACT INFORMATION
+================================================================================
+
+Include in body of document (not header):
+- Full Name
+- Phone Number (with country code if applicable)
+- Professional Email Address
+- LinkedIn URL (optional but recommended)
+- Location (City, State/Country)
+
+Avoid:
+- Multiple phone numbers
+- Personal social media (unless relevant)
+- Date of birth, marital status, photo
+
+================================================================================
+SUMMARY/PROFILE SECTION
+================================================================================
+
+Optional but recommended:
+- 2-4 sentences maximum
+- Include target job title
+- Mention years of experience
+- Highlight 2-3 key qualifications matching job requirements
+- Include relevant keywords
+
+================================================================================
+EDUCATION SECTION
+================================================================================
+
+Format: Degree | Institution | Location | Graduation Date
+- Spell out degree names: "Bachelor of Science in Computer Science" not "BS CS"
+- Include GPA only if 3.5+ and recent graduate
+- List relevant coursework if limited experience
+
+================================================================================
+ATS PARSING TIPS
+================================================================================
+
+- Save final version as PDF with text-selectable content
+- Test by copying text from PDF - if it pastes cleanly, ATS can read it
+- Avoid saving as "image-only" PDF
+- Use standard punctuation: periods, commas, colons
+- Include file extension in submission format requested by employer
+
+================================================================================
+KEYWORD OPTIMIZATION
+================================================================================
+
+Research & Include:
+- Job-specific technical terms
+- Industry jargon and acronyms
+- Software and tools mentioned in job description
+- Action verbs: Developed, Implemented, Managed, Led, Created
+- Soft skills sparingly: Communication, Leadership, Teamwork
+
+================================================================================
+SPECIAL CONSIDERATIONS
+================================================================================
+
+INTERNATIONAL APPLICANTS:
+- Clarify visa status if required
+- Include country codes for phone numbers
+- Specify location clearly
+
+CAREER CHANGERS:
+- Use functional or hybrid format if needed
+- Highlight transferable skills
+- Include relevant training/certifications prominently
+
+FREELANCERS/CONSULTANTS:
+- Group similar projects under one entry
+- List client names if permissible
+- Show duration and scope clearly
+
+================================================================================
+WRITING STYLE - BE CONCISE
+================================================================================
+
+- Use strong action verbs to start bullet points: Developed, Implemented, 
+  Managed, Led, Created, Optimized, Streamlined, Reduced, Increased
+- Remove filler words: "responsible for", "duties included", "worked on"
+- Keep bullet points to 1-2 lines maximum
+- Focus on measurable results and accomplishments over responsibilities
+- Use numbers and metrics: "Increased sales by 25%" vs "Increased sales"
+- Avoid personal pronouns (I, me, my) in descriptions
+- Eliminate redundant or repetitive statements
+- Each bullet should add unique value - no overlap between points
+
+================================================================================
+PROOFREADING & QUALITY CONTROL
+================================================================================
+
+- Run spell-check and grammar-check tools
+- Read the resume aloud to catch awkward phrasing
+- Check for consistent verb tense (past tense for previous roles, 
+  present tense for current position)
+- Verify all dates and employment timelines are accurate
+- Ensure company names and job titles are spelled correctly
+- Check that contact information is current and accurate
+- Have a friend or colleague review for errors you might miss
+- Verify all hyperlinks (LinkedIn, portfolio) work correctly
+- Typos in keywords can prevent matching - double-check technical terms
+
+================================================================================
+FINAL CHECKLIST BEFORE SUBMISSION
+================================================================================
+
+[ ] File format is .docx or text-based PDF
+[ ] Single-column layout
+[ ] Standard fonts used throughout
+[ ] Section headers are standard and clear
+[ ] Dates are in consistent format
+[ ] Contact info is in document body (not header/footer)
+[ ] No tables, images, graphics, or icons
+[ ] Keywords from job description are included
+[ ] Writing is concise with action verbs
+[ ] No spelling or grammar errors
+[ ] File named appropriately: Name_Resume.pdf
+[ ] Can select and copy text from PDF cleanly
+
+================================================================================
+ADDITIONAL RESOURCES
+================================================================================
+
+Common ATS Systems: Workday, Taleo, Greenhouse, Lever, iCIMS, SmartRecruiters
+Testing Tools: Jobscan.co, Resume Worded, or manual copy-paste test
+
+================================================================================
+END OF GUIDELINES
+================================================================================

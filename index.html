@@ -3,280 +3,648 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Reqasse - CV</title>
-    <link rel="stylesheet" href="./styleopti2.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <title>Mohammed Reqasse - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Google Translate Element -->
-    <div id="google_translate_element" style="display:none;"></div>
-    
-    <div class="cv-container">
-        <!-- Modified header section with Finisher Header and Language Switcher -->
-        <div class="header-banner finisher-header" style="width: 100%; height: 300px; position: relative;">
-            <div class="language-selector" style="position: absolute; bottom: 15px; right: 15px;">
-                <button class="language-btn">ENG</button>
-                <div class="language-dropdown">
-                    <a href="#" onclick="doGTranslate('en|en');" class="lang-en">ENG</a>
-                    <a href="./indexFR.html" onclick="doGTranslate('en|fr');" class="lang-fr">FRA</a>
-                    <a href="./indexAR.html" onclick="doGTranslate('en|ar');" class="lang-ar">ARA</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">MR</a>
+            <ul class="nav-menu">
+                <li><a href="#home" data-translate="nav_home">Home</a></li>
+                <li><a href="#about" data-translate="nav_about">About</a></li>
+                <li><a href="#experience" data-translate="nav_experience">Experience</a></li>
+                <li><a href="#projects" data-translate="nav_projects">Projects</a></li>
+                <li><a href="#skills" data-translate="nav_skills">Skills</a></li>
+                <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
+            </ul>
+            <div class="language-switcher">
+                <button class="lang-btn" id="current-lang">EN</button>
+                <div class="lang-dropdown">
+                    <button onclick="changeLanguage('en')">English</button>
+                    <button onclick="changeLanguage('fr')">Français</button>
+                    <button onclick="changeLanguage('ar')">العربية</button>
                 </div>
             </div>
-            
-            <div class="banner-content" style="position: relative; z-index: 2;">
-                <h1>MOHAMMED REQASSE</h1>
-                <h2>NETWORK AND TELECOMMUNICATIONS ENGINEERING STUDENT</h2>
-            </div>
-            <img src="https://i.ibb.co/LXLK3D5c/Whats-App-Image-2025-04-11-at-15-03-59-12f7a20f-removebg-preview.png" 
-                 alt="Mohammed Reqasse" 
-                 class="profile-image" 
-                 style="position: relative; z-index: 2;">
-        </div>
-
-        <!-- Rest of your existing content remains exactly the same -->
-        <div class="cv-columns">
-            <div class="cv-left-column">
-                <section class="contact-section">
-                    <h3>CONTACT</h3>
-                    <ul class="contact-list">
-                        <li><a href="https://wa.me/212700821340" class="whatsapp-link">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-       alt="WhatsApp" 
-       class="whatsapp-icon">
-  +212-700-82-13-40
-</a></li>
-                        <li class="email-item">
-  <img src="https://icones.pro/wp-content/uploads/2021/03/icone-gmail-logo-png-grise.png" 
-       alt="Gmail" 
-       class="email-icon">
-  <a href="mailto:reqasse@gmail.com">reqasse@gmail.com</a>
-</li>
-                        <li class="location-item"> <img src="https://icones.pro/wp-content/uploads/2021/02/icone-de-broche-de-localisation-grise.png" alt="Location" class="location-icon">Safi, Morocco</li>
-                        <li class="linkedin-item"> 
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVwpVlXEdO4SYUobUhd4C0DxLhsil1mNLpiw&s" 
-       alt="LinkedIn" 
-       class="linkedin-icon">
-  LinkedIn: 
-  <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank">Mohammed Reqasse</a>
-</li>
-                    </ul>
-                </section>
-
-                <section class="skills-section">
-                    <h3>SKILLS</h3>
-                    <ul class="skills-list">
-                        <li>Project Management</li>
-                        <li>Public Speaking</li>
-                        <li>Excel, PowerPoint, Word</li>
-                        <li>Python, C</li>
-                        <li>Matlab</li>
-                        <li>Wordpress</li>
-                        <li>HTML5, CSS3, Javascript</li>
-                        <li>SQL</li>
-                        <li>Linux</li>
-                        <li>Teaching</li>
-                        <li>Graphic Design</li>
-                    </ul>
-                </section>
-
-                <section class="languages-section">
-                    <h3>LANGUAGES</h3>
-                    <ul class="languages-list">
-                        <li>English: C1+</li>
-                        <li>French: B2</li>
-                        <li>Arabic: Mother Language</li>
-                    </ul>
-                </section>
-
-                <section class="certifications-section">
-                    <h3>CERTIFICATIONS</h3>
-                    <ul class="certifications-list">
-                        <li><b>"MySQL for Beginners"</b> by Meta Brains (Udemy) <a href="https://www.udemy.com/certificate/UC-91ea12df-a3f1-403d-a707-7bfa66320d6e/" target="_blank"><i>view</i></a></li>
-                        <li><b>"Computer Networks Fundamentals"</b> by Cyber Quince (Udemy) <a href="https://www.udemy.com/certificate/UC-4c7d5c27-c7ed-48a4-9575-5391761bc9a4/" target="_blank"><i>view</i></a></li>
-                        <li><b>"Essentials of Data transmissions"</b> (Udemy)</li>
-                        <li><b>"CyberSecurity Bootcamp"</b> by CyberProStudy Ltd. (Udemy)</li>
-                    </ul>
-                </section>
-            </div>
-
-            <div class="cv-right-column">
-                <section class="profile-section">
-                    <h3>PROFILE</h3>
-                    <p>I'm a 21-year-old student studying Network and Telecommunications Engineering, passionate about technology and innovation. I'm seeking a summer internship to apply and expand my knowledge, particularly in cybersecurity, web development, network administration, or signal transmission. Motivated and eager to learn, I look forward to gaining hands-on experience and contributing to real-world projects while working with experienced teams.</p>
-                </section>
-
-                <section class="projects-section">
-                    <h3>PROJECTS & PROFESSIONAL EXPERIENCE</h3>
-                    
-                    <div class="project-item">
-                        <div class="project-header">
-                            <span class="project-title">RHEL System Security Project</span>
-                            <span class="project-role">Team member</span>
-                            <span class="project-date">November - 2024</span>
-                        </div>
-                        <ul class="project-details">
-                            <li>Configured <b>firewalld</b>, <b>SELinux</b>, and <b>OpenSSH</b> to secure a RHEL-based system. Managed access controls and network security.</li>
-                            <li>Applied system hardening techniques to reinforce security and minimize vulnerabilities in the environment.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="project-item">
-                        <div class="project-header">
-                            <span class="project-title">Wavelet Transform in Signal and Image Processing</span>
-                            <span class="project-role">Team Leader</span>
-                            <span class="project-date">December - 2024</span>
-                        </div>
-                        <ul class="project-details">
-                            <li>Using <b>wavelet transform</b> techniques for efficient <b>audio</b> and <b>image compression</b>, optimizing data reduction while maintaining quality.</li>
-                            <li>Developed a <b>MATLAB</b> application to demonstrate and compare the compression efficiency of various wavelet families.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="project-item">
-                        <div class="project-header">
-                            <span class="project-title">Website Development and Customization</span>
-                            <span class="project-role">Team Leader | S&M Restaurant</span>
-                            <span class="project-date">January - 2025</span>
-                        </div>
-                        <ul class="project-details">
-                            <li>Created the S&M Restaurant website using <b>WordPress</b>, then exported and customized the theme with <b>HTML, CSS</b>, and <b>PHP</b>.</li>
-                            <li>Implemented features like dynamic slides, menu, galleries, and other restaurant-specific elements such as reservation forms and interactive contact pages.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="project-item">
-                        <div class="project-header">
-                            <span class="project-title">Language Project: Touristic guide</span>
-                            <span class="project-role">Team member</span>
-                            <span class="project-date">April - 2024</span>
-                        </div>
-                        <ul class="project-details">
-                            <li>Developed a tourist guide in <b>C language</b> to assist visitors in Agadir and Marrakech, featuring a <b>calendar</b> with key events and attractions.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="project-item">
-                        <div class="project-header">
-                            <span class="project-title">English Second Language Teacher</span>
-                            <span class="project-role">English Sub Teacher | Espace Essafaa</span>
-                            <span class="project-date">2023 - 2024</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="education-section">
-                    <h3>EDUCATION</h3>
-                    <table class="education-table">
-                        <tr>
-                            <td class="education-program">Network and Telecommunications engineering</td>
-                            <td class="education-date">2022 - Present</td>
-                        </tr>
-                        <tr>
-                            <td class="education-institution">ENSA Safi</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="education-program">Physics | SMP License</td>
-                            <td class="education-date">2021 - 2022</td>
-                        </tr>
-                        <tr>
-                            <td class="education-institution">Faculté Polydisciplinaire de Safi</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="education-program">Baccalaureate in Physical Sciences</td>
-                            <td class="education-date">2020 - 2021</td>
-                        </tr>
-                        <tr>
-                            <td class="education-institution">Lycée Okba Ibnou Nafiaa - Birjdid</td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </section>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Finisher Header Script -->
-    <script src="finisher-header.es5.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        new FinisherHeader({
-            "count": 100,
-            "size": {
-                "min": 1,
-                "max": 20,
-                "pulse": 0.2
-            },
-            "speed": {
-                "x": {
-                    "min": 0,
-                    "max": 0.4
-                },
-                "y": {
-                    "min": 0,
-                    "max": 0.4
-                }
-            },
-            "colors": {
-                "background": "#7d0c79",
-                "particles": [
-                    "#ffffff",
-                    "#87ddfe",
-                    "#acaaff",
-                    "#1bffc2",
-                    "#f88aff"
-                ]
-            },
-            "blending": "overlay",
-            "opacity": {
-                "center": 0,
-                "edge": 0.4
-            },
-            "skew": -2,
-            "shapes": [
-                "c",
-                "s",
-                "t"
-            ]
-        });
-    </script>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title" data-translate="hero_title">Mohammed Reqasse</h1>
+                <h2 class="hero-subtitle" data-translate="hero_subtitle">Network & Telecommunications Engineering Student</h2>
+                <h3 class="hero-subtitle">ENSA Safi</h3>
+                <p class="hero-description" data-translate="hero_description">Passionate about technology, innovation, and creating impactful solutions in networking, cybersecurity, and telecommunications.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary" data-translate="btn_projects">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary" data-translate="btn_contact">Get In Touch</a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/MOREQASSE" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:reqasse@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/212700821340" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-orbs">
+                    <div class="orb orb-1"></div>
+                    <div class="orb orb-2"></div>
+                    <div class="orb orb-3"></div>
+                </div>
+                <div class="hero-photo">
+                    <img src="images/profile.png" alt="Mohammed Reqasse" class="photo-img">
+                </div>
+                <div class="floating-stats">
+                    <div class="float-stat stat-1">
+                        <span class="float-num">20+</span>
+                        <span class="float-label">Projects</span>
+                    </div>
+                    <div class="float-stat stat-2">
+                        <span class="float-num">3</span>
+                        <span class="float-label">Languages</span>
+                    </div>
+                    <div class="float-stat stat-3">
+                        <span class="float-num">7+</span>
+                        <span class="float-label">Certs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-    <!-- Language Switcher Scripts -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,fr,ar',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-translate="tag_about">About Me</span>
+                <h2 class="section-title" data-translate="title_about">Who I Am</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-lead" data-translate="about_p1">
+                        <span class="lead-badge">22 years old</span>
+                        <span class="lead-text">Network & Telecommunications Engineering student at</span>
+                        <span class="lead-highlight">ENSA Safi</span>
+                    </div>
+                    <p class="about-passion" data-translate="about_p1b">Passionate about technology and innovation, exploring cutting-edge domains:</p>
+                    <div class="domain-tags">
+                        <span class="domain-tag"><i class="fas fa-network-wired"></i> Networking</span>
+                        <span class="domain-tag"><i class="fas fa-shield-alt"></i> Cybersecurity</span>
+                        <span class="domain-tag"><i class="fas fa-code"></i> Web Dev</span>
+                        <span class="domain-tag"><i class="fas fa-brain"></i> AI</span>
+                    </div>
+                    <p data-translate="about_p2">As the founder of Devaxio, I've had the opportunity to lead digital transformation for numerous clients, delivering high-performance websites and integrating AI tools to automate workflows. My hands-on experience spans from industrial IoT systems to advanced network security implementations.</p>
+                    <p data-translate="about_p3">I'm currently seeking opportunities in networking, telecommunications, or cybersecurity where I can apply my knowledge, learn from experienced professionals, and contribute to meaningful projects that make a difference.</p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Safi, Morocco</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>ENSA Safi</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span data-translate="available">Available for opportunities</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-cards">
+                    <div class="about-card">
+                        <i class="fas fa-network-wired"></i>
+                        <h3 data-translate="card_networking">Networking</h3>
+                        <p data-translate="card_networking_desc">CCNA Certified with expertise in SDN, VLAN management, and network diagnostics</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3 data-translate="card_security">Security</h3>
+                        <p data-translate="card_security_desc">System hardening, firewall configuration, and cybersecurity best practices</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-code"></i>
+                        <h3 data-translate="card_dev">Development</h3>
+                        <p data-translate="card_dev_desc">Full-stack web development with modern technologies and AI integration</p>
+                    </div>
+                    <div class="about-card">
+                        <i class="fas fa-brain"></i>
+                        <h3 data-translate="card_ai">AI & Data</h3>
+                        <p data-translate="card_ai_desc">Machine learning, predictive modeling, and large-scale data processing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        function doGTranslate(langPair) {
-            if(langPair.value) langPair = langPair.value;
-            if(langPair == '') return;
-            var lang = langPair.split('|')[1];
-            var plang = location.pathname.split('/')[1];
-            if(plang.length != 2 && lang != 'en') location.href = '/'+lang+location.pathname;
-            else if(lang == 'en') location.href = location.pathname.replace('/'+plang, '');
-            else location.href = location.pathname.replace('/'+plang, '/'+lang);
-            document.cookie = "googtrans="+langPair+"; expires="+new Date((new Date).getTime()+3600000).toUTCString()+"; path=/";
-        }
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-translate="tag_experience">Experience</span>
+                <h2 class="section-title" data-translate="title_experience">Professional Journey</h2>
+            </div>
+            <div class="timeline">
+                <!-- Devaxio -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <img src="images/devaxio.webp" alt="Devaxio" class="company-logo">
+                            <div class="timeline-info">
+                                <h3>Devaxio</h3>
+                                <span class="role" data-translate="role_founder">Founder / Lead Developer</span>
+                                <span class="date">2025 - Present</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-details">
+                            <li data-translate="devaxio_1">Founded and directed Devaxio, leading digital transformation for <strong>15+ clients</strong> with focus on AI integration and web automation</li>
+                            <li data-translate="devaxio_2">Delivered <strong>20+ high-performance</strong>, custom-built websites meeting diverse business requirements</li>
+                            <li data-translate="devaxio_3">Specialized in integrating AI tools into client workflows to automate processes and increase operational efficiency</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>HTML/CSS/JS</span>
+                            <span>AI Integration</span>
+                            <span>Project Management</span>
+                        </div>
+                    </div>
+                </div>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const langBtn = document.querySelector('.language-btn');
-            const langDropdown = document.querySelector('.language-dropdown');
-            
-            langBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                langDropdown.style.display = langDropdown.style.display === 'block' ? 'none' : 'block';
-            });
-            
-            document.addEventListener('click', function() {
-                langDropdown.style.display = 'none';
-            });
-        });
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                <!-- Devosoft -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="company-logo-placeholder">D</div>
+                            <div class="timeline-info">
+                                <h3>Devosoft Company</h3>
+                                <span class="role" data-translate="role_intern">Summer Intern - Web Development</span>
+                                <span class="date">June 2025 - August 2025</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-details">
+                            <li data-translate="devosoft_1">Performed technical web development work while handling <strong>10+ clients</strong> and overseeing client relationships</li>
+                            <li data-translate="devosoft_2">Collaborated effectively within an <strong>8-person team</strong> to deliver <strong>3 completed</strong> web development projects</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>Web Development</span>
+                            <span>Client Management</span>
+                            <span>Team Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="company-logo-placeholder">E</div>
+                            <div class="timeline-info">
+                                <h3>Espace Esafaa</h3>
+                                <span class="role" data-translate="role_teacher">English Second Language Teacher</span>
+                                <span class="date">2023 - 2024</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-details">
+                            <li data-translate="teacher_1">Taught English as a second language to diverse student groups</li>
+                            <li data-translate="teacher_2">Developed communication and presentation skills through teaching</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-translate="tag_projects">Portfolio</span>
+                <h2 class="section-title" data-translate="title_projects">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- MediConnect AI -->
+                <div class="project-card featured">
+                    <div class="project-image">
+                        <img src="images/MediConnect.webp" alt="MediConnect AI">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>MediConnect AI</h3>
+                            <span class="project-date">2026</span>
+                        </div>
+                        <p class="project-role" data-translate="role_team_leader">Team Leader</p>
+                        <p class="project-description" data-translate="mediconnect_desc">Predictive Healthcare SDN system merging AI with networking to optimize hospital operations using OpenDaylight Carbon and Mininet.</p>
+                        <div class="project-stats">
+                            <span><i class="fas fa-database"></i> 27,000 rows</span>
+                            <span><i class="fas fa-network-wired"></i> 8 VLANs</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>SDN</span>
+                            <span>AI</span>
+                            <span>Python</span>
+                            <span>Mininet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EdgeWarden -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project-edgewarden.webp" alt="EdgeWarden">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>EdgeWarden</h3>
+                            <span class="project-date">2026</span>
+                        </div>
+                        <p class="project-role" data-translate="role_qa_leader">QA Team Leader</p>
+                        <p class="project-description" data-translate="edgewarden_desc">IoT Smart Smoke Detection System with LoRa transmission achieving 328m range using SF7 spreading factor.</p>
+                        <div class="project-stats">
+                            <span><i class="fas fa-broadcast-tower"></i> 328m range</span>
+                            <span><i class="fas fa-check-circle"></i> 20+ tests</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>IoT</span>
+                            <span>LoRa</span>
+                            <span>Embedded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TV Image Restoration -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/TV.webp" alt="TV Image Restoration">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>TV Image Restoration</h3>
+                            <span class="project-date">2025</span>
+                        </div>
+                        <p class="project-role" data-translate="role_developer">Developer</p>
+                        <p class="project-description" data-translate="tv_desc">Denoising suite implementing 3 restoration methods (Chambolle, Split Bregman, Gradient Descent) with PSNR above 22.</p>
+                        <div class="project-stats">
+                            <span><i class="fas fa-image"></i> PSNR 22+</span>
+                            <span><i class="fas fa-cube"></i> 3D viz</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>MATLAB</span>
+                            <span>Signal Processing</span>
+                            <span>Image Processing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ODoS Mitigation -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/ODoS.webp" alt="ODoS Mitigation">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>ODoS Mitigation</h3>
+                            <span class="project-date">2025</span>
+                        </div>
+                        <p class="project-role" data-translate="role_team_leader">Team Leader</p>
+                        <p class="project-description" data-translate="odos_desc">Optical Denial of Service attack mitigation maintaining Q factor of 11.80 under 25 dBm attack conditions.</p>
+                        <div class="project-stats">
+                            <span><i class="fas fa-shield-alt"></i> Q 11.80</span>
+                            <span><i class="fas fa-bolt"></i> 25 dBm</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>OptiSystem</span>
+                            <span>VBScript</span>
+                            <span>Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RHEL Security -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/RHEL System Security.png" alt="RHEL Security">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>RHEL Security</h3>
+                            <span class="project-date">2024</span>
+                        </div>
+                        <p class="project-role" data-translate="role_team_member">Team Member</p>
+                        <p class="project-description" data-translate="rhel_desc">System hardening with firewalld, SELinux, and OpenSSH configuration. Simulated attacks to verify security controls.</p>
+                        <div class="project-tags">
+                            <span>Linux</span>
+                            <span>SELinux</span>
+                            <span>Firewall</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wavelet Transform -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/Wavelet transformation.webp" alt="Wavelet Transform">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Wavelet Transform</h3>
+                            <span class="project-date">2024</span>
+                        </div>
+                        <p class="project-role" data-translate="role_team_leader">Team Leader</p>
+                        <p class="project-description" data-translate="wavelet_desc">Signal and image processing achieving 4:1 compression ratio while maintaining quality using MATLAB.</p>
+                        <div class="project-stats">
+                            <span><i class="fas fa-compress"></i> 4:1 ratio</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>MATLAB</span>
+                            <span>Signal Processing</span>
+                            <span>Compression</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Portfolio -->
+                <div class="project-card github-card">
+                    <div class="github-preview">
+                        <div class="gh-mini-profile">
+                            <div class="gh-mini-avatar">
+                                <img src="images/github.png" alt="Mohammed Reqasse">
+                            </div>
+                            <div class="gh-mini-info">
+                                <span class="gh-mini-name">MOREQASSE</span>
+                                <div class="gh-mini-stats">
+                                    <span><strong>40+</strong> repos</span>
+                                    <span><strong>583</strong> contrib</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gh-mini-chart">
+                            <div class="gh-mini-weeks">
+                                <div class="gh-mini-week"><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-4"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-2"></div><div class="m-day l-4"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-1"></div><div class="m-day l-2"></div><div class="m-day l-4"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-2"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-4"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-4"></div><div class="m-day l-3"></div><div class="m-day l-2"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-4"></div><div class="m-day l-2"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-2"></div><div class="m-day l-3"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-4"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-2"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-4"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-4"></div><div class="m-day l-3"></div><div class="m-day l-2"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-3"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-2"></div><div class="m-day l-4"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div><div class="m-day l-2"></div><div class="m-day l-4"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-1"></div><div class="m-day l-2"></div><div class="m-day l-3"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-2"></div><div class="m-day l-1"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-3"></div><div class="m-day l-1"></div><div class="m-day l-2"></div><div class="m-day l-4"></div><div class="m-day l-2"></div><div class="m-day l-3"></div><div class="m-day l-2"></div></div>
+                                <div class="gh-mini-week"><div class="m-day l-2"></div><div class="m-day l-3"></div><div class="m-day l-1"></div><div class="m-day l-3"></div><div class="m-day l-4"></div><div class="m-day l-2"></div><div class="m-day l-1"></div></div>
+                            </div>
+                        </div>
+                        <a href="https://github.com/MOREQASSE" target="_blank" class="gh-mini-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>GitHub Portfolio</h3>
+                            <span class="project-date">2024 - Present</span>
+                        </div>
+                        <p class="project-role">Open Source Contributor</p>
+                        <p class="project-description">Active GitHub profile with <strong>40+ repositories</strong> showcasing projects in networking, AI, web development, and embedded systems. 583 contributions in the last year.</p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>JavaScript</span>
+                            <span>MATLAB</span>
+                            <span>Open Source</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-translate="tag_skills">Expertise</span>
+                <h2 class="section-title" data-translate="title_skills">Skills & Certifications</h2>
+            </div>
+            <div class="skills-content">
+                <div class="skills-categories">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-network-wired"></i> <span data-translate="skill_networking">Networking & SDN</span></h3>
+                        <div class="skill-items">
+                            <div class="skill-item"><span class="skill-name">CCNA Certified</span><div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">SDN (OpenDaylight, Mininet)</span><div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">LoRa/IoT Architecture</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">VLAN Management</span><div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> <span data-translate="skill_dev">Development</span></h3>
+                        <div class="skill-items">
+                            <div class="skill-item"><span class="skill-name">JavaScript / HTML5 / CSS3</span><div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">Node.js / React / PHP</span><div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">SQL / VBScript / MATLAB</span><div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-shield-alt"></i> <span data-translate="skill_security">Systems & Security</span></h3>
+                        <div class="skill-items">
+                            <div class="skill-item"><span class="skill-name">Linux Administration (Ubuntu)</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">Network Diagnostics</span><div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">CISCO Packet Tracer / WireShark</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">OptiSystem v7.0</span><div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> <span data-translate="skill_ai">Data & AI</span></h3>
+                        <div class="skill-items">
+                            <div class="skill-item"><span class="skill-name">Machine Learning / TensorFlow</span><div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">Predictive Modeling</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">AI Workflow Automation</span><div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div></div>
+                            <div class="skill-item"><span class="skill-name">Large-scale Data Cleaning</span><div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certifications">
+                    <h3 data-translate="certifications_title">Certifications</h3>
+                    <div class="cert-grid">
+                        <div class="cert-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>CCNA: Introduction to Networks</span>
+                            <small>Cisco</small>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>CCNA: Switching, Routing, Wireless</span>
+                            <small>Cisco</small>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>CCNA: Enterprise Networking & Security</span>
+                            <small>Cisco</small>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-award"></i>
+                            <span>Computer Networks Fundamentals</span>
+                            <small>Udemy</small>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-award"></i>
+                            <span>MySQL for Beginners</span>
+                            <small>Udemy</small>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-award"></i>
+                            <span>CyberSecurity Bootcamp</span>
+                            <small>Udemy</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="languages">
+                    <h3 data-translate="languages_title">Languages</h3>
+                    <div class="lang-grid">
+                        <div class="lang-item">
+                            <span class="lang-name">Arabic</span>
+                            <span class="lang-level" data-translate="lang_native">Native</span>
+                            <div class="lang-bar"><div class="lang-fill" style="width: 100%"></div></div>
+                        </div>
+                        <div class="lang-item">
+                            <span class="lang-name">English</span>
+                            <span class="lang-level">C1+</span>
+                            <div class="lang-bar"><div class="lang-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="lang-item">
+                            <span class="lang-name">French</span>
+                            <span class="lang-level">B2</span>
+                            <div class="lang-bar"><div class="lang-fill" style="width: 70%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-translate="tag_contact">Contact</span>
+                <h2 class="section-title" data-translate="title_contact">Let's Work Together</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-translate="contact_subtitle">Get In Touch</h3>
+                    <p data-translate="contact_desc">I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology and innovation.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span data-translate="email">Email</span>
+                                <a href="mailto:reqasse@gmail.com">reqasse@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <span data-translate="phone">Phone</span>
+                                <a href="tel:+212700821340">+212 700 82 13 40</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span data-translate="location">Location</span>
+                                <span>Safi, Morocco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-socials">
+                        <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/MOREQASSE" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://wa.me/212700821340" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://moreqasse.github.io/CV/" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" action="mailto:reqasse@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" data-translate-placeholder="form_name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" data-translate-placeholder="form_email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" data-translate-placeholder="form_subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Your Message" data-translate-placeholder="form_message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-translate="btn_send">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">MR</span>
+                    <p data-translate="footer_desc">Network & Telecommunications Engineering Student passionate about creating innovative solutions.</p>
+                    
+                </div>
+                <div class="footer-links">
+                    <a href="#home" data-translate="nav_home">Home</a>
+                    <a href="#about" data-translate="nav_about">About</a>
+                    <a href="#projects" data-translate="nav_projects">Projects</a>
+                    <a href="#contact" data-translate="nav_contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mohammed Reqasse. <span data-translate="footer_rights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>

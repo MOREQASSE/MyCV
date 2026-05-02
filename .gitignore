@@ -1,0 +1,6 @@
+# LaTeX build files
+*.tex
+*.gz
+*.out
+*.aux
+*.log
