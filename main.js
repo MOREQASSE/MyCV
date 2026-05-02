@@ -196,7 +196,7 @@ const translations = {
         nav_contact: "تواصل",
 
         // Hero
-        hero_title: "محمد رقاص",
+        hero_title: "محمد رقاس",
         hero_subtitle: "طالب هندسة الشبكات والاتصالات",
         hero_description: "شغوف بالتكنولوجيا والابتكار وإنشاء حلول مؤثرة في مجال الشبكات والأمن السيبراني والاتصالات.",
         btn_projects: "عرض المشاريع",
