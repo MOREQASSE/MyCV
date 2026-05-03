@@ -709,6 +709,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('preferredTheme');
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('preferredTheme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('preferredTheme', 'dark');
+            }
+        });
+    }
+
     // Check for saved language preference
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && translations[savedLang]) {
