@@ -428,6 +428,35 @@ function initTypingEffect() {
     setTimeout(typeWriter, 500);
 }
 
+// ===== ABOUT SECTION TYPING EFFECT =====
+function initAboutTyping() {
+    const typingElement = document.getElementById('typing-text');
+    if (!typingElement) return;
+
+    const text = "Passionate about technology and innovation, exploring cutting-edge domains:";
+    let hasTyped = false;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasTyped) {
+                hasTyped = true;
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        typingElement.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 40);
+                    }
+                };
+                typeWriter();
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(typingElement);
+}
+
 // ===== PARALLAX EFFECT =====
 function initParallax() {
     const heroBg = document.querySelector('.hero-bg');
@@ -575,12 +604,68 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initSmoothScroll();
     initTypingEffect();
+    initAboutTyping();
     initParallax();
     initFormHandling();
     initScrollIndicator();
     initActiveNavLink();
     initCounters();
+    initCVButton();
 });
+
+// ===== FLOATING CV BUTTON =====
+function initCVButton() {
+    const cvBtn = document.getElementById('cv-btn');
+    const cvDropdown = document.getElementById('cv-dropdown');
+    const cvOptions = document.querySelectorAll('.cv-option');
+
+    if (!cvBtn || !cvDropdown) return;
+
+    // Toggle dropdown
+    cvBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cvDropdown.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+        cvDropdown.classList.remove('active');
+    });
+
+    // Update active language highlighting
+    function updateCVActiveLang() {
+        const lang = currentLang;
+        cvOptions.forEach(option => {
+            option.classList.remove('active-lang');
+            // English CV for both 'en' and 'ar', French CV for 'fr'
+            if ((lang === 'en' || lang === 'ar') && option.dataset.cv === 'en') {
+                option.classList.add('active-lang');
+            } else if (lang === 'fr' && option.dataset.cv === 'fr') {
+                option.classList.add('active-lang');
+            }
+        });
+    }
+
+    // Initial update
+    updateCVActiveLang();
+
+    // Update when language changes
+    const originalChangeLang = window.changeLanguage;
+    window.changeLanguage = function(lang) {
+        originalChangeLang(lang);
+        updateCVActiveLang();
+    };
+
+    // Direct download for Arabic (uses English CV)
+    cvOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+            // Allow default download behavior, just close dropdown
+            setTimeout(() => {
+                cvDropdown.classList.remove('active');
+            }, 100);
+        });
+    });
+}
 
 // ===== EXPOSE FUNCTIONS GLOBALLY =====
 window.changeLanguage = changeLanguage;

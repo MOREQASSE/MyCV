@@ -663,11 +663,37 @@ section {
 .domain-tag:nth-child(3) { animation-delay: 0.9s; }
 .domain-tag:nth-child(4) { animation-delay: 1.0s; }
 
+/* Brand-specific glow colors */
+.domain-tag:nth-child(1):hover {
+    background: rgba(0, 212, 255, 0.15);
+    color: #00d4ff;
+    border-color: #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4), 0 0 40px rgba(0, 212, 255, 0.2);
+}
+
+.domain-tag:nth-child(2):hover {
+    background: rgba(255, 71, 87, 0.15);
+    color: #ff4757;
+    border-color: #ff4757;
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.4), 0 0 40px rgba(255, 71, 87, 0.2);
+}
+
+.domain-tag:nth-child(3):hover {
+    background: rgba(255, 165, 2, 0.15);
+    color: #ffa502;
+    border-color: #ffa502;
+    box-shadow: 0 0 20px rgba(255, 165, 2, 0.4), 0 0 40px rgba(255, 165, 2, 0.2);
+}
+
+.domain-tag:nth-child(4):hover {
+    background: rgba(165, 94, 234, 0.15);
+    color: #a55eea;
+    border-color: #a55eea;
+    box-shadow: 0 0 20px rgba(165, 94, 234, 0.4), 0 0 40px rgba(165, 94, 234, 0.2);
+}
+
 .domain-tag:hover {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
 }
 
 .domain-tag i {
@@ -679,6 +705,27 @@ section {
     flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 2rem;
+}
+
+/* Typing subtitle effect */
+.typing-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-medium);
+    font-family: 'Courier New', monospace;
+    margin-bottom: 1rem;
+    min-height: 1.5em;
+}
+
+.typing-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }
 
 .info-item {
@@ -1625,6 +1672,110 @@ section {
     transform: translateY(0);
 }
 
+/* ===== FLOATING CV BUTTON ===== */
+.cv-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.cv-float-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(26, 82, 150, 0.4);
+    transition: var(--transition);
+    position: relative;
+}
+
+.cv-float-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(26, 82, 150, 0.5);
+}
+
+.cv-float-btn i {
+    font-size: 1.2rem;
+}
+
+.cv-btn-text {
+    font-size: 0.85rem;
+}
+
+.cv-dropdown {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 0.5rem;
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.cv-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cv-dropdown::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 24px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    transform: rotate(45deg);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.cv-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-medium);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.cv-option:hover {
+    background: var(--bg-light);
+    color: var(--primary);
+}
+
+.cv-option i {
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+.cv-option.active-lang {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+}
+
+.cv-option.active-lang i {
+    color: white;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
     .hero-content {
@@ -1871,5 +2022,31 @@ section {
     .lang-item {
         grid-template-columns: 1fr;
         gap: 0.5rem;
+    }
+
+    .cv-float {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .cv-float-btn {
+        padding: 0.6rem 1rem;
+    }
+
+    .cv-float-btn i {
+        font-size: 1.1rem;
+    }
+
+    .cv-btn-text {
+        font-size: 0.8rem;
+    }
+
+    .cv-dropdown {
+        min-width: 140px;
+    }
+
+    .cv-option {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.85rem;
     }
 }
