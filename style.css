@@ -1257,6 +1257,10 @@ section {
     gap: 2rem;
 }
 
+.skills-dots {
+    display: none;
+}
+
 .skill-category {
     background: white;
     padding: 2rem;
@@ -2332,7 +2336,48 @@ section {
     }
 
     .skills-categories {
-        grid-template-columns: 1fr;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        padding-inline: 0.5rem;
+        margin-inline: -0.5rem;
+    }
+
+    .skills-categories::-webkit-scrollbar {
+        display: none;
+    }
+
+    .skills-categories .skill-category {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+        min-width: 280px;
+        padding: 1.5rem;
+    }
+
+    .skills-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .skills-dots .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(26, 82, 150, 0.2);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .skills-dots .dot.active {
+        background: var(--primary);
+        width: 24px;
+        border-radius: 4px;
     }
 
     .cert-grid {
@@ -2394,7 +2439,54 @@ section {
     }
 
     .about-cards {
-        grid-template-columns: 1fr;
+        display: block;
+        position: relative;
+        height: 400vh;
+    }
+
+    .about-card {
+        position: sticky;
+        top: 100px;
+        height: calc(100vh - 120px);
+        max-height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%);
+        border: none;
+        box-shadow: none;
+        margin-bottom: 2rem;
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .about-card.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    .about-card i {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .about-card h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-card p {
+        font-size: 1rem;
+        max-width: 280px;
+        line-height: 1.7;
     }
 
     .timeline::before {

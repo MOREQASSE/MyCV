@@ -26,14 +26,19 @@ const translations = {
         about_p2: "As the founder of Devaxio, I've had the opportunity to lead digital transformation for numerous clients, delivering high-performance websites and integrating AI tools to automate workflows. My hands-on experience spans from industrial IoT systems to advanced network security implementations.",
         about_p3: "I'm currently seeking opportunities in networking, telecommunications, or cybersecurity where I can apply my knowledge, learn from experienced professionals, and contribute to meaningful projects that make a difference.",
         available: "Available for opportunities",
+        tag_networking: "Networking",
+        tag_telecom: "Telecommunications",
+        tag_security: "Cybersecurity",
+        tag_dev: "Web Dev",
+        tag_ai: "AI",
         card_networking: "Networking",
         card_networking_desc: "CCNA Certified with expertise in SDN, VLAN management, and network diagnostics",
         card_security: "Security",
         card_security_desc: "System hardening, firewall configuration, and cybersecurity best practices",
         card_dev: "Development",
         card_dev_desc: "Full-stack web development with modern technologies and AI integration",
-        card_ai: "AI & Data",
-        card_ai_desc: "Machine learning, predictive modeling, and large-scale data processing",
+        card_telecom: "Telecommunications",
+        card_telecom_desc: "Optical fiber networks, RF systems, and wireless communication protocols",
 
         // Experience
         tag_experience: "Experience",
@@ -129,14 +134,19 @@ const translations = {
         about_p2: "En tant que fondateur de Devaxio, j'ai eu l'opportunité de diriger la transformation numérique de nombreux clients, en livrant des sites web haute performance et en intégrant des outils d'IA pour automatiser les flux de travail. Mon expérience pratique s'étend des systèmes IoT industriels aux implémentations avancées de sécurité réseau.",
         about_p3: "Je recherche actuellement des opportunités en réseautique, télécommunications ou cybersécurité où je peux appliquer mes connaissances, apprendre auprès de professionnels expérimentés et contribuer à des projets significatifs qui font la différence.",
         available: "Disponible pour opportunités",
-        card_networking: "Réseautique",
+        tag_networking: "Réseaux",
+        tag_telecom: "Télécommunications",
+        tag_security: "Cybersécurité",
+        tag_dev: "Web Dev",
+        tag_ai: "IA",
+        card_networking: "Réseaux",
         card_networking_desc: "Certifié CCNA avec expertise en SDN, gestion VLAN et diagnostic réseau",
         card_security: "Sécurité",
-        card_security_desc: "Durcissement système, configuration pare-feu et meilleures pratiques cybersécurité",
+        card_security_desc: "Renforcement système, configuration pare-feu et bonnes pratiques cybersécurité",
         card_dev: "Développement",
         card_dev_desc: "Développement web full-stack avec technologies modernes et intégration IA",
-        card_ai: "IA & Données",
-        card_ai_desc: "Machine learning, modélisation prédictive et traitement de données à grande échelle",
+        card_telecom: "Télécommunications",
+        card_telecom_desc: "Réseaux fibre optique, systèmes RF et protocoles de communication sans fil",
 
         // Experience
         tag_experience: "Expérience",
@@ -232,14 +242,19 @@ const translations = {
         about_p2: "بصفتي مؤسس Devaxio، كنت قد أتيحت لي الفرصة لقيادة التحول الرقمي لعديد من العملاء، وتقديم مواقع ويب عالية الأداء ودمج أدوات الذكاء الاصطناعي لأتمتة سير العمل. خبرتي العملية تمتد من أنظمة إنترنت الأشياء الصناعية إلى تطبيقات الأمان المتقدمة.",
         about_p3: "أبحث حالياً عن فرص في مجال الشبكات والاتصالات أو الأمن السيبراني حيث يمكنني تطبيق معرفتي والتعلم من المحترفين ذوي الخبرة والمساهمة في مشاريع هادفة تحدث فرقاً.",
         available: "متاح للفرص",
+        tag_networking: "الشبكات",
+        tag_telecom: "الاتصالات",
+        tag_security: "الأمن السيبراني",
+        tag_dev: "تطوير الويب",
+        tag_ai: "الذكاء الاصطناعي",
         card_networking: "الشبكات",
         card_networking_desc: "حاصل على شهادة CCNA مع خبرة في SDN وإدارة VLAN وتشخيص الشبكات",
-        card_security: "الأمن",
-        card_security_desc: "تقوية النظام وإعداد جدار الحماية وأفضل ممارسات الأمن السيبراني",
+        card_security: "الأمان",
+        card_security_desc: "تقوية الأنظمة، إعداد الجدران النارية وأفضل ممارسات الأمن السيبراني",
         card_dev: "التطوير",
-        card_dev_desc: "تطوير الويب المتكامل مع التقنيات الحديثة ودمج الذكاء الاصطناعي",
-        card_ai: "الذكاء الاصطناعي",
-        card_ai_desc: "التعلم الآلي والنمذجة التنبؤية ومعالجة البيانات واسعة النطاق",
+        card_dev_desc: "تطوير ويب Full-stack مع التقنيات الحديثة والذكاء الاصطناعي",
+        card_telecom: "الاتصالات",
+        card_telecom_desc: "شبكات الألياف البصرية، أنظمة RF وبروتوكولات الاتصال اللاسلكي",
 
         // Experience
         tag_experience: "الخبرة",
@@ -487,6 +502,33 @@ function initAboutTyping() {
     observer.observe(typingElement);
 }
 
+// ===== ABOUT CARDS SCROLL ANIMATION (Mobile) =====
+function initAboutCardsAnimation() {
+    const cards = document.querySelectorAll('.about-card');
+    if (cards.length === 0) return;
+
+    // Only run on mobile
+    if (window.innerWidth > 768) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px',
+        threshold: [0, 0.5, 1]
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, observerOptions);
+
+    cards.forEach(card => observer.observe(card));
+}
+
 // ===== PARALLAX EFFECT =====
 function initParallax() {
     const heroBg = document.querySelector('.hero-bg');
@@ -584,6 +626,40 @@ function initActiveNavLink() {
     });
 }
 
+// ===== SKILLS CAROUSEL =====
+function initSkillsCarousel() {
+    const skillsCategories = document.querySelector('.skills-categories');
+    const dots = document.querySelectorAll('.skills-dots .dot');
+    
+    if (!skillsCategories || dots.length === 0) return;
+    
+    // Update dots on scroll
+    skillsCategories.addEventListener('scroll', () => {
+        const scrollLeft = skillsCategories.scrollLeft;
+        const cardWidth = skillsCategories.querySelector('.skill-category').offsetWidth;
+        const gap = 16; // gap from CSS
+        const totalWidth = cardWidth + gap;
+        const currentIndex = Math.round(scrollLeft / totalWidth);
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    });
+    
+    // Click dot to scroll to card
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            const cardWidth = skillsCategories.querySelector('.skill-category').offsetWidth;
+            const gap = 16;
+            const scrollPosition = index * (cardWidth + gap);
+            skillsCategories.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
+}
+
 // ===== COUNTER ANIMATION =====
 function initCounters() {
     const counters = document.querySelectorAll('.stat-number');
@@ -638,6 +714,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initParallax();
     initFormHandling();
     initScrollIndicator();
+    initSkillsCarousel();
+    initAboutCardsAnimation();
     initActiveNavLink();
     initCounters();
     initCVButton();
