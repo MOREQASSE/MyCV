@@ -698,6 +698,17 @@ function initCounters() {
 
 // ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', () => {
+    // Hide page loader after content loads
+    const pageLoader = document.getElementById('page-loader');
+    if (pageLoader) {
+        // Wait for images to load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                pageLoader.classList.add('hidden');
+            }, 500);
+        });
+    }
+
     // Check for saved language preference
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && translations[savedLang]) {
