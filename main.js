@@ -73,6 +73,12 @@ const translations = {
         certifications_title: "Certifications",
         languages_title: "Languages",
         lang_native: "Native",
+        lang_arabic_name: "Arabic",
+        lang_arabic_level: "Native",
+        lang_english_name: "English",
+        lang_english_level: "C2 Proficient",
+        lang_french_name: "French",
+        lang_french_level: "B2 Upper-Intermediate",
 
         // Contact
         tag_contact: "Contact",
@@ -90,7 +96,11 @@ const translations = {
 
         // Footer
         footer_desc: "Network & Telecommunications Engineering Student passionate about creating innovative solutions.",
-        footer_rights: "All rights reserved."
+        footer_rights: "All rights reserved.",
+        footer_links: "Quick Links",
+        footer_contact: "Contact",
+        footer_follow: "Follow Me",
+        footer_cta: "Let's Talk"
     },
 
     fr: {
@@ -166,6 +176,12 @@ const translations = {
         certifications_title: "Certifications",
         languages_title: "Langues",
         lang_native: "Langue Maternelle",
+        lang_arabic_name: "Arabe",
+        lang_arabic_level: "Langue Maternelle",
+        lang_english_name: "Anglais",
+        lang_english_level: "C2 Avancé",
+        lang_french_name: "Français",
+        lang_french_level: "B2 Intermédiaire Supérieur",
 
         // Contact
         tag_contact: "Contact",
@@ -183,7 +199,11 @@ const translations = {
 
         // Footer
         footer_desc: "Étudiant en Ingénierie Réseaux & Télécommunications passionné par la création de solutions innovantes.",
-        footer_rights: "Tous droits réservés."
+        footer_rights: "Tous droits réservés.",
+        footer_links: "Liens Rapides",
+        footer_contact: "Contact",
+        footer_follow: "Suivez-moi",
+        footer_cta: "Discutons"
     },
 
     ar: {
@@ -259,6 +279,12 @@ const translations = {
         certifications_title: "الشهادات",
         languages_title: "اللغات",
         lang_native: "اللغة الأم",
+        lang_arabic_name: "العربية",
+        lang_arabic_level: "اللغة الأم",
+        lang_english_name: "الإنجليزية",
+        lang_english_level: "C2 محترف",
+        lang_french_name: "الفرنسية",
+        lang_french_level: "B2 متوسط متقدم",
 
         // Contact
         tag_contact: "تواصل",
@@ -276,7 +302,11 @@ const translations = {
 
         // Footer
         footer_desc: "طالب هندسة الشبكات والاتصالات شغوف بإنشاء حلول مبتكرة.",
-        footer_rights: "جميع الحقوق محفوظة."
+        footer_rights: "جميع الحقوق محفوظة.",
+        footer_links: "روابط سريعة",
+        footer_contact: "تواصل",
+        footer_follow: "تابعني",
+        footer_cta: "لنتحدث"
     }
 };
 

@@ -589,20 +589,58 @@
                 <div class="languages">
                     <h3 data-translate="languages_title">Languages</h3>
                     <div class="lang-grid">
-                        <div class="lang-item">
-                            <span class="lang-name">Arabic</span>
-                            <span class="lang-level" data-translate="lang_native">Native</span>
-                            <div class="lang-bar"><div class="lang-fill" style="width: 100%"></div></div>
+                        <!-- Arabic -->
+                        <div class="lang-card lang-native">
+                            <div class="lang-ring">
+                                <svg viewBox="0 0 100 100">
+                                    <circle class="ring-bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="ring-fill" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="0"></circle>
+                                </svg>
+                                <div class="lang-icon">
+                                    <span class="lang-code">AR</span>
+                                </div>
+                            </div>
+                            <div class="lang-info">
+                                <h4 class="lang-name" data-translate="lang_arabic_name">Arabic</h4>
+                                <span class="lang-level" data-translate="lang_arabic_level">Native</span>
+                                <div class="lang-badge native" data-percent="100">100%</div>
+                            </div>
                         </div>
-                        <div class="lang-item">
-                            <span class="lang-name">English</span>
-                            <span class="lang-level">C1+</span>
-                            <div class="lang-bar"><div class="lang-fill" style="width: 85%"></div></div>
+
+                        <!-- English -->
+                        <div class="lang-card lang-fluent">
+                            <div class="lang-ring">
+                                <svg viewBox="0 0 100 100">
+                                    <circle class="ring-bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="ring-fill" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="14"></circle>
+                                </svg>
+                                <div class="lang-icon">
+                                    <span class="lang-code">EN</span>
+                                </div>
+                            </div>
+                            <div class="lang-info">
+                                <h4 class="lang-name" data-translate="lang_english_name">English</h4>
+                                <span class="lang-level" data-translate="lang_english_level">C2 Proficient</span>
+                                <div class="lang-badge fluent" data-percent="95">95%</div>
+                            </div>
                         </div>
-                        <div class="lang-item">
-                            <span class="lang-name">French</span>
-                            <span class="lang-level">B2</span>
-                            <div class="lang-bar"><div class="lang-fill" style="width: 70%"></div></div>
+
+                        <!-- French -->
+                        <div class="lang-card lang-intermediate">
+                            <div class="lang-ring">
+                                <svg viewBox="0 0 100 100">
+                                    <circle class="ring-bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="ring-fill" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="71"></circle>
+                                </svg>
+                                <div class="lang-icon">
+                                    <span class="lang-code">FR</span>
+                                </div>
+                            </div>
+                            <div class="lang-info">
+                                <h4 class="lang-name" data-translate="lang_french_name">French</h4>
+                                <span class="lang-level" data-translate="lang_french_level">B2 Upper-Intermediate</span>
+                                <div class="lang-badge intermediate" data-percent="75">75%</div>
+                            </div>
                         </div>
                     </div>
                 </div>
