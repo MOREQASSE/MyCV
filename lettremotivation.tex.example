@@ -1,0 +1,74 @@
+\documentclass[12pt, a4paper]{letter}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{parskip}
+
+\definecolor{bleu}{RGB}{26, 58, 92}
+\definecolor{accent}{RGB}{192, 57, 43}
+\definecolor{gris}{RGB}{85, 85, 85}
+
+\pagestyle{empty}
+
+\begin{document}
+
+% ---- EN-TÊTE EXPÉDITEUR ----
+{\large\bfseries\color{bleu} Brahim LAAMECH} \\
+{\small\color{gris} Étudiant en 4\textsuperscript{ème} année — Génie Télécommunications et Réseaux} \\
+{\small\color{gris} École Nationale des Sciences Appliquées de Safi (ENSA Safi)} \\
+{\small Tél : 0772318679} \\
+{\small Email : laamachibrahim123@gmail.com}
+
+\vspace{1.2cm}
+
+% ---- DATE ----
+\begin{flushright}
+{\small\color{gris} Safi, le 5 Mai 2026}
+\end{flushright}
+
+\vspace{0.8cm}
+
+% ---- DESTINATAIRE ----
+{\bfseries À l'attention du Service des Ressources Humaines} \\
+{\bfseries\color{bleu} OCP S.A.} \\
+{\small Maroc}
+
+\vspace{1.2cm}
+
+% ---- OBJET ----
+{\bfseries Objet : }{\bfseries\color{bleu} Demande de stage — Département Réseaux — Juillet \& Août 2026}
+
+\vspace{0.2cm}
+{\color{bleu}\rule{\linewidth}{0.6pt}}
+\vspace{0.8cm}
+
+% ---- CORPS ----
+Madame, Monsieur,
+
+\vspace{0.5cm}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+Étudiant en 4\textsuperscript{ème} année à l'École Nationale des Sciences Appliquées de Safi (ENSA Safi), filière Génie Télécommunications et Réseaux, je me permets de vous adresser ma candidature pour effectuer un stage au sein du département Réseaux et Télécommunications de votre entreprise, pour une durée de deux mois (mois de Juillet et Août 2026).
+
+OCP S.A. est une entreprise de référence au Maroc, et l'opportunité d'y effectuer mon stage représente pour moi une chance exceptionnelle de mettre en pratique mes connaissances académiques dans un environnement professionnel exigeant et innovant.
+
+Au cours de ma formation, j'ai acquis de solides compétences en réseaux, protocoles de communication et architectures télécoms, que j'ai pu mettre en pratique à travers plusieurs projets académiques et des stages en milieu professionnel (industriel, électrique et développement web).
+
+Rigoureux, curieux et motivé, je suis convaincu que ce stage au sein de OCP S.A. me permettra d'enrichir ma formation tout en apportant ma contribution à vos équipes. Je reste à votre entière disposition pour tout entretien à votre convenance.
+
+Dans l'attente de votre retour, veuillez agréer, Madame, Monsieur, l'expression de mes salutations les plus respectueuses.
+
+\vspace{1.2cm}
+
+\begin{flushright}
+{\bfseries\color{bleu} Brahim LAAMECH} \\
+{\small 0772318679} \\
+{\small laamachibrahim123@gmail.com}
+\end{flushright}
+
+\end{document}
