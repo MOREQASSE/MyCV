@@ -413,38 +413,93 @@ body {
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 12px 28px;
-    border-radius: var(--radius-sm);
-    font-weight: 600;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 9999px;
+    font-weight: 700;
     text-decoration: none;
-    transition: var(--transition);
-    border: none;
+    border: 3px solid rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn .btn-icon {
+    width: 22px;
+    height: 22px;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn-primary {
     background: var(--primary);
     color: white;
-    box-shadow: 0 4px 14px rgba(26, 82, 150, 0.4);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26, 82, 150, 0.5);
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--primary);
-    border: 2px solid var(--primary);
+    border-color: var(--primary);
 }
 
 .btn-secondary:hover {
+    transform: scale(1.05);
+    border-color: var(--primary);
     background: var(--primary);
     color: white;
+}
+
+/* Dark mode button overrides */
+[data-theme="dark"] .btn-secondary {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: white;
+}
+
+.btn:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
+}
+
+.btn:hover::before {
+    animation: btnShine 1.5s ease-out infinite;
+}
+
+@keyframes btnShine {
+    0% { left: -100px; }
+    60% { left: 100%; }
+    to { left: 100%; }
 }
 
 .hero-socials {
@@ -2575,6 +2630,11 @@ section {
 
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
     }
 
     .about-cards {
