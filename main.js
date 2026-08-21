@@ -449,7 +449,7 @@ function initScrollAnimations() {
     }, observerOptions);
 
     // Observe all sections and cards
-    document.querySelectorAll('section, .project-card, .skill-category, .about-card').forEach(el => {
+    document.querySelectorAll('section, .project-card, .skill-category').forEach(el => {
         el.classList.add('reveal');
         observer.observe(el);
     });
@@ -827,31 +827,65 @@ function initAboutTyping() {
     observer.observe(typingElement);
 }
 
-// ===== ABOUT CARDS SCROLL ANIMATION (Mobile) =====
-function initAboutCardsAnimation() {
-    const cards = document.querySelectorAll('.about-card');
-    if (cards.length === 0) return;
+// ===== TERMINAL TYPING ANIMATION =====
+function initTerminalTyping() {
+    const el = document.getElementById('dev-typed');
+    if (!el) return;
 
-    // Only run on mobile
-    if (window.innerWidth > 768) return;
+    const commands = [
+        'const net = await restconf()',
+        'ssh.connect("switch")',
+        'vlan.create(100)',
+        'firewall.harden()',
+        'fetch("/api/data")',
+        'npm run build',
+        'docker compose up',
+        'ping -c 4 gateway'
+    ];
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -20% 0px',
-        threshold: [0, 0.5, 1]
-    };
+    let cmdIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+    let hasStarted = false;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-                entry.target.classList.add('visible');
-            } else {
-                entry.target.classList.remove('visible');
+            if (entry.isIntersecting && !hasStarted) {
+                hasStarted = true;
+                tick();
+                observer.disconnect();
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.5 });
 
-    cards.forEach(card => observer.observe(card));
+    observer.observe(el);
+
+    function tick() {
+        const cmd = commands[cmdIdx];
+
+        if (!deleting) {
+            el.textContent = cmd.substring(0, charIdx + 1);
+            charIdx++;
+
+            if (charIdx === cmd.length) {
+                deleting = true;
+                setTimeout(tick, 1800);
+                return;
+            }
+            setTimeout(tick, 60 + Math.random() * 40);
+        } else {
+            el.textContent = cmd.substring(0, charIdx - 1);
+            charIdx--;
+
+            if (charIdx === 0) {
+                deleting = false;
+                cmdIdx = (cmdIdx + 1) % commands.length;
+                setTimeout(tick, 400);
+                return;
+            }
+            setTimeout(tick, 30);
+        }
+    }
 }
 
 // ===== PARALLAX EFFECT =====
@@ -1103,11 +1137,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initTypingEffect();
     initAboutTyping();
+    initTerminalTyping();
     initParallax();
     initFormHandling();
     initScrollIndicator();
     initSkillsCarousel();
-    initAboutCardsAnimation();
     initActiveNavLink();
     initCounters();
     initCVButton();

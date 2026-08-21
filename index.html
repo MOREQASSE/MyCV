@@ -231,59 +231,94 @@
                 <span class="section-tag" data-translate="tag_about">About Me</span>
                 <h2 class="section-title" data-translate="title_about">Who I Am</h2>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="about-lead" data-translate="about_p1">
-                        <span class="lead-badge">22 years old</span>
-                        <span class="lead-text">Network & Telecommunications Engineering student at</span>
-                        <span class="lead-highlight">ENSA Safi</span>
-                    </div>
-                    <p class="typing-subtitle"><span class="typing-text" id="typing-text"></span></p>
-                    <div class="domain-tags">
-                        <span class="domain-tag"><i class="fas fa-network-wired"></i> <span data-translate="tag_networking">Networking</span></span>
-                        <span class="domain-tag"><i class="fas fa-satellite-dish"></i> <span data-translate="tag_telecom">Telecommunications</span></span>
-                        <span class="domain-tag"><i class="fas fa-shield-alt"></i> <span data-translate="tag_security">Cybersecurity</span></span>
-                        <span class="domain-tag"><i class="fas fa-code"></i> <span data-translate="tag_dev">Web Dev</span></span>
-                        <span class="domain-tag"><i class="fas fa-brain"></i> <span data-translate="tag_ai">AI</span></span>
-                    </div>
-                    <p data-translate="about_p2">As the founder of Devaxio, I've had the opportunity to lead digital transformation for numerous clients, delivering high-performance websites and integrating AI tools to automate workflows. My hands-on experience spans from industrial IoT systems to advanced network security implementations.</p>
-                    <p data-translate="about_p3">I'm currently seeking opportunities in networking, telecommunications, or cybersecurity where I can apply my knowledge, learn from experienced professionals, and contribute to meaningful projects that make a difference.</p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Safi, Morocco</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>ENSA Safi</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-briefcase"></i>
-                            <span data-translate="available">Available for opportunities</span>
-                        </div>
-                    </div>
+            <div class="about-hero">
+                <div class="about-intro">
+                    <span class="intro-age">22</span>
+                    <span class="intro-dot">·</span>
+                    <span class="intro-field" data-translate="tag_networking">Network & Telecom Engineering</span>
+                    <span class="intro-at">@</span>
+                    <span class="intro-school">ENSA Safi</span>
                 </div>
-                <div class="about-cards">
-                    <div class="about-card">
-                        <i class="fas fa-network-wired"></i>
-                        <h3 data-translate="card_networking">Networking</h3>
-                        <p data-translate="card_networking_desc">CCNA Certified with expertise in SDN, VLAN management, and network diagnostics</p>
+                <p class="typing-subtitle"><span class="typing-text" id="typing-text"></span></p>
+                <p class="about-desc" data-translate="about_p2">As the founder of Devaxio, I've had the opportunity to lead digital transformation for numerous clients, delivering high-performance websites and integrating AI tools to automate workflows. My hands-on experience spans from industrial IoT systems to advanced network security implementations.</p>
+                <div class="about-meta">
+                    <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Safi, Morocco</span>
+                    <span class="meta-item"><i class="fas fa-graduation-cap"></i> ENSA Safi</span>
+                    <span class="meta-item meta-item--available"><i class="fas fa-circle"></i> <span data-translate="available">Available for opportunities</span></span>
+                </div>
+            </div>
+
+            <div class="about-domains">
+                <!-- Networking — animated node mesh -->
+                <div class="domain-obj domain-obj--network" data-anim="network">
+                    <div class="domain-obj__stage">
+                        <svg class="dom-net" viewBox="0 0 120 120" fill="none">
+                            <line class="net-line" x1="20" y1="30" x2="60" y2="15"/>
+                            <line class="net-line" x1="60" y1="15" x2="100" y2="35"/>
+                            <line class="net-line" x1="20" y1="30" x2="35" y2="75"/>
+                            <line class="net-line" x1="100" y1="35" x2="85" y2="80"/>
+                            <line class="net-line" x1="35" y1="75" x2="85" y2="80"/>
+                            <line class="net-line" x1="35" y1="75" x2="60" y2="105"/>
+                            <line class="net-line" x1="85" y1="80" x2="60" y2="105"/>
+                            <line class="net-line" x1="60" y1="15" x2="60" y2="105"/>
+                            <circle class="net-node" cx="20" cy="30" r="5"/>
+                            <circle class="net-node" cx="60" cy="15" r="5"/>
+                            <circle class="net-node" cx="100" cy="35" r="5"/>
+                            <circle class="net-node" cx="35" cy="75" r="5"/>
+                            <circle class="net-node" cx="85" cy="80" r="5"/>
+                            <circle class="net-node" cx="60" cy="105" r="5"/>
+                            <circle class="net-pulse" cx="60" cy="15" r="5"/>
+                            <circle class="net-pulse" cx="35" cy="75" r="5"/>
+                            <circle class="net-pulse" cx="85" cy="80" r="5"/>
+                        </svg>
                     </div>
-                    <div class="about-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3 data-translate="card_security">Security</h3>
-                        <p data-translate="card_security_desc">System hardening, firewall configuration, and cybersecurity best practices</p>
+                    <span class="domain-obj__label" data-translate="tag_networking">Networking</span>
+                </div>
+
+                <!-- Security — scanning shield -->
+                <div class="domain-obj domain-obj--security" data-anim="security">
+                    <div class="domain-obj__stage">
+                        <div class="sec-shield">
+                            <svg class="sec-svg" viewBox="0 0 80 96" fill="none">
+                                <path class="sec-path" d="M40 4 L74 18 V48 C74 70 58 86 40 92 C22 86 6 70 6 48 V18 Z"/>
+                                <path class="sec-inner" d="M40 14 L66 25 V48 C66 65 54 78 40 83 C26 78 14 65 14 48 V25 Z"/>
+                            </svg>
+                            <div class="sec-scan"></div>
+                            <div class="sec-dot sec-dot--1"></div>
+                            <div class="sec-dot sec-dot--2"></div>
+                            <div class="sec-dot sec-dot--3"></div>
+                        </div>
                     </div>
-                    <div class="about-card">
-                        <i class="fas fa-code"></i>
-                        <h3 data-translate="card_dev">Development</h3>
-                        <p data-translate="card_dev_desc">Full-stack web development with modern technologies and AI integration</p>
+                    <span class="domain-obj__label" data-translate="tag_security">Cybersecurity</span>
+                </div>
+
+                <!-- Development — typing terminal -->
+                <div class="domain-obj domain-obj--dev" data-anim="dev">
+                    <div class="domain-obj__stage">
+                        <div class="dev-term">
+                            <div class="dev-bar"><span></span><span></span><span></span></div>
+                            <div class="dev-screen">
+                                <span class="dev-prompt">&gt;</span>
+                                <span class="dev-code" id="dev-typed"></span>
+                                <span class="dev-cursor">|</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="about-card">
-                        <i class="fas fa-satellite-dish"></i>
-                        <h3 data-translate="card_telecom">Telecommunications</h3>
-                        <p data-translate="card_telecom_desc">Optical fiber networks, RF systems, and wireless communication protocols</p>
+                    <span class="domain-obj__label" data-translate="tag_dev">Web Dev</span>
+                </div>
+
+                <!-- Telecom — signal waves -->
+                <div class="domain-obj domain-obj--telecom" data-anim="telecom">
+                    <div class="domain-obj__stage">
+                        <div class="tel-tower">
+                            <div class="tel-pole"></div>
+                            <div class="tel-antenna"></div>
+                            <div class="tel-wave tel-wave--1"></div>
+                            <div class="tel-wave tel-wave--2"></div>
+                            <div class="tel-wave tel-wave--3"></div>
+                        </div>
                     </div>
+                    <span class="domain-obj__label" data-translate="tag_telecom">Telecommunications</span>
                 </div>
             </div>
         </div>
