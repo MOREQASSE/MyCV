@@ -224,15 +224,93 @@
         </div>
     </section>
 
-    <!-- Bridge: Hero → About -->
-    <div class="bridge bridge-circuit bridge-blend-hero-about" aria-hidden="true">
-        <svg class="bridge-svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
-            <path class="br-trace" d="M0,40 H280 L310,20 H420 L440,40 H560 L580,60 H700 L720,40 H850 L870,20 H1000 L1020,40 H1200"/>
-            <path class="br-trace" d="M0,55 H180 L200,35 H350 L370,55 H500 L520,70 H680 L700,55 H900 L920,35 H1080 L1100,55 H1200"/>
-            <circle class="br-dot" r="3"><animateMotion dur="4s" repeatCount="indefinite" path="M0,40 H280 L310,20 H420 L440,40 H560 L580,60 H700 L720,40 H850 L870,20 H1000 L1020,40 H1200"/></circle>
-            <circle class="br-dot" r="2.5"><animateMotion dur="5.5s" repeatCount="indefinite" path="M0,55 H180 L200,35 H350 L370,55 H500 L520,70 H680 L700,55 H900 L920,35 H1080 L1100,55 H1200"/></circle>
-            <circle class="br-junction" cx="310" cy="20"/><circle class="br-junction" cx="440" cy="40"/><circle class="br-junction" cx="580" cy="60"/><circle class="br-junction" cx="720" cy="40"/><circle class="br-junction" cx="870" cy="20"/>
-            <circle class="br-junction" cx="200" cy="35"/><circle class="br-junction" cx="370" cy="55"/><circle class="br-junction" cx="520" cy="70"/><circle class="br-junction" cx="700" cy="55"/><circle class="br-junction" cx="920" cy="35"/>
+    <!-- Bridge: Hero → About — Radio Telecom -->
+    <div class="bridge bridge--hero-about bridge-radio" aria-hidden="true">
+        <svg class="bridge-svg" viewBox="0 0 1440 140" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <filter id="radio-glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <filter id="radio-glow-sm"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <linearGradient id="tower-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#4a6fa5"/>
+                    <stop offset="100%" stop-color="#2d4a7a"/>
+                </linearGradient>
+                <linearGradient id="tower-grad-r" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#5a7fb5"/>
+                    <stop offset="100%" stop-color="#3d5a8a"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Ground line -->
+            <line class="radio-ground" x1="0" y1="118" x2="1440" y2="118"/>
+
+            <!-- LEFT TOWER -->
+            <g class="radio-tower radio-tower--left">
+                <!-- Tower base -->
+                <polygon class="tower-body" points="120,115 140,115 135,42 125,42" fill="url(#tower-grad)"/>
+                <!-- Cross braces -->
+                <line class="tower-brace" x1="122" y1="55" x2="138" y2="70"/>
+                <line class="tower-brace" x1="138" y1="55" x2="122" y2="70"/>
+                <line class="tower-brace" x1="123" y1="75" x2="137" y2="90"/>
+                <line class="tower-brace" x1="137" y1="75" x2="123" y2="90"/>
+                <line class="tower-brace" x1="124" y1="95" x2="136" y2="108"/>
+                <line class="tower-brace" x1="136" y1="95" x2="124" y2="108"/>
+                <!-- Antenna mast -->
+                <line class="tower-mast" x1="130" y1="42" x2="130" y2="22"/>
+                <!-- Antenna dish -->
+                <ellipse class="tower-dish" cx="130" cy="30" rx="8" ry="5"/>
+                <!-- Beacon -->
+                <circle class="tower-beacon" cx="130" cy="22" r="3" filter="url(#radio-glow)"/>
+
+                <!-- Radio waves emanating rightward -->
+                <path class="radio-wave radio-wave--1" d="M148,50 Q220,30 290,50" fill="none"/>
+                <path class="radio-wave radio-wave--2" d="M155,60 Q250,30 340,60" fill="none"/>
+                <path class="radio-wave radio-wave--3" d="M162,70 Q280,30 390,70" fill="none"/>
+                <path class="radio-wave radio-wave--4" d="M170,80 Q310,35 440,80" fill="none"/>
+            </g>
+
+            <!-- RIGHT TOWER (mirrored) -->
+            <g class="radio-tower radio-tower--right">
+                <polygon class="tower-body" points="1300,115 1320,115 1315,42 1305,42" fill="url(#tower-grad-r)"/>
+                <line class="tower-brace" x1="1302" y1="55" x2="1318" y2="70"/>
+                <line class="tower-brace" x1="1318" y1="55" x2="1302" y2="70"/>
+                <line class="tower-brace" x1="1303" y1="75" x2="1317" y2="90"/>
+                <line class="tower-brace" x1="1317" y1="75" x2="1303" y2="90"/>
+                <line class="tower-brace" x1="1304" y1="95" x2="1316" y2="108"/>
+                <line class="tower-brace" x1="1316" y1="95" x2="1304" y2="108"/>
+                <line class="tower-mast" x1="1310" y1="42" x2="1310" y2="22"/>
+                <ellipse class="tower-dish" cx="1310" cy="30" rx="8" ry="5"/>
+                <circle class="tower-beacon" cx="1310" cy="22" r="3" filter="url(#radio-glow)"/>
+
+                <!-- Radio waves emanating leftward -->
+                <path class="radio-wave radio-wave--r1" d="M1292,50 Q1220,30 1150,50" fill="none"/>
+                <path class="radio-wave radio-wave--r2" d="M1285,60 Q1190,30 1100,60" fill="none"/>
+                <path class="radio-wave radio-wave--r3" d="M1278,70 Q1160,30 1050,70" fill="none"/>
+                <path class="radio-wave radio-wave--r4" d="M1270,80 Q1130,35 1000,80" fill="none"/>
+            </g>
+
+            <!-- CENTER — signal meeting zone -->
+            <g class="radio-center" filter="url(#radio-glow-sm)">
+                <circle class="signal-core" cx="720" cy="55" r="4"/>
+                <circle class="signal-ring signal-ring--1" cx="720" cy="55" r="10"/>
+                <circle class="signal-ring signal-ring--2" cx="720" cy="55" r="18"/>
+                <circle class="signal-ring signal-ring--3" cx="720" cy="55" r="28"/>
+            </g>
+
+            <!-- Data packets traveling between towers -->
+            <circle class="radio-packet" r="3" filter="url(#radio-glow)">
+                <animateMotion dur="3s" repeatCount="indefinite" path="M130,42 Q400,10 720,55"/>
+            </circle>
+            <circle class="radio-packet radio-packet--return" r="2.5" filter="url(#radio-glow)">
+                <animateMotion dur="3.5s" repeatCount="indefinite" path="M1310,42 Q1040,10 720,55"/>
+            </circle>
+            <circle class="radio-packet radio-packet--slow" r="2" filter="url(#radio-glow)">
+                <animateMotion dur="5s" repeatCount="indefinite" path="M130,60 Q500,25 720,55 Q940,25 1310,60"/>
+            </circle>
+
+            <!-- Frequency readout left -->
+            <text class="radio-freq radio-freq--left" x="80" y="132">144.390 MHz</text>
+            <!-- Frequency readout right -->
+            <text class="radio-freq radio-freq--right" x="1280" y="132">144.390 MHz</text>
         </svg>
     </div>
 
@@ -336,14 +414,66 @@
         </div>
     </section>
 
-    <!-- Bridge: About → Experience -->
-    <div class="bridge bridge-mesh bridge-blend-white-light" aria-hidden="true">
-        <svg class="bridge-svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
-            <line class="br-link" x1="0" y1="40" x2="150" y2="25"/><line class="br-link" x1="150" y1="25" x2="300" y2="50"/><line class="br-link" x1="300" y1="50" x2="420" y2="18"/><line class="br-link" x1="420" y1="18" x2="580" y2="55"/><line class="br-link" x1="580" y1="55" x2="700" y2="30"/><line class="br-link" x1="700" y1="30" x2="850" y2="60"/><line class="br-link" x1="850" y1="60" x2="1000" y2="22"/><line class="br-link" x1="1000" y1="22" x2="1200" y2="40"/>
-            <line class="br-link" x1="150" y1="25" x2="300" y2="50"/><line class="br-link" x1="420" y1="18" x2="580" y2="55"/><line class="br-link" x1="700" y1="30" x2="850" y2="60"/>
-            <line class="br-link" x1="150" y1="25" x2="55" y2="60"/><line class="br-link" x1="420" y1="18" x2="340" y2="65"/><line class="br-link" x1="700" y1="30" x2="620" y2="70"/><line class="br-link" x1="1000" y1="22" x2="1100" y2="60"/>
-            <circle class="br-node" cx="150" cy="25" r="4"/><circle class="br-node" cx="300" cy="50" r="4"/><circle class="br-node" cx="420" cy="18" r="5"/><circle class="br-node" cx="580" cy="55" r="4"/><circle class="br-node" cx="700" cy="30" r="5"/><circle class="br-node" cx="850" cy="60" r="4"/><circle class="br-node" cx="1000" cy="22" r="4"/>
-            <circle class="br-node br-node--accent" cx="55" cy="60" r="3"/><circle class="br-node br-node--accent" cx="340" cy="65" r="3"/><circle class="br-node br-node--accent" cx="620" cy="70" r="3"/><circle class="br-node br-node--accent" cx="1100" cy="60" r="3"/>
+    <!-- Bridge: About → Experience — Glowing Network Mesh -->
+    <div class="bridge bridge-mesh-glow bridge--about-exp" aria-hidden="true">
+        <svg class="bridge-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="mg-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.05"/>
+                    <stop offset="30%" stop-color="var(--primary)" stop-opacity="0.2"/>
+                    <stop offset="70%" stop-color="var(--primary)" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.05"/>
+                </linearGradient>
+                <radialGradient id="mg-glow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="mg-blur"><feGaussianBlur stdDeviation="2"/></filter>
+            </defs>
+            <!-- Background layer: faint broad connections -->
+            <line class="mg-line-bg" x1="0" y1="55" x2="200" y2="30"/>
+            <line class="mg-line-bg" x1="200" y1="30" x2="450" y2="65"/>
+            <line class="mg-line-bg" x1="450" y1="65" x2="720" y2="25"/>
+            <line class="mg-line-bg" x1="720" y1="25" x2="1000" y2="70"/>
+            <line class="mg-line-bg" x1="1000" y1="70" x2="1250" y2="35"/>
+            <line class="mg-line-bg" x1="1250" y1="35" x2="1440" y2="55"/>
+            <!-- Mid layer: medium connections -->
+            <line class="mg-line-mid" x1="200" y1="30" x2="450" y2="65"/>
+            <line class="mg-line-mid" x1="450" y1="65" x2="720" y2="25"/>
+            <line class="mg-line-mid" x1="720" y1="25" x2="1000" y2="70"/>
+            <line class="mg-line-mid" x1="1000" y1="70" x2="1250" y2="35"/>
+            <!-- Top layer: sharp connections -->
+            <line class="mg-line" x1="0" y1="55" x2="200" y2="30"/>
+            <line class="mg-line" x1="200" y1="30" x2="450" y2="65"/>
+            <line class="mg-line" x1="450" y1="65" x2="720" y2="25"/>
+            <line class="mg-line" x1="720" y1="25" x2="1000" y2="70"/>
+            <line class="mg-line" x1="1000" y1="70" x2="1250" y2="35"/>
+            <line class="mg-line" x1="1250" y1="35" x2="1440" y2="55"/>
+            <!-- Cross connections for mesh feel -->
+            <line class="mg-line-cross" x1="200" y1="30" x2="720" y2="25"/>
+            <line class="mg-line-cross" x1="450" y1="65" x2="1000" y2="70"/>
+            <line class="mg-line-cross" x1="720" y1="25" x2="1250" y2="35"/>
+            <!-- Accent branch lines -->
+            <line class="mg-branch" x1="200" y1="30" x2="150" y2="80"/>
+            <line class="mg-branch" x1="720" y1="25" x2="670" y2="85"/>
+            <line class="mg-branch" x1="1250" y1="35" x2="1300" y2="80"/>
+            <!-- Primary nodes -->
+            <circle class="mg-node" cx="200" cy="30" r="5"/>
+            <circle class="mg-node" cx="450" cy="65" r="4.5"/>
+            <circle class="mg-node" cx="720" cy="25" r="6"/>
+            <circle class="mg-node" cx="1000" cy="70" r="4.5"/>
+            <circle class="mg-node" cx="1250" cy="35" r="5"/>
+            <!-- Accent nodes -->
+            <circle class="mg-node-accent" cx="150" cy="80" r="3"/>
+            <circle class="mg-node-accent" cx="670" cy="85" r="3"/>
+            <circle class="mg-node-accent" cx="1300" cy="80" r="3"/>
+            <!-- Glow halos on main nodes -->
+            <circle class="mg-halo" cx="200" cy="30" r="18" filter="url(#mg-blur)"/>
+            <circle class="mg-halo" cx="720" cy="25" r="22" filter="url(#mg-blur)"/>
+            <circle class="mg-halo" cx="1250" cy="35" r="18" filter="url(#mg-blur)"/>
+            <!-- Traveling data packets -->
+            <circle class="mg-packet" r="3"><animateMotion dur="5s" repeatCount="indefinite" path="M0,55 L200,30 L450,65 L720,25 L1000,70 L1250,35 L1440,55"/></circle>
+            <circle class="mg-packet mg-packet--accent" r="2.5"><animateMotion dur="7s" repeatCount="indefinite" path="M1440,55 L1250,35 L1000,70 L720,25 L450,65 L200,30 L0,55"/></circle>
         </svg>
     </div>
 
@@ -376,12 +506,50 @@
         </div>
     </section>
 
-    <!-- Bridge: Experience → Web Portfolio -->
-    <div class="bridge bridge-wave" aria-hidden="true">
-        <svg class="bridge-svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
-            <path class="br-wave" d="M0,50 C100,20 200,70 300,40 C400,10 500,65 600,40 C700,15 800,60 900,35 C1000,10 1100,55 1200,30"/>
-            <path class="br-wave" d="M0,60 C100,35 200,70 300,50 C400,30 500,65 600,50 C700,35 800,60 900,45 C1000,30 1100,55 1200,40"/>
-            <path class="br-wave" d="M0,40 C150,65 250,15 400,45 C550,75 650,20 800,50 C950,80 1050,25 1200,55"/>
+    <!-- Bridge: Experience → Portfolio — Flowing Data Streams -->
+    <div class="bridge bridge-datastream bridge--exp-portfolio" aria-hidden="true">
+        <svg class="bridge-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="ds1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.04"/>
+                    <stop offset="20%" stop-color="var(--primary)" stop-opacity="0.14"/>
+                    <stop offset="50%" stop-color="var(--accent)" stop-opacity="0.18"/>
+                    <stop offset="80%" stop-color="var(--primary)" stop-opacity="0.14"/>
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.04"/>
+                </linearGradient>
+                <linearGradient id="ds2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.03"/>
+                    <stop offset="30%" stop-color="var(--accent)" stop-opacity="0.1"/>
+                    <stop offset="70%" stop-color="var(--primary)" stop-opacity="0.12"/>
+                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.03"/>
+                </linearGradient>
+                <linearGradient id="ds3" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.02"/>
+                    <stop offset="40%" stop-color="var(--primary)" stop-opacity="0.07"/>
+                    <stop offset="60%" stop-color="var(--accent)" stop-opacity="0.08"/>
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.02"/>
+                </linearGradient>
+                <filter id="ds-blur"><feGaussianBlur stdDeviation="1.5"/></filter>
+            </defs>
+            <!-- Broad filled background streams -->
+            <path class="ds-fill" fill="url(#ds3)" d="M0,50 C180,15 360,85 540,45 C720,5 900,75 1080,40 C1200,18 1350,60 1440,45 L1440,75 C1350,90 1200,48 1080,70 C900,105 720,35 540,75 C360,115 180,45 0,80Z"/>
+            <path class="ds-fill" fill="url(#ds2)" d="M0,55 C200,25 380,80 560,50 C740,20 920,70 1100,45 C1220,28 1360,62 1440,50 L1440,72 C1360,84 1220,50 1100,67 C920,92 740,42 560,72 C380,102 200,47 0,77Z"/>
+            <path class="ds-fill" fill="url(#ds1)" d="M0,60 C220,35 400,78 580,55 C760,32 940,68 1120,50 C1240,38 1370,64 1440,55 L1440,68 C1370,77 1240,51 1120,63 C940,81 760,45 580,68 C400,91 220,48 0,73Z"/>
+            <!-- Sharp stream lines on top -->
+            <path class="ds-line" d="M0,60 C180,30 360,80 540,50 C720,20 900,70 1080,45 C1260,20 1380,55 1440,50"/>
+            <path class="ds-line ds-line--accent" d="M0,65 C200,40 400,75 600,55 C800,35 1000,68 1200,48 C1320,36 1400,58 1440,55"/>
+            <path class="ds-line ds-line--faint" d="M0,55 C160,28 340,72 520,48 C700,24 880,65 1060,42 C1240,20 1360,52 1440,48"/>
+            <!-- Pulsing nodes along the streams -->
+            <circle class="ds-node" cx="180" cy="38" r="3.5"/>
+            <circle class="ds-node" cx="540" cy="50" r="4"/>
+            <circle class="ds-node" cx="900" cy="42" r="3.5"/>
+            <circle class="ds-node" cx="1260" cy="38" r="3"/>
+            <circle class="ds-node-accent" cx="360" cy="68" r="2.5"/>
+            <circle class="ds-node-accent" cx="720" cy="55" r="2.5"/>
+            <circle class="ds-node-accent" cx="1080" cy="60" r="2.5"/>
+            <!-- Traveling light pulses -->
+            <circle class="ds-pulse" r="4" filter="url(#ds-blur)"><animateMotion dur="6s" repeatCount="indefinite" path="M0,60 C180,30 360,80 540,50 C720,20 900,70 1080,45 C1260,20 1380,55 1440,50"/></circle>
+            <circle class="ds-pulse ds-pulse--accent" r="3" filter="url(#ds-blur)"><animateMotion dur="8s" repeatCount="indefinite" path="M0,65 C200,40 400,75 600,55 C800,35 1000,68 1200,48 C1320,36 1400,58 1440,55"/></circle>
         </svg>
     </div>
 
@@ -426,15 +594,48 @@
         </div>
     </section>
 
-    <!-- Bridge: Web Portfolio → Projects -->
-    <div class="bridge bridge-circuit bridge-blend-light-white" aria-hidden="true">
-        <svg class="bridge-svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
-            <path class="br-trace" d="M0,30 H200 L230,50 H400 L420,30 H600 L630,55 H800 L820,30 H1000 L1020,50 H1200"/>
-            <path class="br-trace" d="M0,60 H150 L180,40 H350 L380,60 H550 L570,35 H750 L780,60 H950 L970,40 H1150 L1170,60 H1200"/>
-            <circle class="br-dot" r="3"><animateMotion dur="5s" repeatCount="indefinite" path="M0,30 H200 L230,50 H400 L420,30 H600 L630,55 H800 L820,30 H1000 L1020,50 H1200"/></circle>
-            <circle class="br-dot" r="2.5"><animateMotion dur="6.5s" repeatCount="indefinite" path="M0,60 H150 L180,40 H350 L380,60 H550 L570,35 H750 L780,60 H950 L970,40 H1150 L1170,60 H1200"/></circle>
-            <circle class="br-junction" cx="230" cy="50"/><circle class="br-junction" cx="420" cy="30"/><circle class="br-junction" cx="630" cy="55"/><circle class="br-junction" cx="820" cy="30"/><circle class="br-junction" cx="1020" cy="50"/>
-            <circle class="br-junction" cx="180" cy="40"/><circle class="br-junction" cx="380" cy="60"/><circle class="br-junction" cx="570" cy="35"/><circle class="br-junction" cx="780" cy="60"/><circle class="br-junction" cx="970" cy="40"/>
+    <!-- Bridge: Web Portfolio → Projects — Circuit Data Flow -->
+    <div class="bridge bridge-circuit-flow bridge--portfolio-projects" aria-hidden="true">
+        <svg class="bridge-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="cf-trace" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.08"/>
+                    <stop offset="30%" stop-color="var(--primary)" stop-opacity="0.22"/>
+                    <stop offset="70%" stop-color="var(--primary)" stop-opacity="0.22"/>
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.08"/>
+                </linearGradient>
+                <linearGradient id="cf-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--accent)" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="var(--accent)" stop-opacity="0.15"/>
+                    <stop offset="70%" stop-color="var(--accent)" stop-opacity="0.15"/>
+                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+                </linearGradient>
+                <filter id="cf-blur"><feGaussianBlur stdDeviation="3"/></filter>
+            </defs>
+            <!-- Broad glow underlay -->
+            <path class="cf-glow-bg" fill="none" stroke="url(#cf-glow)" stroke-width="8" stroke-linecap="round" d="M0,60 H300 L340,35 H520 L560,60 H740 L780,85 H960 L1000,60 H1200 L1240,35 H1440"/>
+            <!-- Main circuit traces -->
+            <path class="cf-trace" d="M0,60 H300 L340,35 H520 L560,60 H740 L780,85 H960 L1000,60 H1200 L1240,35 H1440"/>
+            <path class="cf-trace cf-trace--accent" d="M0,75 H200 L240,50 H420 L460,75 H640 L680,45 H860 L900,75 H1100 L1140,50 H1340 L1380,75 H1440"/>
+            <!-- Junction nodes with glow -->
+            <circle class="cf-junction" cx="340" cy="35" r="5"/>
+            <circle class="cf-junction" cx="560" cy="60" r="5"/>
+            <circle class="cf-junction" cx="780" cy="85" r="5"/>
+            <circle class="cf-junction" cx="1000" cy="60" r="5"/>
+            <circle class="cf-junction" cx="1240" cy="35" r="5"/>
+            <!-- Secondary junctions -->
+            <circle class="cf-junction-sm" cx="240" cy="50" r="3.5"/>
+            <circle class="cf-junction-sm" cx="460" cy="75" r="3.5"/>
+            <circle class="cf-junction-sm" cx="680" cy="45" r="3.5"/>
+            <circle class="cf-junction-sm" cx="900" cy="75" r="3.5"/>
+            <circle class="cf-junction-sm" cx="1140" cy="50" r="3.5"/>
+            <!-- Glow halos on main junctions -->
+            <circle class="cf-halo" cx="340" cy="35" r="14" filter="url(#cf-blur)"/>
+            <circle class="cf-halo" cx="780" cy="85" r="14" filter="url(#cf-blur)"/>
+            <circle class="cf-halo" cx="1240" cy="35" r="14" filter="url(#cf-blur)"/>
+            <!-- Traveling data packets -->
+            <circle class="cf-packet" r="4"><animateMotion dur="5s" repeatCount="indefinite" path="M0,60 H300 L340,35 H520 L560,60 H740 L780,85 H960 L1000,60 H1200 L1240,35 H1440"/></circle>
+            <circle class="cf-packet cf-packet--accent" r="3"><animateMotion dur="6.5s" repeatCount="indefinite" path="M1440,75 H1340 L1380,75 H1140 L1100,75 H900 L860,45 H680 L640,75 H460 L420,50 H240 L200,75 H0"/></circle>
         </svg>
     </div>
 
@@ -711,14 +912,48 @@
         </div>
     </section>
 
-    <!-- Bridge: Projects → Skills -->
-    <div class="bridge bridge-mesh bridge-blend-white-light" aria-hidden="true">
-        <svg class="bridge-svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
-            <line class="br-link" x1="0" y1="45" x2="130" y2="20"/><line class="br-link" x1="130" y1="20" x2="280" y2="55"/><line class="br-link" x1="280" y1="55" x2="450" y2="15"/><line class="br-link" x1="450" y1="15" x2="600" y2="50"/><line class="br-link" x1="600" y1="50" x2="750" y2="25"/><line class="br-link" x1="750" y1="25" x2="920" y2="60"/><line class="br-link" x1="920" y1="60" x2="1080" y2="18"/><line class="br-link" x1="1080" y1="18" x2="1200" y2="40"/>
-            <line class="br-link" x1="130" y1="20" x2="450" y2="15"/><line class="br-link" x1="280" y1="55" x2="600" y2="50"/><line class="br-link" x1="450" y1="15" x2="750" y2="25"/><line class="br-link" x1="600" y1="50" x2="920" y2="60"/>
-            <line class="br-link" x1="130" y1="20" x2="80" y2="65"/><line class="br-link" x1="450" y1="15" x2="380" y2="60"/><line class="br-link" x1="750" y1="25" x2="680" y2="68"/><line class="br-link" x1="1080" y1="18" x2="1140" y2="58"/>
-            <circle class="br-node" cx="130" cy="20" r="4.5"/><circle class="br-node" cx="280" cy="55" r="4"/><circle class="br-node" cx="450" cy="15" r="5"/><circle class="br-node" cx="600" cy="50" r="4"/><circle class="br-node" cx="750" cy="25" r="5"/><circle class="br-node" cx="920" cy="60" r="4"/><circle class="br-node" cx="1080" cy="18" r="4.5"/>
-            <circle class="br-node br-node--accent" cx="80" cy="65" r="3"/><circle class="br-node br-node--accent" cx="380" cy="60" r="3"/><circle class="br-node br-node--accent" cx="680" cy="68" r="3"/><circle class="br-node br-node--accent" cx="1140" cy="58" r="3"/>
+    <!-- Bridge: Projects → Skills — Network Mesh Variant -->
+    <div class="bridge bridge-mesh-glow bridge-mesh-alt bridge--projects-skills" aria-hidden="true">
+        <svg class="bridge-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="mg2-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.05"/>
+                    <stop offset="50%" stop-color="var(--primary)" stop-opacity="0.18"/>
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.05"/>
+                </linearGradient>
+                <filter id="mg2-blur"><feGaussianBlur stdDeviation="2"/></filter>
+            </defs>
+            <line class="mg-line-bg" x1="0" y1="60" x2="180" y2="30"/>
+            <line class="mg-line-bg" x1="180" y1="30" x2="400" y2="70"/>
+            <line class="mg-line-bg" x1="400" y1="70" x2="650" y2="20"/>
+            <line class="mg-line-bg" x1="650" y1="20" x2="900" y2="75"/>
+            <line class="mg-line-bg" x1="900" y1="75" x2="1150" y2="28"/>
+            <line class="mg-line-bg" x1="1150" y1="28" x2="1440" y2="60"/>
+            <line class="mg-line-mid" x1="180" y1="30" x2="650" y2="20"/>
+            <line class="mg-line-mid" x1="400" y1="70" x2="900" y2="75"/>
+            <line class="mg-line-mid" x1="650" y1="20" x2="1150" y2="28"/>
+            <line class="mg-line" x1="0" y1="60" x2="180" y2="30"/>
+            <line class="mg-line" x1="180" y1="30" x2="400" y2="70"/>
+            <line class="mg-line" x1="400" y1="70" x2="650" y2="20"/>
+            <line class="mg-line" x1="650" y1="20" x2="900" y2="75"/>
+            <line class="mg-line" x1="900" y1="75" x2="1150" y2="28"/>
+            <line class="mg-line" x1="1150" y1="28" x2="1440" y2="60"/>
+            <line class="mg-branch" x1="180" y1="30" x2="120" y2="82"/>
+            <line class="mg-branch" x1="650" y1="20" x2="600" y2="88"/>
+            <line class="mg-branch" x1="1150" y1="28" x2="1200" y2="82"/>
+            <circle class="mg-node" cx="180" cy="30" r="5"/>
+            <circle class="mg-node" cx="400" cy="70" r="4.5"/>
+            <circle class="mg-node" cx="650" cy="20" r="6"/>
+            <circle class="mg-node" cx="900" cy="75" r="4.5"/>
+            <circle class="mg-node" cx="1150" cy="28" r="5"/>
+            <circle class="mg-node-accent" cx="120" cy="82" r="3"/>
+            <circle class="mg-node-accent" cx="600" cy="88" r="3"/>
+            <circle class="mg-node-accent" cx="1200" cy="82" r="3"/>
+            <circle class="mg-halo" cx="180" cy="30" r="18" filter="url(#mg2-blur)"/>
+            <circle class="mg-halo" cx="650" cy="20" r="22" filter="url(#mg2-blur)"/>
+            <circle class="mg-halo" cx="1150" cy="28" r="18" filter="url(#mg2-blur)"/>
+            <circle class="mg-packet" r="3"><animateMotion dur="6s" repeatCount="indefinite" path="M0,60 L180,30 L400,70 L650,20 L900,75 L1150,28 L1440,60"/></circle>
+            <circle class="mg-packet mg-packet--accent" r="2.5"><animateMotion dur="8s" repeatCount="indefinite" path="M1440,60 L1150,28 L900,75 L650,20 L400,70 L180,30 L0,60"/></circle>
         </svg>
     </div>
 
@@ -976,12 +1211,34 @@
         </div>
     </section>
 
-    <!-- Bridge: Skills → Contact -->
-    <div class="bridge bridge-wave bridge-blend-light-white" aria-hidden="true">
-        <svg class="bridge-svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
-            <path class="br-wave" d="M0,45 C150,15 250,65 400,35 C550,5 650,60 800,30 C950,0 1050,50 1200,25"/>
-            <path class="br-wave" d="M0,55 C120,30 280,68 420,45 C560,22 680,62 820,40 C960,18 1080,55 1200,38"/>
-            <path class="br-wave" d="M0,35 C200,65 300,10 500,40 C700,70 800,15 1000,45 C1100,60 1150,20 1200,35"/>
+    <!-- Bridge: Skills → Contact — Flowing Gradient Waves -->
+    <div class="bridge bridge-wave-hero bridge-wave-alt bridge--skills-contact" aria-hidden="true">
+        <svg class="bridge-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="wh4" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.06"/>
+                    <stop offset="50%" stop-color="var(--primary)" stop-opacity="0.12"/>
+                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.06"/>
+                </linearGradient>
+                <linearGradient id="wh5" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.04"/>
+                    <stop offset="50%" stop-color="var(--accent)" stop-opacity="0.09"/>
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.04"/>
+                </linearGradient>
+                <linearGradient id="wh6" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.02"/>
+                    <stop offset="50%" stop-color="var(--primary)" stop-opacity="0.06"/>
+                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.02"/>
+                </linearGradient>
+            </defs>
+            <path class="wh-fill" fill="url(#wh6)" d="M0,55 C240,95 480,15 720,55 C960,95 1200,15 1440,55 L1440,120 L0,120Z"/>
+            <path class="wh-fill" fill="url(#wh5)" d="M0,65 C200,90 440,30 680,60 C920,90 1160,25 1440,65 L1440,120 L0,120Z"/>
+            <path class="wh-fill" fill="url(#wh4)" d="M0,75 C180,95 420,40 660,70 C900,100 1140,35 1440,75 L1440,120 L0,120Z"/>
+            <path class="wh-rim" d="M0,75 C180,95 420,40 660,70 C900,100 1140,35 1440,75"/>
+            <path class="wh-rim wh-rim--accent" d="M0,65 C200,90 440,30 680,60 C920,90 1160,25 1440,65"/>
+            <circle class="wh-particle" r="2.5" cx="0" cy="75"><animateMotion dur="8s" repeatCount="indefinite" path="M0,75 C180,95 420,40 660,70 C900,100 1140,35 1440,75"/></circle>
+            <circle class="wh-particle wh-particle--accent" r="2" cx="0" cy="65"><animateMotion dur="10s" repeatCount="indefinite" path="M0,65 C200,90 440,30 680,60 C920,90 1160,25 1440,65"/></circle>
+            <circle class="wh-particle" r="1.5" cx="0" cy="55"><animateMotion dur="12s" repeatCount="indefinite" path="M0,55 C240,95 480,15 720,55 C960,95 1200,15 1440,55"/></circle>
         </svg>
     </div>
 
@@ -1050,17 +1307,20 @@
     <footer class="footer">
         <div class="footer-top">
             <div class="container">
+                <!-- Desktop grid (hidden on mobile) -->
                 <div class="footer-grid">
                     <!-- Brand Column -->
                     <div class="footer-column footer-brand">
                         <img src="images/MR.png" alt="MR Logo" class="footer-logo-img">
-                        <div class="footer-brand-header">
-                            <span class="footer-name">Mohammed Reqasse</span>
-                        </div>
-                        <p class="footer-tagline" data-translate="footer_desc">Network & Telecommunications Engineering Student passionate about creating innovative solutions.</p>
-                        <div class="footer-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Safi, Morocco</span>
+                        <div class="footer-brand-text">
+                            <div class="footer-brand-header">
+                                <span class="footer-name">Mohammed Reqasse</span>
+                            </div>
+                            <p class="footer-tagline" data-translate="footer_desc">Network & Telecommunications Engineering Student passionate about creating innovative solutions.</p>
+                            <div class="footer-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Safi, Morocco</span>
+                            </div>
                         </div>
                     </div>
 
@@ -1117,6 +1377,48 @@
                             </a>
                         </div>
                         <a href="#contact" class="footer-cta" data-translate="footer_cta">Let's Talk</a>
+                    </div>
+                </div>
+
+                <!-- Mobile layout (hidden on desktop) -->
+                <div class="footer-mobile">
+                    <div class="fm-brand">
+                        <img src="images/MR.png" alt="MR" class="fm-logo">
+                        <div class="fm-brand-info">
+                            <span class="fm-name">Mohammed Reqasse</span>
+                            <span class="fm-location"><i class="fas fa-map-marker-alt"></i> Safi, Morocco</span>
+                        </div>
+                    </div>
+
+                    <div class="fm-nav">
+                        <a href="#home" data-translate="nav_home">Home</a>
+                        <a href="#about" data-translate="nav_about">About</a>
+                        <a href="#experience" data-translate="nav_experience">Experience</a>
+                        <a href="#web-portfolio" data-translate="nav_web_portfolio">Portfolio</a>
+                        <a href="#projects" data-translate="nav_projects">Projects</a>
+                        <a href="#skills" data-translate="nav_skills">Skills</a>
+                    </div>
+
+                    <div class="fm-divider"></div>
+
+                    <div class="fm-contact">
+                        <a href="mailto:reqasse@gmail.com" class="fm-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span>reqasse@gmail.com</span>
+                        </a>
+                        <a href="tel:+212700821340" class="fm-contact-row">
+                            <i class="fas fa-phone"></i>
+                            <span>+212 700 82 13 40</span>
+                        </a>
+                    </div>
+
+                    <div class="fm-divider"></div>
+
+                    <div class="fm-social-row">
+                        <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank" aria-label="LinkedIn" class="fm-social"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/MOREQASSE" target="_blank" aria-label="GitHub" class="fm-social"><i class="fab fa-github"></i></a>
+                        <a href="https://wa.me/212700821340" target="_blank" aria-label="WhatsApp" class="fm-social"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#contact" class="fm-cta" data-translate="footer_cta">Let's Talk</a>
                     </div>
                 </div>
             </div>
