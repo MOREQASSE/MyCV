@@ -260,59 +260,110 @@ body {
 }
 
 .lang-btn {
-    background: var(--bg-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-white);
     border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    border-radius: 10px;
     font-weight: 600;
-    color: var(--primary);
+    font-size: 0.85rem;
+    color: var(--text-dark);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.2s ease;
+}
+
+.lang-btn i {
+    font-size: 0.9rem;
+    color: var(--text-medium);
 }
 
 .lang-btn:hover {
-    background: var(--primary);
-    color: white;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.lang-btn:hover i {
+    color: var(--primary);
 }
 
 .lang-dropdown {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 6px);
     right: 0;
-    margin-top: 8px;
     background: var(--bg-white);
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: var(--transition);
-    min-width: 120px;
+    transform: translateY(-8px) scale(0.96);
+    transition: all 0.2s ease;
+    min-width: 150px;
+    z-index: 100;
 }
 
-.language-switcher:hover .lang-dropdown {
+.language-switcher.open .lang-dropdown {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
-.lang-dropdown button {
-    display: block;
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 100%;
-    padding: 10px 16px;
+    padding: 10px 14px;
     border: none;
-    background: var(--bg-white);
+    background: transparent;
     color: var(--text-dark);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.15s ease;
+    font-size: 0.85rem;
     text-align: left;
-    font-size: 0.9rem;
 }
 
-.lang-dropdown button:hover {
-    background: var(--bg-light);
+.lang-option:hover {
+    background: var(--bg-medium);
     color: var(--primary);
+}
+
+.lang-option.active {
+    background: var(--bg-medium);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.lang-flag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--bg-medium);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    color: var(--text-medium);
+    flex-shrink: 0;
+}
+
+.lang-option.active .lang-flag {
+    background: var(--primary);
+    color: #fff;
+}
+
+.lang-option:hover .lang-flag {
+    background: var(--primary);
+    color: #fff;
+}
+
+.lang-name {
+    flex: 1;
 }
 
 /* Hamburger Menu */
@@ -2921,13 +2972,14 @@ section {
 }
 
 [data-theme="dark"] .lang-btn:hover {
-    background: var(--primary);
-    color: white;
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
 [data-theme="dark"] .lang-dropdown {
     background: var(--bg-medium);
-    border: 1px solid var(--border);
+    border-color: var(--border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .hero-stats {
@@ -3059,8 +3111,9 @@ section {
     }
 }
 
-[data-theme="dark"] .lang-dropdown button:hover {
+[data-theme="dark"] .lang-option:hover {
     background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
 }
 
 [data-theme="dark"] .cv-dropdown button:hover {

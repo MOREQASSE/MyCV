@@ -369,8 +369,17 @@ let currentLang = 'en';
 
 function changeLanguage(lang) {
     currentLang = lang;
-    document.getElementById('current-lang').textContent = lang.toUpperCase();
+    document.getElementById('current-lang').querySelector('span').textContent = lang.toUpperCase();
     
+    // Update active state in dropdown
+    document.querySelectorAll('.lang-option').forEach(function (opt) {
+        opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+
+    // Close dropdown
+    var switcher = document.getElementById('language-switcher');
+    if (switcher) switcher.classList.remove('open');
+
     // Update all translatable elements
     document.querySelectorAll('[data-translate]').forEach(element => {
         const key = element.getAttribute('data-translate');
@@ -738,6 +747,30 @@ function initCounters() {
     counters.forEach(counter => observer.observe(counter));
 }
 
+// ===== LANGUAGE SWITCHER TOGGLE =====
+function initLanguageSwitcher() {
+    var switcher = document.getElementById('language-switcher');
+    var btn = document.getElementById('current-lang');
+    if (!switcher || !btn) return;
+
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        switcher.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!switcher.contains(e.target)) {
+            switcher.classList.remove('open');
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            switcher.classList.remove('open');
+        }
+    });
+}
+
 // ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', () => {
     // Hide page loader after content loads
@@ -794,6 +827,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounters();
     initCVButton();
     initWebPortfolioCarousel();
+    initLanguageSwitcher();
 });
 
 // ===== FLOATING CV BUTTON =====

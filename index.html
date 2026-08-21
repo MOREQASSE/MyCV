@@ -132,12 +132,24 @@
                 <li><a href="#skills" data-translate="nav_skills">Skills</a></li>
                 <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
             </ul>
-            <div class="language-switcher">
-                <button class="lang-btn" id="current-lang">EN</button>
-                <div class="lang-dropdown">
-                    <button onclick="changeLanguage('en')">English</button>
-                    <button onclick="changeLanguage('fr')">Français</button>
-                    <button onclick="changeLanguage('ar')">العربية</button>
+            <div class="language-switcher" id="language-switcher">
+                <button class="lang-btn" id="current-lang" aria-label="Change language">
+                    <i class="fas fa-globe"></i>
+                    <span>EN</span>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button class="lang-option active" onclick="changeLanguage('en')" data-lang="en">
+                        <span class="lang-flag">EN</span>
+                        <span class="lang-name">English</span>
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('fr')" data-lang="fr">
+                        <span class="lang-flag">FR</span>
+                        <span class="lang-name">Français</span>
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('ar')" data-lang="ar">
+                        <span class="lang-flag">AR</span>
+                        <span class="lang-name">العربية</span>
+                    </button>
                 </div>
             </div>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
