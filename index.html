@@ -1244,61 +1244,89 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
+        <div class="contact-bg-pattern"></div>
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag" data-translate="tag_contact">Contact</span>
-                <h2 class="section-title" data-translate="title_contact">Let's Work Together</h2>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3 data-translate="contact_subtitle">Get In Touch</h3>
-                    <p data-translate="contact_desc">I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology and innovation.</p>
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <span data-translate="email">Email</span>
-                                <a href="mailto:reqasse@gmail.com">reqasse@gmail.com</a>
+            <div class="contact-layout">
+                <!-- Left — Info & CTA -->
+                <div class="contact-info-col">
+                    <span class="section-tag" data-translate="tag_contact">Contact</span>
+                    <h2 class="contact-heading">
+                        <span class="contact-heading-line" data-translate="title_contact">Let's Work</span>
+                        <span class="contact-heading-accent" data-translate="title_contact2">Together</span>
+                    </h2>
+                    <p class="contact-desc" data-translate="contact_desc">I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology and innovation.</p>
+
+                    <div class="contact-cards">
+                        <a href="mailto:reqasse@gmail.com" class="ccard">
+                            <div class="ccard-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="ccard-body">
+                                <span class="ccard-label" data-translate="email">Email</span>
+                                <span class="ccard-value">reqasse@gmail.com</span>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <span data-translate="phone">Phone</span>
-                                <a href="tel:+212700821340">+212 700 82 13 40</a>
+                            <i class="fas fa-arrow-up-right ccard-arrow"></i>
+                        </a>
+                        <a href="tel:+212700821340" class="ccard">
+                            <div class="ccard-icon ccard-icon--phone"><i class="fas fa-phone"></i></div>
+                            <div class="ccard-body">
+                                <span class="ccard-label" data-translate="phone">Phone</span>
+                                <span class="ccard-value">+212 700 82 13 40</span>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <span data-translate="location">Location</span>
-                                <span>Safi, Morocco</span>
+                            <i class="fas fa-arrow-up-right ccard-arrow"></i>
+                        </a>
+                        <div class="ccard ccard--static">
+                            <div class="ccard-icon ccard-icon--loc"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="ccard-body">
+                                <span class="ccard-label" data-translate="location">Location</span>
+                                <span class="ccard-value">Safi, Morocco</span>
                             </div>
                         </div>
                     </div>
+
                     <div class="contact-socials">
-                        <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/MOREQASSE" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://wa.me/212700821340" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://moreqasse.github.io/MyCV/" target="_blank"><i class="fas fa-globe"></i></a>
+                        <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank" class="csocial csocial--linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/MOREQASSE" target="_blank" class="csocial csocial--github"><i class="fab fa-github"></i></a>
+                        <a href="https://wa.me/212700821340" target="_blank" class="csocial csocial--wa"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <form class="contact-form" action="mailto:reqasse@gmail.com" method="post" enctype="text/plain">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" data-translate-placeholder="form_name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" data-translate-placeholder="form_email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="subject" placeholder="Subject" data-translate-placeholder="form_subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="5" placeholder="Your Message" data-translate-placeholder="form_message" required></textarea>
-                    </div>
-                    <div class="g-recaptcha" data-sitekey="6LdMqZErAAAAAM2Ojf1Dnsm3ebh92oZblNUKtThG" style="margin-bottom:1rem"></div>
-                    <button type="submit" class="btn btn-primary" data-translate="btn_send">Send Message</button>
-                </form>
+
+                <!-- Right — Form -->
+                <div class="contact-form-col">
+                    <form class="contact-form" action="mailto:reqasse@gmail.com" method="post" enctype="text/plain">
+                        <div class="cf-field">
+                            <label class="cf-label" data-translate="form_name">Your Name</label>
+                            <div class="cf-input-wrap">
+                                <i class="fas fa-user cf-icon"></i>
+                                <input type="text" name="name" placeholder="John Doe" data-translate-placeholder="form_name" required>
+                            </div>
+                        </div>
+                        <div class="cf-field">
+                            <label class="cf-label" data-translate="form_email">Your Email</label>
+                            <div class="cf-input-wrap">
+                                <i class="fas fa-at cf-icon"></i>
+                                <input type="email" name="email" placeholder="john@example.com" data-translate-placeholder="form_email" required>
+                            </div>
+                        </div>
+                        <div class="cf-field">
+                            <label class="cf-label" data-translate="form_subject">Subject</label>
+                            <div class="cf-input-wrap">
+                                <i class="fas fa-tag cf-icon"></i>
+                                <input type="text" name="subject" placeholder="Project Inquiry" data-translate-placeholder="form_subject" required>
+                            </div>
+                        </div>
+                        <div class="cf-field">
+                            <label class="cf-label" data-translate="form_message">Your Message</label>
+                            <div class="cf-input-wrap cf-input-wrap--textarea">
+                                <i class="fas fa-comment-dots cf-icon"></i>
+                                <textarea name="message" rows="4" placeholder="Tell me about your project..." data-translate-placeholder="form_message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="6LdMqZErAAAAAM2Ojf1Dnsm3ebh92oZblNUKtThG" style="margin-bottom:1rem"></div>
+                        <button type="submit" class="cf-submit" data-translate="btn_send">
+                            <span data-translate="btn_send">Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

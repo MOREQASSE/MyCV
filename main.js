@@ -101,7 +101,8 @@ const translations = {
 
         // Contact
         tag_contact: "Contact",
-        title_contact: "Let's Work Together",
+        title_contact: "Let's Work",
+        title_contact2: "Together",
         contact_subtitle: "Get In Touch",
         contact_desc: "I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology and innovation.",
         email: "Email",
@@ -223,7 +224,8 @@ const translations = {
 
         // Contact
         tag_contact: "Contact",
-        title_contact: "Travaillons Ensemble",
+        title_contact: "Travaillons",
+        title_contact2: "Ensemble",
         contact_subtitle: "Restons en Contact",
         contact_desc: "Je suis toujours ouvert à discuter de nouvelles opportunités, de projets intéressants, ou simplement à échanger sur la technologie et l'innovation.",
         email: "Email",
@@ -345,7 +347,8 @@ const translations = {
 
         // Contact
         tag_contact: "تواصل",
-        title_contact: "لنعمل معاً",
+        title_contact: "لنعمل",
+        title_contact2: "معاً",
         contact_subtitle: "ابق على تواصل",
         contact_desc: "أنا دائماً منفتح على مناقشة فرص جديدة ومشاريع مثيرة للاهتمام، أو مجرد الدردشة حول التكنولوجيا والابتكار.",
         email: "البريد",
