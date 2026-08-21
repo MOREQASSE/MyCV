@@ -872,7 +872,17 @@ function initFormHandling() {
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
+        if (typeof grecaptcha !== 'undefined') {
+            const token = grecaptcha.getResponse();
+            if (!token) {
+                alert(currentLang === 'en' ? 'Please complete the reCAPTCHA verification.' :
+                      currentLang === 'fr' ? 'Veuillez compléter la vérification reCAPTCHA.' :
+                      'يرجى إكمال التحقق من reCAPTCHA.');
+                return;
+            }
+        }
+
         // Get form data
         const formData = new FormData(form);
         const name = formData.get('name');
@@ -899,6 +909,7 @@ function initFormHandling() {
             btn.textContent = originalText;
             btn.style.background = '';
             form.reset();
+            if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
         }, 3000);
     });
 }
