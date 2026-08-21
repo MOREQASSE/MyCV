@@ -1392,14 +1392,14 @@ section {
     background: var(--bg-white);
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: 0 6px 12px -3px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
     transition: var(--transition);
-    border: 1px solid var(--border);
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
 }
 
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 24px 40px -10px rgba(0, 0, 0, 0.22), 0 10px 16px -6px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
 .project-card.featured {
