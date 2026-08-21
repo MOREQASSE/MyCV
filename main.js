@@ -413,6 +413,9 @@ function changeLanguage(lang) {
 
     // Re-render web portfolio carousel in new language
     if (window.rerenderWebPortfolio) window.rerenderWebPortfolio();
+
+    // Update wheel timeline detail panel in new language
+    if (window.updateWheelTimelineLang) window.updateWheelTimelineLang();
 }
 
 // ===== SCROLL ANIMATIONS =====
@@ -443,10 +446,277 @@ function initScrollAnimations() {
     }, observerOptions);
 
     // Observe all sections and cards
-    document.querySelectorAll('section, .project-card, .skill-category, .timeline-item, .about-card').forEach(el => {
+    document.querySelectorAll('section, .project-card, .skill-category, .about-card').forEach(el => {
         el.classList.add('reveal');
         observer.observe(el);
     });
+
+    // ===== WHEEL TIMELINE =====
+    var wtEl = document.getElementById('wheel-timeline');
+    var wtViewport = document.getElementById('wt-viewport');
+    var wtItemsEl = document.getElementById('wt-items');
+    var wtSvg = document.getElementById('wt-svg');
+    var wtYearEl = document.getElementById('wt-year');
+    var wtCatEl = document.getElementById('wt-cat');
+    var wtTitleEl = document.getElementById('wt-title');
+    var wtDescEl = document.getElementById('wt-desc');
+    var wtTagsEl = document.getElementById('wt-tags');
+    var wtCurEl = document.getElementById('wt-cur');
+
+    if (wtEl && wtItemsEl) {
+        var wtData = [
+            { year: '2025', roleKey: 'role_founder', title: 'Devaxio', descKey: 'devaxio', tags: 'HTML/CSS/JS, AI Integration, Project Management' },
+            { year: '2025', roleKey: 'role_intern', title: 'Devosoft Company', descKey: 'devosoft', tags: 'Web Development, Client Management, Team Collaboration' },
+            { year: '2023', roleKey: 'role_teacher', title: 'Espace Esafaa', descKey: 'teacher', tags: 'Teaching, Communication' }
+        ];
+        var arcDesc = {
+            en: { devaxio: 'Founded and directed Devaxio, leading digital transformation for <strong>15+ clients</strong> with focus on AI integration and web automation.', devosoft: 'Performed technical web development work while handling <strong>10+ clients</strong> and overseeing client relationships in an <strong>8-person team</strong>.', teacher: 'Taught English as a second language to diverse student groups, developing communication and presentation skills.' },
+            fr: { devaxio: 'Fond\u00e9 et dirig\u00e9 Devaxio, menant la transformation num\u00e9rique pour <strong>15+ clients</strong> avec focus sur l\u2019int\u00e9gration IA et l\u2019automatisation web.', devosoft: 'Effectu\u00e9 un travail technique de d\u00e9veloppement web tout en g\u00e9rant <strong>10+ clients</strong> et supervisant les relations clients au sein d\u2019une \u00e9quipe de <strong>8 personnes</strong>.', teacher: 'Enseign\u00e9 l\u2019anglais comme langue seconde \u00e0 des groupes d\u2019\u00e9tudiants divers, d\u00e9veloppant les comp\u00e9tences en communication et pr\u00e9sentation.' },
+            ar: { devaxio: '\u0623\u0633\u0633 \u0648\u0642\u0627\u062f Devaxio\u060c \u0645\u0627 \u0623\u062f\u0649 \u0625\u0644\u0649 \u0627\u0644\u062a\u062d\u0648\u0644 \u0627\u0644\u0631\u0642\u0645\u064a \u0644\u0640 <strong>15+ \u0639\u0645\u064a\u0644\u0627\u064b</strong> \u0645\u0639 \u0627\u0644\u062a\u0631\u0643\u064a\u0632 \u0639\u0644\u0649 \u062f\u0645\u062c \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u0648\u0623\u062a\u0645\u062a\u0629 \u0627\u0644\u0648\u064a\u0628.', devosoft: '\u0623\u062f\u0649 \u0639\u0645\u0644\u0627\u064b \u062a\u0642\u0646\u064a\u0627\u064b \u0641\u064a \u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0648\u064a\u0628 \u0645\u0639 \u0627\u0644\u062a\u0639\u0627\u0645\u0644 \u0645\u0639 <strong>10+ \u0639\u0645\u0644\u0627\u0621</strong> \u0648\u0625\u0634\u0631\u0627\u0641 \u0639\u0644\u0649 \u0639\u0644\u0627\u0642\u0627\u062a \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0636\u0645\u0646 \u0641\u0631\u064a\u0642 \u0645\u0646 <strong>8 \u0623\u0634\u062e\u0627\u0635</strong>.', teacher: '\u062f\u0631\u0651\u0633 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0625\u0646\u062c\u0644\u064a\u0632\u064a\u0629 \u0643\u0644\u063a\u0629 \u062b\u0627\u0646\u064a\u0629 \u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0645\u062a\u0646\u0648\u0639\u0629 \u0645\u0646 \u0627\u0644\u0637\u0627\u0644\u0628\u0627\u062a\u060c \u0648\u0637\u0648\u0651\u0631 \u0645\u0647\u0627\u0631\u0627\u062a \u0627\u0644\u062a\u0648\u0627\u0635\u0644 \u0648\u0627\u0644\u0639\u0631\u0636.' }
+        };
+        var arcRoles = {
+            en: { role_founder: 'Founder / Lead Developer', role_intern: 'Summer Intern - Web Development', role_teacher: 'English Second Language Teacher' },
+            fr: { role_founder: 'Fondateur / D\u00e9veloppeur Principal', role_intern: 'Stagiaire - D\u00e9veloppement Web', role_teacher: 'Professeur d\u2019Anglais Langue Seconde' },
+            ar: { role_founder: '\u0627\u0644\u0645\u0624\u0633\u0633 / \u0627\u0644\u0645\u0637\u0648\u0631 \u0627\u0644\u0631\u0626\u064a\u0633\u064a', role_intern: '\u0645\u062a\u062f\u0631\u0628 \u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0648\u064a\u0628', role_teacher: '\u0645\u0639\u0644\u0645 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0625\u0646\u062c\u0644\u064a\u0632\u064a\u0629' }
+        };
+
+        // --- Geometry: responsive to viewport width ---
+        var CX, CY, R, SPREAD;
+        var wtCount = wtData.length;
+        var baseAngles = [];
+        function calcGeometry() {
+            var w = wtViewport.offsetWidth;
+            var isMobile = w < 400;
+            CX = isMobile ? w * 0.30 : 190;
+            CY = isMobile ? w * 0.67 : 240;
+            R = isMobile ? w * 0.44 : 170;
+            SPREAD = isMobile ? 38 : 50;
+            baseAngles = [];
+            for (var i = 0; i < wtCount; i++) {
+                baseAngles.push((i - (wtCount - 1) / 2) * SPREAD);
+            }
+        }
+        calcGeometry();
+
+        // --- State ---
+        var wtAngle = 0, wtTarget = 0, wtVelocity = 0, wtActiveIdx = 0;
+        var wtAnimId = null, wtAutoTimer = null;
+        var isDragging = false, dragStartY = 0, dragStartAngle = 0;
+
+        function getItemScreenAngle(i) { return baseAngles[i] + wtAngle; }
+        function getRotationForIndex(idx) { return -baseAngles[idx]; }
+        function closestItem(angle) {
+            var best = 0, bestD = Infinity;
+            for (var i = 0; i < wtCount; i++) {
+                var d = Math.abs(angle - getRotationForIndex(i));
+                if (d > 180) d = 360 - d;
+                if (d < bestD) { bestD = d; best = i; }
+            }
+            return best;
+        }
+
+        function updateWtPanel(idx) {
+            var lang = currentLang || 'en', d = wtData[idx];
+            wtYearEl.textContent = d.year;
+            wtCatEl.textContent = (arcRoles[lang] && arcRoles[lang][d.roleKey]) || d.roleKey;
+            wtTitleEl.textContent = d.title;
+            wtDescEl.innerHTML = (arcDesc[lang] && arcDesc[lang][d.descKey]) || '';
+            wtTagsEl.innerHTML = '';
+            d.tags.split(', ').forEach(function (t) { var sp = document.createElement('span'); sp.textContent = t; wtTagsEl.appendChild(sp); });
+            wtTitleEl.style.opacity = '0'; wtTitleEl.style.transform = 'translateY(8px)';
+            wtDescEl.style.opacity = '0'; wtDescEl.style.transform = 'translateY(8px)'; wtTagsEl.style.opacity = '0';
+            requestAnimationFrame(function () { wtTitleEl.style.opacity = '1'; wtTitleEl.style.transform = 'translateY(0)'; wtDescEl.style.opacity = '1'; wtDescEl.style.transform = 'translateY(0)'; wtTagsEl.style.opacity = '1'; });
+            wtCurEl.textContent = String(idx + 1).padStart(2, '0');
+        }
+
+        function buildTicks() {
+            if (!wtSvg) return;
+            var ns = 'http://www.w3.org/2000/svg';
+            // arc path (right semicircle)
+            var arcPath = document.createElementNS(ns, 'path');
+            var d = 'M ' + (CX) + ',' + (CY - R) + ' A ' + R + ',' + R + ' 0 0,1 ' + (CX) + ',' + (CY + R);
+            arcPath.setAttribute('d', d);
+            arcPath.setAttribute('fill', 'none');
+            arcPath.setAttribute('stroke', 'var(--border)');
+            arcPath.setAttribute('stroke-width', '1.5');
+            arcPath.setAttribute('stroke-linecap', 'round');
+            arcPath.setAttribute('opacity', '0.25');
+            wtSvg.appendChild(arcPath);
+
+            // tick marks
+            var tickCount = 30;
+            for (var i = 0; i < tickCount; i++) {
+                var t = i / (tickCount - 1);
+                var angleDeg = -90 + 180 * t; // -90 to +90 (right semicircle)
+                var angleRad = angleDeg * Math.PI / 180;
+                var isMajor = i % 5 === 0;
+                var innerR = R + (isMajor ? 6 : 4);
+                var outerR = R + (isMajor ? 22 : 14);
+                var x1 = CX + innerR * Math.cos(angleRad);
+                var y1 = CY + innerR * Math.sin(angleRad);
+                var x2 = CX + outerR * Math.cos(angleRad);
+                var y2 = CY + outerR * Math.sin(angleRad);
+                var line = document.createElementNS(ns, 'line');
+                line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+                line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+                line.setAttribute('stroke', 'var(--border)');
+                line.setAttribute('stroke-width', isMajor ? '1.5' : '1');
+                line.setAttribute('stroke-linecap', 'round');
+                line.classList.add('wt-tick');
+                line.dataset.angle = angleDeg;
+                wtSvg.appendChild(line);
+            }
+        }
+
+        function buildItems() {
+            wtItemsEl.innerHTML = '';
+            wtData.forEach(function (d, i) {
+                var el = document.createElement('div');
+                el.className = 'wt-item' + (i === 0 ? ' active' : '');
+                el.innerHTML = '<div class="wt-item-dot"></div><span class="wt-item-year">' + d.year + '</span><span class="wt-item-name">' + d.title + '</span>';
+                el.addEventListener('click', function () {
+                    wtTarget = getRotationForIndex(i);
+                    updateActiveItem(i);
+                    startLoop();
+                });
+                wtItemsEl.appendChild(el);
+            });
+        }
+
+        function positionItems() {
+            var items = wtItemsEl.children;
+            for (var i = 0; i < items.length; i++) {
+                var a = getItemScreenAngle(i) * Math.PI / 180;
+                var ix = CX + R * Math.cos(a);
+                var iy = CY + R * Math.sin(a);
+                items[i].style.left = ix + 'px';
+                items[i].style.top = iy + 'px';
+            }
+        }
+
+        function updateActiveItem(idx) {
+            if (idx === wtActiveIdx) return;
+            wtActiveIdx = idx;
+            var items = wtItemsEl.children;
+            for (var i = 0; i < items.length; i++) items[i].classList.toggle('active', i === idx);
+            updateWtPanel(idx);
+            updateTickGlow(idx);
+        }
+
+        function updateTickGlow(idx) {
+            var ticks = document.querySelectorAll('.wt-tick');
+            var activeAngle = baseAngles[idx]; // the base angle of the active item
+            ticks.forEach(function (tk) {
+                var ta = parseFloat(tk.dataset.angle);
+                var diff = Math.abs(ta - activeAngle);
+                if (diff > 180) diff = 360 - diff;
+                tk.classList.toggle('glow', diff < 30);
+            });
+        }
+
+        // --- Spring physics loop ---
+        function wtLoop() {
+            var stiffness = 0.1;
+            var damping = 0.78;
+            var force = (wtTarget - wtAngle) * stiffness;
+            wtVelocity = (wtVelocity + force) * damping;
+            wtAngle += wtVelocity;
+            if (Math.abs(wtVelocity) > 0.05 || Math.abs(wtTarget - wtAngle) > 0.1) {
+                positionItems();
+                wtAnimId = requestAnimationFrame(wtLoop);
+            } else {
+                wtAngle = wtTarget;
+                positionItems();
+                wtAnimId = null;
+            }
+        }
+
+        function startLoop() {
+            if (!wtAnimId) wtAnimId = requestAnimationFrame(wtLoop);
+        }
+
+        // --- Wheel scroll ---
+        wtViewport.addEventListener('wheel', function (e) {
+            e.preventDefault();
+            var delta = e.deltaY || e.detail;
+            wtTarget += delta * 0.15;
+            updateActiveItem(closestItem(wtTarget));
+            startLoop();
+            stopAutoRotate();
+        }, { passive: false });
+
+        // --- Touch drag ---
+        var touchStartY = 0, touchStartAngle = 0;
+        wtViewport.addEventListener('touchstart', function (e) {
+            isDragging = true; touchStartY = e.touches[0].clientY; touchStartAngle = wtAngle;
+            stopAutoRotate();
+        }, { passive: true });
+        wtViewport.addEventListener('touchmove', function (e) {
+            if (!isDragging) return;
+            var dy = touchStartY - e.touches[0].clientY;
+            wtTarget = touchStartAngle + dy * 0.4;
+            updateActiveItem(closestItem(wtTarget));
+            startLoop();
+        }, { passive: true });
+        wtViewport.addEventListener('touchend', function () {
+            if (!isDragging) return; isDragging = false;
+            var s = closestItem(wtTarget); wtTarget = getRotationForIndex(s);
+            updateActiveItem(s); startLoop();
+        });
+
+        // --- Mouse drag ---
+        wtViewport.addEventListener('mousedown', function (e) {
+            isDragging = true; dragStartY = e.clientY; dragStartAngle = wtAngle;
+            wtViewport.style.cursor = 'grabbing';
+            e.preventDefault(); stopAutoRotate();
+        });
+        window.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            var dy = dragStartY - e.clientY;
+            wtTarget = dragStartAngle + dy * 0.4;
+            updateActiveItem(closestItem(wtTarget));
+            startLoop();
+        });
+        window.addEventListener('mouseup', function () {
+            if (!isDragging) return; isDragging = false;
+            wtViewport.style.cursor = '';
+            var s = closestItem(wtTarget); wtTarget = getRotationForIndex(s);
+            updateActiveItem(s); startLoop();
+        });
+
+        // --- Auto-rotate ---
+        function startAutoRotate() { stopAutoRotate(); wtAutoTimer = setInterval(function () { var n = (wtActiveIdx + 1) % wtCount; wtTarget = getRotationForIndex(n); updateActiveItem(n); startLoop(); }, 4000); }
+        function stopAutoRotate() { if (wtAutoTimer) { clearInterval(wtAutoTimer); wtAutoTimer = null; } }
+
+        // --- Reveal ---
+        var wtRevealObs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('revealed'); startAutoRotate(); wtRevealObs.unobserve(e.target); }
+            });
+        }, { threshold: 0.15 });
+        wtRevealObs.observe(wtEl);
+
+        // --- Keyboard ---
+        window.addEventListener('keydown', function (e) {
+            if (!wtEl.classList.contains('revealed')) return;
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); stopAutoRotate(); var n = Math.min(wtActiveIdx + 1, wtCount - 1); wtTarget = getRotationForIndex(n); updateActiveItem(n); startLoop(); }
+            else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); stopAutoRotate(); var p = Math.max(wtActiveIdx - 1, 0); wtTarget = getRotationForIndex(p); updateActiveItem(p); startLoop(); }
+        });
+
+        buildTicks(); buildItems(); positionItems(); updateWtPanel(0); updateTickGlow(0);
+        window.updateWheelTimelineLang = function () { updateWtPanel(wtActiveIdx); };
+
+        // Recalc geometry on resize (orientation change)
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                calcGeometry();
+                positionItems();
+                updateTickGlow(wtActiveIdx);
+            }, 100);
+        });
+    }
 }
 
 // ===== NAVBAR SCROLL EFFECT =====
