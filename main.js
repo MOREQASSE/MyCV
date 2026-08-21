@@ -5,6 +5,7 @@ const translations = {
         nav_home: "Home",
         nav_about: "About",
         nav_experience: "Experience",
+        nav_web_portfolio: "Web Portfolio",
         nav_projects: "Projects",
         nav_skills: "Skills",
         nav_contact: "Contact",
@@ -58,6 +59,10 @@ const translations = {
         devosoft_2: "Collaborated effectively within an <strong>8-person team</strong> to deliver <strong>3 completed</strong> web development projects",
         teacher_1: "Taught English as a second language to diverse student groups",
         teacher_2: "Developed communication and presentation skills through teaching",
+
+        // Web Portfolio
+        tag_web_portfolio: "Web Portfolio",
+        title_web_portfolio: "Client Projects",
 
         // Projects
         tag_projects: "Portfolio",
@@ -121,6 +126,7 @@ const translations = {
         nav_home: "Accueil",
         nav_about: "À Propos",
         nav_experience: "Expérience",
+        nav_web_portfolio: "Portfolio Web",
         nav_projects: "Projets",
         nav_skills: "Compétences",
         nav_contact: "Contact",
@@ -174,6 +180,10 @@ const translations = {
         devosoft_2: "Collaboré efficacement au sein d'une équipe de <strong>8 personnes</strong> pour livrer <strong>3 projets</strong> de développement web terminés",
         teacher_1: "Enseigné l'anglais comme langue seconde à des groupes d'étudiants divers",
         teacher_2: "Développé des compétences en communication et présentation à travers l'enseignement",
+
+        // Web Portfolio
+        tag_web_portfolio: "Portfolio Web",
+        title_web_portfolio: "Projets Clients",
 
         // Projects
         tag_projects: "Portfolio",
@@ -237,6 +247,7 @@ const translations = {
         nav_home: "الرئيسية",
         nav_about: "نبذة عني",
         nav_experience: "الخبرة",
+        nav_web_portfolio: "معرض الويب",
         nav_projects: "المشاريع",
         nav_skills: "المهارات",
         nav_contact: "تواصل",
@@ -290,6 +301,10 @@ const translations = {
         devosoft_2: "تعاون بفعالية ضمن فريق من <strong>8 أشخاص</strong> لتسليم <strong>3 مشاريع</strong> تطوير ويب مكتملة",
         teacher_1: "درّس اللغة الإنجليزية كلغة ثانية لمجموعات متنوعة من الطلاب",
         teacher_2: "طوّر مهارات التواصل والعرض من خلال التدريس",
+
+        // Web Portfolio
+        tag_web_portfolio: "معرض الويب",
+        title_web_portfolio: "مشاريع العملاء",
 
         // Projects
         tag_projects: "المحفظة",
@@ -386,6 +401,9 @@ function changeLanguage(lang) {
 
     // Save preference
     localStorage.setItem('preferredLanguage', lang);
+
+    // Re-render web portfolio carousel in new language
+    if (window.rerenderWebPortfolio) window.rerenderWebPortfolio();
 }
 
 // ===== SCROLL ANIMATIONS =====
@@ -775,6 +793,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNavLink();
     initCounters();
     initCVButton();
+    initWebPortfolioCarousel();
 });
 
 // ===== FLOATING CV BUTTON =====
@@ -833,3 +852,245 @@ function initCVButton() {
 
 // ===== EXPOSE FUNCTIONS GLOBALLY =====
 window.changeLanguage = changeLanguage;
+
+// ===== WEB PORTFOLIO CAROUSEL =====
+function initWebPortfolioCarousel() {
+    var projects = [
+        {
+            tag: { en: 'Health & Fitness', fr: 'Santé & Forme', ar: 'الصحة واللياقة' },
+            title: { en: 'Gym Nutrition Store', fr: 'Boutique Nutrition Sportive', ar: 'متجر التغذية الرياضية' },
+            desc: {
+                en: 'Full-featured gym nutrition e-commerce store built with PHP and modern CSS. Includes a powerful admin space with action pages and dashboard, product management, complete email support with automatic order confirmations, and security-first architecture throughout.',
+                fr: 'Boutique e-commerce complète de nutrition sportive construite avec PHP et CSS moderne. Espace admin puissant avec tableau de bord, gestion des produits, emails automatisés et architecture sécurisée.',
+                ar: 'متجر تجارة إلكترونية متكامل للتغذية الرياضية مبني على PHP وCSS الحديث. مساحة مدير قوية مع لوحة تحكم وإدارة المنتجات والبريد الإلكتروني الآلي وبنية أمنية أولوية.'
+            },
+            techs: ['PHP', 'Modern CSS', 'PHPMailer', 'Automated Emails'],
+            links: [
+                { label: { en: 'Live Demo', fr: 'Démo Live', ar: 'عرض مباشر' }, url: 'https://demoweb.ifree.page/', primary: true },
+                { label: { en: 'Contact for Similar', fr: 'Contact pour similaire', ar: 'تواصل لمشروع مشابه' }, url: '#contact', primary: false }
+            ],
+            image: 'images/Gym.png',
+            alt: { en: 'Gym Nutrition Store', fr: 'Boutique Nutrition Sportive', ar: 'متجر التغذية الرياضية' }
+        },
+        {
+            tag: { en: 'Healthcare Retail', fr: 'Commerce Santé', ar: 'تجارة الرعاية الصحية' },
+            title: { en: 'Optician Dynamic Website', fr: 'Site Web Dynamique Opticien', ar: 'موقع الويب الديناميكي للبصريات' },
+            desc: {
+                en: 'All-in-one optician store built for total administrative control. Powered by PHP, PHPMailer, SQLite, and Gmail SMTP, the platform lets the admin change writing, colors, fonts, toggle options, and manage workflows — all with zero code or technical knowledge.',
+                fr: 'Boutique opticien tout-en-un conçue pour un contrôle administratif total. Propulsée par PHP, PHPMailer, SQLite et Gmail SMTP, la plateforme permet de personnaliser couleurs, polices et workflows sans aucune connaissance technique.',
+                ar: 'متجر بصريات شامل مصمم للتحكم الإداري الكامل. يعمل بـ PHP وPHPMailer وSQLite وGmail SMTP، يتيح للمدير تخصيص الألوان والخطوط وسير العمل بدون أي معرفة تقنية.'
+            },
+            techs: ['PHP', 'PHPMailer', 'SQLite', 'Gmail SMTP'],
+            links: [
+                { label: { en: 'Live Demo', fr: 'Démo Live', ar: 'عرض مباشر' }, url: 'https://opticien.ifree.page/', primary: true },
+                { label: { en: 'Contact for Similar', fr: 'Contact pour similaire', ar: 'تواصل لمشروع مشابه' }, url: '#contact', primary: false }
+            ],
+            image: 'images/Optician.webp',
+            alt: { en: 'Optician Dynamic Website', fr: 'Site Web Dynamique Opticien', ar: 'موقع الويب الديناميكي للبصريات' }
+        },
+        {
+            tag: { en: 'Advertising', fr: 'Publicité', ar: 'إعلان' },
+            title: { en: 'Modern Advertising Studio', fr: 'Studio Publicitaire Moderne', ar: 'استوديو الإعلانات الحديث' },
+            desc: {
+                en: '3D-inspired agency site with smooth animations and a premium dark theme showcasing advertising services.',
+                fr: 'Site d\'agence inspiré du 3D avec animations fluides et thème premium sombre mettant en valeur les services publicitaires.',
+                ar: 'موقع وكالة مستوحى من ثلاثية الأبعاد مع رسوم متحركة سلسة وسمة داكنة فاخرة لعرض خدمات الإعلان.'
+            },
+            techs: ['HTML', 'CSS', 'GSAP'],
+            links: [
+                { label: { en: 'Live Demo', fr: 'Démo Live', ar: 'عرض مباشر' }, url: 'https://moreqasse.github.io/ads-studio-website', primary: true },
+                { label: { en: 'Contact for Similar', fr: 'Contact pour similaire', ar: 'تواصل لمشروع مشابه' }, url: '#contact', primary: false }
+            ],
+            image: 'images/ads studio.webp',
+            alt: { en: 'Advertising agency website', fr: 'Site web agence publicitaire', ar: 'موقع وكالة الإعلانات' }
+        },
+        {
+            tag: { en: 'Hospitality', fr: 'Hôtellerie', ar: 'الضيافة' },
+            title: { en: 'Frial Café & Resto', fr: 'Café & Restaurant Frial', ar: 'مقهى و مطعم فريال' },
+            desc: {
+                en: 'Menu, gallery, reviews integration, and loyalty features for a restaurant brand.',
+                fr: 'Menu, galerie, intégration d\'avis et fonctionnalités de fidélité pour une marque restaurant.',
+                ar: 'قائمة طعام ومعرض وتكامل المراجعات وميزات الولاء لعلامة تجارية لمطعم.'
+            },
+            techs: ['Tailwind', 'Maps API'],
+            links: [
+                { label: { en: 'Live Demo', fr: 'Démo Live', ar: 'عرض مباشر' }, url: 'https://moreqasse.github.io/FrialCafeResto/', primary: true }
+            ],
+            image: 'images/frial.webp',
+            alt: { en: 'Restaurant website', fr: 'Site web restaurant', ar: 'موقع المطعم' }
+        },
+        {
+            tag: { en: 'SaaS', fr: 'SaaS', ar: 'SaaS' },
+            title: { en: 'ClientFlow CMS', fr: 'ClientFlow CMS', ar: 'ClientFlow CMS' },
+            desc: {
+                en: 'Client management with roles, projects, invoicing, and reporting dashboards in one suite.',
+                fr: 'Gestion clients avec rôles, projets, facturation et tableaux de bord de reporting en une suite.',
+                ar: 'إدارة العملاء مع الأدوار والمشاريع والفوترة ولوحات التقارير في حزمة واحدة.'
+            },
+            techs: [],
+            links: [
+                { label: { en: 'Live Demo', fr: 'Démo Live', ar: 'عرض مباشر' }, url: 'https://clientflow-cms-e75il93.public.builtwithrocket.new/', primary: true }
+            ],
+            image: 'images/CMS.webp',
+            alt: { en: 'ClientFlow CMS', fr: 'ClientFlow CMS', ar: 'ClientFlow CMS' }
+        },
+        {
+            tag: { en: 'SaaS', fr: 'SaaS', ar: 'SaaS' },
+            title: { en: 'Pharmacy Inventory Tracker', fr: 'Suivi Inventaire Pharmacie', ar: 'تتبع مخزون الصيدلية' },
+            desc: {
+                en: 'Stock tracking, expiration alerts, and compliance-focused workflows for pharmacy management.',
+                fr: 'Suivi des stocks, alertes d\'expiration et workflows axés sur la conformité pour la gestion pharmaceutique.',
+                ar: 'تتبع المخزون وتنبيهات انتهاء الصلاحية وسير عمل يركز على الامتثال لإدارة الصيدلية.'
+            },
+            techs: [],
+            links: [
+                { label: { en: 'Live Demo', fr: 'Démo Live', ar: 'عرض مباشر' }, url: 'https://pharmacy-inventory-fmm7o80.public.builtwithrocket.new/', primary: true }
+            ],
+            image: 'images/pharma.webp',
+            alt: { en: 'Pharmacy inventory', fr: 'Inventaire pharmacie', ar: 'مخزون الصيدلية' }
+        }
+    ];
+
+    var TOTAL = projects.length;
+    if (!TOTAL) return;
+
+    var img = document.getElementById('pj-img');
+    var tag = document.getElementById('pj-tag');
+    var title = document.getElementById('pj-title');
+    var desc = document.getElementById('pj-desc');
+    var techs = document.getElementById('pj-techs');
+    var links = document.getElementById('pj-links');
+    var dots = document.querySelectorAll('.portfolio-dot');
+    var prevBtn = document.getElementById('prev-project');
+    var nextBtn = document.getElementById('next-project');
+    var wrap = document.querySelector('.portfolio-showcase');
+    var screen = document.querySelector('.laptop-screen');
+
+    var current = 0;
+    var timer = null;
+    var paused = false;
+    var animating = false;
+
+    var PLACEHOLDER = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10"%3E%3C/svg%3E';
+
+    function render(index) {
+        var p = projects[index];
+        if (!p) return;
+        var lang = currentLang || 'en';
+
+        if (img) {
+            var newSrc = p.image;
+            if (img.src !== newSrc && img.src !== window.location.href) {
+                img.src = PLACEHOLDER;
+                setTimeout(function () {
+                    img.src = newSrc;
+                    img.alt = (p.alt && p.alt[lang]) || p.alt || '';
+                }, 20);
+            } else {
+                img.alt = (p.alt && p.alt[lang]) || p.alt || '';
+            }
+        }
+
+        if (tag) tag.textContent = (p.tag && p.tag[lang]) || p.tag || '';
+        if (title) title.textContent = (p.title && p.title[lang]) || p.title || '';
+        if (desc) desc.textContent = (p.desc && p.desc[lang]) || p.desc || '';
+
+        if (techs) {
+            techs.innerHTML = '';
+            (p.techs || []).forEach(function (t) {
+                var span = document.createElement('span');
+                span.className = 'tag';
+                span.textContent = t;
+                techs.appendChild(span);
+            });
+        }
+
+        if (links) {
+            links.innerHTML = '';
+            (p.links || []).forEach(function (lk) {
+                var a = document.createElement('a');
+                a.href = lk.url;
+                a.className = 'project-link' + (lk.primary ? ' project-link--primary' : ' project-link--secondary');
+                a.textContent = (lk.label && lk.label[lang]) || lk.label || '';
+                if (lk.url !== '#contact') {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                }
+                links.appendChild(a);
+            });
+        }
+
+        dots.forEach(function (d, i) {
+            d.classList.toggle('active', i === index);
+            d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        });
+
+        current = index;
+    }
+
+    function goTo(index) {
+        index = ((index % TOTAL) + TOTAL) % TOTAL;
+        if (index === current || animating) return;
+
+        animating = true;
+        if (screen) {
+            screen.classList.add('closing');
+            setTimeout(function () {
+                render(index);
+                setTimeout(function () {
+                    screen.classList.remove('closing');
+                    animating = false;
+                }, 80);
+            }, 600);
+        } else {
+            render(index);
+            animating = false;
+        }
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); restart(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); restart(); });
+    dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+            goTo(parseInt(dot.dataset.index, 10));
+            restart();
+        });
+    });
+
+    document.addEventListener('keydown', function (e) {
+        var section = document.getElementById('web-portfolio');
+        if (!section) return;
+        var rect = section.getBoundingClientRect();
+        var inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (inView && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+            goTo(current + (e.key === 'ArrowRight' ? 1 : -1));
+            restart();
+        }
+    });
+
+    function start() {
+        stop();
+        if (!paused) {
+            timer = setInterval(function () { goTo(current + 1); }, 5000);
+        }
+    }
+
+    function stop() {
+        if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    function restart() {
+        start();
+    }
+
+    if (wrap) {
+        wrap.addEventListener('mouseenter', function () { paused = true; stop(); });
+        wrap.addEventListener('mouseleave', function () { paused = false; start(); });
+    }
+
+    if (img) img.src = PLACEHOLDER;
+    render(0);
+    start();
+
+    window.rerenderWebPortfolio = function () { render(current); };
+}

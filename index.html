@@ -127,6 +127,7 @@
                 <li><a href="#home" data-translate="nav_home">Home</a></li>
                 <li><a href="#about" data-translate="nav_about">About</a></li>
                 <li><a href="#experience" data-translate="nav_experience">Experience</a></li>
+                <li><a href="#web-portfolio" data-translate="nav_web_portfolio">Web Portfolio</a></li>
                 <li><a href="#projects" data-translate="nav_projects">Projects</a></li>
                 <li><a href="#skills" data-translate="nav_skills">Skills</a></li>
                 <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
@@ -355,6 +356,47 @@
         </div>
     </section>
 
+    <!-- Web Portfolio Section (Laptop Carousel) -->
+    <section id="web-portfolio" class="web-portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-translate="tag_web_portfolio">Web Portfolio</span>
+                <h2 class="section-title" data-translate="title_web_portfolio">Client Projects</h2>
+            </div>
+            <div class="portfolio-showcase">
+                <div class="laptop-mockup">
+                    <div class="laptop-screen">
+                        <div class="laptop-edge" aria-hidden="true"></div>
+                        <div class="laptop-notch"></div>
+                        <div class="laptop-display">
+                            <img id="pj-img" src="" alt="" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="laptop-base"></div>
+                </div>
+                <div class="project-info">
+                    <span class="project-tag" id="pj-tag"></span>
+                    <h3 class="project-title" id="pj-title"></h3>
+                    <p class="project-desc" id="pj-desc"></p>
+                    <div class="project-techs" id="pj-techs"></div>
+                    <div class="project-links" id="pj-links"></div>
+                </div>
+            </div>
+            <div class="portfolio-controls">
+                <button type="button" id="prev-project" class="portfolio-arrow" aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
+                <div class="portfolio-dots" role="tablist" aria-label="Project slides">
+                    <button type="button" class="portfolio-dot active" data-index="0" aria-label="Slide 1"></button>
+                    <button type="button" class="portfolio-dot" data-index="1" aria-label="Slide 2"></button>
+                    <button type="button" class="portfolio-dot" data-index="2" aria-label="Slide 3"></button>
+                    <button type="button" class="portfolio-dot" data-index="3" aria-label="Slide 4"></button>
+                    <button type="button" class="portfolio-dot" data-index="4" aria-label="Slide 5"></button>
+                    <button type="button" class="portfolio-dot" data-index="5" aria-label="Slide 6"></button>
+                </div>
+                <button type="button" id="next-project" class="portfolio-arrow" aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
@@ -399,7 +441,7 @@
                     <div class="project-image">
                         <img src="images/MediConnect.webp" alt="MediConnect AI">
                         <div class="project-overlay">
-                            <a href="https://github.com/MOREQASSE/MediConnect-Ai" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/MOREQASSE/MediConnect-Ai" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -454,7 +496,7 @@
                     <div class="project-image">
                         <img src="images/TV.webp" alt="TV Image Restoration">
                         <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/MOREQASSE/Total-Variation" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -508,7 +550,7 @@
                     <div class="project-image">
                         <img src="images/RHEL System Security.png" alt="RHEL Security">
                         <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/MOREQASSE/RHEL-System-Security" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -531,7 +573,7 @@
                     <div class="project-image">
                         <img src="images/Wavelet transformation.webp" alt="Wavelet Transform">
                         <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/MOREQASSE/WaveletProject" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -548,145 +590,6 @@
                             <span>MATLAB</span>
                             <span>Signal Processing</span>
                             <span>Compression</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gym Nutrition Store -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/Gym.png" alt="Gym Nutrition Store">
-                        <div class="project-overlay">
-                            <a href="https://demoweb.ifree.page/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Gym Nutrition Store</h3>
-                            <span class="project-date">2025</span>
-                        </div>
-                        <p class="project-role" data-translate="role_developer">Developer</p>
-                        <p class="project-description" data-translate="gym_desc">Full-featured gym nutrition e-commerce store with admin dashboard, product management, automated emails, and security-first architecture.</p>
-                        <div class="project-tags">
-                            <span>PHP</span>
-                            <span>CSS</span>
-                            <span>PHPMailer</span>
-                            <span>E-commerce</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Optician Dynamic Website -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/Optician.webp" alt="Optician Dynamic Website">
-                        <div class="project-overlay">
-                            <a href="https://opticien.ifree.page/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Optician Dynamic Website</h3>
-                            <span class="project-date">2025</span>
-                        </div>
-                        <p class="project-role" data-translate="role_developer">Developer</p>
-                        <p class="project-description" data-translate="optician_desc">All-in-one optician store with full admin control. Customizable colors, fonts, and workflows with product management, loyalty system, and appointments.</p>
-                        <div class="project-tags">
-                            <span>PHP</span>
-                            <span>SQLite</span>
-                            <span>PHPMailer</span>
-                            <span>Gmail SMTP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modern Advertising Studio -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/ads studio.webp" alt="Modern Advertising Studio">
-                        <div class="project-overlay">
-                            <a href="https://moreqasse.github.io/ads-studio-website" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Modern Advertising Studio</h3>
-                            <span class="project-date">2025</span>
-                        </div>
-                        <p class="project-role" data-translate="role_developer">Developer</p>
-                        <p class="project-description" data-translate="adsstudio_desc">3D-inspired agency site with smooth animations and a premium dark theme showcasing advertising services.</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>GSAP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Frial Café & Resto -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/frial.webp" alt="Frial Café & Resto">
-                        <div class="project-overlay">
-                            <a href="https://moreqasse.github.io/FrialCafeResto/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Frial Café & Resto</h3>
-                            <span class="project-date">2025</span>
-                        </div>
-                        <p class="project-role" data-translate="role_developer">Developer</p>
-                        <p class="project-description" data-translate="frial_desc">Restaurant website featuring menu, gallery, reviews integration, and loyalty features for a local brand.</p>
-                        <div class="project-tags">
-                            <span>Tailwind</span>
-                            <span>Maps API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ClientFlow CMS -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/CMS.webp" alt="ClientFlow CMS">
-                        <div class="project-overlay">
-                            <a href="https://clientflow-cms-e75il93.public.builtwithrocket.new/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>ClientFlow CMS</h3>
-                            <span class="project-date">2025</span>
-                        </div>
-                        <p class="project-role" data-translate="role_developer">Developer</p>
-                        <p class="project-description" data-translate="clientflow_desc">Client management platform with roles, projects, invoicing, and reporting dashboards in one suite.</p>
-                        <div class="project-tags">
-                            <span>SaaS</span>
-                            <span>CMS</span>
-                            <span>Dashboard</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pharmacy Inventory Tracker -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/pharma.webp" alt="Pharmacy Inventory Tracker">
-                        <div class="project-overlay">
-                            <a href="https://pharmacy-inventory-fmm7o80.public.builtwithrocket.new/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Pharmacy Inventory Tracker</h3>
-                            <span class="project-date">2025</span>
-                        </div>
-                        <p class="project-role" data-translate="role_developer">Developer</p>
-                        <p class="project-description" data-translate="pharma_desc">Stock tracking system with expiration alerts and compliance-focused workflows for pharmacy management.</p>
-                        <div class="project-tags">
-                            <span>SaaS</span>
-                            <span>Inventory</span>
-                            <span>Compliance</span>
                         </div>
                     </div>
                 </div>
@@ -1102,6 +1005,7 @@
                             <li><a href="#home" data-translate="nav_home">Home</a></li>
                             <li><a href="#about" data-translate="nav_about">About</a></li>
                             <li><a href="#experience" data-translate="nav_experience">Experience</a></li>
+                            <li><a href="#web-portfolio" data-translate="nav_web_portfolio">Web Portfolio</a></li>
                             <li><a href="#projects" data-translate="nav_projects">Projects</a></li>
                             <li><a href="#skills" data-translate="nav_skills">Skills</a></li>
                         </ul>
