@@ -1466,6 +1466,54 @@ section {
     transform: translateY(0);
 }
 
+/* Confidential project overlay */
+.project-overlay--confidential {
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.confidential-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    text-align: center;
+    transform: translateY(10px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.project-card:hover .confidential-badge {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.confidential-badge i {
+    font-size: 1.6rem;
+    color: #f59e0b;
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.4));
+}
+
+.confidential-badge span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.confidential-badge small {
+    font-size: 0.65rem;
+    font-weight: 400;
+    opacity: 0.6;
+    letter-spacing: 0.5px;
+}
+
+.project-card--confidential .project-link {
+    display: none;
+}
+
 .project-content {
     padding: 1.5rem;
 }
