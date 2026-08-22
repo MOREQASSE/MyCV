@@ -1370,7 +1370,7 @@ function initWebPortfolioCarousel() {
                 { label: { en: 'Live Demo', fr: 'Démo Live', ar: 'عرض مباشر' }, url: 'https://demoweb.ifree.page/', primary: true },
                 { label: { en: 'Contact for Similar', fr: 'Contact pour similaire', ar: 'تواصل لمشروع مشابه' }, url: '#contact', primary: false }
             ],
-            image: 'images/Gym.png',
+            image: 'images/Gym.webp',
             alt: { en: 'Gym Nutrition Store', fr: 'Boutique Nutrition Sportive', ar: 'متجر التغذية الرياضية' }
         },
         {

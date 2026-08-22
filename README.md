@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://moreqasse.work.gd/">
-    <img src="https://moreqasse.github.io/MyCV/images/MR.png" alt="Mohammed Reqasse Logo" width="120" />
+    <img src="https://moreqasse.github.io/MyCV/images/MR.webp" alt="Mohammed Reqasse Logo" width="120" />
   </a>
 
   # Hi there, I'm Mohammed Reqasse 👋
@@ -33,7 +33,7 @@
 
 </td>
 <td width="35%" align="center">
-  <img src="https://moreqasse.github.io/MyCV/images/profile.png" alt="Mohammed Reqasse Profile" width="220" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+  <img src="https://moreqasse.github.io/MyCV/images/profile.webp" alt="Mohammed Reqasse Profile" width="220" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
 </td>
 </tr>
 </table>
