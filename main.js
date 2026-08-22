@@ -1253,7 +1253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Check for saved theme preference
     const savedTheme = localStorage.getItem('preferredTheme');
-    if (savedTheme === 'dark') {
+    if (savedTheme !== 'light') {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
 
