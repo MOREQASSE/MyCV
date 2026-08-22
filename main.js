@@ -1055,15 +1055,16 @@ function initFormHandling() {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        if (typeof grecaptcha !== 'undefined') {
-            const token = grecaptcha.getResponse();
-            if (!token) {
-                alert(currentLang === 'en' ? 'Please complete the reCAPTCHA verification.' :
-                      currentLang === 'fr' ? 'Veuillez compléter la vérification reCAPTCHA.' :
-                      'يرجى إكمال التحقق من reCAPTCHA.');
-                return;
-            }
-        }
+        // reCAPTCHA check - commented out. Uncomment when reCAPTCHA is re-enabled.
+        // if (typeof grecaptcha !== 'undefined') {
+        //     const token = grecaptcha.getResponse();
+        //     if (!token) {
+        //         alert(currentLang === 'en' ? 'Please complete the reCAPTCHA verification.' :
+        //               currentLang === 'fr' ? 'Veuillez compléter la vérification reCAPTCHA.' :
+        //               'يرجى إكمال التحقق من reCAPTCHA.');
+        //         return;
+        //     }
+        // }
 
         // Get form data
         const formData = new FormData(form);
@@ -1091,7 +1092,7 @@ function initFormHandling() {
             btn.textContent = originalText;
             btn.style.background = '';
             form.reset();
-            if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
+            // if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
         }, 3000);
     });
 }
@@ -1240,15 +1241,10 @@ function initLanguageSwitcher() {
 
 // ===== INITIALIZE =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Hide page loader after content loads
+    // Hide page loader immediately after DOM ready (improves Speed Index)
     const pageLoader = document.getElementById('page-loader');
     if (pageLoader) {
-        // Wait for images to load
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                pageLoader.classList.add('hidden');
-            }, 500);
-        });
+        pageLoader.classList.add('hidden');
     }
 
     // Check for saved theme preference

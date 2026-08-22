@@ -17,6 +17,7 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
 }
 
 .loader-content {
@@ -5072,4 +5073,10 @@ section {
     .laptop-display img {
         transition: none;
     }
+}
+
+/* Content visibility optimization for below-the-fold sections */
+#experience, #web-portfolio, #projects, #skills, #contact {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
 }

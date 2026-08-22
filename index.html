@@ -86,10 +86,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css?v=1.1">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheets (critical) -->
+    <link rel="stylesheet" href="style.css?v=1.2">
+    
+    <!-- Non-render-blocking external CSS -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <!-- Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -125,7 +129,7 @@
     <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-content">
-                <img src="images/MR.webp" alt="Mohammed Reqasse - Network Engineer Logo" class="loader-logo">
+                <img src="images/MR.webp" alt="Mohammed Reqasse - Network Engineer Logo" class="loader-logo" width="80" height="80">
             <div class="loader-spinner"></div>
             <p class="loader-text">Loading...</p>
         </div>
@@ -134,7 +138,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">                <img src="images/MR.webp" alt="Mohammed Reqasse Logo"></a>
+            <a href="#" class="nav-logo">                <img src="images/MR.webp" alt="Mohammed Reqasse Logo" width="45" height="45"></a>
             <ul class="nav-menu">
                 <li><a href="#home" data-translate="nav_home">Home</a></li>
                 <li><a href="#about" data-translate="nav_about">About</a></li>
@@ -213,7 +217,7 @@
                     <div class="orb orb-3"></div>
                 </div>
                 <div class="hero-photo">
-                    <img src="images/profile.webp" alt="Mohammed Reqasse" class="photo-img">
+                    <img src="images/profile.webp" alt="Mohammed Reqasse" class="photo-img" width="340" height="420">
                 </div>
                 <div class="floating-stats">
                     <div class="float-stat stat-1">
@@ -663,7 +667,7 @@
                 <!-- CAT8k·SYNC -->
                 <div class="project-card featured">
                     <div class="project-image">
-                        <img src="images/analytics_deep_full.webp" alt="CAT8k·SYNC - Cisco Catalyst 8000v network automation dashboard">
+                        <img src="images/analytics_deep_full.webp" alt="CAT8k·SYNC - Cisco Catalyst 8000v network automation dashboard" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
                             <a href="https://github.com/MOREQASSE/CAT8k-SYNC" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                             <a href="https://cat8k.reqasse.workers.dev/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
@@ -694,7 +698,7 @@
                 <!-- MediConnect AI -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/MediConnect.webp" alt="MediConnect AI - Healthcare SDN system with OpenDaylight">
+                        <img src="images/MediConnect.webp" alt="MediConnect AI - Healthcare SDN system with OpenDaylight" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
                             <a href="https://github.com/MOREQASSE/MediConnect-Ai" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
@@ -722,7 +726,7 @@
                 <!-- LEADFinder -->
                 <div class="project-card featured">
                     <div class="project-image">
-                        <img src="images/LEADFinder.webp" alt="LEADFinder - AI-powered lead discovery engine dashboard">
+                        <img src="images/LEADFinder.webp" alt="LEADFinder - AI-powered lead discovery engine dashboard" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
                             <a href="https://github.com/MOREQASSE/leadfinder" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                             <a href="https://lead-finder.reqasse.workers.dev" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
@@ -753,7 +757,7 @@
                 <!-- EdgeWarden -->
                 <div class="project-card project-card--confidential">
                     <div class="project-image">
-                        <img src="images/IOT.jfif" alt="EdgeWarden - IoT Smart Smoke Detection with LoRa">
+                        <img src="images/IOT.jfif" alt="EdgeWarden - IoT Smart Smoke Detection with LoRa" loading="lazy" width="600" height="340">
                         <div class="project-overlay project-overlay--confidential">
                             <div class="confidential-badge">
                                 <i class="fas fa-lock"></i>
@@ -786,7 +790,7 @@
                 <!-- TV Image Restoration -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/TV.webp" alt="TV Image Restoration - MATLAB denoising suite with Chambolle and Split Bregman methods">
+                        <img src="images/TV.webp" alt="TV Image Restoration - MATLAB denoising suite with Chambolle and Split Bregman methods" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
                             <a href="https://github.com/MOREQASSE/Total-Variation" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
@@ -813,7 +817,7 @@
                 <!-- ODoS Mitigation -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/Optique.webp" alt="ODoS Mitigation - Optical Denial of Service attack defense">
+                        <img src="images/Optique.webp" alt="ODoS Mitigation - Optical Denial of Service attack defense" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
                             <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                         </div>
@@ -840,7 +844,7 @@
                 <!-- RHEL Security -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/RHEL System Security.webp" alt="RHEL System Security - Linux hardening with firewalld and SELinux">
+                        <img src="images/RHEL System Security.webp" alt="RHEL System Security - Linux hardening with firewalld and SELinux" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
                             <a href="https://github.com/MOREQASSE/RHEL-System-Security" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
@@ -863,7 +867,7 @@
                 <!-- Wavelet Transform -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/Wavelet transformation.webp" alt="Wavelet Transform - Signal and image processing with MATLAB">
+                        <img src="images/Wavelet transformation.webp" alt="Wavelet Transform - Signal and image processing with MATLAB" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
                             <a href="https://github.com/MOREQASSE/WaveletProject" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                         </div>
@@ -891,7 +895,7 @@
                     <div class="github-preview">
                         <div class="gh-mini-profile">
                             <div class="gh-mini-avatar">
-                                <img src="images/github.webp" alt="Mohammed Reqasse GitHub profile with 40+ repositories">
+                                <img src="images/github.webp" alt="Mohammed Reqasse GitHub profile with 40+ repositories" loading="lazy" width="48" height="48">
                             </div>
                             <div class="gh-mini-info">
                                 <span class="gh-mini-name">MOREQASSE</span>
@@ -1366,7 +1370,9 @@
                                 <textarea name="message" rows="4" placeholder="Tell me about your project..." data-translate-placeholder="form_message" required></textarea>
                             </div>
                         </div>
+                        <!-- reCAPTCHA - commented out for performance. Uncomment to re-enable.
                         <div class="g-recaptcha" data-sitekey="6LdcXZMtAAAAAFaf03m0b3in43ZELZ_Dr464xmLl" style="margin-bottom:1rem"></div>
+                        -->
                         <button type="submit" class="cf-submit" data-translate="btn_send">
                             <span data-translate="btn_send">Send Message</span>
                             <i class="fas fa-paper-plane"></i>
@@ -1385,7 +1391,7 @@
                 <div class="footer-grid">
                     <!-- Brand Column -->
                     <div class="footer-column footer-brand">
-                        <img src="images/MR.webp" alt="MR Logo" class="footer-logo-img">
+                        <img src="images/MR.webp" alt="MR Logo" class="footer-logo-img" loading="lazy" width="48" height="48">
                         <div class="footer-brand-text">
                             <div class="footer-brand-header">
                                 <span class="footer-name">Mohammed Reqasse</span>
@@ -1457,7 +1463,7 @@
                 <!-- Mobile layout (hidden on desktop) -->
                 <div class="footer-mobile">
                     <div class="fm-brand">
-                        <img src="images/MR.webp" alt="MR" class="fm-logo">
+                        <img src="images/MR.webp" alt="MR" class="fm-logo" loading="lazy" width="36" height="36">
                         <div class="fm-brand-info">
                             <span class="fm-name">Mohammed Reqasse</span>
                             <span class="fm-location"><i class="fas fa-map-marker-alt"></i> Safi, Morocco</span>
@@ -1526,7 +1532,30 @@
         </div>
     </div>
 
-    <script src="main.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="main.js" defer></script>
+    <!-- reCAPTCHA lazy-loader - commented out. Uncomment with the div above to re-enable.
+    <script>
+    (function(){
+      var loaded = false;
+      function loadRecaptcha(){
+        if(loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.google.com/recaptcha/api.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      var contactSection = document.getElementById('contact');
+      if(contactSection && 'IntersectionObserver' in window){
+        var obs = new IntersectionObserver(function(entries){
+          if(entries[0].isIntersecting){ loadRecaptcha(); obs.disconnect(); }
+        }, {rootMargin:'400px'});
+        obs.observe(contactSection);
+      } else {
+        setTimeout(loadRecaptcha, 5000);
+      }
+    })();
+    </script>
+    -->
 </body>
 </html>
