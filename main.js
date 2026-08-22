@@ -471,10 +471,10 @@ function initScrollAnimations() {
 
     if (wtEl && wtItemsEl) {
         var wtData = [
-            { year: '2026', roleKey: 'role_intern_ocp', title: 'OCP Group', descKey: 'ocp', tags: 'RESTCONF/NETCONF, Network Automation, Compliance' },
-            { year: '2025', roleKey: 'role_founder', title: 'Devaxio', descKey: 'devaxio', tags: 'HTML/CSS/JS, AI Integration, Project Management' },
-            { year: '2025', roleKey: 'role_intern', title: 'Devosoft Company', descKey: 'devosoft', tags: 'Web Development, Client Management, Team Collaboration' },
-            { year: '2023', roleKey: 'role_teacher', title: 'Espace Esafaa', descKey: 'teacher', tags: 'Teaching, Communication' }
+            { year: '2026', roleKey: 'role_intern_ocp', title: 'OCP Group', descKey: 'ocp', tags: 'RESTCONF/NETCONF, Network Automation, Compliance', color: '#00d4aa', iconPath: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M2 12h20 M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z' },
+            { year: '2025', roleKey: 'role_founder', title: 'Devaxio', descKey: 'devaxio', tags: 'HTML/CSS/JS, AI Integration, Project Management', color: '#3b82f6', iconPath: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z' },
+            { year: '2025', roleKey: 'role_intern', title: 'Devosoft Company', descKey: 'devosoft', tags: 'Web Development, Client Management, Team Collaboration', color: '#a855f7', iconPath: 'M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z M4 22V15' },
+            { year: '2023', roleKey: 'role_teacher', title: 'Espace Esafaa', descKey: 'teacher', tags: 'Teaching, Communication', color: '#f59e0b', iconPath: 'M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z M12 15l-3-3 M22 2l-8.76 8.76' }
         ];
         var arcDesc = {
             en: { ocp: 'Built CAT8k\u00b7SYNC: automated Cisco provisioning via RESTCONF (<strong>5.15 s</strong> deploy cycle, <strong>7</strong> live ops), continuous telemetry (<strong>153 samples</strong>/12 days, <strong>3,410</strong> interface records), and compliance scanning (<strong>16 checks</strong> in 44 ms, <strong>19</strong> remediations) with a SHA-256 hash-chained audit ledger.', devaxio: 'Founded and directed Devaxio, leading digital transformation for <strong>15+ clients</strong> with focus on AI integration and web automation.', devosoft: 'Performed technical web development work while handling <strong>10+ clients</strong> and overseeing client relationships in an <strong>8-person team</strong>.', teacher: 'Taught English as a second language to diverse student groups, developing communication and presentation skills.' },
@@ -497,7 +497,7 @@ function initScrollAnimations() {
             CX = isMobile ? w * 0.30 : 190;
             CY = isMobile ? w * 0.67 : 240;
             R = isMobile ? w * 0.44 : 170;
-            SPREAD = isMobile ? 38 : 50;
+            SPREAD = isMobile ? 28 : 36;
             baseAngles = [];
             for (var i = 0; i < wtCount; i++) {
                 baseAngles.push((i - (wtCount - 1) / 2) * SPREAD);
@@ -534,31 +534,98 @@ function initScrollAnimations() {
             wtDescEl.style.opacity = '0'; wtDescEl.style.transform = 'translateY(8px)'; wtTagsEl.style.opacity = '0';
             requestAnimationFrame(function () { wtTitleEl.style.opacity = '1'; wtTitleEl.style.transform = 'translateY(0)'; wtDescEl.style.opacity = '1'; wtDescEl.style.transform = 'translateY(0)'; wtTagsEl.style.opacity = '1'; });
             wtCurEl.textContent = String(idx + 1).padStart(2, '0');
+
+            wtYearEl.style.color = d.color;
+            wtCatEl.style.color = d.color;
+            var yearDot = document.getElementById('wt-year-dot');
+            if (yearDot) yearDot.style.background = d.color;
+
+            updateNeedle(idx);
+
+            var progArc = document.getElementById('wt-progress-arc');
+            if (progArc) {
+                var progLen = Math.PI * R;
+                var progress = (idx + 1) / wtCount;
+                progArc.setAttribute('stroke-dashoffset', progLen * (1 - progress));
+            }
+
+            var arcGlow = document.getElementById('wt-arc-glow');
+            if (arcGlow) arcGlow.setAttribute('fill', d.color);
+
+            wtEl.style.setProperty('--item-color', d.color);
         }
 
         function buildTicks() {
             if (!wtSvg) return;
             var ns = 'http://www.w3.org/2000/svg';
-            // arc path (right semicircle)
+            wtSvg.innerHTML = '';
+
+            var defs = document.createElementNS(ns, 'defs');
+            var progGrad = document.createElementNS(ns, 'linearGradient');
+            progGrad.id = 'wt-progress-grad';
+            progGrad.setAttribute('x1', '0%'); progGrad.setAttribute('y1', '0%');
+            progGrad.setAttribute('x2', '100%'); progGrad.setAttribute('y2', '0%');
+            var ps1 = document.createElementNS(ns, 'stop');
+            ps1.setAttribute('offset', '0%'); ps1.setAttribute('stop-color', '#3b82f6'); ps1.setAttribute('stop-opacity', '0.6');
+            var ps2 = document.createElementNS(ns, 'stop');
+            ps2.setAttribute('offset', '100%'); ps2.setAttribute('stop-color', '#00d4aa'); ps2.setAttribute('stop-opacity', '0.4');
+            progGrad.appendChild(ps1); progGrad.appendChild(ps2);
+            defs.appendChild(progGrad);
+
+            var glowFilter = document.createElementNS(ns, 'filter');
+            glowFilter.id = 'wt-glow';
+            glowFilter.setAttribute('x', '-100%'); glowFilter.setAttribute('y', '-100%');
+            glowFilter.setAttribute('width', '300%'); glowFilter.setAttribute('height', '300%');
+            var feBlur = document.createElementNS(ns, 'feGaussianBlur');
+            feBlur.setAttribute('stdDeviation', '8'); feBlur.setAttribute('result', 'blur');
+            glowFilter.appendChild(feBlur);
+            defs.appendChild(glowFilter);
+
+            wtSvg.appendChild(defs);
+
+            var arcD = 'M ' + CX + ',' + (CY - R) + ' A ' + R + ',' + R + ' 0 0,1 ' + CX + ',' + (CY + R);
+
             var arcPath = document.createElementNS(ns, 'path');
-            var d = 'M ' + (CX) + ',' + (CY - R) + ' A ' + R + ',' + R + ' 0 0,1 ' + (CX) + ',' + (CY + R);
-            arcPath.setAttribute('d', d);
+            arcPath.setAttribute('d', arcD);
             arcPath.setAttribute('fill', 'none');
             arcPath.setAttribute('stroke', 'var(--border)');
             arcPath.setAttribute('stroke-width', '1.5');
             arcPath.setAttribute('stroke-linecap', 'round');
-            arcPath.setAttribute('opacity', '0.25');
+            arcPath.setAttribute('opacity', '0.15');
             wtSvg.appendChild(arcPath);
 
-            // tick marks
-            var tickCount = 30;
+            var progArc = document.createElementNS(ns, 'path');
+            var progLen = Math.PI * R;
+            progArc.setAttribute('d', arcD);
+            progArc.setAttribute('fill', 'none');
+            progArc.setAttribute('stroke', 'url(#wt-progress-grad)');
+            progArc.setAttribute('stroke-width', '2.5');
+            progArc.setAttribute('stroke-linecap', 'round');
+            progArc.classList.add('wt-progress');
+            progArc.setAttribute('stroke-dasharray', progLen);
+            progArc.setAttribute('stroke-dashoffset', progLen);
+            progArc.id = 'wt-progress-arc';
+            wtSvg.appendChild(progArc);
+
+            var arcGlow = document.createElementNS(ns, 'circle');
+            arcGlow.setAttribute('r', '14');
+            arcGlow.setAttribute('cx', CX);
+            arcGlow.setAttribute('cy', CY - R);
+            arcGlow.setAttribute('fill', wtData[0].color);
+            arcGlow.setAttribute('opacity', '0.25');
+            arcGlow.setAttribute('filter', 'url(#wt-glow)');
+            arcGlow.classList.add('wt-arc-glow');
+            arcGlow.id = 'wt-arc-glow';
+            wtSvg.appendChild(arcGlow);
+
+            var tickCount = 68;
             for (var i = 0; i < tickCount; i++) {
                 var t = i / (tickCount - 1);
-                var angleDeg = -90 + 180 * t; // -90 to +90 (right semicircle)
+                var angleDeg = -90 + 180 * t;
                 var angleRad = angleDeg * Math.PI / 180;
                 var isMajor = i % 5 === 0;
                 var innerR = R + (isMajor ? 6 : 4);
-                var outerR = R + (isMajor ? 22 : 14);
+                var outerR = R + (isMajor ? 18 : 12);
                 var x1 = CX + innerR * Math.cos(angleRad);
                 var y1 = CY + innerR * Math.sin(angleRad);
                 var x2 = CX + outerR * Math.cos(angleRad);
@@ -566,13 +633,27 @@ function initScrollAnimations() {
                 var line = document.createElementNS(ns, 'line');
                 line.setAttribute('x1', x1); line.setAttribute('y1', y1);
                 line.setAttribute('x2', x2); line.setAttribute('y2', y2);
-                line.setAttribute('stroke', 'var(--border)');
-                line.setAttribute('stroke-width', isMajor ? '1.5' : '1');
+                line.setAttribute('stroke', '#fff');
+                line.setAttribute('stroke-width', isMajor ? '2' : '1.5');
                 line.setAttribute('stroke-linecap', 'round');
                 line.classList.add('wt-tick');
                 line.dataset.angle = angleDeg;
                 wtSvg.appendChild(line);
             }
+
+            for (var j = 0; j < wtCount; j++) {
+                var cAngle = baseAngles[j] * Math.PI / 180;
+                var cx2 = CX + R * Math.cos(cAngle);
+                var cy2 = CY + R * Math.sin(cAngle);
+                var conn = document.createElementNS(ns, 'line');
+                conn.setAttribute('x1', CX); conn.setAttribute('y1', CY);
+                conn.setAttribute('x2', cx2); conn.setAttribute('y2', cy2);
+                conn.classList.add('wt-connector');
+                conn.dataset.idx = j;
+                wtSvg.appendChild(conn);
+            }
+
+            wtSvg.appendChild(defs);
         }
 
         function buildItems() {
@@ -580,7 +661,8 @@ function initScrollAnimations() {
             wtData.forEach(function (d, i) {
                 var el = document.createElement('div');
                 el.className = 'wt-item' + (i === 0 ? ' active' : '');
-                el.innerHTML = '<div class="wt-item-dot"></div><span class="wt-item-year">' + d.year + '</span><span class="wt-item-name">' + d.title + '</span>';
+                el.style.setProperty('--item-color', d.color);
+                el.innerHTML = '<div class="wt-item-icon" style="background:' + d.color + '"><svg viewBox="0 0 24 24"><path d="' + d.iconPath + '"/></svg></div><div class="wt-item-text"><span class="wt-item-year">' + d.year + '</span><span class="wt-item-name">' + d.title + '</span></div>';
                 el.addEventListener('click', function () {
                     wtTarget = getRotationForIndex(i);
                     updateActiveItem(i);
@@ -607,28 +689,36 @@ function initScrollAnimations() {
             var items = wtItemsEl.children;
             for (var i = 0; i < items.length; i++) items[i].classList.toggle('active', i === idx);
             updateWtPanel(idx);
-            updateTickGlow(idx);
         }
 
-        function updateTickGlow(idx) {
+        function updateNeedle(idx) {
+            var angleDeg = baseAngles[idx];
+
             var ticks = document.querySelectorAll('.wt-tick');
-            var activeAngle = baseAngles[idx]; // the base angle of the active item
             ticks.forEach(function (tk) {
                 var ta = parseFloat(tk.dataset.angle);
-                var diff = Math.abs(ta - activeAngle);
+                var diff = Math.abs(ta - angleDeg);
                 if (diff > 180) diff = 360 - diff;
-                tk.classList.toggle('glow', diff < 30);
+                if (diff < 18) {
+                    tk.style.stroke = wtData[idx].color;
+                    tk.style.opacity = (1 - diff / 18) * 0.55;
+                    tk.style.strokeWidth = diff < 5 ? '2' : '1.5';
+                } else {
+                    tk.style.stroke = '';
+                    tk.style.opacity = Math.max(0.02, 0.08 * (1 - (diff - 18) / 72));
+                    tk.style.strokeWidth = '';
+                }
             });
         }
 
-        // --- Spring physics loop ---
+        // --- Spring physics loop (Apple Watch–style snappy) ---
         function wtLoop() {
-            var stiffness = 0.1;
-            var damping = 0.78;
+            var stiffness = 0.22;
+            var damping = 0.72;
             var force = (wtTarget - wtAngle) * stiffness;
             wtVelocity = (wtVelocity + force) * damping;
             wtAngle += wtVelocity;
-            if (Math.abs(wtVelocity) > 0.05 || Math.abs(wtTarget - wtAngle) > 0.1) {
+            if (Math.abs(wtVelocity) > 0.08 || Math.abs(wtTarget - wtAngle) > 0.15) {
                 positionItems();
                 wtAnimId = requestAnimationFrame(wtLoop);
             } else {
@@ -646,7 +736,7 @@ function initScrollAnimations() {
         wtViewport.addEventListener('wheel', function (e) {
             e.preventDefault();
             var delta = e.deltaY || e.detail;
-            wtTarget += delta * 0.15;
+            wtTarget += delta * 0.08;
             updateActiveItem(closestItem(wtTarget));
             startLoop();
             stopAutoRotate();
@@ -661,7 +751,7 @@ function initScrollAnimations() {
         wtViewport.addEventListener('touchmove', function (e) {
             if (!isDragging) return;
             var dy = touchStartY - e.touches[0].clientY;
-            wtTarget = touchStartAngle + dy * 0.4;
+            wtTarget = touchStartAngle + dy * 0.3;
             updateActiveItem(closestItem(wtTarget));
             startLoop();
         }, { passive: true });
@@ -680,7 +770,7 @@ function initScrollAnimations() {
         window.addEventListener('mousemove', function (e) {
             if (!isDragging) return;
             var dy = dragStartY - e.clientY;
-            wtTarget = dragStartAngle + dy * 0.4;
+            wtTarget = dragStartAngle + dy * 0.3;
             updateActiveItem(closestItem(wtTarget));
             startLoop();
         });
@@ -710,7 +800,7 @@ function initScrollAnimations() {
             else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); stopAutoRotate(); var p = Math.max(wtActiveIdx - 1, 0); wtTarget = getRotationForIndex(p); updateActiveItem(p); startLoop(); }
         });
 
-        buildTicks(); buildItems(); positionItems(); updateWtPanel(0); updateTickGlow(0);
+        buildTicks(); buildItems(); positionItems(); updateWtPanel(0); updateNeedle(0);
         window.updateWheelTimelineLang = function () { updateWtPanel(wtActiveIdx); };
 
         // Recalc geometry on resize (orientation change)
@@ -719,8 +809,10 @@ function initScrollAnimations() {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(function () {
                 calcGeometry();
+                wtSvg.innerHTML = '';
+                buildTicks();
                 positionItems();
-                updateTickGlow(wtActiveIdx);
+                updateNeedle(wtActiveIdx);
             }, 100);
         });
     }
