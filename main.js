@@ -522,6 +522,12 @@ function initScrollAnimations() {
             return best;
         }
 
+        var MIN_ROT = getRotationForIndex(wtCount - 1);
+        var MAX_ROT = getRotationForIndex(0);
+        var MAX_VELOCITY = 8;
+
+        function clampTarget(t) { return Math.max(MIN_ROT, Math.min(MAX_ROT, t)); }
+
         function updateWtPanel(idx) {
             var lang = currentLang || 'en', d = wtData[idx];
             wtYearEl.textContent = d.year;
@@ -718,6 +724,8 @@ function initScrollAnimations() {
             var damping = 0.72;
             var force = (wtTarget - wtAngle) * stiffness;
             wtVelocity = (wtVelocity + force) * damping;
+            if (wtVelocity > MAX_VELOCITY) wtVelocity = MAX_VELOCITY;
+            if (wtVelocity < -MAX_VELOCITY) wtVelocity = -MAX_VELOCITY;
             wtAngle += wtVelocity;
             if (Math.abs(wtVelocity) > 0.08 || Math.abs(wtTarget - wtAngle) > 0.15) {
                 positionItems();
@@ -733,14 +741,24 @@ function initScrollAnimations() {
             if (!wtAnimId) wtAnimId = requestAnimationFrame(wtLoop);
         }
 
-        // --- Wheel scroll ---
+        // --- Wheel scroll (index-based, hard boundaries) ---
         wtViewport.addEventListener('wheel', function (e) {
             e.preventDefault();
-            var delta = e.deltaY || e.detail;
-            wtTarget += delta * 0.08;
-            updateActiveItem(closestItem(wtTarget));
-            startLoop();
             stopAutoRotate();
+            var newIdx = wtActiveIdx;
+            var delta = e.deltaY || e.detail;
+            if (delta > 0 && wtActiveIdx < wtCount - 1) {
+                newIdx = wtActiveIdx + 1;
+            } else if (delta < 0 && wtActiveIdx > 0) {
+                newIdx = wtActiveIdx - 1;
+            }
+            if (newIdx !== wtActiveIdx) {
+                wtTarget = clampTarget(getRotationForIndex(newIdx));
+                updateActiveItem(newIdx);
+                startLoop();
+            } else {
+                wtVelocity = 0;
+            }
         }, { passive: false });
 
         // --- Touch drag ---
@@ -752,13 +770,14 @@ function initScrollAnimations() {
         wtViewport.addEventListener('touchmove', function (e) {
             if (!isDragging) return;
             var dy = touchStartY - e.touches[0].clientY;
-            wtTarget = touchStartAngle + dy * 0.3;
+            wtTarget = clampTarget(touchStartAngle + dy * 0.3);
             updateActiveItem(closestItem(wtTarget));
             startLoop();
         }, { passive: true });
         wtViewport.addEventListener('touchend', function () {
             if (!isDragging) return; isDragging = false;
-            var s = closestItem(wtTarget); wtTarget = getRotationForIndex(s);
+            var s = closestItem(wtTarget);
+            wtTarget = clampTarget(getRotationForIndex(s));
             updateActiveItem(s); startLoop();
         });
 
@@ -771,19 +790,33 @@ function initScrollAnimations() {
         window.addEventListener('mousemove', function (e) {
             if (!isDragging) return;
             var dy = dragStartY - e.clientY;
-            wtTarget = dragStartAngle + dy * 0.3;
+            wtTarget = clampTarget(dragStartAngle + dy * 0.3);
             updateActiveItem(closestItem(wtTarget));
             startLoop();
         });
         window.addEventListener('mouseup', function () {
             if (!isDragging) return; isDragging = false;
             wtViewport.style.cursor = '';
-            var s = closestItem(wtTarget); wtTarget = getRotationForIndex(s);
+            var s = closestItem(wtTarget);
+            wtTarget = clampTarget(getRotationForIndex(s));
             updateActiveItem(s); startLoop();
         });
 
-        // --- Auto-rotate ---
-        function startAutoRotate() { stopAutoRotate(); wtAutoTimer = setInterval(function () { var n = (wtActiveIdx + 1) % wtCount; wtTarget = getRotationForIndex(n); updateActiveItem(n); startLoop(); }, 4000); }
+        // --- Auto-rotate (loops back from last to first) ---
+        function startAutoRotate() {
+            stopAutoRotate();
+            wtAutoTimer = setInterval(function () {
+                var n = (wtActiveIdx + 1) % wtCount;
+                // Instant wrap: jump angle to avoid backward scroll animation
+                if (n === 0) {
+                    wtAngle = getRotationForIndex(0);
+                    wtVelocity = 0;
+                }
+                wtTarget = clampTarget(getRotationForIndex(n));
+                updateActiveItem(n);
+                startLoop();
+            }, 4000);
+        }
         function stopAutoRotate() { if (wtAutoTimer) { clearInterval(wtAutoTimer); wtAutoTimer = null; } }
 
         // --- Reveal ---
@@ -797,8 +830,22 @@ function initScrollAnimations() {
         // --- Keyboard ---
         window.addEventListener('keydown', function (e) {
             if (!wtEl.classList.contains('revealed')) return;
-            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); stopAutoRotate(); var n = Math.min(wtActiveIdx + 1, wtCount - 1); wtTarget = getRotationForIndex(n); updateActiveItem(n); startLoop(); }
-            else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); stopAutoRotate(); var p = Math.max(wtActiveIdx - 1, 0); wtTarget = getRotationForIndex(p); updateActiveItem(p); startLoop(); }
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                e.preventDefault(); stopAutoRotate();
+                if (wtActiveIdx < wtCount - 1) {
+                    var n = wtActiveIdx + 1;
+                    wtTarget = clampTarget(getRotationForIndex(n));
+                    updateActiveItem(n); startLoop();
+                }
+            }
+            else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault(); stopAutoRotate();
+                if (wtActiveIdx > 0) {
+                    var p = wtActiveIdx - 1;
+                    wtTarget = clampTarget(getRotationForIndex(p));
+                    updateActiveItem(p); startLoop();
+                }
+            }
         });
 
         buildTicks(); buildItems(); positionItems(); updateWtPanel(0); updateNeedle(0);
