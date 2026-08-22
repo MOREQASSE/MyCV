@@ -500,7 +500,8 @@ function initScrollAnimations() {
             CX = isMobile ? w * 0.30 : 190;
             CY = isMobile ? w * 0.67 : 240;
             R = isMobile ? w * 0.44 : 170;
-            SPREAD = isMobile ? 28 : 36;
+            var maxSPREAD = isMobile ? 28 : 36;
+            SPREAD = Math.min(maxSPREAD, 160 / (wtCount - 1));
             baseAngles = [];
             for (var i = 0; i < wtCount; i++) {
                 baseAngles.push((i - (wtCount - 1) / 2) * SPREAD);
@@ -744,24 +745,22 @@ function initScrollAnimations() {
             if (!wtAnimId) wtAnimId = requestAnimationFrame(wtLoop);
         }
 
-        // --- Wheel scroll (index-based, hard boundaries) ---
+        // --- Wheel scroll (angle-based with boundary clamping) ---
         wtViewport.addEventListener('wheel', function (e) {
             e.preventDefault();
             stopAutoRotate();
-            var newIdx = wtActiveIdx;
-            var delta = e.deltaY || e.detail;
-            if (delta > 0 && wtActiveIdx < wtCount - 1) {
-                newIdx = wtActiveIdx + 1;
-            } else if (delta < 0 && wtActiveIdx > 0) {
-                newIdx = wtActiveIdx - 1;
-            }
-            if (newIdx !== wtActiveIdx) {
-                wtTarget = clampTarget(getRotationForIndex(newIdx));
-                updateActiveItem(newIdx);
-                startLoop();
+            var rawDelta = e.deltaY || e.detail;
+            var isTouchpad = Math.abs(rawDelta) < 80;
+            var scrollAngle = isTouchpad ? rawDelta * 0.25 : (rawDelta > 0 ? -30 : 30);
+            var candidate = clampTarget(wtAngle + scrollAngle);
+            var candidateIdx = closestItem(candidate);
+            if (candidateIdx !== wtActiveIdx) {
+                wtTarget = clampTarget(getRotationForIndex(candidateIdx));
+                updateActiveItem(candidateIdx);
             } else {
-                wtVelocity = 0;
+                wtTarget = candidate;
             }
+            startLoop();
         }, { passive: false });
 
         // --- Touch drag ---
