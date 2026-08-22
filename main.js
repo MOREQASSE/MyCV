@@ -513,7 +513,7 @@ function initScrollAnimations() {
         calcGeometry();
 
         // --- State ---
-        var wtAngle = 0, wtTarget = 0, wtVelocity = 0, wtActiveIdx = 0;
+        var wtAngle = -baseAngles[0], wtTarget = -baseAngles[0], wtVelocity = 0, wtActiveIdx = 0;
         var wtAnimId = null, wtAutoTimer = null;
         var isDragging = false, dragStartY = 0, dragStartAngle = 0;
 
