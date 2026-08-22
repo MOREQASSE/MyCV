@@ -695,6 +695,7 @@ function initScrollAnimations() {
             var angleDeg = baseAngles[idx];
 
             var ticks = document.querySelectorAll('.wt-tick');
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             ticks.forEach(function (tk) {
                 var ta = parseFloat(tk.dataset.angle);
                 var diff = Math.abs(ta - angleDeg);
@@ -705,7 +706,7 @@ function initScrollAnimations() {
                     tk.style.strokeWidth = diff < 5 ? '2' : '1.5';
                 } else {
                     tk.style.stroke = '';
-                    tk.style.opacity = Math.max(0.02, 0.08 * (1 - (diff - 18) / 72));
+                    tk.style.opacity = isDark ? Math.max(0.02, 0.08 * (1 - (diff - 18) / 72)) : Math.max(0.05, 0.15 * (1 - (diff - 18) / 72));
                     tk.style.strokeWidth = '';
                 }
             });

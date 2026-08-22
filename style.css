@@ -77,6 +77,7 @@
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --radius: 12px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Dark Mode */
@@ -1847,7 +1848,7 @@ section {
 }
 
 .wt-year {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: var(--font-main);
     font-size: 11px;
     font-weight: 700;
     color: var(--primary);
@@ -1884,7 +1885,7 @@ section {
 }
 
 .wt-cat {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: var(--font-main);
     font-size: 12px;
     font-weight: 400;
     color: var(--accent);
@@ -1894,10 +1895,10 @@ section {
 }
 
 .wt-title {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: var(--font-main);
     font-weight: 400;
     font-size: 34px;
-    color: #fff;
+    color: var(--text-dark);
     margin: 0 0 10px;
     line-height: 1.08;
     letter-spacing: -0.03em;
@@ -1905,10 +1906,10 @@ section {
 }
 
 .wt-desc {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: var(--font-main);
     font-weight: 400;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-medium);
     line-height: 1.6;
     margin: 0 0 16px;
     transition: opacity 0.18s ease-out, transform 0.18s ease-out;
@@ -1939,9 +1940,9 @@ section {
 }
 
 .wt-counter {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: var(--font-main);
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-light);
     font-weight: 400;
     font-variant-numeric: tabular-nums;
     opacity: 0.7;
@@ -2023,9 +2024,9 @@ section {
 
 /* --- Tick Marks --- */
 .wt-tick {
-    stroke: #fff;
+    stroke: var(--border);
     stroke-linecap: round;
-    opacity: 0.08;
+    opacity: 0.15;
     transition: opacity 0.3s ease-out, stroke 0.3s ease-out, stroke-width 0.3s ease-out;
 }
 
@@ -2076,10 +2077,10 @@ section {
     align-items: center;
     gap: 10px;
     padding: 10px 20px 10px 10px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--bg-white);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
     border-radius: 999px;
     cursor: pointer;
     pointer-events: auto;
@@ -2089,7 +2090,7 @@ section {
     filter: blur(0.6px);
     transform: translate(-50%, -50%) scale(0.82);
     transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     transform-origin: right center;
     will-change: transform;
 }
@@ -2098,11 +2099,11 @@ section {
     opacity: 1;
     filter: blur(0);
     transform: translate(-50%, -50%) scale(1);
-    border-color: rgba(255, 255, 255, 0.2);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+    border-color: rgba(0, 0, 0, 0.08);
+    background: var(--bg-white);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .wt-item-icon {
@@ -2114,12 +2115,12 @@ section {
     justify-content: center;
     flex-shrink: 0;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--bg-medium);
     transition: background 0.3s, box-shadow 0.3s;
 }
 
 .wt-item.active .wt-item-icon {
-    box-shadow: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .wt-item-icon svg {
@@ -2134,7 +2135,7 @@ section {
 }
 
 .wt-item:not(.active) .wt-item-icon {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--bg-medium);
 }
 
 .wt-item-text {
@@ -2144,10 +2145,10 @@ section {
 }
 
 .wt-item-year {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: var(--font-main);
     font-size: 10px;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-light);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     line-height: 1.2;
@@ -2159,17 +2160,17 @@ section {
 }
 
 .wt-item-name {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: var(--font-main);
     font-size: 14px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-medium);
     letter-spacing: -0.01em;
     transition: color 0.3s ease-out, font-weight 0.3s ease-out;
     line-height: 1.2;
 }
 
 .wt-item.active .wt-item-name {
-    color: #fff;
+    color: var(--text-dark);
     font-weight: 600;
 }
 
@@ -2187,7 +2188,7 @@ section {
     height: 300px;
     transform: translate(-50%, -50%);
     background: radial-gradient(circle,
-        rgba(255, 255, 255, 0.04) 0%,
+        rgba(26, 82, 150, 0.06) 0%,
         transparent 60%);
     pointer-events: none;
     z-index: 1;
@@ -2200,15 +2201,36 @@ section {
 }
 
 /* --- Dark mode adjustments --- */
+[data-theme="dark"] .wt-title {
+    color: #fff;
+}
+
+[data-theme="dark"] .wt-desc {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .wt-counter {
+    color: rgba(255, 255, 255, 0.5);
+}
+
 [data-theme="dark"] .wt-item {
     background: rgba(255, 255, 255, 0.03);
     border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="dark"] .wt-item.active {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .wt-item-icon {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .wt-item.active .wt-item-icon {
+    box-shadow: none;
 }
 
 [data-theme="dark"] .wt-item:not(.active) .wt-item-icon {
@@ -2253,6 +2275,10 @@ section {
 [data-theme="dark"] .wt-tick.glow {
     stroke: var(--item-color, #3b82f6);
     opacity: 0.55;
+}
+
+[data-theme="dark"] .wt-year-dot svg {
+    stroke: #fff;
 }
 
 /* --- Mobile --- */
