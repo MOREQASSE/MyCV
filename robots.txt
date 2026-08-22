@@ -1,0 +1,9 @@
+# robots.txt
+User-agent: *
+Allow: /
+
+Disallow: /.well-known/
+Disallow: /.git/
+
+# Sitemap
+Sitemap: https://moreqasse.github.io/MyCV/sitemap.xml

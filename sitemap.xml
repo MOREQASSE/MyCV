@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://moreqasse.work.gd/</loc>
-    <lastmod>2026-05-08</lastmod>
+    <loc>https://moreqasse.github.io/MyCV/</loc>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://moreqasse.work.gd/CVENG_Mohammed_Reqasse2026.pdf</loc>
-    <lastmod>2026-05-08</lastmod>
+    <loc>https://moreqasse.github.io/MyCV/CVENG_Mohammed_Reqasse2026.pdf</loc>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moreqasse.work.gd/CVFR_Mohammed_Reqasse2026.pdf</loc>
-    <lastmod>2026-05-08</lastmod>
+    <loc>https://moreqasse.github.io/MyCV/CVFR_Mohammed_Reqasse2026.pdf</loc>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moreqasse.github.io/MyCV/privacy.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
 </urlset>
