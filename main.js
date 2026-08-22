@@ -1052,48 +1052,56 @@ function initFormHandling() {
     const form = document.querySelector('.contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    // Create status message element
+    let statusEl = form.querySelector('.cf-status');
+    if (!statusEl) {
+        statusEl = document.createElement('div');
+        statusEl.className = 'cf-status';
+        form.appendChild(statusEl);
+    }
+
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // reCAPTCHA check - commented out. Uncomment when reCAPTCHA is re-enabled.
-        // if (typeof grecaptcha !== 'undefined') {
-        //     const token = grecaptcha.getResponse();
-        //     if (!token) {
-        //         alert(currentLang === 'en' ? 'Please complete the reCAPTCHA verification.' :
-        //               currentLang === 'fr' ? 'Veuillez compléter la vérification reCAPTCHA.' :
-        //               'يرجى إكمال التحقق من reCAPTCHA.');
-        //         return;
-        //     }
-        // }
-
-        // Get form data
-        const formData = new FormData(form);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        const message = formData.get('message');
-
-        // Create mailto link
-        const mailtoLink = `mailto:reqasse@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-        )}`;
-
-        // Open mailto
-        window.location.href = mailtoLink;
-
-        // Show success feedback
         const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-        btn.textContent = currentLang === 'en' ? 'Message Sent!' : 
-                          currentLang === 'fr' ? 'Message Envoyé!' : 'تم الإرسال!';
-        btn.style.background = '#10b981';
+        const originalHTML = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<span>Sending...</span>';
+        statusEl.className = 'cf-status';
+        statusEl.textContent = '';
+
+        try {
+            const formData = new FormData(form);
+            const response = await fetch('https://formspree.io/f/mrpzddkv', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                statusEl.className = 'cf-status cf-status--success';
+                statusEl.textContent = currentLang === 'en' ? 'Message sent successfully!' :
+                                       currentLang === 'fr' ? 'Message envoyé avec succès!' :
+                                       'تم إرسال الرسالة بنجاح!';
+                form.reset();
+            } else {
+                const data = await response.json();
+                throw new Error(data.error || 'Submission failed');
+            }
+        } catch (err) {
+            statusEl.className = 'cf-status cf-status--error';
+            statusEl.textContent = currentLang === 'en' ? 'Something went wrong. Please try again.' :
+                                   currentLang === 'fr' ? 'Une erreur s\'est produite. Veuillez réessayer.' :
+                                   'حدث خطأ. يرجى المحاولة مرة أخرى.';
+        }
+
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
 
         setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-            form.reset();
-            // if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
-        }, 3000);
+            statusEl.className = 'cf-status';
+            statusEl.textContent = '';
+        }, 6000);
     });
 }
 
