@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dons &amp; Donateurs — Taourirt</title>
+<link rel="stylesheet" href="assets/css/admin.css">
+<link rel="stylesheet" href="assets/css/admin-mobile.css">
+<style>[data-lucide]{display:inline-block;vertical-align:middle;flex-shrink:0}</style>
+<script src="assets/js/demo-early.js"></script>
+</head><body>
+<div class="admin-shell">
+<aside class="sidebar" id="sidebar">
+  <span class="sidebar-verse" aria-hidden="true">الإنسانية في صميم رعايتنا — L’humanisme au cœur de nos soins</span>
+  <div class="sidebar-head">
+    <button class="burger" id="sidebarToggle" aria-label="Réduire le menu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <div class="brand-title">
+      <strong>Association <i>Taourirt</i></strong>
+      <span>Bienfaisance <em>·</em> Dignité des aînés</span>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">Maison</div>
+    <a class="" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> <span class="nav-label">Tableau de bord</span></a>
+    <a class="" href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <span class="nav-label">Site & Contact</span></a>    <div class="nav-section">Ateliers de la maison</div>
+    <a class="" href="stats.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 16l3-3 3 3 4-6"/></svg> <span class="nav-label">Chiffres (7)</span></a>    <a class="" href="categories.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h16"/></svg> <span class="nav-label">Catégories</span></a>    <a class="" href="projects.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> <span class="nav-label">Projets & Galerie</span></a>    <a class="" href="news.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 22h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 1-2 2z"/><path d="M8 10h8M8 14h8"/></svg> <span class="nav-label">Actualités</span></a>    <a class="" href="team.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span class="nav-label">Équipe</span></a>    <a class="" href="sponsors.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-6.7-4.2-9-8.2A5 5 0 0 1 12 7a5 5 0 0 1 9 5.8C18.7 16.8 12 21 12 21z"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> <span class="nav-label">Sponsors</span></a>    <a class="" href="pages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 11h8"/><path d="M8 15h6"/><path d="M12 3v4"/></svg> <span class="nav-label">Pages</span></a>    <div class="nav-section">Seuil — les voix</div>
+        <a class="" href="messages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg> <span class="nav-label">Messages Contact</span></a>    <a class="" href="messages-aide.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-6.7-4.2-9-8.2A5 5 0 0 1 12 7a5 5 0 0 1 9 5.8C18.7 16.8 12 21 12 21z"/><path d="M9 12h.01"/><path d="M15 12h.01"/></svg> <span class="nav-label">Demandes d’aide</span></a>    <a class="active" href="donations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M12 8a3 3 0 0 1 3-3 3 3 0 0 1 3 3"/><path d="M12 8a3 3 0 0 0-3-3 3 3 0 0 0-3 3"/><path d="M3 12h18"/></svg> <span class="nav-label">Dons & Donateurs</span></a>        <div class="nav-section">Administration</div>
+    <a class="" href="admins.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-4-4v4h4z"/><path d="M16 3h4v4"/></svg> <span class="nav-label">Admins</span></a>
+      </nav>
+  <div class="sidebar-foot">
+    <span style="width:30px;height:30px;border-radius:999px;background:#fff;color:var(--admin-blue);display:grid;place-items:center;font-weight:800;font-size:12px">A</span>
+    <div style="flex:1;min-width:0"><small>admin@taourirt.ma</small> <span style="font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;border-radius:999px;background:#1E40AF;color:#fff;margin-left:4px">superadmin</span><br><a href="login.html?logout=1" style="font-size:11px;color:#8BC2EF">Déconnexion</a></div>
+  </div>
+</aside>
+<div class="main">
+  <div class="topbar">
+    <h2>Dons &amp; Donateurs</h2>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="btn btn-light" href="#voir-site" target="_blank">Voir le site</a>
+    </div>
+  </div>
+  <div class="content">
+<div class="book-tabs-wrap">
+  <div class="book-tabs" role="tablist" aria-label="Sections dons">
+    <a href="donations.html" role="tab" aria-selected="true" class="book-tab active" data-tab="dons">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M12 8a3 3 0 0 1 3-3 3 3 0 0 1 3 3"/><path d="M12 8a3 3 0 0 0-3-3 3 3 0 0 0-3 3"/></svg>
+      Dons <span class="count">14</span>
+    </a>
+    <a href="donations-params.html" role="tab" aria-selected="false" class="book-tab " data-tab="parametres">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 9 15a1.65 1.65 0 0 0-1-1.51V13a2 2 0 0 1 4 0v.49c.38.22.86.34 1.33.34.47 0 .95-.12 1.33-.34V13a2 2 0 0 1 4 0v.49a1.65 1.65 0 0 0-1 1.51z"/></svg>
+      Paramètres
+    </a>
+  </div>
+  <a class="btn btn-light" href="export-dons.csv" style="margin-left:auto;align-self:center">Exporter CSV</a></div>
+
+<div class="book-panel" data-active="dons">
+  <div class="book-panel-content" data-panel="dons" >
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+      <a class="btn btn-primary" style="padding:6px 12px;font-size:12px" href="donations.html">Tous</a>
+      <a class="btn btn-light" style="padding:6px 12px;font-size:12px" href="donations.html">Nouveaux</a>
+      <a class="btn btn-light" style="padding:6px 12px;font-size:12px" href="donations.html">En attente</a>
+      <a class="btn btn-light" style="padding:6px 12px;font-size:12px" href="donations.html">Payés</a>
+      <a class="btn btn-light" style="padding:6px 12px;font-size:12px" href="donations.html">Rejetés</a>
+  </div>
+<div class="card" style="margin-top:12px;padding:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:#EFF6FF;border-color:#BFDBFE">
+  <span style="font-size:12px;font-weight:800;color:var(--blue-900)">Mode réel — 3 060 / 50 000 DH (6%) · 13 donateurs</span>
+  <span style="font-size:11px;color:var(--muted);margin-left:auto">Basculable dans Paramètres → Réalisme</span>
+</div>
+
+<style>
+.donations-table{ --row-h:56px; }
+.donor-cell strong{font-size:13px;color:var(--blue-900);line-height:1.2}
+.donor-cell small{font-size:11px;color:var(--muted)}
+.status-select{appearance:none;-webkit-appearance:none;padding:6px 28px 6px 10px;border-radius:999px;border:1.5px solid #E2E8F5;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235B6B80' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 8px center;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;min-width:110px;transition:all .15s}
+.status-select[data-status="new"]{background-color:#FFF7ED;border-color:#FED7AA;color:#9A3412}
+.status-select[data-status="pending"]{background-color:#EFF6FF;border-color:#BFDBFE;color:#1E40AF}
+.status-select[data-status="paid"]{background-color:#ECFDF5;border-color:#A7F3D0;color:#065F46}
+.status-select[data-status="rejected"]{background-color:#FEF2F2;border-color:#FECACA;color:#991B1B}
+.status-select:focus{outline:2px solid var(--sky);outline-offset:1px}
+.action-toolbar{display:flex;gap:6px;align-items:center;justify-content:flex-end}
+.btn-icon{width:32px;height:32px;border-radius:8px;border:1px solid #E2EEF8;background:#fff;color:var(--blue-900);display:grid;place-items:center;cursor:pointer;transition:all .15s}
+.btn-icon:hover{border-color:#BFDBFE;background:#EFF6FF;transform:translateY(-1px)}
+.btn-icon--danger{color:#DC2626}
+.btn-icon--danger:hover{background:#FEF2F2;border-color:#FECACA}
+.details-drawer td{padding:0 !important;border-top:0 !important}
+.details-panel{padding:14px 16px;background:var(--sky-soft);border-top:1px solid #E2EEF8;display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:12px;line-height:1.5}
+.details-panel div{min-width:0;overflow-wrap:anywhere}
+.details-panel strong{color:var(--blue-900);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.row-expand-btn{width:30px;height:30px;border-radius:8px;border:1px solid #E2EEF8;background:#fff;color:var(--muted);display:grid;place-items:center;cursor:pointer;transition:all .15s}
+.row-expand-btn:hover{border-color:#BFDBFE;color:var(--blue-700);background:#EFF6FF}
+.row-expand-btn[aria-expanded="true"]{background:var(--blue-900);color:#fff;border-color:var(--blue-900)}
+.row-expand-btn .icon-eye-off{display:none}
+.row-expand-btn[aria-expanded="true"] .icon-eye{display:none}
+.row-expand-btn[aria-expanded="true"] .icon-eye-off{display:block}
+.donation-row{cursor:pointer;transition:background .12s}
+.donation-row:hover{background:#F8FBFE}
+/* Book tabs — connected to panel like a book */
+.book-tabs-wrap{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:4px}
+.book-tabs{position:relative;display:flex;gap:8px;align-items:end}
+.book-tab{position:relative;display:inline-flex;align-items:center;gap:8px;padding:10px 18px 11px;border-radius:14px 14px 0 0;border:1.5px solid transparent;border-bottom:none;background:#F1F5F9;color:var(--muted);font-size:13px;font-weight:800;letter-spacing:.02em;text-decoration:none;transition:all .28s cubic-bezier(.22,1,.36,1);top:1px}
+.book-tab:hover{background:#fff;border-color:#E2EEF8;color:var(--blue-900);transform:translateY(-1px)}
+.book-tab.active{background:#fff;border-color:#E2EEF8;color:var(--blue-900);box-shadow:0 -6px 16px rgba(11,34,64,.06);z-index:2}
+.book-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:#fff}
+.book-tab svg{width:14px;height:14px;flex-shrink:0}
+.book-tab .count{font-size:11px;background:var(--blue-900);color:#fff;padding:2px 7px;border-radius:999px;min-width:20px;text-align:center}
+.book-tab:not(.active) .count{background:#E2EEF8;color:var(--muted)}
+.book-panel{position:relative;background:#fff;border:1px solid #E2EEF8;border-radius:0 16px 16px 16px;overflow:hidden;box-shadow:0 4px 16px rgba(11,34,64,.04);min-height:320px}
+.book-panel[data-active="parametres"]{border-radius:16px 0 16px 16px}
+.book-panel-content{padding:16px}
+.book-panel-content[hidden]{display:none !important}
+.book-panel-content.is-entering{animation:bookIn .38s cubic-bezier(.22,1,.36,1)}
+.book-panel-content.is-leaving{animation:bookOut .22s ease forwards;position:absolute;inset:16px;pointer-events:none}
+@keyframes bookIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes bookOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-6px) scale(.98)}}
+@media(prefers-reduced-motion:reduce){.book-panel-content.is-entering,.book-panel-content.is-leaving{animation:none !important}}
+</style>
+<div class="card" style="margin-top:14px;overflow:auto">
+  <table class="table donations-table">
+    <thead><tr><th style="width:32px"></th><th>Date</th><th>Donateur</th><th>Montant</th><th>Projet</th><th>Paiement</th><th>Statut</th><th style="width:110px;text-align:right">Actions</th></tr></thead>
+    <tbody>
+        <tr class="donation-row" data-id="20">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-20" onclick="toggleDrawer(20)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-09-03T15:28</span><br><small style="color:var(--muted)">#20 · fr</small></td>
+      <td class="donor-cell"><strong>Mohammed Reqasse</strong><br><small>reqasse@gmail.com</small></td>
+      <td><strong>610 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">—</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">mopay</span></td>
+      <td>
+        <select class="status-select" data-status="paid" data-id="20" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" selected>Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:reqasse@gmail.com?subject=Re%C3%A7u+don+610DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="20" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="20">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-20" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212700821340</div>
+        <div><strong>IP / Lang</strong><br>::1 · fr</div>
+        <div><strong>Créé</strong><br>2026-09-03T15:28:34+02:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">test</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Affectation libre</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="6">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-6" onclick="toggleDrawer(6)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-09-02T19:01</span><br><small style="color:var(--muted)">#6 · fr</small></td>
+      <td class="donor-cell"><strong>Ahmed Benali</strong><br><small>ahmed.benali@example.com</small></td>
+      <td><strong>100 DH</strong><br><small style="color:var(--muted)">Mensuel</small></td>
+      <td><span style="font-size:12px">Repas solidaires hebdomadaires — 80 couverts chaque vendredi</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">mopay</span></td>
+      <td>
+        <select class="status-select" data-status="paid" data-id="6" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" selected>Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:ahmed.benali@example.com?subject=Re%C3%A7u+don+100DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="6" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="6">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-6" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 61 22 33 44</div>
+        <div><strong>IP / Lang</strong><br>212.0.68.53 · fr</div>
+        <div><strong>Créé</strong><br>2026-09-02T19:01:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Mensuel pour les visites à domicile.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Repas solidaires hebdomadaires — 80 couverts chaque vendredi</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="12">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-12" onclick="toggleDrawer(12)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-09-02T17:57</span><br><small style="color:var(--muted)">#12 · fr</small></td>
+      <td class="donor-cell"><strong>Nora Chraibi</strong><br><small>nora.ch@example.com</small></td>
+      <td><strong>50 DH</strong><br><small style="color:var(--muted)">Mensuel</small></td>
+      <td><span style="font-size:12px">—</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">espece</span></td>
+      <td>
+        <select class="status-select" data-status="new" data-id="12" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" selected>Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" >Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:nora.ch@example.com?subject=Re%C3%A7u+don+50DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="12" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="12">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-12" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>—</div>
+        <div><strong>IP / Lang</strong><br>212.0.53.240 · fr</div>
+        <div><strong>Créé</strong><br>2026-09-02T17:57:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Non</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Petite contribution mensuelle mais régulière.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Affectation libre</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="17">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-17" onclick="toggleDrawer(17)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-09-02T17:21</span><br><small style="color:var(--muted)">#17 · fr</small></td>
+      <td class="donor-cell"><strong>Anonyme</strong><br><small>anonyme@example.com</small></td>
+      <td><strong>50 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">—</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">espece</span></td>
+      <td>
+        <select class="status-select" data-status="new" data-id="17" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" selected>Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" >Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:anonyme@example.com?subject=Re%C3%A7u+don+50DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="17" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="17">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-17" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>—</div>
+        <div><strong>IP / Lang</strong><br>212.0.21.242 · fr</div>
+        <div><strong>Créé</strong><br>2026-09-02T17:21:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Non</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Anonyme, gardez courage.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Affectation libre</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="8">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-8" onclick="toggleDrawer(8)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-09-02T11:55</span><br><small style="color:var(--muted)">#8 · fr</small></td>
+      <td class="donor-cell"><strong>Youssef El Mansouri</strong><br><small>youssef.m@example.com</small></td>
+      <td><strong>50 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">Ateliers bien-être et gymnastique douce — 2× par semaine</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">espece</span></td>
+      <td>
+        <select class="status-select" data-status="new" data-id="8" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" selected>Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" >Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:youssef.m@example.com?subject=Re%C3%A7u+don+50DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="8" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="8">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-8" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 70 00 11 22</div>
+        <div><strong>IP / Lang</strong><br>212.0.95.63 · fr</div>
+        <div><strong>Créé</strong><br>2026-09-02T11:55:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Non</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">—</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Ateliers bien-être et gymnastique douce — 2× par semaine</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="15">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-15" onclick="toggleDrawer(15)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-09-01T17:28</span><br><small style="color:var(--muted)">#15 · en</small></td>
+      <td class="donor-cell"><strong>Omar El Fassi</strong><br><small>omar.elfassi@example.com</small></td>
+      <td><strong>75 DH</strong><br><small style="color:var(--muted)">Mensuel</small></td>
+      <td><span style="font-size:12px">Repas solidaires hebdomadaires — 80 couverts chaque vendredi</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">virement</span></td>
+      <td>
+        <select class="status-select" data-status="pending" data-id="15" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" selected>En attente</option>
+          <option value="paid" >Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:omar.elfassi@example.com?subject=Re%C3%A7u+don+75DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="15" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="15">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-15" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 90 12 34 56</div>
+        <div><strong>IP / Lang</strong><br>212.0.90.224 · en</div>
+        <div><strong>Créé</strong><br>2026-09-01T17:28:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Mensuel — prélevez le 5 de chaque mois.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Repas solidaires hebdomadaires — 80 couverts chaque vendredi</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="10">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-10" onclick="toggleDrawer(10)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-09-01T14:09</span><br><small style="color:var(--muted)">#10 · fr</small></td>
+      <td class="donor-cell"><strong>Mehdi Tazi</strong><br><small>mehdi.tazi@example.com</small></td>
+      <td><strong>100 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">—</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">mopay</span></td>
+      <td>
+        <select class="status-select" data-status="pending" data-id="10" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" selected>En attente</option>
+          <option value="paid" >Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:mehdi.tazi@example.com?subject=Re%C3%A7u+don+100DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="10" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="10">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-10" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 33 44 55 66</div>
+        <div><strong>IP / Lang</strong><br>212.0.99.131 · fr</div>
+        <div><strong>Créé</strong><br>2026-09-01T14:09:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Non</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Continuez votre bel engagement.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Affectation libre</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="5">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-5" onclick="toggleDrawer(5)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-09-01T11:53</span><br><small style="color:var(--muted)">#5 · fr</small></td>
+      <td class="donor-cell"><strong>Fatima Zahra El Idrissi</strong><br><small>fatima.zahra@example.com</small></td>
+      <td><strong>250 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">visite medicale a agadir</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">virement</span></td>
+      <td>
+        <select class="status-select" data-status="paid" data-id="5" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" selected>Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:fatima.zahra@example.com?subject=Re%C3%A7u+don+250DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="5" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="5">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-5" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 12 34 56 78</div>
+        <div><strong>IP / Lang</strong><br>212.0.40.90 · fr</div>
+        <div><strong>Créé</strong><br>2026-09-01T11:53:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Pour les repas solidaires, avec tout mon cœur.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>visite medicale a agadir</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="14">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-14" onclick="toggleDrawer(14)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-08-31T09:15</span><br><small style="color:var(--muted)">#14 · ar</small></td>
+      <td class="donor-cell"><strong>Leila Fassi</strong><br><small>leila.fassi@example.com</small></td>
+      <td><strong>150 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">visite medicale a agadir</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">mopay</span></td>
+      <td>
+        <select class="status-select" data-status="paid" data-id="14" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" selected>Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:leila.fassi@example.com?subject=Re%C3%A7u+don+150DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="14" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="14">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-14" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 78 90 12 34</div>
+        <div><strong>IP / Lang</strong><br>212.0.49.214 · ar</div>
+        <div><strong>Créé</strong><br>2026-08-31T09:15:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">—</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>visite medicale a agadir</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="9">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-9" onclick="toggleDrawer(9)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-08-30T12:51</span><br><small style="color:var(--muted)">#9 · fr</small></td>
+      <td class="donor-cell"><strong>Aïcha Bennis</strong><br><small>aicha.bennis@example.com</small></td>
+      <td><strong>75 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">visite medicale a agadir</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">virement</span></td>
+      <td>
+        <select class="status-select" data-status="paid" data-id="9" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" selected>Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:aicha.bennis@example.com?subject=Re%C3%A7u+don+75DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="9" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="9">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-9" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 12 98 76 54</div>
+        <div><strong>IP / Lang</strong><br>212.0.28.25 · fr</div>
+        <div><strong>Créé</strong><br>2026-08-30T12:51:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Pour ma mère qui a bénéficié de vos soins.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>visite medicale a agadir</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="13">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-13" onclick="toggleDrawer(13)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-08-29T14:15</span><br><small style="color:var(--muted)">#13 · fr</small></td>
+      <td class="donor-cell"><strong>Hassan Ouazzani</strong><br><small>hassan.ouazzani@example.com</small></td>
+      <td><strong>200 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">Ateliers bien-être et gymnastique douce — 2× par semaine</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">virement</span></td>
+      <td>
+        <select class="status-select" data-status="rejected" data-id="13" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" >Payé</option>
+          <option value="rejected" selected>Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:hassan.ouazzani@example.com?subject=Re%C3%A7u+don+200DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="13" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="13">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-13" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 45 67 89 01</div>
+        <div><strong>IP / Lang</strong><br>212.0.81.15 · fr</div>
+        <div><strong>Créé</strong><br>2026-08-29T14:15:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Non</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Pour l’atelier bien-être. Bravo !</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Ateliers bien-être et gymnastique douce — 2× par semaine</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="11">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-11" onclick="toggleDrawer(11)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-08-28T18:31</span><br><small style="color:var(--muted)">#11 · fr</small></td>
+      <td class="donor-cell"><strong>Société Atlas SARL</strong><br><small>contact@atlas-sarl.ma</small></td>
+      <td><strong>1000 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">Repas solidaires hebdomadaires — 80 couverts chaque vendredi</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">virement</span></td>
+      <td>
+        <select class="status-select" data-status="paid" data-id="11" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" selected>Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:contact@atlas-sarl.ma?subject=Re%C3%A7u+don+1000DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="11" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="11">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-11" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 5 36 11 22 33</div>
+        <div><strong>IP / Lang</strong><br>212.0.75.131 · fr</div>
+        <div><strong>Créé</strong><br>2026-08-28T18:31:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Don entreprise — besoin de reçu fiscal.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Repas solidaires hebdomadaires — 80 couverts chaque vendredi</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="16">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-16" onclick="toggleDrawer(16)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-08-27T16:14</span><br><small style="color:var(--muted)">#16 · es</small></td>
+      <td class="donor-cell"><strong>Sofia Marouane</strong><br><small>sofia.marouane@example.com</small></td>
+      <td><strong>300 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">—</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">virement</span></td>
+      <td>
+        <select class="status-select" data-status="paid" data-id="16" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" selected>Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:sofia.marouane@example.com?subject=Re%C3%A7u+don+300DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="16" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="16">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-16" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 11 22 33 44</div>
+        <div><strong>IP / Lang</strong><br>212.0.95.119 · es</div>
+        <div><strong>Créé</strong><br>2026-08-27T16:14:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">Pour les colis du Ramadan à venir.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>Affectation libre</div>
+      </div></td>
+    </tr>
+        <tr class="donation-row" data-id="18">
+      <td><button class="row-expand-btn" aria-expanded="false" aria-controls="drawer-18" onclick="toggleDrawer(18)" title="Voir détails" aria-label="Voir détails">
+        <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg class="icon-eye-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.53 9.53a3 3 0 1 0 4.24 4.24"/><path d="M9.53 9.53A10.07 10.07 0 0 0 12 12a3 3 0 0 1 2.83 2.83"/><path d="M1 1l22 22"/></svg>
+      </button></td>
+      <td><span style="font-size:13px;font-weight:600">2026-08-26T17:03</span><br><small style="color:var(--muted)">#18 · fr</small></td>
+      <td class="donor-cell"><strong>Dr. Salim Berrada</strong><br><small>salim.berrada@example.com</small></td>
+      <td><strong>250 DH</strong><br><small style="color:var(--muted)">Unique</small></td>
+      <td><span style="font-size:12px">visite medicale a agadir</span></td>
+      <td><span class="badge" style="background:#F8FBFE;border:1px solid #E2EEF8;padding:3px 8px;border-radius:999px;font-size:11px">virement</span></td>
+      <td>
+        <select class="status-select" data-status="paid" data-id="18" aria-label="Changer statut" onchange="changeStatus(this)">
+          <option value="new" >Nouveau</option>
+          <option value="pending" >En attente</option>
+          <option value="paid" selected>Payé</option>
+          <option value="rejected" >Rejeté</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-toolbar">
+          <a class="btn-icon" href="mailto:salim.berrada@example.com?subject=Re%C3%A7u+don+250DH" title="Envoyer reçu" aria-label="Reçu"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg></a>
+          <form method="post" action="donations.html" data-mut data-id="18" style="display:inline" onsubmit="return taConfirmSubmit(event, this, 'Supprimer ce don ?', {danger:true, okText:'Supprimer'})">
+            <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+            <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="id" value="18">
+            <button type="submit" class="btn-icon btn-icon--danger" title="Supprimer" aria-label="Supprimer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    <tr class="details-drawer" id="drawer-18" hidden>
+      <td colspan="8"><div class="details-panel">
+        <div><strong>Téléphone</strong><br>+212 6 23 45 67 89</div>
+        <div><strong>IP / Lang</strong><br>212.0.98.227 · fr</div>
+        <div><strong>Créé</strong><br>2026-08-26T17:03:00+00:00</div>
+        <div><strong>Reçu voulu</strong><br>Oui — email requis</div>
+        <div style="grid-column:1/-1"><strong>Message</strong><br><span style="white-space:pre-wrap">En mémoire de ma mère — affectez où besoin est le plus grand.</span></div>
+        <div style="grid-column:1/-1"><strong>Projet</strong><br>visite medicale a agadir</div>
+      </div></td>
+    </tr>
+            </tbody>
+  </table>
+</div>
+<script>
+function toggleDrawer(id){
+  const row=document.getElementById('drawer-'+id);
+  const btn=document.querySelector(`button[aria-controls="drawer-${id}"]`);
+  const isHidden=row.hasAttribute('hidden');
+  // close all others first (accordion)
+  if(isHidden){
+    document.querySelectorAll('.details-drawer:not([hidden])').forEach(el=>{
+      if(el.id!==`drawer-${id}`){
+        el.setAttribute('hidden','');
+        const b=document.querySelector(`button[aria-controls="${el.id}"]`);
+        if(b) b.setAttribute('aria-expanded','false');
+      }
+    });
+    row.removeAttribute('hidden'); if(btn) btn.setAttribute('aria-expanded','true');
+  } else {
+    row.setAttribute('hidden',''); if(btn) btn.setAttribute('aria-expanded','false');
+  }
+}
+// Entire row clickable — better UX, respects interactive elements
+document.querySelectorAll('.donation-row').forEach(row=>{
+  row.addEventListener('click', e=>{
+    // ignore clicks on interactive elements
+    if(e.target.closest('button, a, select, input, label')) return;
+    const id=row.dataset.id;
+    if(id) toggleDrawer(id);
+  });
+});
+function changeStatus(sel){
+  const id=sel.dataset.id, status=sel.value, prev=sel.dataset.status, csrf='f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492';
+  sel.style.opacity='.6'; sel.disabled=true;
+  fetch(`donations.html`,{method:'POST',headers:{'Content-Type':'application/json','X-Requested-With':'fetch','X-CSRF-TOKEN':csrf},body:JSON.stringify({action:'status',id,status,csrf})})
+    .then(r=>r.json().then(j=>({http:r.ok,j})))
+    .then(({http,j})=>{
+      if(http&&j.ok){ sel.dataset.status=status; }
+      else { sel.value=prev; ta.alert((j&&j.error)||'Erreur mise à jour statut', {type:'danger', title:'Erreur'}); }
+      sel.style.opacity=''; sel.disabled=false;
+    })
+    .catch(()=>{ sel.value=prev; sel.style.opacity=''; sel.disabled=false; ta.alert('Erreur mise à jour statut', {type:'danger', title:'Erreur réseau'}); });
+  // Optimistic color update
+  sel.dataset.status=status;
+}
+// Delete via POST (no reload); plain-form submit works without JS
+document.addEventListener('submit',e=>{
+  const f=e.target.closest('form[data-mut]'); if(!f) return;
+  e.preventDefault();
+  const fd=new FormData(f), data=Object.fromEntries(fd.entries());
+  fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'application/json','X-Requested-With':'fetch','X-CSRF-TOKEN':data.csrf||''},body:JSON.stringify(data)})
+    .then(r=>r.json()).then(j=>{
+      if(j.ok){
+        const id=f.dataset.id;
+        const row=document.querySelector(`tr.donation-row[data-id="${id}"]`);
+        const drawer=document.getElementById('drawer-'+id);
+        if(row) row.remove(); if(drawer) drawer.remove();
+        if(!document.querySelector('tr.donation-row')){
+          const tb=document.querySelector('.donations-table tbody');
+          if(tb) tb.innerHTML='<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--muted)">Aucun don.</td></tr>';
+        }
+      } else ta.alert(j.error||'Erreur', {type:'danger', title:'Erreur'});
+    }).catch(()=>ta.alert('Erreur réseau', {type:'danger', title:'Erreur réseau'}));
+});
+</script>
+  </div>
+  <div class="book-panel-content" data-panel="parametres" hidden>
+<div style="display:flex;justify-content:flex-end;margin:14px 14px 0">
+  <a href="donations.html" style="font-size:12px;font-weight:700;color:var(--blue-700);text-decoration:none;display:inline-flex;align-items:center;gap:6px">← Retour aux dons</a>
+</div>
+<form method="POST" class="card" style="margin:14px">
+  <input type="hidden" name="csrf" value="f0af9600fd9de1b4bbc2c476781e2cd461ebea5029b5b51a15eecbb60e16a492">
+  <div class="card-head" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <h3 style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/><path d="M12 11v3"/><circle cx="12" cy="15" r=".5" fill="currentColor" stroke="none"/></svg> Réalisme & montants</h3>
+    <span class="badge" style="background:#ECFDF5;border-color:#A7F3D0;color:#065F46;border:1px solid;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800">Mode réel actif</span>
+  </div>
+
+  <label style="display:flex;gap:12px;align-items:flex-start;padding:14px;border:1.5px solid #BFDBFE;border-radius:14px;background:#EFF6FF;cursor:pointer;transition:all .15s">
+    <input type="checkbox" name="donation_realism" value="1" checked style="margin-top:3px;accent-color:var(--blue-600)">
+    <span style="flex:1">
+      <strong style="font-size:13px;color:var(--blue-900);display:flex;align-items:center;gap:8px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Affichage des chiffres
+      </strong>
+      <span style="font-size:12.5px;color:var(--muted);line-height:1.5;display:block;margin-top:4px">
+        <span style="color:var(--blue-900);font-weight:700">Réel :</span> montants calculés depuis les dons reçus &nbsp;·&nbsp;
+        <span style="color:var(--muted)">Démo :</span> données d’exemple pour présentation
+      </span>
+      <span style="display:inline-flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+        <span style="font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;background:#fff;border:1px solid #E2EEF8;color:var(--muted)">Exemple: 68% • 127 donateurs</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;background:#0B2240;color:#fff;border-color:#0B2240">Réel sélectionné</span>
+      </span>
+    </span>
+  </label>
+
+  <div class="form-grid" style="margin-top:18px">
+    <div class="field"><label style="display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/><circle cx="12" cy="12" r="7"/></svg> Objectif (DH)</label><input type="number" name="donation_goal" value="50000" min="1000" step="1000"></div>
+    <div class="field" style="grid-column:1/-1">
+      <label style="display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12h8"/><path d="M12 8v8"/></svg> Montants proposés <span style="font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0">— 3 à 4 idéal</span></label>
+      <div style="display:grid;gap:10px;margin-top:8px">
+                <div style="display:grid;grid-template-columns:90px 1fr 1fr 1fr 1fr;gap:8px;align-items:end;background:#F8FBFE;border:1px solid #E2EEF8;border-radius:12px;padding:10px">
+          <div class="field" style="margin:0"><label>Montant DH</label><input type="number" name="amounts[0][amount]" value="50" min="10"></div>
+          <div class="field" style="margin:0"><label>Label FR</label><input type="text" name="amounts[0][label_fr]" value="1 semaine de repas"></div>
+          <div class="field" style="margin:0"><label>Label EN</label><input type="text" name="amounts[0][label_en]" value="1 week of meals"></div>
+          <div class="field" style="margin:0"><label>Label ES</label><input type="text" name="amounts[0][label_es]" value="1 semana de comidas"></div>
+          <div class="field" style="margin:0"><label>Label AR</label><input type="text" name="amounts[0][label_ar]" value="أسبوع من الوجبات"></div>
+        </div>
+                <div style="display:grid;grid-template-columns:90px 1fr 1fr 1fr 1fr;gap:8px;align-items:end;background:#F8FBFE;border:1px solid #E2EEF8;border-radius:12px;padding:10px">
+          <div class="field" style="margin:0"><label>Montant DH</label><input type="number" name="amounts[1][amount]" value="100" min="10"></div>
+          <div class="field" style="margin:0"><label>Label FR</label><input type="text" name="amounts[1][label_fr]" value="2 semaines"></div>
+          <div class="field" style="margin:0"><label>Label EN</label><input type="text" name="amounts[1][label_en]" value="2 weeks"></div>
+          <div class="field" style="margin:0"><label>Label ES</label><input type="text" name="amounts[1][label_es]" value="2 semanas"></div>
+          <div class="field" style="margin:0"><label>Label AR</label><input type="text" name="amounts[1][label_ar]" value="أسبوعان"></div>
+        </div>
+                <div style="display:grid;grid-template-columns:90px 1fr 1fr 1fr 1fr;gap:8px;align-items:end;background:#F8FBFE;border:1px solid #E2EEF8;border-radius:12px;padding:10px">
+          <div class="field" style="margin:0"><label>Montant DH</label><input type="number" name="amounts[2][amount]" value="250" min="10"></div>
+          <div class="field" style="margin:0"><label>Label FR</label><input type="text" name="amounts[2][label_fr]" value="1 mois"></div>
+          <div class="field" style="margin:0"><label>Label EN</label><input type="text" name="amounts[2][label_en]" value="1 month"></div>
+          <div class="field" style="margin:0"><label>Label ES</label><input type="text" name="amounts[2][label_es]" value="1 mes"></div>
+          <div class="field" style="margin:0"><label>Label AR</label><input type="text" name="amounts[2][label_ar]" value="شهر واحد"></div>
+        </div>
+              </div>
+    </div>
+
+    <div class="field form-field--full">
+      <label style="display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 11h.01"/><path d="M02 10h20"/></svg> Coordonnées bancaires — Virement <span style="font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0">— affichées uniquement si renseignées</span></label>
+      <div style="display:grid;gap:10px">
+        <div class="field" style="margin:0">
+          <label style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)">RIB / IBAN</label>
+          <input type="text" name="donation_rib" value="230 590 410775821103240036" placeholder="MA64 0110 7800 0123 4567 8901 234" autocomplete="off" spellcheck="false" inputmode="text" pattern="[A-Za-z0-9 ]*" style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase" maxlength="34">
+          <small style="font-size:11px;color:var(--muted);margin-top:4px;display:block">24 caractères max — espaces tous les 4 pour lisibilité.</small>
+        </div>
+        <div class="field" style="margin:0">
+          <label style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)">Intitulé du compte</label>
+          <input type="text" name="donation_holder" value="MOHAMMED REQASSE" placeholder="NOM PRENOM" autocomplete="off" spellcheck="false" maxlength="60" style="text-transform:uppercase">
+          <small style="font-size:11px;color:var(--muted);margin-top:4px;display:block">Ex: ASSOCIATION TAOURIRT — s’affiche sous le RIB côté donateur.</small>
+        </div>
+      </div>
+      <small style="font-size:11px;color:var(--muted);display:block;margin-top:6px">Laissez vide pour masquer entièrement le bloc “Virement” sur la page don (aucune donnée fictive ne s’affiche).</small>
+    </div>
+
+    <div class="field form-field--full">
+      <label style="display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 11.08V12a10 10 0 1 1-5.93 9.14"/><path d="M22 4l-9 5-9-5"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg> Infos MoPay / Wafacash <span style="font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0">— affiché pour ce choix</span></label>
+      <input type="text" name="donation_mopay_info" value="" placeholder="Ex: Agence Wafacash Taourirt — code reçu par SMS" autocomplete="off" spellcheck="false" maxlength="120">
+      <small style="font-size:11px;color:var(--muted);margin-top:6px;display:block">Une seule ligne — ex: <em>“Référence envoyée par SMS, retrait à l’agence la plus proche”</em>. Laissez vide pour masquer.</small>
+    </div>
+  </div>
+
+  <div style="margin-top:10px;padding:10px 12px;border-radius:12px;background:#F8FBFE;border:1px dashed #E2EEF8;display:flex;gap:10px;align-items:center">
+    <span style="width:28px;height:28px;border-radius:999px;background:#fff;border:1px solid #E2EEF8;display:grid;place-items:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 16v-1"/><path d="M12 8a2 2 0 0 1 2 2c0 1.1-.9 2-2 2"/><path d="M9 12h6"/></svg></span>
+    <div style="flex:1;min-width:0">
+      <strong style="font-size:12px;color:var(--blue-900);display:flex;align-items:center;gap:6px">PayPal — bientôt disponible <span style="font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#FFF7ED;color:#9A3412;border:1px solid #FED7AA;padding:2px 6px;border-radius:999px">Bientôt</span></strong>
+      <span style="font-size:11px;color:var(--muted);line-height:1.4">Paiement en ligne sera activé après obtention des clés. En attendant, utilisez Virement / MoPay / Espèces.</span>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;display:flex;justify-content:flex-end;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #E2EEF8">
+    <span style="font-size:11px;color:var(--muted)">Modifications non enregistrées</span>
+    <button class="btn btn-primary" type="submit" style="min-width:190px;justify-content:center">Enregistrer les paramètres</button>
+  </div>
+</form>
+  </div>
+</div>
+
+<script>
+// Book tabs — morph animation between Dons ↔ Paramètres (connected book)
+(function(){
+  const tabs=document.querySelectorAll('.book-tab');
+  const panel=document.querySelector('.book-panel');
+  if(!tabs.length || !panel) return;
+  function switchTab(target){
+    const from=panel.getAttribute('data-active');
+    if(from===target) return;
+    const fromEl=panel.querySelector(`[data-panel="${from}"]`);
+    const toEl=panel.querySelector(`[data-panel="${target}"]`);
+    if(!fromEl || !toEl) return;
+    // update tabs
+    tabs.forEach(t=>{ const a=t.dataset.tab===target; t.classList.toggle('active',a); t.setAttribute('aria-selected',a?'true':'false'); });
+    panel.setAttribute('data-active', target);
+    // morph: use View Transitions if available, else CSS fade/scale
+    const doSwitch=()=>{
+      fromEl.hidden=true; fromEl.classList.remove('is-entering','is-leaving');
+      toEl.hidden=false; toEl.classList.remove('is-leaving'); void toEl.offsetWidth; toEl.classList.add('is-entering');
+      setTimeout(()=> toEl.classList.remove('is-entering'), 380);
+      history.replaceState(null,'', `?tab=${target}`);
+    };
+    if(document.startViewTransition){
+      document.startViewTransition(()=>{
+        fromEl.hidden=true;
+        toEl.hidden=false;
+        panel.setAttribute('data-active', target);
+        tabs.forEach(t=> t.classList.toggle('active', t.dataset.tab===target));
+      });
+    } else {
+      fromEl.classList.add('is-leaving');
+      setTimeout(doSwitch, 180);
+    }
+  }
+  tabs.forEach(t=>{
+    t.addEventListener('click', e=>{
+      e.preventDefault();
+      switchTab(t.dataset.tab);
+    });
+  });
+})();
+</script>
+
+  </div>
+</div>
+</div>
+<script src="assets/js/admin.js?v=1788544919" defer></script>
+<script src="assets/js/demo.js" defer></script>
+<script src="assets/js/admin-mobile.js?v=1788555665" defer></script>
+<script src="assets/js/lucide.min.js" defer></script>
+<script>
+(function(){
+  function refreshIcons(){ if(window.lucide) try{ lucide.createIcons(); }catch(e){} }
+  document.addEventListener('DOMContentLoaded',refreshIcons);
+  window.addEventListener('load',refreshIcons);
+  // refresh once after deferred scripts settle — no MutationObserver (was causing infinite loop)
+  setTimeout(refreshIcons, 600);
+  setTimeout(refreshIcons, 1500);
+})();
+</script>
+</body></html>

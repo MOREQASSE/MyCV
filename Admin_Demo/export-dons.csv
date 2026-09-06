@@ -1,0 +1,15 @@
+id;montant;nom;email;projet;moyen;statut;date
+5;250;"Fatima Zahra El Idrissi";fatima.zahra@example.com;1;virement;paid;2026-09-01T11:53:00+00:00
+6;100;"Ahmed Benali";ahmed.benali@example.com;2;mopay;paid;2026-09-02T19:01:00+00:00
+8;50;"Youssef El Mansouri";youssef.m@example.com;3;espece;new;2026-09-02T11:55:00+00:00
+9;75;"Aïcha Bennis";aicha.bennis@example.com;1;virement;paid;2026-08-30T12:51:00+00:00
+10;100;"Mehdi Tazi";mehdi.tazi@example.com;;mopay;pending;2026-09-01T14:09:00+00:00
+11;1000;"Société Atlas SARL";contact@atlas-sarl.ma;2;virement;paid;2026-08-28T18:31:00+00:00
+12;50;"Nora Chraibi";nora.ch@example.com;;espece;new;2026-09-02T17:57:00+00:00
+13;200;"Hassan Ouazzani";hassan.ouazzani@example.com;3;virement;rejected;2026-08-29T14:15:00+00:00
+14;150;"Leila Fassi";leila.fassi@example.com;1;mopay;paid;2026-08-31T09:15:00+00:00
+15;75;"Omar El Fassi";omar.elfassi@example.com;2;virement;pending;2026-09-01T17:28:00+00:00
+16;300;"Sofia Marouane";sofia.marouane@example.com;;virement;paid;2026-08-27T16:14:00+00:00
+17;50;Anonyme;anonyme@example.com;;espece;new;2026-09-02T17:21:00+00:00
+18;250;"Dr. Salim Berrada";salim.berrada@example.com;1;virement;paid;2026-08-26T17:03:00+00:00
+20;610;"Mohammed Reqasse";reqasse@gmail.com;;mopay;paid;2026-09-03T15:28:34+02:00

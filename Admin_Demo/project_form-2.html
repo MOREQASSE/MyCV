@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Éditer le projet — Taourirt</title>
+<link rel="stylesheet" href="assets/css/admin.css">
+<link rel="stylesheet" href="assets/css/admin-mobile.css">
+<style>[data-lucide]{display:inline-block;vertical-align:middle;flex-shrink:0}</style>
+<script src="assets/js/demo-early.js"></script>
+</head><body>
+<div class="admin-shell">
+<aside class="sidebar" id="sidebar">
+  <span class="sidebar-verse" aria-hidden="true">الإنسانية في صميم رعايتنا — L’humanisme au cœur de nos soins</span>
+  <div class="sidebar-head">
+    <button class="burger" id="sidebarToggle" aria-label="Réduire le menu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <div class="brand-title">
+      <strong>Association <i>Taourirt</i></strong>
+      <span>Bienfaisance <em>·</em> Dignité des aînés</span>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">Maison</div>
+    <a class="" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> <span class="nav-label">Tableau de bord</span></a>
+    <a class="" href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <span class="nav-label">Site & Contact</span></a>    <div class="nav-section">Ateliers de la maison</div>
+    <a class="" href="stats.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 16l3-3 3 3 4-6"/></svg> <span class="nav-label">Chiffres (7)</span></a>    <a class="" href="categories.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h16"/></svg> <span class="nav-label">Catégories</span></a>    <a class="active" href="projects.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> <span class="nav-label">Projets & Galerie</span></a>    <a class="" href="news.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 22h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 1-2 2z"/><path d="M8 10h8M8 14h8"/></svg> <span class="nav-label">Actualités</span></a>    <a class="" href="team.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span class="nav-label">Équipe</span></a>    <a class="" href="sponsors.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-6.7-4.2-9-8.2A5 5 0 0 1 12 7a5 5 0 0 1 9 5.8C18.7 16.8 12 21 12 21z"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> <span class="nav-label">Sponsors</span></a>    <a class="" href="pages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 11h8"/><path d="M8 15h6"/><path d="M12 3v4"/></svg> <span class="nav-label">Pages</span></a>    <div class="nav-section">Seuil — les voix</div>
+        <a class="" href="messages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg> <span class="nav-label">Messages Contact</span></a>    <a class="" href="messages-aide.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-6.7-4.2-9-8.2A5 5 0 0 1 12 7a5 5 0 0 1 9 5.8C18.7 16.8 12 21 12 21z"/><path d="M9 12h.01"/><path d="M15 12h.01"/></svg> <span class="nav-label">Demandes d’aide</span></a>    <a class="" href="donations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M12 8a3 3 0 0 1 3-3 3 3 0 0 1 3 3"/><path d="M12 8a3 3 0 0 0-3-3 3 3 0 0 0-3 3"/><path d="M3 12h18"/></svg> <span class="nav-label">Dons & Donateurs</span></a>        <div class="nav-section">Administration</div>
+    <a class="" href="admins.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-4-4v4h4z"/><path d="M16 3h4v4"/></svg> <span class="nav-label">Admins</span></a>
+      </nav>
+  <div class="sidebar-foot">
+    <span style="width:30px;height:30px;border-radius:999px;background:#fff;color:var(--admin-blue);display:grid;place-items:center;font-weight:800;font-size:12px">A</span>
+    <div style="flex:1;min-width:0"><small>admin@taourirt.ma</small> <span style="font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;border-radius:999px;background:#1E40AF;color:#fff;margin-left:4px">superadmin</span><br><a href="login.html?logout=1" style="font-size:11px;color:#8BC2EF">Déconnexion</a></div>
+  </div>
+</aside>
+<div class="main">
+  <div class="topbar">
+    <h2>Éditer le projet</h2>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="btn btn-light" href="#voir-site" target="_blank">Voir le site</a>
+    </div>
+  </div>
+  <div class="content">
+
+
+<style>
+  /* Header & Breadcrumbs */
+  .pf-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #E2EEF8;
+    flex-wrap: wrap;
+  }
+  .pf-topbar-left { display: flex; flex-direction: column; gap: 4px; }
+  .pf-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748B; font-weight: 600; }
+  .pf-breadcrumbs a { color: #5AA9E6; text-decoration: none; transition: color .15s; }
+  .pf-breadcrumbs a:hover { color: #0B2240; text-decoration: underline; }
+  .pf-topbar-title { display: flex; align-items: center; gap: 12px; }
+  .pf-topbar-title h1 { font-family: 'Inter', system-ui, sans-serif; font-weight: 800; font-size: 22px; color: #0B2240; letter-spacing: -.02em; margin: 0; }
+  .pf-topbar-badges { display: flex; align-items: center; gap: 8px; }
+
+  .pf-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 800;
+    letter-spacing: .02em; text-transform: uppercase;
+  }
+  .pf-badge-pub { background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; }
+  .pf-badge-draft { background: #FFF7ED; border: 1px solid #FED7AA; color: #9A3412; }
+  .pf-badge-feat { background: #FEF3C7; border: 1px solid #FDE68A; color: #92400E; }
+
+  /* Section cards */
+  .pf-section {
+    background: #fff;
+    border: 1.5px solid #E2EEF8;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 16px rgba(11, 34, 64, .04);
+    transition: border-color .2s;
+  }
+  .pf-section:hover { border-color: #CBD5E1; }
+  .pf-section-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px; padding-bottom: 14px;
+    border-bottom: 1px dashed #E2EEF8;
+  }
+  .pf-num {
+    width: 28px; height: 28px; border-radius: 9px; background: #0B2240; color: #fff;
+    display: grid; place-items: center; font-size: 13px; font-weight: 800; flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(11, 34, 64, .18);
+  }
+  .pf-section-head h2 { margin: 0; font-size: 16px; font-weight: 800; color: #0B2240; letter-spacing: -.01em; }
+  .pf-section-head small { font-size: 12px; color: #64748B; margin-left: auto; font-weight: 600; }
+
+  /* Tabs styling with Flags */
+  .lang-tabs-nav {
+    display: flex; gap: 8px; margin-bottom: 16px; padding: 5px;
+    background: #F1F5F9; border-radius: 12px; border: 1px solid #E2EEF8; width: fit-content;
+  }
+  .lang-tabs-nav button {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 8px 16px; border-radius: 9px; border: 1px solid transparent;
+    background: transparent; font-size: 12.5px; font-weight: 700; cursor: pointer;
+    transition: all .18s; color: #64748B;
+  }
+  .lang-tabs-nav button:hover { background: #fff; border-color: #D6EAF9; color: #0B2240; }
+  .lang-tabs-nav button.active {
+    background: #0B2240 !important; color: #fff !important; border-color: #0B2240 !important;
+    box-shadow: 0 4px 14px rgba(11, 34, 64, .2) !important;
+  }
+  .lang-flag { font-size: 14px; }
+
+  .tab-pane { display: none !important; }
+  .tab-pane.active { display: block !important; animation: fadeIn .22s; }
+
+  /* Gallery Grid & Cards */
+  .gal-grid-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+    min-height: 60px;
+  }
+  .gal-card {
+    border: 1.5px solid #E2E8F5;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+    transition: all .2s cubic-bezier(.22,1,.36,1);
+    box-shadow: 0 2px 8px rgba(11,34,64,.04);
+    display: flex;
+    flex-direction: column;
+  }
+  .gal-card:hover {
+    border-color: #5AA9E6;
+    box-shadow: 0 10px 28px rgba(11,34,64,.1);
+    transform: translateY(-2px);
+  }
+  .gal-card.is-cover {
+    border-color: #0B2240 !important;
+    box-shadow: 0 0 0 3px rgba(11,34,64,.18), 0 10px 28px rgba(11,34,64,.12);
+  }
+  .gal-thumb-box {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    background: #F1F5F9;
+    overflow: hidden;
+  }
+  .gal-thumb-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .3s ease;
+  }
+  .gal-card:hover .gal-thumb-box img { transform: scale(1.04); }
+
+  .gal-index-badge {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: rgba(11, 34, 64, 0.75);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 7px;
+    border-radius: 6px;
+    z-index: 2;
+  }
+
+  .gal-cover-badge {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: linear-gradient(135deg, #0B2240 0%, #1A4D85 100%);
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    padding: 4px 9px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.22);
+    z-index: 2;
+    display: none;
+  }
+  .gal-card.is-cover .gal-cover-badge { display: inline-flex; align-items: center; gap: 4px; }
+
+  .gal-controls {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #fff;
+    border-bottom: 1px solid #F1F5F9;
+  }
+
+  .gal-btn-cover {
+    padding: 6px 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all .18s;
+  }
+  .gal-btn-cover.active {
+    background: #0B2240; color: #fff; border-color: #0B2240;
+    box-shadow: 0 4px 12px rgba(11,34,64,.2);
+  }
+
+  .switch--danger .slider { background: #FEF2F2 !important; border-color: #FECACA !important; }
+  .switch--danger input:checked + .slider { background: #EF4444 !important; border-color: #EF4444 !important; }
+
+  .gal-caption-box { padding: 10px; background: #FAFBFD; flex: 1; }
+  .gal-caption-box input {
+    width: 100%; font-size: 12px; padding: 8px 10px;
+    border: 1.5px solid #E2E8F5; border-radius: 8px; background: #fff; outline: none;
+    transition: border-color .15s;
+  }
+  .gal-caption-box input:focus { border-color: #5AA9E6; box-shadow: 0 0 0 3px rgba(90,169,230,.12); }
+
+  /* Floating Backdrop Footer */
+  .pf-footer-bar {
+    position: sticky;
+    bottom: 16px;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px) saturate(1.2);
+    border: 1.5px solid #CFE2F5;
+    border-radius: 16px;
+    padding: 12px 20px;
+    margin-top: 24px;
+    box-shadow: 0 12px 32px rgba(11, 34, 64, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .pf-footer-info { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748B; font-weight: 600; }
+
+  /* Dropzone polish */
+  #galDrop {
+    display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;
+    width: 100% !important; box-sizing: border-box !important; min-height: 130px;
+    border: 2px dashed #CBD5E1; background: #F8FBFE; border-radius: 14px; padding: 20px;
+    text-align: center; transition: all .2s; cursor: pointer; position: relative;
+  }
+  #galDrop:hover { border-color: #5AA9E6; background: #EFF6FF; }
+  #galDrop.dragover { border-color: #3A8DDE; background: #EAF4FB; transform: scale(1.005); }
+
+  /* RTL mode for Arabic */
+  .tab-pane[data-lang="ar"] input,
+  .tab-pane[data-lang="ar"] textarea,
+  .tab-pane[data-lang="ar"] .wys-area {
+    direction: rtl; text-align: right; font-family: system-ui, -apple-system, sans-serif;
+  }
+</style>
+
+<div class="pf-topbar">
+  <div class="pf-topbar-left">
+    <div class="pf-breadcrumbs">
+      <a href="projects.html" style="display:inline-flex;align-items:center;gap:5px"><i data-lucide="arrow-left" style="width:13px;height:13px"></i> Projets</a>
+      <span>/</span>
+      <span>Éditer #2</span>
+    </div>
+    <div class="pf-topbar-title">
+      <h1>Repas solidaires hebdomadaires — 80 couverts chaque vendredi</h1>
+      <div class="pf-topbar-badges">
+                  <span class="pf-badge pf-badge-pub">
+            <i data-lucide="eye" style="width:12px;height:12px"></i> Publié          </span>
+                        </div>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:10px">
+    <a class="btn btn-light" href="#voir-site" target="_blank" style="padding:8px 14px;font-size:12px">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      <span>Voir sur le site</span>
+    </a>
+  </div>
+</div>
+
+<form method="post" enctype="multipart/form-data" id="projectForm">
+  <input type="hidden" name="csrf" value="b81699c032e035fe23b1accc504b47e2ef4d8ad14b9037ed10ff6073dc8f7033">
+  <input type="hidden" id="slug" name="slug" value="repas-solidaires-hebdomadaires" required>
+
+  <!-- Section 1: Contenu 4 Langues -->
+  <div class="pf-section">
+    <div class="pf-section-head">
+      <span class="pf-num">1</span>
+      <h2><i data-lucide="file-text" style="width:16px;height:16px"></i> Contenu multilingue — 4 langues</h2>
+      <small style="display:inline-flex;align-items:center;gap:4px">Rédigez d'abord en français, puis utilisez la traduction IA <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0A66C2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c0 4.5-3.5 8-8 8 4.5 0 8 3.5 8 8 0-4.5 3.5-8 8-8-4.5 0-8-3.5-8-8z"/><path d="M19 3c0 2.25-1.75 4-4 4 2.25 0 4 1.75 4 4 0-2.25 1.75-4 4-4-2.25 0-4-1.75-4-4z"/></svg></small>
+    </div>
+
+    <div data-lang-tabs>
+      <div class="lang-tabs-nav">
+        <button type="button" data-lang-tab="fr" class="active"><i data-lucide="languages" style="width:13px;height:13px"></i> Français</button>
+        <button type="button" data-lang-tab="en"><i data-lucide="languages" style="width:13px;height:13px"></i> English</button>
+        <button type="button" data-lang-tab="es"><i data-lucide="languages" style="width:13px;height:13px"></i> Español</button>
+        <button type="button" data-lang-tab="ar"><i data-lucide="languages" style="width:13px;height:13px"></i> العربية</button>
+      </div>
+
+              <div class="tab-pane active" data-lang="fr">
+          <div class="field" style="margin-top:10px">
+            <label>
+              <span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="type" style="width:13px;height:13px"></i> Titre (FR) *</span>
+              <span class="label-hint">requis</span>
+            </label>
+            <input name="title_fr" value="Repas solidaires hebdomadaires — 80 couverts chaque vendredi" data-ai-source="fr" data-ai-field="title" required placeholder="Ex: Consultation médicale gratuite à Taourirt">
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="align-left" style="width:13px;height:13px"></i> Résumé court (FR)</span><span class="label-hint">Aperçu en 2 phrases</span></label>
+            <textarea name="summary_fr" rows="2" data-ai-source="fr" data-ai-field="summary" placeholder="Brève description affichée sur les cartes de la grille publique...">Cuisine collective du jeudi et distribution du vendredi midi au local. Ouvert aux aînés isolés et aux familles signalées.</textarea>
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="file-text" style="width:13px;height:13px"></i> Description complète (FR)</span><span class="label-hint">Mise en forme enrichie</span></label>
+            <div class="wys-toolbar" data-toolbar="body_fr">
+              <button type="button" data-cmd="bold"><b>B</b></button>
+              <button type="button" data-cmd="italic"><i>I</i></button>
+              <button type="button" data-cmd="insertUnorderedList">• Liste</button>
+              <button type="button" data-cmd="insertOrderedList">1. Num</button>
+              <button type="button" data-cmd="createLink">🔗 Lien</button>
+              <button type="button" data-cmd="removeFormat"><i data-lucide="x" style="width:12px;height:12px"></i> Effacer</button>
+            </div>
+            <div id="body_fr" class="wys-area" contenteditable="true" data-wys="body_fr" data-ai-source="fr" data-ai-field="body"><p>Chaque vendredi, 80 repas chauds sont préparés par 12 bénévoles : couscous, tajine, soupe selon la saison. Les bénéficiaires déjeunent sur place ou sont livrés à domicile.</p><p>Les denrées proviennent de dons, du souk hebdomadaire et d’un partenariat boulangerie. Un registre de présence permet le suivi nutritionnel.</p></div>
+            <textarea id="body_fr_hidden" name="body_fr" style="display:none">&lt;p&gt;Chaque vendredi, 80 repas chauds sont préparés par 12 bénévoles : couscous, tajine, soupe selon la saison. Les bénéficiaires déjeunent sur place ou sont livrés à domicile.&lt;/p&gt;&lt;p&gt;Les denrées proviennent de dons, du souk hebdomadaire et d’un partenariat boulangerie. Un registre de présence permet le suivi nutritionnel.&lt;/p&gt;</textarea>
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="map-pin" style="width:13px;height:13px"></i> Lieu ou secteur (FR)</span><span class="label-hint">Optionnel</span></label>
+            <input name="location_fr" value="Local Association Taourirt — Cuisine solidaire" data-ai-source="fr" data-ai-field="location" placeholder="Ex: Taourirt / Douar Ouled M'hammed">
+          </div>
+        </div>
+              <div class="tab-pane " data-lang="en">
+          <div class="field" style="margin-top:10px">
+            <label>
+              <span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="type" style="width:13px;height:13px"></i> Titre (EN) </span>
+              <span class="label-hint">traduction automatique disponible</span>
+            </label>
+            <input name="title_en" value="Weekly solidarity meals — 80 covers every Friday" data-ai-source="en" data-ai-field="title"  placeholder="Ex: Consultation médicale gratuite à Taourirt">
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="align-left" style="width:13px;height:13px"></i> Résumé court (EN)</span><span class="label-hint">Aperçu en 2 phrases</span></label>
+            <textarea name="summary_en" rows="2" data-ai-source="en" data-ai-field="summary" placeholder="Brève description affichée sur les cartes de la grille publique...">Collective cooking on Thursday and distribution Friday noon at the premises. Open to isolated elders and referred families.</textarea>
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="file-text" style="width:13px;height:13px"></i> Description complète (EN)</span><span class="label-hint">Mise en forme enrichie</span></label>
+            <div class="wys-toolbar" data-toolbar="body_en">
+              <button type="button" data-cmd="bold"><b>B</b></button>
+              <button type="button" data-cmd="italic"><i>I</i></button>
+              <button type="button" data-cmd="insertUnorderedList">• Liste</button>
+              <button type="button" data-cmd="insertOrderedList">1. Num</button>
+              <button type="button" data-cmd="createLink">🔗 Lien</button>
+              <button type="button" data-cmd="removeFormat"><i data-lucide="x" style="width:12px;height:12px"></i> Effacer</button>
+            </div>
+            <div id="body_en" class="wys-area" contenteditable="true" data-wys="body_en" data-ai-source="en" data-ai-field="body"><p>Every Friday, 80 hot meals are prepared by 12 volunteers: couscous, tagine, soup depending on season. Beneficiaries eat on site or are delivered at home.</p><p>Food comes from donations, the weekly souk and a bakery partnership. An attendance register allows nutritional follow-up.</p></div>
+            <textarea id="body_en_hidden" name="body_en" style="display:none">&lt;p&gt;Every Friday, 80 hot meals are prepared by 12 volunteers: couscous, tagine, soup depending on season. Beneficiaries eat on site or are delivered at home.&lt;/p&gt;&lt;p&gt;Food comes from donations, the weekly souk and a bakery partnership. An attendance register allows nutritional follow-up.&lt;/p&gt;</textarea>
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="map-pin" style="width:13px;height:13px"></i> Lieu ou secteur (EN)</span><span class="label-hint">Optionnel</span></label>
+            <input name="location_en" value="Taourirt Association Premises — Solidarity Kitchen" data-ai-source="en" data-ai-field="location" placeholder="Ex: Taourirt / Douar Ouled M'hammed">
+          </div>
+        </div>
+              <div class="tab-pane " data-lang="es">
+          <div class="field" style="margin-top:10px">
+            <label>
+              <span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="type" style="width:13px;height:13px"></i> Titre (ES) </span>
+              <span class="label-hint">traduction automatique disponible</span>
+            </label>
+            <input name="title_es" value="Comidas solidarias semanales — 80 cubiertos cada viernes" data-ai-source="es" data-ai-field="title"  placeholder="Ex: Consultation médicale gratuite à Taourirt">
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="align-left" style="width:13px;height:13px"></i> Résumé court (ES)</span><span class="label-hint">Aperçu en 2 phrases</span></label>
+            <textarea name="summary_es" rows="2" data-ai-source="es" data-ai-field="summary" placeholder="Brève description affichée sur les cartes de la grille publique...">Cocina colectiva el jueves y reparto el viernes al mediodía en el local. Abierto a mayores aislados y familias derivadas.</textarea>
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="file-text" style="width:13px;height:13px"></i> Description complète (ES)</span><span class="label-hint">Mise en forme enrichie</span></label>
+            <div class="wys-toolbar" data-toolbar="body_es">
+              <button type="button" data-cmd="bold"><b>B</b></button>
+              <button type="button" data-cmd="italic"><i>I</i></button>
+              <button type="button" data-cmd="insertUnorderedList">• Liste</button>
+              <button type="button" data-cmd="insertOrderedList">1. Num</button>
+              <button type="button" data-cmd="createLink">🔗 Lien</button>
+              <button type="button" data-cmd="removeFormat"><i data-lucide="x" style="width:12px;height:12px"></i> Effacer</button>
+            </div>
+            <div id="body_es" class="wys-area" contenteditable="true" data-wys="body_es" data-ai-source="es" data-ai-field="body"><p>Cada viernes, 12 voluntarios preparan 80 comidas calientes: cuscús, tayín, sopa según la temporada. Los beneficiarios comen en el local o reciben entrega a domicilio.</p><p>Los alimentos provienen de donaciones, del zoco semanal y de una panadería asociada. Un registro permite el seguimiento nutricional.</p></div>
+            <textarea id="body_es_hidden" name="body_es" style="display:none">&lt;p&gt;Cada viernes, 12 voluntarios preparan 80 comidas calientes: cuscús, tayín, sopa según la temporada. Los beneficiarios comen en el local o reciben entrega a domicilio.&lt;/p&gt;&lt;p&gt;Los alimentos provienen de donaciones, del zoco semanal y de una panadería asociada. Un registro permite el seguimiento nutricional.&lt;/p&gt;</textarea>
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="map-pin" style="width:13px;height:13px"></i> Lieu ou secteur (ES)</span><span class="label-hint">Optionnel</span></label>
+            <input name="location_es" value="Local Asociación Taourirt — Cocina solidaria" data-ai-source="es" data-ai-field="location" placeholder="Ex: Taourirt / Douar Ouled M'hammed">
+          </div>
+        </div>
+              <div class="tab-pane " data-lang="ar">
+          <div class="field" style="margin-top:10px">
+            <label>
+              <span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="type" style="width:13px;height:13px"></i> Titre (AR) </span>
+              <span class="label-hint">traduction automatique disponible</span>
+            </label>
+            <input name="title_ar" value="وجبات تضامنية أسبوعية — 80 وجبة كل جمعة" data-ai-source="ar" data-ai-field="title"  placeholder="Ex: Consultation médicale gratuite à Taourirt">
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="align-left" style="width:13px;height:13px"></i> Résumé court (AR)</span><span class="label-hint">Aperçu en 2 phrases</span></label>
+            <textarea name="summary_ar" rows="2" data-ai-source="ar" data-ai-field="summary" placeholder="Brève description affichée sur les cartes de la grille publique...">طبخ جماعي يوم الخميس وتوزيع يوم الجمعة ظهرا بالمقر. مفتوح للمسنين المعزولين والأسر المحالة.</textarea>
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="file-text" style="width:13px;height:13px"></i> Description complète (AR)</span><span class="label-hint">Mise en forme enrichie</span></label>
+            <div class="wys-toolbar" data-toolbar="body_ar">
+              <button type="button" data-cmd="bold"><b>B</b></button>
+              <button type="button" data-cmd="italic"><i>I</i></button>
+              <button type="button" data-cmd="insertUnorderedList">• Liste</button>
+              <button type="button" data-cmd="insertOrderedList">1. Num</button>
+              <button type="button" data-cmd="createLink">🔗 Lien</button>
+              <button type="button" data-cmd="removeFormat"><i data-lucide="x" style="width:12px;height:12px"></i> Effacer</button>
+            </div>
+            <div id="body_ar" class="wys-area" contenteditable="true" data-wys="body_ar" data-ai-source="ar" data-ai-field="body"><p>كل جمعة، يعد 12 متطوعا 80 وجبة ساخنة: كسكس، طاجين، حساء حسب الموسم. يتناول المستفيدون وجبتهم في المقر أو يتم توصيلها للمنازل.</p><p>المواد الغذائية من التبرعات والسوق الأسبوعي وشراكة مع مخبزة. سجل الحضور يسمح بالمتابعة الغذائية.</p></div>
+            <textarea id="body_ar_hidden" name="body_ar" style="display:none">&lt;p&gt;كل جمعة، يعد 12 متطوعا 80 وجبة ساخنة: كسكس، طاجين، حساء حسب الموسم. يتناول المستفيدون وجبتهم في المقر أو يتم توصيلها للمنازل.&lt;/p&gt;&lt;p&gt;المواد الغذائية من التبرعات والسوق الأسبوعي وشراكة مع مخبزة. سجل الحضور يسمح بالمتابعة الغذائية.&lt;/p&gt;</textarea>
+          </div>
+
+          <div class="field" style="margin-top:12px">
+            <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="map-pin" style="width:13px;height:13px"></i> Lieu ou secteur (AR)</span><span class="label-hint">Optionnel</span></label>
+            <input name="location_ar" value="مقر جمعية تاوريرت — المطبخ التضامني" data-ai-source="ar" data-ai-field="location" placeholder="Ex: Taourirt / Douar Ouled M'hammed">
+          </div>
+        </div>
+          </div>
+  </div>
+
+  <!-- Section 2: Classement & Visibilité -->
+  <div class="pf-section">
+    <div class="pf-section-head">
+      <span class="pf-num">2</span>
+      <h2><i data-lucide="settings-2" style="width:16px;height:16px"></i> Classement &amp; visibilité</h2>
+      <small>Catégorie et options de publication — l'ordre se règle par glisser-déposer sur la liste</small>
+    </div>
+
+    <div class="meta-grid">
+      <div class="field col-6">
+        <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="tag" style="width:13px;height:13px"></i> Catégorie du projet</span></label>
+        <select name="category_id">
+          <option value="">— Aucune catégorie —</option>
+                      <option value="1" >À domicile</option>
+                      <option value="2" selected>Solidarité</option>
+                      <option value="3" >Bien-être</option>
+                      <option value="4" >Santé</option>
+                  </select>
+      </div>
+
+      <div class="field col-6">
+        <label><span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="link" style="width:13px;height:13px"></i> Slug URL (Identifiant web)</span><span class="label-hint">généré automatiquement</span></label>
+        <input id="slug_display" value="repas-solidaires-hebdomadaires" readonly style="background:#F8FBFE;color:#5A6B85;font-weight:600">
+      </div>
+
+      <div class="col-6">
+        <label style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border:1.5px solid #D6EAF9;background:#F8FBFE;border-radius:12px;cursor:pointer;transition:all .2s">
+          <span style="display:flex;flex-direction:column;line-height:1.3">
+            <strong style="font-size:14px;color:var(--admin-blue);display:inline-flex;align-items:center;gap:6px"><i data-lucide="eye" style="width:14px;height:14px"></i> Publié sur le site</strong>
+            <small style="font-size:11.5px;color:var(--admin-muted)">Rendre le projet immédiatement visible sur la grille publique</small>
+          </span>
+          <span class="switch" style="flex-shrink:0"><input type="checkbox" name="is_published" value="1" checked><span class="slider"></span></span>
+        </label>
+      </div>
+
+      <div class="col-6">
+        <label style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;border:1.5px solid #D6EAF9;background:#F8FBFE;border-radius:12px;cursor:pointer;transition:all .2s">
+          <span style="display:flex;flex-direction:column;line-height:1.3">
+            <strong style="font-size:14px;color:var(--admin-blue);display:inline-flex;align-items:center;gap:6px"><i data-lucide="star" style="width:14px;height:14px"></i> À la une sur l''accueil</strong>
+            <small style="font-size:11.5px;color:var(--admin-muted)">Afficher en priorité dans la section des projets phares</small>
+          </span>
+          <span class="switch" style="flex-shrink:0"><input type="checkbox" name="is_featured" value="1" ><span class="slider"></span></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Galerie & Cover Image -->
+  <div class="pf-section">
+    <div class="pf-section-head">
+      <span class="pf-num">3</span>
+      <h2><i data-lucide="images" style="width:16px;height:16px"></i> Galerie photos &amp; image de couverture</h2>
+      <small id="galCountPill" style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="images" style="width:12px;height:12px"></i> 0 image(s) enregistrée(s) · <i data-lucide="star" style="width:11px;height:11px;fill:currentColor"></i> Cover = vignette principale sur la grille publique</small>
+    </div>
+
+    <label class="dropzone" id="galDrop">
+      <input type="file" name="gallery[]" multiple accept=".jpg,.jpeg,.png,.webp,.jfif" id="galInput">
+      <div class="dropzone-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </div>
+      <strong>Glissez vos photos ici ou cliquez pour parcourir</strong>
+      <span style="font-size:12px;color:#64748B;margin-top:4px">Formats autorisés : JPG, PNG, WebP — max 5 Mo par image. Sélection multiple supportée.</span>
+    </label>
+
+    <!-- Client-side upload preview container -->
+    <div id="galPreview" class="preview-grid" style="display:none;margin-top:14px"></div>
+
+    <!-- Existing Gallery Cards Grid -->
+      </div>
+
+  <!-- Sticky Backdrop Action Bar -->
+  <div class="pf-footer-bar">
+    <div class="pf-footer-info">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      <span>Appuyez sur <kbd style="background:#E2E8F5;padding:2px 6px;border-radius:4px;font-family:monospace;font-size:11px">Ctrl + S</kbd> pour enregistrer à tout moment</span>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px">
+      <a class="btn btn-light" href="projects.html" style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="x" style="width:13px;height:13px"></i> Annuler</a>
+      <button class="btn btn-primary" type="submit" style="padding:10px 24px;font-size:13.5px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><i data-lucide="save" style="width:13px;height:13px"></i> Enregistrer les modifications</span>
+      </button>
+    </div>
+  </div>
+</form>
+
+<script>
+// Language tabs logic via Event Delegation
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('[data-lang-tab]');
+  if (!btn) return;
+  var wrap = btn.closest('[data-lang-tabs]');
+  if (!wrap) return;
+
+  var lang = btn.getAttribute('data-lang-tab');
+  if (!lang) return;
+
+  var allBtns = wrap.querySelectorAll('[data-lang-tab]');
+  allBtns.forEach(function(b) {
+    if (b === btn || b.getAttribute('data-lang-tab') === lang) {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+
+  var allPanes = wrap.querySelectorAll('.tab-pane');
+  allPanes.forEach(function(p) {
+    if (p.getAttribute('data-lang') === lang) {
+      p.classList.add('active');
+    } else {
+      p.classList.remove('active');
+    }
+  });
+});
+
+// Cover selection button logic
+document.querySelectorAll('[data-cover-btn]').forEach(function(b){
+  b.addEventListener('click', function(){
+    var gid = b.dataset.coverBtn;
+
+    // Reset all radio inputs and card styles
+    document.querySelectorAll('[data-cover-radio]').forEach(function(r){ r.value = '0'; });
+    document.querySelectorAll('.gal-card').forEach(function(c){
+      c.classList.remove('is-cover');
+    });
+    document.querySelectorAll('[data-cover-btn]').forEach(function(btn){
+      btn.classList.remove('btn-primary', 'active');
+      btn.classList.add('btn-light');
+      btn.textContent = '<i data-lucide="star" style="width:11px;height:11px"></i> Définir cover';
+    });
+
+    // Activate selected card
+    var targetRadio = document.querySelector('[data-cover-radio="' + gid + '"]');
+    if(targetRadio) targetRadio.value = '1';
+
+    b.classList.remove('btn-light');
+    b.classList.add('btn-primary', 'active');
+    b.textContent = '<i data-lucide="star" style="width:11px;height:11px;fill:currentColor"></i> Cover';
+
+    var card = b.closest('.gal-card');
+    if(card) card.classList.add('is-cover');
+  });
+});
+
+// Auto-generate slug from French title
+(function(){
+  var titleFrInput = document.querySelector('input[name="title_fr"]');
+  var slugHidden = document.getElementById('slug');
+  var slugDisplay = document.getElementById('slug_display');
+  if (titleFrInput && slugHidden && slugDisplay) {
+    function toSlug(str) {
+      return str
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+    }
+    var userEditedSlug = false;
+    function refreshSlug(){
+      if (userEditedSlug) return;
+      var s = toSlug(titleFrInput.value);
+      slugHidden.value = s;
+      slugDisplay.value = s;
+    }
+    titleFrInput.addEventListener('input', refreshSlug);
+    slugHidden.addEventListener('input', function(){ userEditedSlug = true; });
+    if (!slugHidden.value && titleFrInput.value) refreshSlug();
+  }
+})();
+
+// Ctrl+S / Cmd+S Keyboard Shortcut for Save
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+    e.preventDefault();
+    var form = document.getElementById('projectForm');
+    if (form) form.submit();
+  }
+});
+</script>
+
+<script src="assets/js/ai-translate.js?v=1788501320" defer></script>
+  </div>
+</div>
+</div>
+<script src="assets/js/admin.js?v=1788544919" defer></script>
+<script src="assets/js/demo.js" defer></script>
+<script src="assets/js/admin-mobile.js?v=1788555665" defer></script>
+<script src="assets/js/lucide.min.js" defer></script>
+<script>
+(function(){
+  function refreshIcons(){ if(window.lucide) try{ lucide.createIcons(); }catch(e){} }
+  document.addEventListener('DOMContentLoaded',refreshIcons);
+  window.addEventListener('load',refreshIcons);
+  // refresh once after deferred scripts settle — no MutationObserver (was causing infinite loop)
+  setTimeout(refreshIcons, 600);
+  setTimeout(refreshIcons, 1500);
+})();
+</script>
+</body></html>

@@ -1362,6 +1362,23 @@ window.changeLanguage = changeLanguage;
 function initWebPortfolioCarousel() {
     var projects = [
         {
+            tag: { en: 'Nonprofit · Charity Platform', fr: 'Nonprofit · Plateforme Caritative', ar: 'غير ربحي · منصة خيرية' },
+            title: { en: 'Taourirt — Charity Association Platform', fr: 'Taourirt — Plateforme Associative Caritative', ar: 'تاوريرت — منصة الجمعية الخيرية' },
+            desc: {
+                en: 'Complete digital home for a Moroccan elderly-care association: warm 4-language public site (FR/EN/ES/AR with RTL) backed by an admin command center with live donation dashboards, visual page editor, AI translation, and role-based security.',
+                fr: 'Foyer numérique complet pour une association marocaine d’aide aux aînés : site public chaleureux en 4 langues (FR/EN/ES/AR avec RTL) adossé à un centre de commande admin avec dons en temps réel, éditeur visuel, traduction IA et sécurité par rôles.',
+                ar: 'بيت رقمي متكامل لجمعية مغربية لرعاية المسنين: موقع عام دافئ بأربع لغات (FR/EN/ES/AR مع RTL) مدعوم بمركز تحكم إداري مع تبرعات مباشرة ومحرر مرئي وترجمة بالذكاء الاصطناعي وأمان بالأدوار.'
+            },
+            techs: ['PHP', 'SQLite', 'AI Translation', 'Admin Dashboard'],
+            links: [
+                { label: { en: 'View Website', fr: 'Voir le Site', ar: 'عرض الموقع' }, url: 'https://abit.ct.ws/', primary: true },
+                { label: { en: 'See Admin Pages', fr: 'Voir les Pages Admin', ar: 'عرض صفحات الإدارة' }, modal: 'adminDemo', primary: true, magic: { en: 'Where the magic happens', fr: 'Là où la magie opère', ar: 'حيث يحدث السحر' } },
+                { label: { en: 'Contact for Similar', fr: 'Contact pour similaire', ar: 'تواصل لمشروع مشابه' }, url: '#contact', primary: false }
+            ],
+            image: 'images/association.webp',
+            alt: { en: 'Taourirt — Charity Association Platform', fr: 'Taourirt — Plateforme Associative Caritative', ar: 'تاوريرت — منصة الجمعية الخيرية' }
+        },
+        {
             tag: { en: 'Health & Fitness', fr: 'Santé & Forme', ar: 'الصحة واللياقة' },
             title: { en: 'Gym Nutrition Store', fr: 'Boutique Nutrition Sportive', ar: 'متجر التغذية الرياضية' },
             desc: {
@@ -1512,7 +1529,24 @@ function initWebPortfolioCarousel() {
 
         if (links) {
             links.innerHTML = '';
+            links.classList.toggle('project-links--trio', (p.links || []).length > 2);
             (p.links || []).forEach(function (lk) {
+                if (lk.modal === 'adminDemo') {
+                    var wrap = document.createElement('span');
+                    wrap.className = 'pj-admin-wrap';
+                    var magic = document.createElement('span');
+                    magic.className = 'pj-magic-tag';
+                    magic.textContent = (lk.magic && lk.magic[lang]) || (lk.magic && lk.magic.en) || '';
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'project-link project-link--gold';
+                    btn.setAttribute('data-admin-demo', '');
+                    btn.textContent = (lk.label && lk.label[lang]) || lk.label || '';
+                    wrap.appendChild(magic);
+                    wrap.appendChild(btn);
+                    links.appendChild(wrap);
+                    return;
+                }
                 var a = document.createElement('a');
                 a.href = lk.url;
                 a.className = 'project-link' + (lk.primary ? ' project-link--primary' : ' project-link--secondary');
@@ -1524,6 +1558,8 @@ function initWebPortfolioCarousel() {
                 links.appendChild(a);
             });
         }
+
+        refreshAdminModal();
 
         dots.forEach(function (d, i) {
             d.classList.toggle('active', i === index);
@@ -1599,3 +1635,61 @@ function initWebPortfolioCarousel() {
 
     window.rerenderWebPortfolio = function () { render(current); };
 }
+
+// ===== ADMIN DEMO MODAL (Taourirt slide) =====
+var adminModalCopy = {
+    tag: { en: 'Where the magic happens', fr: 'Là où la magie opère', ar: 'حيث يحدث السحر' },
+    title: { en: 'Admin Panel — Frontend Mockup', fr: 'Panneau Admin — Maquette Frontend', ar: 'لوحة الإدارة — نموذج واجهة' },
+    body: {
+        en: 'The real admin panel is live in production — it manages real donations, messages and content, so access simply can’t be shared. What you can open here is a static frontend mockup I built to show where the majority of the work went: live donation dashboards, donation validation, the visual page editor, messaging, sponsors and more. No backend, no real data — just the full idea. Log in with:',
+        fr: 'Le vrai panneau admin est en production — il gère de vrais dons, messages et contenus, son accès ne peut donc tout simplement pas être partagé. Ce que vous pouvez ouvrir ici est une maquette frontend statique que j’ai construite pour montrer où est allée la majorité du travail : tableaux de bord des dons en temps réel, validation des dons, éditeur visuel de pages, messagerie, sponsors et plus. Sans backend ni données réelles — juste l’idée complète. Connectez-vous avec :',
+        ar: 'لوحة الإدارة الحقيقية تعمل في الإنتاج — تدير تبرعات ورسائل ومحتوى حقيقيًا، لذا لا يمكن مشاركة الوصول إليها إطلاقًا. ما يمكنك فتحه هنا هو نموذج واجهة ثابت بنيتُه لأُظهر أين ذهب معظم العمل: لوحات التبرعات المباشرة، والتحقق من التبرعات، والمحرر المرئي للصفحات، والمراسلة، والجهات الراعية والمزيد. بدون backend أو بيانات حقيقية — فقط الفكرة الكاملة. سجل الدخول بـ:'
+    },
+    go: { en: 'Enter the Demo →', fr: 'Entrer dans la Démo →', ar: 'ادخل إلى النموذج ←' },
+    close: { en: 'Close', fr: 'Fermer', ar: 'إغلاق' }
+};
+
+function fillAdminModal() {
+    var lang = currentLang || 'en';
+    var ov = document.getElementById('adminDemoModal');
+    if (!ov) return;
+    var pick = function (o) { return (o && o[lang]) || (o && o.en) || ''; };
+    var set = function (sel, txt) { var el = ov.querySelector(sel); if (el) el.textContent = txt; };
+    set('[data-am-tag]', pick(adminModalCopy.tag));
+    set('[data-am-title]', pick(adminModalCopy.title));
+    set('[data-am-body]', pick(adminModalCopy.body));
+    set('[data-am-go]', pick(adminModalCopy.go));
+    set('[data-am-close]', pick(adminModalCopy.close));
+}
+
+function refreshAdminModal() {
+    var ov = document.getElementById('adminDemoModal');
+    if (ov && !ov.hidden) fillAdminModal();
+}
+
+function openAdminModal() {
+    var ov = document.getElementById('adminDemoModal');
+    if (!ov) return;
+    fillAdminModal();
+    ov.hidden = false;
+    document.body.style.overflow = 'hidden';
+    var go = ov.querySelector('[data-am-go]');
+    if (go) go.focus();
+}
+
+function closeAdminModal() {
+    var ov = document.getElementById('adminDemoModal');
+    if (!ov) return;
+    ov.hidden = true;
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('[data-admin-demo]')) { openAdminModal(); return; }
+    if (e.target.closest && e.target.closest('[data-am-close]')) { closeAdminModal(); return; }
+    var ov = document.getElementById('adminDemoModal');
+    if (ov && !ov.hidden && e.target === ov) closeAdminModal();
+});
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAdminModal();
+});

@@ -4991,6 +4991,7 @@ section {
 
 .web-portfolio .project-link {
     all: unset;
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -5033,6 +5034,155 @@ section {
 }
 
 .web-portfolio .project-link--secondary:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: var(--bg-white);
+}
+
+.web-portfolio .project-link--gold {
+    background: linear-gradient(135deg, #e6c25a 0%, #c9992b 100%);
+    color: #2a1f00;
+    border: 1px solid rgba(184, 134, 11, 0.55);
+    box-shadow: 0 2px 8px rgba(184, 134, 11, 0.35);
+}
+
+.web-portfolio .project-link--gold:hover {
+    background: linear-gradient(135deg, #f0cf6e 0%, #d4af37 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(184, 134, 11, 0.45);
+}
+
+/* Taourirt trio: View Website + See Admin Pages + Contact */
+.web-portfolio .project-links--trio {
+    align-items: flex-end;
+}
+
+.web-portfolio .pj-admin-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.pj-magic-tag {
+    display: inline-block;
+    max-width: 100%;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #b8860b;
+}
+
+[data-theme="dark"] .pj-magic-tag {
+    color: #e6c25a;
+}
+
+/* Admin demo explainer modal */
+.pj-modal-ov {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(8, 15, 30, 0.62);
+    backdrop-filter: blur(4px);
+}
+
+.pj-modal-ov[hidden] {
+    display: none !important;
+}
+
+.pj-modal-card {
+    width: 100%;
+    max-width: 540px;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    background: var(--bg-white);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.pj-modal-card h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.pj-modal-card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin: 0;
+    color: var(--text-medium);
+}
+
+.pj-modal-creds {
+    font-size: 0.85rem !important;
+}
+
+.pj-modal-creds code {
+    background: var(--bg-medium);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.82rem;
+    color: var(--text-dark);
+}
+
+.pj-modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+}
+
+.pj-modal-go,
+.pj-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.7rem 1.6rem;
+    border-radius: 10px;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    font-family: inherit;
+}
+
+.pj-modal-go {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(26, 82, 150, 0.25);
+}
+
+.pj-modal-go:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.pj-modal-close {
+    color: var(--text-dark);
+    background: var(--bg-medium);
+    border-color: var(--border);
+}
+
+.pj-modal-close:hover {
     color: var(--primary);
     border-color: var(--primary);
     background: var(--bg-white);
@@ -5102,6 +5252,50 @@ section {
 
     .web-portfolio .project-links {
         justify-content: center;
+    }
+
+    /* Taourirt trio on mobile: two view buttons side-by-side,
+       contact spans the combined width beneath them */
+    .web-portfolio .project-links--trio {
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .web-portfolio .project-links--trio > a:first-child {
+        flex: 0.9 1 0;
+        min-width: 0;
+    }
+
+    .web-portfolio .project-links--trio > .pj-admin-wrap {
+        flex: 1.1 1 0;
+        min-width: 0;
+    }
+
+    .web-portfolio .project-links--trio > a:first-child {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .web-portfolio .project-links--trio .pj-admin-wrap .project-link {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .web-portfolio .project-links--trio .project-link {
+        white-space: normal;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .web-portfolio .project-links--trio > a:last-child {
+        flex: 1 1 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .web-portfolio .project-links--trio .pj-magic-tag {
+        font-size: 0.62rem;
     }
 
     .web-portfolio .project-techs {

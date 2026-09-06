@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pages — Édition visuelle — Taourirt</title>
+<link rel="stylesheet" href="assets/css/admin.css">
+<link rel="stylesheet" href="assets/css/admin-mobile.css">
+<style>[data-lucide]{display:inline-block;vertical-align:middle;flex-shrink:0}</style>
+<script src="assets/js/demo-early.js"></script>
+</head><body>
+<div class="admin-shell">
+<aside class="sidebar" id="sidebar">
+  <span class="sidebar-verse" aria-hidden="true">الإنسانية في صميم رعايتنا — L’humanisme au cœur de nos soins</span>
+  <div class="sidebar-head">
+    <button class="burger" id="sidebarToggle" aria-label="Réduire le menu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <div class="brand-title">
+      <strong>Association <i>Taourirt</i></strong>
+      <span>Bienfaisance <em>·</em> Dignité des aînés</span>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">Maison</div>
+    <a class="" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> <span class="nav-label">Tableau de bord</span></a>
+    <a class="" href="settings.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <span class="nav-label">Site & Contact</span></a>    <div class="nav-section">Ateliers de la maison</div>
+    <a class="" href="stats.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M7 16l3-3 3 3 4-6"/></svg> <span class="nav-label">Chiffres (7)</span></a>    <a class="" href="categories.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 12h16M4 18h16"/></svg> <span class="nav-label">Catégories</span></a>    <a class="" href="projects.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> <span class="nav-label">Projets & Galerie</span></a>    <a class="" href="news.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 22h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 1-2 2z"/><path d="M8 10h8M8 14h8"/></svg> <span class="nav-label">Actualités</span></a>    <a class="" href="team.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span class="nav-label">Équipe</span></a>    <a class="" href="sponsors.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-6.7-4.2-9-8.2A5 5 0 0 1 12 7a5 5 0 0 1 9 5.8C18.7 16.8 12 21 12 21z"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg> <span class="nav-label">Sponsors</span></a>    <a class="active" href="pages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 11h8"/><path d="M8 15h6"/><path d="M12 3v4"/></svg> <span class="nav-label">Pages</span></a>    <div class="nav-section">Seuil — les voix</div>
+        <a class="" href="messages.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v12H4z"/><path d="M4 7l8 7 8-7"/></svg> <span class="nav-label">Messages Contact</span></a>    <a class="" href="messages-aide.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-6.7-4.2-9-8.2A5 5 0 0 1 12 7a5 5 0 0 1 9 5.8C18.7 16.8 12 21 12 21z"/><path d="M9 12h.01"/><path d="M15 12h.01"/></svg> <span class="nav-label">Demandes d’aide</span></a>    <a class="" href="donations.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M12 8a3 3 0 0 1 3-3 3 3 0 0 1 3 3"/><path d="M12 8a3 3 0 0 0-3-3 3 3 0 0 0-3 3"/><path d="M3 12h18"/></svg> <span class="nav-label">Dons & Donateurs</span></a>        <div class="nav-section">Administration</div>
+    <a class="" href="admins.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-4-4v4h4z"/><path d="M16 3h4v4"/></svg> <span class="nav-label">Admins</span></a>
+      </nav>
+  <div class="sidebar-foot">
+    <span style="width:30px;height:30px;border-radius:999px;background:#fff;color:var(--admin-blue);display:grid;place-items:center;font-weight:800;font-size:12px">A</span>
+    <div style="flex:1;min-width:0"><small>admin@taourirt.ma</small> <span style="font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;border-radius:999px;background:#1E40AF;color:#fff;margin-left:4px">superadmin</span><br><a href="login.html?logout=1" style="font-size:11px;color:#8BC2EF">Déconnexion</a></div>
+  </div>
+</aside>
+<div class="main">
+  <div class="topbar">
+    <h2>Pages — Édition visuelle</h2>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="btn btn-light" href="#voir-site" target="_blank">Voir le site</a>
+    </div>
+  </div>
+  <div class="content">
+<style>
+/* allow this page to use full main width — not capped to 1120 */
+.content{max-width:none !important;padding:0 !important;}
+.main{overflow:hidden;min-width:0;}
+.pages-shell{display:flex;gap:16px;min-height:calc(100vh - 64px);margin:0; /* no breakout needed */ }
+.pages-main{flex:1;min-width:0;background:#EEF3F8;display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.pages-toolbar{height:52px;background:#fff;border-bottom:1px solid #E2E8F5;display:flex;align-items:center;justify-content:space-between;padding:0 14px;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.page-tabs{display:flex;gap:6px;background:#F1F5F9;border:1px solid #E2EEF8;border-radius:999px;padding:3px}
+.page-tabs a{padding:7px 14px;border-radius:999px;font-size:12px;font-weight:700;color:var(--admin-muted);border:1px solid transparent}
+.page-tabs a.active{background:var(--admin-blue);color:#fff;border-color:var(--admin-blue);box-shadow:0 4px 12px rgba(11,34,64,.15)}
+.lang-tabs-mini{display:flex;gap:4px;background:#F1F5F9;border:1px solid #E2EEF8;border-radius:999px;padding:3px}
+.lang-tabs-mini button{padding:6px 10px;border-radius:999px;border:1px solid transparent;background:transparent;font-size:11px;font-weight:800;color:var(--admin-muted);cursor:pointer}
+.lang-tabs-mini button.active{background:#fff;color:var(--admin-blue);border-color:#D6EAF9;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.preview-wrap{flex:1;position:relative;overflow:auto;background:#F4F7FB;display:flex;align-items:flex-start;justify-content:center;padding:12px;min-height:720px}
+.preview-frame{width:1280px;height:900px;background:#fff;border:1px solid #D6EAF9;border-radius:14px;box-shadow:0 12px 40px rgba(11,34,64,.12);overflow:hidden;flex-shrink:0;transform-origin:top center;display:block}
+.preview-frame.mobile{width:390px !important;height:800px !important;transform:none !important;max-width:none}
+.drawer{width:360px;background:#fff;border-left:1px solid #E2E8F5;display:flex;flex-direction:column;flex-shrink:0;box-shadow:-8px 0 24px rgba(11,34,64,.06)}
+.drawer-head{height:52px;padding:0 16px;border-bottom:1px solid #E2E8F5;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.drawer-body{flex:1;overflow:auto;padding:16px}
+.block-list{max-height:38vh;overflow:auto;border:1px solid #E2E8F5;border-radius:12px;background:#F8FBFE}
+.block-item{padding:10px 12px;border-bottom:1px solid #EDF2F9;display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer;transition:background .15s}
+.block-item:hover{background:#EFF6FF}
+.block-item.active{background:#0B2240;color:#fff}
+.block-item.active small{color:rgba(255,255,255,.7)}
+.block-item small{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--admin-faint);font-weight:700}
+.edit-label{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--admin-blue);margin-bottom:6px;display:block}
+.preview-badge{position:absolute;top:12px;left:12px;background:rgba(11,34,64,.88);color:#fff;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;padding:6px 9px;border-radius:999px;backdrop-filter:blur(6px)}
+@media(max-width:1100px){ .pages-shell{flex-direction:column} .drawer{width:100%;height:auto} .preview-frame{min-height:560px} }
+</style>
+
+<div id="mEditCtx" data-csrf="f9f3cfa83238cea76f96db2a5c185427a20be7566aa00e39c98f050573bb9c49" hidden></div>
+<div class="pages-shell">
+  <div class="pages-main">
+    <div class="pages-toolbar">
+      <div class="page-tabs">
+        <a href="pages.html" class="">Accueil</a>
+        <a href="pages-mission.html" class="active">Qui sommes-nous</a>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <div class="lang-tabs-mini" id="langTabs">
+                      <button type="button" data-lang="fr" class="active">FR</button>
+                      <button type="button" data-lang="en" class="">EN</button>
+                      <button type="button" data-lang="es" class="">ES</button>
+                      <button type="button" data-lang="ar" class="">AR</button>
+                  </div>
+        <div style="width:1px;height:22px;background:#E2E8F5"></div>
+        <button class="btn btn-light btn-sm" id="previewToggle" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Aperçu</button>
+        <button class="btn btn-light btn-sm" id="deviceToggle" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg> Mobile</button>
+      </div>
+    </div>
+    <div class="preview-wrap" id="previewWrap">
+      <span class="preview-badge" id="previewBadge">Édition · cliquer un bloc pour modifier</span>
+      <iframe id="previewFrame" class="preview-frame" src="preview-mission-fr.html" title="Aperçu mission" loading="eager" style="border:0"></iframe>
+    </div>
+  </div>
+
+  <aside class="drawer" id="editDrawer">
+    <div class="drawer-head">
+      <strong style="font-size:13px;color:var(--admin-blue);display:flex;gap:8px;align-items:center"><span style="width:28px;height:28px;border-radius:8px;background:var(--admin-sky-soft);border:1px solid #D6EAF9;display:grid;place-items:center;color:var(--admin-blue)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span> Édition</strong>
+      <span id="currentBlockLabel" style="font-size:11px;color:var(--admin-muted);font-weight:700">Aucun bloc</span>
+    </div>
+    <div class="drawer-body">
+      <div id="blockListWrap">
+        <p style="font-size:11px;color:var(--admin-muted);margin-bottom:8px">Cliquer un bloc dans l’aperçu ou ci-dessous — même styles et polices que le site public.</p>
+        <div class="block-list" id="blockList"></div>
+      </div>
+      <div id="editFormWrap" style="display:none">
+        <button class="btn btn-light btn-sm" id="backToList" type="button" style="margin-bottom:10px">← Retour à la liste</button>
+        <div id="editFields"></div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn btn-primary" id="saveBlock" type="button">Enregistrer</button>
+          <span id="saveStatus" style="font-size:11px;color:var(--admin-muted);align-self:center"></span>
+        </div>
+        <p style="font-size:11px;color:var(--admin-muted);margin-top:8px">Mise à jour instantanée dans l’aperçu · sauvegarde en base à l’enregistrement.</p>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script>
+const CSRF = "f9f3cfa83238cea76f96db2a5c185427a20be7566aa00e39c98f050573bb9c49";
+const PAGE = "mission";
+let LANG = "fr";
+let currentBlock = null;
+let blocksData = {};
+let statsData = {};
+let previewMode = false;
+
+const frame = document.getElementById('previewFrame');
+// file://: each file is an opaque origin — any frame.contentDocument /
+// frame.contentWindow touch logs "Unsafe attempt to load URL ... 'file:'
+// URLs are treated as unique security origins", even inside try/catch.
+// Live in-iframe highlighting is therefore http(s)-only; drawer editing
+// + simulated saves keep working on file://.
+const IS_FILE = location.protocol === 'file:';
+const langBtns = document.querySelectorAll('#langTabs [data-lang]');
+const blockListEl = document.getElementById('blockList');
+const editFormWrap = document.getElementById('editFormWrap');
+const blockListWrap = document.getElementById('blockListWrap');
+const editFields = document.getElementById('editFields');
+const currentBlockLabel = document.getElementById('currentBlockLabel');
+const saveStatus = document.getElementById('saveStatus');
+
+function assetLang(lang){ return frame.src.replace(/([?&])lang=[^&]*/, `$1lang=${lang}`).replace(/[?&]$/, ''); }
+
+function loadBlocks(){
+  console.log('loadBlocks', PAGE, LANG);
+  fetch(`pages.html?action=load&page=${PAGE}&lang=${LANG}&t=${Date.now()}`, {headers:{'X-Requested-With':'XMLHttpRequest'}, cache:'no-store'})
+    .then(r=>{ console.log('loadBlocks status', r.status); return r.json(); }).then(j=>{
+      console.log('loadBlocks got', j.lang, Object.keys(j.blocks||{}).length, Object.keys(j.stats||{}).length);
+      blocksData = j.blocks || {};
+      statsData = j.stats || {};
+      renderBlockList();
+      if(currentBlock) openBlock(currentBlock, true);
+    }).catch(e=>{ console.error('loadBlocks',e); saveStatus.textContent='Erreur chargement: '+e; });
+}
+function renderBlockList(){
+  blockListEl.innerHTML='';
+  // Page blocks
+  const h=document.createElement('div');
+  h.style.cssText='font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--admin-faint);padding:8px 0 6px';
+  h.textContent='Blocs page — '+PAGE;
+  blockListEl.appendChild(h);
+  Object.keys(blocksData).forEach(key=>{
+    const b=blocksData[key];
+    const div=document.createElement('div');
+    div.className='block-item'+(currentBlock===key?' active':'');
+    div.dataset.block=key;
+    const shortVal=(b.value||'').replace(/<[^>]*>/g,'').slice(0,36);
+    div.innerHTML=`<div style="min-width:0"><strong style="font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${key}</strong><small>${b.type} · ${b.field} · ${shortVal?shortVal:'vide'}</small></div><span style="font-size:10px;color:${b.value?'#059669':'#DC2626'}">${b.value?'●':''}</span>`;
+    div.addEventListener('click',()=> openBlock(key));
+    blockListEl.appendChild(div);
+  });
+  // Stats virtual blocks
+  const sh=document.createElement('div');
+  sh.style.cssText='font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--admin-faint);padding:14px 0 6px;display:flex;justify-content:space-between;align-items:center;gap:8px';
+  sh.innerHTML=`<span>Chiffres (stats) — ${Object.keys(statsData).length}/12</span><button type="button" id="addStatBtn" style="font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;border:1px solid #D6EAF9;background:#EFF6FF;color:#1E40AF;cursor:pointer">+ Ajouter</button>`;
+  blockListEl.appendChild(sh);
+  Object.keys(statsData).forEach(key=>{
+    const s=statsData[key];
+    const div=document.createElement('div');
+    div.className='block-item'+(currentBlock===key?' active':'');
+    div.dataset.block=key;
+    const vis=s.is_visible?'':' (masqué)';
+    div.innerHTML=`<div style="min-width:0"><strong style="font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${s.number} — ${s.label}${vis}</strong><small>stat · ${s.key} · #${s.sort_order}</small></div><span style="font-size:10px;color:${s.label?'#059669':'#DC2626'}">●</span>`;
+    div.addEventListener('click',()=> openBlock(key));
+    blockListEl.appendChild(div);
+  });
+  const hint=document.createElement('div');
+  hint.style.cssText='font-size:10px;color:var(--admin-muted);padding:8px 0 0;line-height:1.5';
+  hint.textContent='Stats synchronisés avec Chiffres (7) — même base. Modif ici = Chiffres, et inversement.';
+  blockListEl.appendChild(hint);
+  // add stat handler
+  const addBtn=document.getElementById('addStatBtn');
+  if(addBtn) addBtn.addEventListener('click', openAddStat);
+}
+async function openAddStat(){
+  if(Object.keys(statsData).length>=12){ ta.alert("Trop de chiffres (max 12). Supprimez d'abord un chiffre avant d'en ajouter.", {type:'danger', title:'Limite atteinte'}); return; }
+  const key=await ta.prompt('Clé technique (a-z0-9_, ex: hero_nouveau) :', 'hero_', {title:'Nouveau chiffre'});
+  if(key===null) return;
+  if(!/^[a-z0-9_]{3,32}$/.test(key.trim())){ ta.alert('Clé invalide (a-z0-9_, 3-32 caractères)', {type:'danger', title:'Clé invalide'}); return; }
+  const full='stat.'+key.trim();
+  if(statsData[full]){ ta.alert('Clé déjà utilisée', {type:'warning', title:'Doublon'}); return; }
+  const number=await ta.prompt('Nombre affiché (ex: +100, 27+, 100%) :', '+0', {title:'Nouveau chiffre'});
+  if(number===null) return;
+  if(number.length>12){ ta.alert("Nombre trop long (12 max) — raccourcissez avant d'enregistrer.", {type:'warning', title:'Trop long'}); }
+  const label=await ta.prompt('Label FR (ex: Bénéficiaires accompagnés) :', 'Nouveau chiffre', {title:'Nouveau chiffre'});
+  if(label===null) return;
+  if(label.length>60){ ta.alert('Label trop long (60 max) — sera tronqué. Raccourcissez.', {type:'warning', title:'Trop long'}); }
+  if(Object.keys(statsData).length>=12){ ta.alert('Limite atteinte (12).', {type:'danger', title:'Limite atteinte'}); return; }
+  fetch(`pages.html`,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({action:'add_stat',csrf:CSRF,key:key.trim(),number:number,label_fr:label})})
+    .then(r=>r.json()).then(j=>{
+      if(j.ok){ loadBlocks(); setTimeout(()=>openBlock(full),300); }
+      else ta.alert('Erreur: '+(j.err||''), {type:'danger', title:'Erreur'}); 
+    });
+}
+function confirmLeave(){
+  // Styled 3-way exit dialog: save first, discard, or stay. Resolves 'save'|'discard'|false.
+  return ta.modal({type:'warning', title:'Modifications non enregistrées',
+    message:'Si vous quittez maintenant, ces modifications seront perdues :\n\n'+dirtySummary(),
+    buttons:[
+      {label:'Enregistrer puis quitter', value:'save', kind:'primary'},
+      {label:'Quitter sans enregistrer', value:'discard', kind:'danger'},
+      {label:'Rester', value:false, kind:'ghost'}
+    ]});
+}
+let navConfirmed=false; // set before programmatic navigation so beforeunload stays quiet
+function openBlock(key, force){
+  if(key===currentBlock && !force) return;
+  if(!force && key!==currentBlock && isDirty()){
+    confirmLeave().then(async choice=>{
+      if(choice==='save'){ if(await saveCurrentBlock()) openBlockNow(key); }
+      else if(choice==='discard'){ openBlockNow(key); }
+    });
+    return;
+  }
+  openBlockNow(key);
+}
+// --- Unsaved-changes guard: snapshot at open/save, diff live fields ---
+// (syncPreview mutates blocksData on every keystroke, so it can't be the baseline)
+let loadedSnap=null;
+function shortTxt(html,n){
+  n=n||80;
+  const t=String(html==null?'':html).replace(/<[^>]*>/g,'').trim().replace(/\s+/g,' ');
+  return t.length>n ? t.slice(0,n-1)+'…' : t;
+}
+function snapshotCurrent(){
+  loadedSnap=null;
+  if(!currentBlock) return;
+  if(currentBlock.startsWith('stat.')){
+    loadedSnap={kind:'stat',
+      number:document.getElementById('statNumber')?.value??'',
+      label:document.getElementById('statLabel')?.value??'',
+      visible:!!document.getElementById('statVisible')?.checked};
+  } else {
+    const area=document.getElementById('editArea');
+    const inp=area?null:editFields.querySelector('input');
+    const b=blocksData[currentBlock];
+    loadedSnap={kind:'block', field:b?b.field:'title', value:area?area.innerHTML:(inp?inp.value:'')};
+  }
+}
+function isDirty(){
+  if(!currentBlock || !loadedSnap) return false;
+  if(loadedSnap.kind==='stat'){
+    const n=document.getElementById('statNumber')?.value??'';
+    const l=document.getElementById('statLabel')?.value??'';
+    const v=!!document.getElementById('statVisible')?.checked;
+    return n!==loadedSnap.number || l!==loadedSnap.label || v!==loadedSnap.visible;
+  }
+  const area=document.getElementById('editArea');
+  const inp=area?null:editFields.querySelector('input');
+  const cur=area?area.innerHTML:(inp?inp.value:'');
+  return (cur||'')!==(loadedSnap.value||'');
+}
+function dirtySummary(){
+  if(!currentBlock || !loadedSnap) return '';
+  const L=[];
+  if(loadedSnap.kind==='stat'){
+    const n=document.getElementById('statNumber')?.value??'';
+    const l=document.getElementById('statLabel')?.value??'';
+    const v=!!document.getElementById('statVisible')?.checked;
+    if(n!==loadedSnap.number) L.push('• Nombre : « '+shortTxt(loadedSnap.number)+' » → « '+shortTxt(n)+' »');
+    if(l!==loadedSnap.label) L.push('• Label '+LANG+' : « '+shortTxt(loadedSnap.label)+' » → « '+shortTxt(l)+' »');
+    if(v!==loadedSnap.visible) L.push('• Visibilité : '+(loadedSnap.visible?'visible':'masqué')+' → '+(v?'visible':'masqué'));
+  } else {
+    const area=document.getElementById('editArea');
+    const inp=area?null:editFields.querySelector('input');
+    const cur=area?area.innerHTML:(inp?inp.value:'');
+    L.push('• '+(loadedSnap.field==='body'?'Contenu':'Titre')+' '+LANG+' : « '+shortTxt(loadedSnap.value)+' » → « '+shortTxt(cur)+' »');
+  }
+  return (currentBlock||'')+'\n'+L.join('\n');
+}
+function openBlockNow(key){
+  currentBlock=key;
+  const isStat=key.startsWith('stat.');
+  const b=isStat?statsData[key]:blocksData[key];
+  if(!b){ loadedSnap=null; return; }
+  currentBlockLabel.textContent=key;
+  blockListWrap.style.display='none';
+  editFormWrap.style.display='block';
+  document.querySelectorAll('.block-item').forEach(el=>el.classList.toggle('active', el.dataset.block===key));
+  highlightInFrame(key);
+  editFields.innerHTML='';
+  if(isStat){
+    // Stat editing: single LANG label + number + visible toggle. Number is language-agnostic.
+    const s=b;
+    const lab=document.createElement('label'); lab.className='edit-label'; lab.textContent='Chiffre — '+LANG.toUpperCase()+' · stat · '+s.key;
+    editFields.appendChild(lab);
+    const warn=document.createElement('div'); warn.style.cssText='font-size:11px;color:#92400E;background:#FFFBEB;border:1px solid #FDE68A;padding:8px 10px;border-radius:8px;margin-bottom:10px;line-height:1.5;display:none'; warn.id='statWarn'; editFields.appendChild(warn);
+    function checkWarn(){
+      const n=(document.getElementById('statNumber')?.value||''); const l=(document.getElementById('statLabel')?.value||'');
+      let msgs=[];
+      if(n.length>12) msgs.push('Nombre trop long ('+n.length+'/12) — l\'affichage débordera.');
+      if(l.length>60) msgs.push('Label trop long ('+l.length+'/60) — raccourcissez.');
+      if(Object.keys(statsData).length>8) msgs.push('Beaucoup de chiffres ('+Object.keys(statsData).length+'/12) — vérifiez la lisibilité sur mobile.');
+      if(msgs.length){ warn.style.display='block'; warn.innerHTML='<b>Attention :</b><br>'+msgs.join('<br>'); } else warn.style.display='none';
+    }
+    const f1=document.createElement('div'); f1.className='field'; f1.style.marginTop='0';
+    f1.innerHTML=`<label>Nombre <span>ex: +100, 27+, 100% (12 max, commun à toutes les langues)</span></label><input id="statNumber" type="text" value="${(s.number||'').replace(/"/g,'&quot;')}" placeholder="+100" style="width:100%;padding:10px 12px;border:1.5px solid #D6EAF9;background:#F8FBFE;border-radius:10px;font-family:The Seasons,serif;font-weight:700;font-size:18px">`;
+    editFields.appendChild(f1);
+    const f2=document.createElement('div'); f2.className='field';
+    f2.innerHTML=`<label>Label — ${LANG.toUpperCase()} <span>${LANG==='fr'?'*':'(vide=FR)'} 60 max</span></label><input id="statLabel" type="text" value="${(s.label||'').replace(/"/g,'&quot;')}" placeholder="${s.label_fr||''}" style="width:100%;padding:10px 12px;border:1.5px solid #D6EAF9;background:#F8FBFE;border-radius:10px;font-size:14px">`;
+    editFields.appendChild(f2);
+    const f3=document.createElement('div'); f3.style.cssText='display:flex;gap:8px;align-items:center;margin-top:10px';
+    f3.innerHTML=`<label class="switch" style="margin:0"><input id="statVisible" type="checkbox" ${s.is_visible?'checked':''}><span class="slider"></span></label><span style="font-size:12px;font-weight:700;color:var(--admin-blue)">Visible sur le site</span><span style="margin-left:auto;font-size:10px;color:var(--admin-muted)">#${s.sort_order}</span>`;
+    editFields.appendChild(f3);
+    const del=document.createElement('button'); del.type='button'; del.className='btn btn-light btn-sm'; del.style.cssText='margin-top:12px;color:#DC2626;border-color:#FECACA';
+    del.textContent='Supprimer ce chiffre';
+    del.addEventListener('click',()=>{
+      ta.confirm('Supprimer '+s.key+' ?', {danger:true, okText:'Supprimer'}).then(ok=>{
+        if(!ok) return;
+        fetch(`pages.html`,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({action:'delete_stat',csrf:CSRF,key:s.key})})
+          .then(r=>r.json()).then(j=>{ if(j.ok){ delete statsData[key]; currentBlock=null; blockListWrap.style.display='block'; editFormWrap.style.display='none'; currentBlockLabel.textContent='Aucun bloc'; loadBlocks(); const base=frame.src.split('?')[0]; frame.src=demoPreview(LANG,'mission'); } else ta.alert(j.err||'Erreur', {type:'danger', title:'Erreur'}); });
+      });
+    });
+    editFields.appendChild(del);
+    // listeners
+    const numInp=document.getElementById('statNumber');
+    const labInp=document.getElementById('statLabel');
+    const visInp=document.getElementById('statVisible');
+    numInp.addEventListener('input', ()=>{ checkWarn(); debounce(syncPreview,150)(); });
+    labInp.addEventListener('input', ()=>{ checkWarn(); debounce(syncPreview,150)(); });
+    visInp.addEventListener('change', ()=>{ syncPreview(); });
+    checkWarn();
+    setTimeout(()=>labInp.focus(),80);
+    snapshotCurrent();
+    return;
+  }
+  // Normal page_blocks
+  const isBody = b.field==='body';
+  const label=document.createElement('label');
+  label.className='edit-label';
+  label.textContent = (isBody?'Contenu':'Titre')+' — '+LANG.toUpperCase()+' · '+b.type;
+  editFields.appendChild(label);
+  // frontend warning for too much content
+  const w=document.createElement('div'); w.id='blockWarn'; w.style.cssText='font-size:11px;color:#92400E;background:#FFFBEB;border:1px solid #FDE68A;padding:8px 10px;border-radius:8px;margin-bottom:10px;line-height:1.5;display:none'; editFields.appendChild(w);
+  function checkBlockWarn(val){
+    const txt=(val||'').replace(/<[^>]*>/g,'');
+    let msgs=[];
+    if(!isBody && txt.length>300) msgs.push('Titre trop long ('+txt.length+'/300) — raccourcissez.');
+    if(isBody && txt.length>2000) msgs.push('Contenu trop long ('+txt.length+'/2000) — raccourcissez.');
+    if(Object.keys(blocksData).length>60) msgs.push('Beaucoup de blocs ('+Object.keys(blocksData).length+') — vérifiez lisibilité.');
+    if(msgs.length){ w.style.display='block'; w.innerHTML='<b>Attention :</b><br>'+msgs.join('<br>'); } else w.style.display='none';
+  }
+  if(isBody){
+    const toolbar=document.createElement('div');
+    toolbar.className='wys-toolbar';
+    toolbar.innerHTML=`<button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="insertUnorderedList">•</button><button type="button" data-cmd="insertOrderedList">1.</button><button type="button" data-cmd="createLink">🔗</button><button type="button" data-cmd="removeFormat">✕</button>`;
+    const area=document.createElement('div');
+    area.className='wys-area'; area.contentEditable=true; area.id='editArea';
+    area.innerHTML=b.value||'';
+    area.style.minHeight='140px';
+    editFields.appendChild(toolbar);
+    editFields.appendChild(area);
+    toolbar.querySelectorAll('button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const cmd=btn.dataset.cmd;
+        if(cmd==='createLink'){
+          const restore=ta.keepSelection();
+          ta.prompt('Adresse du lien :', 'https://', {title:'Insérer un lien'}).then(url=>{ restore(); area.focus(); if(url) document.execCommand(cmd,false,url); syncPreview(); });
+          return;
+        }
+        else document.execCommand(cmd,false,null);
+        area.focus(); syncPreview();
+      });
+    });
+    area.addEventListener('input', ()=>{ checkBlockWarn(area.innerHTML); debounce(syncPreview, 150)(); });
+    checkBlockWarn(b.value||'');
+  } else {
+    const inp=document.createElement('input');
+    inp.type='text'; inp.value=b.value||''; inp.className='field-input';
+    inp.style.cssText='width:100%;padding:10px 12px;border:1.5px solid #D6EAF9;background:#F8FBFE;border-radius:10px;font-size:14px';
+    inp.addEventListener('input', ()=>{ checkBlockWarn(inp.value); debounce(syncPreview, 150)(); });
+    editFields.appendChild(inp);
+    checkBlockWarn(b.value||'');
+  }
+  setTimeout(()=>{ const a=editFields.querySelector('[contenteditable],input'); if(a) a.focus(); },80);
+  snapshotCurrent();
+}
+function syncPreview(){
+  if(!currentBlock) return;
+  const isStat=currentBlock.startsWith('stat.');
+  if(isStat){
+    const s=statsData[currentBlock];
+    const numEl=document.getElementById('statNumber');
+    const labEl=document.getElementById('statLabel');
+    const visEl=document.getElementById('statVisible');
+    let num=numEl?numEl.value:'';
+    let lab=labEl?labEl.value:'';
+    let vis=visEl?visEl.checked:true;
+    s.number=num; s.label=lab; s.is_visible=vis?1:0;
+    if(IS_FILE){ saveStatus.textContent='Modifié — Enregistrer pour sauvegarder'; saveStatus.style.color='#D97706'; return; }
+    try{
+      const doc=frame.contentDocument;
+      const els=doc.querySelectorAll(`[data-block="${currentBlock}"]`);
+      els.forEach(el=>{
+        const strong=el.querySelector('strong,b');
+        const span=el.querySelector('span');
+        if(strong) strong.textContent=num;
+        if(span) span.textContent=lab || s.label_fr || '';
+        el.style.display=vis?'':'none';
+        el.style.outline='1.5px solid #5AA9E6';
+        setTimeout(()=>el.style.outline='',800);
+      });
+    }catch(e){}
+    saveStatus.textContent='Modifié — Enregistrer pour sauvegarder';
+    saveStatus.style.color='#D97706';
+    return;
+  }
+  const b=blocksData[currentBlock];
+  let val='';
+  const area=document.getElementById('editArea');
+  if(area) val=area.innerHTML;
+  else {
+    const inp=editFields.querySelector('input');
+    if(inp) val=inp.value;
+  }
+  b.value=val;
+  if(IS_FILE){ saveStatus.textContent='Modifié — Enregistrer pour sauvegarder'; saveStatus.style.color='#D97706'; return; }
+  try{
+    const doc=frame.contentDocument;
+    const el=doc.querySelector(`[data-block="${currentBlock}"]`);
+    if(el){
+      if(b.field==='body') el.innerHTML=val;
+      else el.innerHTML=val;
+      el.style.outline='1.5px solid #5AA9E6';
+      setTimeout(()=>el.style.outline='', 800);
+    }
+  }catch(e){}
+  saveStatus.textContent='Modifié — Enregistrer pour sauvegarder';
+  saveStatus.style.color='#D97706';
+}
+function highlightInFrame(key){
+  if(IS_FILE) return;
+  try{
+    const doc=frame.contentDocument;
+    doc.querySelectorAll('[data-block]').forEach(el=>{
+      el.style.outline = el.dataset.block===key ? '1.5px dashed #5AA9E6' : '';
+      el.style.cursor = 'pointer';
+    });
+  }catch(e){}
+}
+function debounce(fn,ms){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a),ms); }; }
+
+document.getElementById('backToList').addEventListener('click',()=>{
+  const goBack=()=>{
+    editFormWrap.style.display='none';
+    blockListWrap.style.display='block';
+    currentBlock=null;
+    loadedSnap=null;
+    currentBlockLabel.textContent='Aucun bloc';
+    if(!IS_FILE){ try{ frame.contentDocument.querySelectorAll('[data-block]').forEach(el=>el.style.outline=''); }catch(e){} }
+  };
+  if(currentBlock && isDirty()){
+    confirmLeave().then(async choice=>{
+      if(choice==='save'){ if(await saveCurrentBlock()) goBack(); }
+      else if(choice==='discard'){ goBack(); }
+    });
+    return;
+  }
+  goBack();
+});
+
+async function saveCurrentBlock(){
+  if(!currentBlock) return true;
+  const isStat=currentBlock.startsWith('stat.');
+  const post=(body)=>{
+    saveStatus.textContent='Enregistrement…';
+    return fetch(`pages.html`,{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(Object.assign({action:'save', csrf:CSRF, block_key:currentBlock, lang:LANG}, body))
+    }).then(r=>r.json());
+  };
+  if(isStat){
+    const s=statsData[currentBlock];
+    const numEl=document.getElementById('statNumber');
+    const labEl=document.getElementById('statLabel');
+    const visEl=document.getElementById('statVisible');
+    let num=numEl?numEl.value:'';
+    let lab=labEl?labEl.value:'';
+    let vis=visEl?visEl.checked:true;
+    if(num.length>12){ if(!(await ta.confirm('Nombre trop long ('+num.length+'/12). Continuer ?', {type:'warning', okText:'Continuer'}))) return false; }
+    if(lab.length>60){ if(!(await ta.confirm('Label trop long ('+lab.length+'/60). Continuer ?', {type:'warning', okText:'Continuer'}))) return false; }
+    if(Object.keys(statsData).length>12){ if(!(await ta.confirm('Beaucoup de chiffres ('+Object.keys(statsData).length+'/12). Continuer ?', {type:'warning', okText:'Continuer'}))) return false; }
+    try{
+      const j=await post({value:lab, number:num, is_visible:vis?1:0});
+      if(j.ok){
+        s.number=j.number||num; s.label=j.label||lab; s.is_visible=vis?1:0;
+        snapshotCurrent();
+        saveStatus.textContent='✓ Enregistré';
+        saveStatus.style.color='#059669';
+        setTimeout(()=> saveStatus.textContent='', 2000);
+        const base=frame.src.split('?')[0]; frame.src=demoPreview(LANG,'mission');
+        return true;
+      }
+      saveStatus.textContent='Erreur: '+(j.err||'');
+      saveStatus.style.color='#DC2626';
+      return false;
+    }catch(e){ saveStatus.textContent='Erreur réseau'; saveStatus.style.color='#DC2626'; return false; }
+  }
+  const b=blocksData[currentBlock];
+  let val='';
+  const area=document.getElementById('editArea');
+  if(area) val=area.innerHTML;
+  else {
+    const inp=editFields.querySelector('input');
+    if(inp) val=inp.value;
+  }
+  const txt=(val||'').replace(/<[^>]*>/g,'');
+  if(b.field!=='body' && txt.length>300){ if(!(await ta.confirm('Titre trop long ('+txt.length+'/300). Continuer ?', {type:'warning', okText:'Continuer'}))) return false; }
+  if(b.field==='body' && txt.length>2000){ if(!(await ta.confirm('Contenu trop long ('+txt.length+'/2000). Continuer ?', {type:'warning', okText:'Continuer'}))) return false; }
+  try{
+    const j=await post({value:val});
+    if(j.ok){
+      b.value=j.value;
+      snapshotCurrent();
+      saveStatus.textContent='✓ Enregistré';
+      saveStatus.style.color='#059669';
+      setTimeout(()=> saveStatus.textContent='', 2000);
+      return true;
+    }
+    saveStatus.textContent='Erreur: '+(j.err||'');
+    saveStatus.style.color='#DC2626';
+    return false;
+  }catch(e){ saveStatus.textContent='Erreur réseau'; saveStatus.style.color='#DC2626'; return false; }
+}
+document.getElementById('saveBlock').addEventListener('click',()=>{ saveCurrentBlock(); });
+
+// lang switch — delegated for robustness
+const langTabsEl=document.getElementById('langTabs');
+if(langTabsEl){
+  langTabsEl.addEventListener('click', e=>{
+    const btn=e.target.closest('[data-lang]');
+    if(!btn) return;
+    const next=btn.dataset.lang;
+    const doSwitch=()=>{
+      LANG=next;
+      console.log('pages lang switch click', LANG, btn);
+      langBtns.forEach(b=>b.classList.toggle('active', b===btn));
+      // reload blocks for new lang and iframe (force reload even if same lang)
+      if(!frame){ console.error('frame not found'); return; }
+      const base = frame.src.split('?')[0];
+      const newSrc = demoPreview(LANG,'mission');
+      console.log('pages newSrc', newSrc, 'old', frame.src);
+      if(IS_FILE){ frame.setAttribute('src', newSrc); }
+      else{
+        // force reload by clearing src first if same
+        if(frame.getAttribute('src')===newSrc) frame.src='about:blank';
+        // use location replace for more reliable reload (http(s) only)
+        try{ frame.contentWindow.location.replace(newSrc); }catch(err){ frame.src = newSrc; }
+      }
+      loadBlocks();
+      // also update currentBlock edit field if open
+      if(currentBlock){
+        setTimeout(()=>{ if(currentBlock) openBlock(currentBlock, true); }, 50);
+      }
+    };
+    if(next!==LANG && currentBlock && isDirty()){
+      confirmLeave().then(async choice=>{
+        if(choice==='save'){ if(await saveCurrentBlock()) doSwitch(); }
+        else if(choice==='discard'){ doSwitch(); }
+      });
+      return;
+    }
+    doSwitch();
+  });
+}
+// any same-tab navigation away (page tabs, sidebar, logout…): styled 3-way guard.
+// beforeunload below remains the backstop for refresh / tab close / typed URLs,
+// which browsers never let pages customize.
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href]');
+  if(!a || a.target==='_blank' || a.hasAttribute('download')) return;
+  const raw=a.getAttribute('href');
+  if(!raw || raw.startsWith('#') || raw.startsWith('javascript:')) return;
+  let dest;
+  try{ dest=new URL(a.href, location.href); }catch(_){ return; }
+  if(dest.origin!==location.origin) return;
+  if(dest.pathname===location.pathname && dest.search===location.search) return;
+  if(currentBlock && isDirty()){
+    e.preventDefault();
+    confirmLeave().then(async choice=>{
+      if(choice==='save'){ if(await saveCurrentBlock()){ navConfirmed=true; window.location.href=dest.href; } }
+      else if(choice==='discard'){ navConfirmed=true; window.location.href=dest.href; }
+    });
+  }
+}, true);
+// refresh / tab close / typed-URL fallback (browser-native dialog — not styleable)
+window.addEventListener('beforeunload',e=>{
+  if(navConfirmed) return;
+  if(currentBlock && isDirty()){ e.preventDefault(); e.returnValue=''; }
+});
+// uniform scale: desktop 1280 like a photo — same dimensions, smaller when not enough pixels
+const previewWrap = document.getElementById('previewWrap');
+const BASE_W = 1280, BASE_H = 900, MOBILE_W = 390;
+function applyPreviewScale(){
+  if(frame.classList.contains('mobile')){
+    frame.style.transform = 'none';
+    frame.style.width = MOBILE_W + 'px';
+    frame.style.height = '800px';
+    previewWrap.style.height = '';
+    return;
+  }
+  const avail = previewWrap.clientWidth - 24; // padding 12*2
+  const scale = Math.min(avail / BASE_W, 1);
+  frame.style.width = BASE_W + 'px';
+  frame.style.height = BASE_H + 'px';
+  frame.style.transform = `scale(${scale})`;
+  frame.style.transformOrigin = 'top center';
+  // collapse the unscaled height so wrapper doesn't keep 900px blank
+  previewWrap.style.height = (BASE_H * scale + 24) + 'px';
+}
+let _scaleRaf = null;
+function scheduleScale(){ if(_scaleRaf) cancelAnimationFrame(_scaleRaf); _scaleRaf = requestAnimationFrame(applyPreviewScale); }
+window.addEventListener('resize', scheduleScale);
+frame.addEventListener('load', () => { scheduleScale(); setTimeout(scheduleScale, 120); });
+// sidebar collapse/expand animates 320ms — rescale during transition
+const sidebarEl = document.getElementById('sidebar');
+if(sidebarEl){
+  sidebarEl.addEventListener('transitionend', (e)=>{ if(e.propertyName==='width' || e.propertyName==='transform') scheduleScale(); });
+  new ResizeObserver(scheduleScale).observe(sidebarEl);
+  document.getElementById('sidebarToggle')?.addEventListener('click', ()=> setTimeout(scheduleScale, 20));
+}
+new ResizeObserver(scheduleScale).observe(previewWrap);
+applyPreviewScale();
+
+// device toggle
+document.getElementById('deviceToggle').addEventListener('click', (e)=>{
+  frame.classList.toggle('mobile');
+  e.currentTarget.textContent = frame.classList.contains('mobile') ? 'Desktop' : 'Mobile';
+  scheduleScale();
+});
+// preview toggle
+document.getElementById('previewToggle').addEventListener('click', (e)=>{
+  previewMode=!previewMode;
+  document.body.classList.toggle('preview-mode', previewMode);
+  e.currentTarget.textContent = previewMode ? 'Édition' : 'Aperçu';
+  e.currentTarget.classList.toggle('btn-primary', previewMode);
+  e.currentTarget.classList.toggle('btn-light', !previewMode);
+  if(previewMode){
+    editFormWrap.style.display='none';
+    blockListWrap.style.display='none';
+    currentBlockLabel.textContent='Aperçu';
+    if(!IS_FILE){ try{ frame.contentDocument.querySelectorAll('[data-block]').forEach(el=>el.style.outline=''); }catch(e){} }
+  } else {
+    blockListWrap.style.display='block';
+    currentBlockLabel.textContent='Aucun bloc';
+  }
+});
+
+// iframe load: attach click handlers (http(s) only — file:// origins are opaque)
+frame.addEventListener('load',()=>{
+  if(IS_FILE) return;
+  try{
+    const doc=frame.contentDocument;
+    // inject hover style
+    const style=doc.createElement('style');
+    style.textContent=`[data-block]{transition:outline .15s}[data-block]:hover{outline:1.5px dashed #5AA9E6;outline-offset:2px;cursor:pointer}[data-block].active{outline:2px solid #5AA9E6 !important}`;
+    doc.head.appendChild(style);
+    doc.querySelectorAll('[data-block]').forEach(el=>{
+      el.addEventListener('click', (ev)=>{
+        ev.preventDefault(); ev.stopPropagation();
+        const key=el.dataset.block;
+        openBlock(key);
+        // scroll drawer into view on mobile
+        if(window.innerWidth<1100) document.getElementById('editDrawer')?.scrollIntoView({behavior:'smooth'});
+      });
+      el.addEventListener('mouseenter', ()=>{ if(!previewMode) el.style.background='rgba(90,169,230,.06)'; });
+      el.addEventListener('mouseleave', ()=>{ el.style.background=''; });
+    });
+    // highlight current
+    if(currentBlock) highlightInFrame(currentBlock);
+  }catch(e){ console.warn('iframe access blocked',e); }
+});
+
+loadBlocks();
+</script>
+
+  </div>
+</div>
+</div>
+<script src="assets/js/admin.js?v=1788544919" defer></script>
+<script src="assets/js/demo.js" defer></script>
+<script src="assets/js/admin-mobile.js?v=1788555665" defer></script>
+<script src="assets/js/lucide.min.js" defer></script>
+<script>
+(function(){
+  function refreshIcons(){ if(window.lucide) try{ lucide.createIcons(); }catch(e){} }
+  document.addEventListener('DOMContentLoaded',refreshIcons);
+  window.addEventListener('load',refreshIcons);
+  // refresh once after deferred scripts settle — no MutationObserver (was causing infinite loop)
+  setTimeout(refreshIcons, 600);
+  setTimeout(refreshIcons, 1500);
+})();
+</script>
+<script>window.DEMO_DATA={"pages":{"home|ar":{"blocks":{"home.hero.badge":{"type":"eyebrow","value":"تاوريرت — منذ 1998","field":"title"},"home.hero.title":{"type":"title","value":"الإنسانية في <em>صميم رعايتنا<\/em>","field":"title"},"home.hero.sub":{"type":"body","value":"<strong>مهمتنا هي ترسيخ ثقافة الإنسانية<\/strong> في خدمة المسنين. التقدم في السن بكرامة حق وليس امتيازا.","field":"body"},"home.hero.cta_don":{"type":"cta","value":"تبرع","field":"title"},"home.hero.cta_aide":{"type":"cta","value":"طلب المساعدة","field":"title"},"home.pillars.eyebrow":{"type":"eyebrow","value":"هويتنا","field":"title"},"home.pillars.title":{"type":"title","value":"الإنسانية، <i>ببساطة<\/i> احترام الكرامة.","field":"title"},"home.pillars.body":{"type":"body","value":"التضامن والإحسان والإصغاء — ثلاث ركائز توجه كل زيارة وكل وجبة مشتركة وكل بسمة مستعادة.","field":"body"},"home.pillar.1.title":{"type":"title","value":"الكرامة <em>أولا<\/em>","field":"title"},"home.pillar.1.body":{"type":"body","value":"يُستقبل كل مسن باحترام دون حكم. نحافظ على الاستقلالية والخصوصية يوميا.","field":"body"},"home.pillar.2.title":{"type":"title","value":"التضامن <em>في العمل<\/em>","field":"title"},"home.pillar.2.body":{"type":"body","value":"مساعدة منزلية ومواكبة طبية ووجبات وزيارات — شبكة تضامن متجذرة في تاوريرت ودواويرها.","field":"body"},"home.pillar.3.title":{"type":"title","value":"الإحسان <em>اليومي<\/em>","field":"title"},"home.pillar.3.body":{"type":"body","value":"حضور إنساني دافئ ومنتظم. نصغي ونطمئن ونخلق الروابط.","field":"body"},"home.impact.eyebrow":{"type":"eyebrow","value":"الأثر","field":"title"},"home.impact.title":{"type":"title","value":"التقدم في السن بكرامة <em>حق،<\/em> ليس امتيازا.","field":"title"},"home.impact.body":{"type":"body","value":"تعمل الجمعية الخيرية الإسلامية منذ أكثر من عقدين ليحيا كل مسن في تاوريرت محاطا ومعتنى به ومحترما — في البيت أو في مؤسسة الاستقبال.","field":"body"},"home.impact.quote":{"type":"quote","value":"“بفضل الجمعية، يتلقى والدي زيارات كل أسبوع. <em>نشعر بأننا أقل وحدة.<\/em> إنها أسرة بأكملها تتنفس.”","field":"body"},"home.actions.eyebrow":{"type":"eyebrow","value":"أعمالنا","field":"title"},"home.actions.title":{"type":"title","value":"خدمات <i>ملموسة<\/i>، قريبة منكم.","field":"title"},"home.actions.body":{"type":"body","value":"من المساعدة المنزلية إلى الأنشطة الجماعية — اكتشفوا مشاريعنا الجارية.","field":"body"},"home.don.title":{"type":"title","value":"تبرعكم <em>يمنح أياما أفضل.<\/em>","field":"title"},"home.don.body":{"type":"body","value":"10 € = وجبة ساخنة لمدة أسبوع. كل مساهمة مهمة وكل مبادرة موثقة ومشكورة.","field":"body"},"home.news.eyebrow":{"type":"eyebrow","value":"الأخبار","field":"title"},"home.news.title":{"type":"title","value":"ما <i>يحرك<\/i> تاوريرت.","field":"title"},"home.contact.eyebrow":{"type":"eyebrow","value":"هل تحتاج مساعدة؟","field":"title"},"home.contact.title":{"type":"title","value":"بلغ عن حالة، <em>نتدخل.<\/em>","field":"title"},"home.contact.body":{"type":"body","value":"هل تعرف مسنا منعزلا أو في صعوبة في تاوريرت؟ املأ استمارة طلب المساعدة — يجيب الفريق خلال 48 ساعة بسرية.","field":"body"},"home.team.eyebrow":{"type":"eyebrow","value":"فريقنا","field":"title"},"home.team.title":{"type":"title","value":"أولئك الذين <i>يسهرون<\/i> كل يوم.","field":"title"},"home.team.body":{"type":"body","value":"متطوعون ومقدمو رعاية وأعضاء المكتب — فريق متماسك متجذر في تاوريرت في خدمة مسنينا.","field":"body"},"home.team.cta":{"type":"cta","value":"انضم إلى الفريق","field":"title"},"home.pillar.1.link":{"type":"cta","value":"اعرف المزيد","field":"title"},"home.pillar.2.link":{"type":"cta","value":"أعمالنا","field":"title"},"home.pillar.3.link":{"type":"cta","value":"انضم إلينا","field":"title"},"home.impact.link":{"type":"cta","value":"اكتشف مهمتنا","field":"title"},"home.actions.link":{"type":"cta","value":"عرض جميع المشاريع","field":"title"},"home.don.cta_main":{"type":"cta","value":"تبرع بأمان","field":"title"},"home.don.cta_second":{"type":"cta","value":"شاهد استخدام التبرعات","field":"title"},"home.don.collecting":{"type":"title","value":"جمع جارٍ","field":"title"},"home.don.goal":{"type":"title","value":"الهدف","field":"title"},"home.don.donors":{"type":"title","value":"متبرعون","field":"title"},"home.meta.gallery":{"type":"title","value":"معرض","field":"title"},"home.meta.photos":{"type":"title","value":"صور","field":"title"},"home.team.band_stats":{"type":"title","value":"45 متطوعا نشطا · 12 حيا مشمولا","field":"title"},"home.team.band_sub":{"type":"title","value":"انضم إلينا: ساعتان في الأسبوع تكفيان لتغيير يوم.","field":"title"},"home.team.cta2a":{"type":"cta","value":"كن متطوعا","field":"title"},"home.team.cta2b":{"type":"cta","value":"قصتنا","field":"title"},"home.news.link":{"type":"cta","value":"جميع الأخبار","field":"title"},"home.contact.cta_aide":{"type":"cta","value":"طلب مساعدة — استمارة","field":"title"},"home.contact.cta_contact":{"type":"cta","value":"اتصل بنا","field":"title"},"home.impact.quote_role":{"type":"title","value":"ابنة مستفيد — تاوريرت","field":"title"},"home.sponsors.eyebrow":{"type":"eyebrow","value":"شركاؤنا","field":"title"},"home.sponsors.title":{"type":"title","value":"هم <i>يدعموننا<\/i>.","field":"title"}},"stats":{"stat.hero_beneficiaires":{"type":"stat","key":"hero_beneficiaires","id":1,"number":"+100","label":"المستفيدون","label_fr":"Bénéficiaires accompagnés","is_visible":1,"sort_order":0},"stat.hero_annees":{"type":"stat","key":"hero_annees","id":2,"number":"27+","label":"سنوات الخدمة","label_fr":"Ans au service des aînés","is_visible":1,"sort_order":1},"stat.hero_projets":{"type":"stat","key":"hero_projets","id":3,"number":"40+","label":"مشاريع","label_fr":"Projets solidaires menés","is_visible":1,"sort_order":2},"stat.impact_repas":{"type":"stat","key":"impact_repas","id":4,"number":"14 400","label":"وجبات","label_fr":"Repas distribués (2024)","is_visible":1,"sort_order":3},"stat.impact_visites":{"type":"stat","key":"impact_visites","id":5,"number":"340","label":"زيارات","label_fr":"Visites à domicile / an","is_visible":1,"sort_order":4},"stat.impact_aines":{"type":"stat","key":"impact_aines","id":6,"number":"62","label":"مسنون","label_fr":"Aînés suivis régulièrement","is_visible":1,"sort_order":5},"stat.impact_benevolat":{"type":"stat","key":"impact_benevolat","id":7,"number":"98%","label":"متطوعين نشطين","label_fr":"Bénévolat opérationnel","is_visible":1,"sort_order":6},"stat.mission_ans":{"type":"stat","key":"mission_ans","id":8,"number":"27+","label":"أعوام من الالتزام","label_fr":"Ans d'engagement","is_visible":1,"sort_order":7},"stat.mission_benef":{"type":"stat","key":"mission_benef","id":9,"number":"1 200","label":"مستفيد/سنة","label_fr":"Bénéficiaires/an","is_visible":1,"sort_order":8},"stat.mission_visites":{"type":"stat","key":"mission_visites","id":10,"number":"340","label":"زيارة/سنة","label_fr":"Visites/an","is_visible":1,"sort_order":9}},"lang":"ar","page":"home"},"home|en":{"blocks":{"home.hero.badge":{"type":"eyebrow","value":"Taourirt — Since 1998","field":"title"},"home.hero.title":{"type":"title","value":"Humanism at the <em>heart of our care<\/em>","field":"title"},"home.hero.sub":{"type":"body","value":"<strong>Our mission is to introduce and live the culture of humanism<\/strong> for the elderly. Ageing with dignity is a right, not a privilege.","field":"body"},"home.hero.cta_don":{"type":"cta","value":"Donate","field":"title"},"home.hero.cta_aide":{"type":"cta","value":"Request help","field":"title"},"home.pillars.eyebrow":{"type":"eyebrow","value":"Our DNA","field":"title"},"home.pillars.title":{"type":"title","value":"Humanism, <i>simply<\/i> respect for dignity.","field":"title"},"home.pillars.body":{"type":"body","value":"Solidarity, kindness and listening — three pillars guiding each visit, each shared meal, each smile regained.","field":"body"},"home.pillar.1.title":{"type":"title","value":"Dignity <em>above all<\/em>","field":"title"},"home.pillar.1.body":{"type":"body","value":"Each elderly person is welcomed with respect, without judgement. We preserve autonomy and privacy every day.","field":"body"},"home.pillar.2.title":{"type":"title","value":"Solidarity <em>in action<\/em>","field":"title"},"home.pillar.2.body":{"type":"body","value":"Home help, medical support, meals and visits — a mutual aid network rooted in Taourirt and its douars.","field":"body"},"home.pillar.3.title":{"type":"title","value":"Daily <em>kindness<\/em>","field":"title"},"home.pillar.3.body":{"type":"body","value":"A warm, regular human presence. We listen, reassure and create bonds.","field":"body"},"home.impact.eyebrow":{"type":"eyebrow","value":"Impact","field":"title"},"home.impact.title":{"type":"title","value":"Ageing with dignity <em>is a right,<\/em> not a privilege.","field":"title"},"home.impact.body":{"type":"body","value":"The Islamic Charitable Association has worked for over two decades so every elder in Taourirt lives surrounded, cared for and respected — at home or in care facilities.","field":"body"},"home.impact.quote":{"type":"quote","value":"“Thanks to the association, my father receives visits every week. <em>We feel less alone.<\/em> The whole family can breathe again.”","field":"body"},"home.actions.eyebrow":{"type":"eyebrow","value":"Our actions","field":"title"},"home.actions.title":{"type":"title","value":"Concrete services, <i>close to you.<\/i>","field":"title"},"home.actions.body":{"type":"body","value":"From home help to group activities — discover our ongoing projects.","field":"body"},"home.don.title":{"type":"title","value":"Your donation <em>offers better days.<\/em>","field":"title"},"home.don.body":{"type":"body","value":"€10 = a hot meal for a week. Every contribution counts, every gesture is tracked and thanked.","field":"body"},"home.news.eyebrow":{"type":"eyebrow","value":"News","field":"title"},"home.news.title":{"type":"title","value":"What <i>moves<\/i> Taourirt.","field":"title"},"home.contact.eyebrow":{"type":"eyebrow","value":"Need help?","field":"title"},"home.contact.title":{"type":"title","value":"Report a case, <i>we intervene.<\/i>","field":"title"},"home.contact.body":{"type":"body","value":"Do you know an isolated or struggling elderly person in Taourirt? Fill the help request form — the team replies within 48h, confidentially.","field":"body"},"home.team.eyebrow":{"type":"eyebrow","value":"Our team","field":"title"},"home.team.title":{"type":"title","value":"Those who <i>watch<\/i> every day.","field":"title"},"home.team.body":{"type":"body","value":"Volunteers, caregivers and board members — a close-knit team, rooted in Taourirt, serving our elders.","field":"body"},"home.team.cta":{"type":"cta","value":"Join the team","field":"title"},"home.pillar.1.link":{"type":"cta","value":"Learn more","field":"title"},"home.pillar.2.link":{"type":"cta","value":"Our work","field":"title"},"home.pillar.3.link":{"type":"cta","value":"Join us","field":"title"},"home.impact.link":{"type":"cta","value":"Discover our mission","field":"title"},"home.actions.link":{"type":"cta","value":"View all projects","field":"title"},"home.don.cta_main":{"type":"cta","value":"Make a secure donation","field":"title"},"home.don.cta_second":{"type":"cta","value":"See how donations are used","field":"title"},"home.don.collecting":{"type":"title","value":"Ongoing collection","field":"title"},"home.don.goal":{"type":"title","value":"Goal","field":"title"},"home.don.donors":{"type":"title","value":"donors","field":"title"},"home.meta.gallery":{"type":"title","value":"Gallery","field":"title"},"home.meta.photos":{"type":"title","value":"photos","field":"title"},"home.team.band_stats":{"type":"title","value":"45 active volunteers · 12 districts covered","field":"title"},"home.team.band_sub":{"type":"title","value":"Join us: 2 hours a week is enough to change a day.","field":"title"},"home.team.cta2a":{"type":"cta","value":"Become a volunteer","field":"title"},"home.team.cta2b":{"type":"cta","value":"Our story","field":"title"},"home.news.link":{"type":"cta","value":"All news","field":"title"},"home.contact.cta_aide":{"type":"cta","value":"Aid request — form","field":"title"},"home.contact.cta_contact":{"type":"cta","value":"Contact us","field":"title"},"home.impact.quote_role":{"type":"title","value":"Beneficiary's daughter — Taourirt","field":"title"},"home.sponsors.eyebrow":{"type":"eyebrow","value":"Our partners","field":"title"},"home.sponsors.title":{"type":"title","value":"They <i>support<\/i> us.","field":"title"}},"stats":{"stat.hero_beneficiaires":{"type":"stat","key":"hero_beneficiaires","id":1,"number":"+100","label":"People supported","label_fr":"Bénéficiaires accompagnés","is_visible":1,"sort_order":0},"stat.hero_annees":{"type":"stat","key":"hero_annees","id":2,"number":"27+","label":"Years serving elders","label_fr":"Ans au service des aînés","is_visible":1,"sort_order":1},"stat.hero_projets":{"type":"stat","key":"hero_projets","id":3,"number":"40+","label":"Projects led","label_fr":"Projets solidaires menés","is_visible":1,"sort_order":2},"stat.impact_repas":{"type":"stat","key":"impact_repas","id":4,"number":"14 400","label":"Meals (2024)","label_fr":"Repas distribués (2024)","is_visible":1,"sort_order":3},"stat.impact_visites":{"type":"stat","key":"impact_visites","id":5,"number":"340","label":"Home visits / year","label_fr":"Visites à domicile / an","is_visible":1,"sort_order":4},"stat.impact_aines":{"type":"stat","key":"impact_aines","id":6,"number":"62","label":"Elders followed","label_fr":"Aînés suivis régulièrement","is_visible":1,"sort_order":5},"stat.impact_benevolat":{"type":"stat","key":"impact_benevolat","id":7,"number":"98%","label":"Volunteer run","label_fr":"Bénévolat opérationnel","is_visible":1,"sort_order":6},"stat.mission_ans":{"type":"stat","key":"mission_ans","id":8,"number":"27+","label":"Years of commitment","label_fr":"Ans d'engagement","is_visible":1,"sort_order":7},"stat.mission_benef":{"type":"stat","key":"mission_benef","id":9,"number":"1 200","label":"Beneficiaries/year","label_fr":"Bénéficiaires/an","is_visible":1,"sort_order":8},"stat.mission_visites":{"type":"stat","key":"mission_visites","id":10,"number":"340","label":"Visits/year","label_fr":"Visites/an","is_visible":1,"sort_order":9}},"lang":"en","page":"home"},"home|es":{"blocks":{"home.hero.badge":{"type":"eyebrow","value":"Taourirt — Desde 1998","field":"title"},"home.hero.title":{"type":"title","value":"Humanismo en el <em>corazón de nuestros cuidados<\/em>","field":"title"},"home.hero.sub":{"type":"body","value":"<strong>Nuestra misión es introducir y vivir la cultura del humanismo<\/strong> al servicio de las personas mayores. Envejecer con dignidad es un derecho, no un privilegio.","field":"body"},"home.hero.cta_don":{"type":"cta","value":"Donar","field":"title"},"home.hero.cta_aide":{"type":"cta","value":"Pedir ayuda","field":"title"},"home.pillars.eyebrow":{"type":"eyebrow","value":"Nuestro ADN","field":"title"},"home.pillars.title":{"type":"title","value":"Humanismo, <i>simplemente<\/i> respeto por la dignidad.","field":"title"},"home.pillars.body":{"type":"body","value":"Solidaridad, benevolencia y escucha — tres pilares que guían cada visita, cada comida compartida, cada sonrisa recuperada.","field":"body"},"home.pillar.1.title":{"type":"title","value":"Dignidad <em>ante todo<\/em>","field":"title"},"home.pillar.1.body":{"type":"body","value":"Cada persona mayor es acogida con respeto, sin juicios. Preservamos la autonomía y la intimidad a diario.","field":"body"},"home.pillar.2.title":{"type":"title","value":"Solidaridad <em>en actos<\/em>","field":"title"},"home.pillar.2.body":{"type":"body","value":"Ayuda a domicilio, acompañamiento médico, comidas y visitas — una red de apoyo arraigada en Taourirt y sus douars.","field":"body"},"home.pillar.3.title":{"type":"title","value":"Benevolencia <em>diaria<\/em>","field":"title"},"home.pillar.3.body":{"type":"body","value":"Una presencia humana, cálida y regular. Escuchamos, tranquilizamos y creamos vínculos.","field":"body"},"home.impact.eyebrow":{"type":"eyebrow","value":"Impacto","field":"title"},"home.impact.title":{"type":"title","value":"Envejecer con dignidad <em>es un derecho,<\/em> no un privilegio.","field":"title"},"home.impact.body":{"type":"body","value":"La Asociación Benéfica Islámica trabaja desde hace más de dos décadas para que cada mayor de Taourirt viva acompañado, cuidado y respetado — en casa o en residencia.","field":"body"},"home.impact.quote":{"type":"quote","value":"“Gracias a la asociación, mi padre recibe visitas cada semana. <em>Nos sentimos menos solos.<\/em> Es toda una familia que respira.”","field":"body"},"home.actions.eyebrow":{"type":"eyebrow","value":"Nuestras acciones","field":"title"},"home.actions.title":{"type":"title","value":"Servicios <i>concretos<\/i>, cerca de usted.","field":"title"},"home.actions.body":{"type":"body","value":"De la ayuda a domicilio a las actividades colectivas — descubra nuestros proyectos en curso.","field":"body"},"home.don.title":{"type":"title","value":"Su don <em>ofrece días mejores.<\/em>","field":"title"},"home.don.body":{"type":"body","value":"10 € = una comida caliente durante una semana. Cada contribución cuenta, cada gesto se rastrea y agradece.","field":"body"},"home.news.eyebrow":{"type":"eyebrow","value":"Actualidades","field":"title"},"home.news.title":{"type":"title","value":"Lo que <i>hace mover<\/i> Taourirt.","field":"title"},"home.contact.eyebrow":{"type":"eyebrow","value":"¿Necesita ayuda?","field":"title"},"home.contact.title":{"type":"title","value":"Informe un caso, <i>intervenimos.<\/i>","field":"title"},"home.contact.body":{"type":"body","value":"¿Conoce a una persona mayor aislada o en dificultad en Taourirt? Rellene el formulario de ayuda — el equipo responde en 48h, confidencialmente.","field":"body"},"home.team.eyebrow":{"type":"eyebrow","value":"Nuestro equipo","field":"title"},"home.team.title":{"type":"title","value":"Quienes <i>velan<\/i> cada día.","field":"title"},"home.team.body":{"type":"body","value":"Voluntarios, cuidadores y miembros de la junta — un equipo unido, arraigado en Taourirt, al servicio de nuestros mayores.","field":"body"},"home.team.cta":{"type":"cta","value":"Unirse al equipo","field":"title"},"home.pillar.1.link":{"type":"cta","value":"Más información","field":"title"},"home.pillar.2.link":{"type":"cta","value":"Nuestras acciones","field":"title"},"home.pillar.3.link":{"type":"cta","value":"Únete a nosotros","field":"title"},"home.impact.link":{"type":"cta","value":"Descubre nuestra misión","field":"title"},"home.actions.link":{"type":"cta","value":"Ver todos los proyectos","field":"title"},"home.don.cta_main":{"type":"cta","value":"Haz una donación segura","field":"title"},"home.don.cta_second":{"type":"cta","value":"Ver el uso de las donaciones","field":"title"},"home.don.collecting":{"type":"title","value":"Colecta en curso","field":"title"},"home.don.goal":{"type":"title","value":"Objetivo","field":"title"},"home.don.donors":{"type":"title","value":"donantes","field":"title"},"home.meta.gallery":{"type":"title","value":"Galería","field":"title"},"home.meta.photos":{"type":"title","value":"fotos","field":"title"},"home.team.band_stats":{"type":"title","value":"45 voluntarios activos · 12 barrios cubiertos","field":"title"},"home.team.band_sub":{"type":"title","value":"Únete: 2 horas a la semana bastan para cambiar un día.","field":"title"},"home.team.cta2a":{"type":"cta","value":"Hazte voluntario","field":"title"},"home.team.cta2b":{"type":"cta","value":"Nuestra historia","field":"title"},"home.news.link":{"type":"cta","value":"Todas las noticias","field":"title"},"home.contact.cta_aide":{"type":"cta","value":"Solicitud de ayuda — formulario","field":"title"},"home.contact.cta_contact":{"type":"cta","value":"Contáctanos","field":"title"},"home.impact.quote_role":{"type":"title","value":"Hija de beneficiario — Taourirt","field":"title"},"home.sponsors.eyebrow":{"type":"eyebrow","value":"Nuestros aliados","field":"title"},"home.sponsors.title":{"type":"title","value":"Ellos nos <i>apoyan<\/i>.","field":"title"}},"stats":{"stat.hero_beneficiaires":{"type":"stat","key":"hero_beneficiaires","id":1,"number":"+100","label":"Beneficiarios","label_fr":"Bénéficiaires accompagnés","is_visible":1,"sort_order":0},"stat.hero_annees":{"type":"stat","key":"hero_annees","id":2,"number":"27+","label":"Años al servicio","label_fr":"Ans au service des aînés","is_visible":1,"sort_order":1},"stat.hero_projets":{"type":"stat","key":"hero_projets","id":3,"number":"40+","label":"Proyectos","label_fr":"Projets solidaires menés","is_visible":1,"sort_order":2},"stat.impact_repas":{"type":"stat","key":"impact_repas","id":4,"number":"14 400","label":"Comidas","label_fr":"Repas distribués (2024)","is_visible":1,"sort_order":3},"stat.impact_visites":{"type":"stat","key":"impact_visites","id":5,"number":"340","label":"Visitas","label_fr":"Visites à domicile / an","is_visible":1,"sort_order":4},"stat.impact_aines":{"type":"stat","key":"impact_aines","id":6,"number":"62","label":"Mayores","label_fr":"Aînés suivis régulièrement","is_visible":1,"sort_order":5},"stat.impact_benevolat":{"type":"stat","key":"impact_benevolat","id":7,"number":"98%","label":"Voluntariado","label_fr":"Bénévolat opérationnel","is_visible":1,"sort_order":6},"stat.mission_ans":{"type":"stat","key":"mission_ans","id":8,"number":"27+","label":"Años de compromiso","label_fr":"Ans d'engagement","is_visible":1,"sort_order":7},"stat.mission_benef":{"type":"stat","key":"mission_benef","id":9,"number":"1 200","label":"Beneficiarios/año","label_fr":"Bénéficiaires/an","is_visible":1,"sort_order":8},"stat.mission_visites":{"type":"stat","key":"mission_visites","id":10,"number":"340","label":"Visitas/año","label_fr":"Visites/an","is_visible":1,"sort_order":9}},"lang":"es","page":"home"},"home|fr":{"blocks":{"home.hero.badge":{"type":"eyebrow","value":"Taourirt — Depuis 1998","field":"title"},"home.hero.title":{"type":"title","value":"L’humanisme au <em>cœur de nos soins<\/em>","field":"title"},"home.hero.sub":{"type":"body","value":"<strong>Notre mission est d’introduire et vivre la culture de l’humanisme<\/strong> au service des personnes âgées. Vieillir dans la dignité est un droit, pas un privilège.","field":"body"},"home.hero.cta_don":{"type":"cta","value":"Faire un don","field":"title"},"home.hero.cta_aide":{"type":"cta","value":"Demander de l'aide","field":"title"},"home.pillars.eyebrow":{"type":"eyebrow","value":"Notre ADN","field":"title"},"home.pillars.title":{"type":"title","value":"L’humanisme, <i>simplement<\/i> le respect de la dignité.","field":"title"},"home.pillars.body":{"type":"body","value":"Solidarité, bienveillance et écoute — trois piliers qui guident chaque visite, chaque repas partagé, chaque sourire retrouvé.","field":"body"},"home.pillar.1.title":{"type":"title","value":"Dignité <em>avant tout<\/em>","field":"title"},"home.pillar.1.body":{"type":"body","value":"Chaque personne âgée est accueillie avec respect, sans jugement. Nous préservons l’autonomie et l’intimité au quotidien.","field":"body"},"home.pillar.2.title":{"type":"title","value":"Solidarité <em>en actes<\/em>","field":"title"},"home.pillar.2.body":{"type":"body","value":"Aides à domicile, accompagnement médical, repas et visites — un réseau d’entraide ancré à Taourirt et ses douars.","field":"body"},"home.pillar.3.title":{"type":"title","value":"Bienveillance <em>quotidienne<\/em>","field":"title"},"home.pillar.3.body":{"type":"body","value":"Une présence humaine, chaleureuse et régulière. Nous écoutons, nous rassurons, nous créons du lien.","field":"body"},"home.impact.eyebrow":{"type":"eyebrow","value":"Impact","field":"title"},"home.impact.title":{"type":"title","value":"Vieillir dans la dignité <em>est un droit,<\/em> pas un privilège.","field":"title"},"home.impact.body":{"type":"body","value":"L’Association de bienfaisance islamique œuvre depuis plus de deux décennies pour que chaque aîné de Taourirt vive entouré, soigné et respecté — à domicile comme en structure d’accueil.","field":"body"},"home.impact.quote":{"type":"quote","value":"“Grâce à l’association, mon père reçoit des visites chaque semaine. <em>On se sent moins seuls.<\/em> C’est toute une famille qui respire.”","field":"body"},"home.actions.eyebrow":{"type":"eyebrow","value":"Nos actions","field":"title"},"home.actions.title":{"type":"title","value":"Des services <i>concrets<\/i>, proches de vous.","field":"title"},"home.actions.body":{"type":"body","value":"De l’aide à domicile aux activités collectives — découvrez nos projets en cours.","field":"body"},"home.don.title":{"type":"title","value":"Votre don <em>offre des jours meilleurs.<\/em>","field":"title"},"home.don.body":{"type":"body","value":"10 € = un repas chaud pendant une semaine. Chaque contribution compte, chaque geste est tracé et remercié.","field":"body"},"home.news.eyebrow":{"type":"eyebrow","value":"Actualités","field":"title"},"home.news.title":{"type":"title","value":"Ce qui <i>fait bouger<\/i> Taourirt.","field":"title"},"home.contact.eyebrow":{"type":"eyebrow","value":"Besoin d’aide ?","field":"title"},"home.contact.title":{"type":"title","value":"Signalez un cas, <i>nous intervenons.<\/i>","field":"title"},"home.contact.body":{"type":"body","value":"Vous connaissez une personne âgée isolée ou en difficulté à Taourirt ? Remplissez le formulaire de demande d’aide — l’équipe répond sous 48h, en toute confidentialité.","field":"body"},"home.team.eyebrow":{"type":"eyebrow","value":"Notre équipe","field":"title"},"home.team.title":{"type":"title","value":"Ceux qui <i>veillent<\/i> chaque jour.","field":"title"},"home.team.body":{"type":"body","value":"Bénévoles, soignants et membres du bureau — une équipe soudée, ancrée à Taourirt, au service de nos aînés.","field":"body"},"home.team.cta":{"type":"cta","value":"Rejoindre l'équipe","field":"title"},"home.pillar.1.link":{"type":"cta","value":"En savoir plus","field":"title"},"home.pillar.2.link":{"type":"cta","value":"Nos actions","field":"title"},"home.pillar.3.link":{"type":"cta","value":"Nous rejoindre","field":"title"},"home.impact.link":{"type":"cta","value":"Découvrir notre mission","field":"title"},"home.actions.link":{"type":"cta","value":"Voir tous les projets","field":"title"},"home.don.cta_main":{"type":"cta","value":"Faire un don sécurisé","field":"title"},"home.don.cta_second":{"type":"cta","value":"Voir l'usage des dons","field":"title"},"home.don.collecting":{"type":"title","value":"Collecte en cours","field":"title"},"home.don.goal":{"type":"title","value":"Objectif","field":"title"},"home.don.donors":{"type":"title","value":"donateurs","field":"title"},"home.meta.gallery":{"type":"title","value":"Galerie","field":"title"},"home.meta.photos":{"type":"title","value":"photos","field":"title"},"home.team.band_stats":{"type":"title","value":"45 bénévoles actifs · 12 quartiers couverts","field":"title"},"home.team.band_sub":{"type":"title","value":"Rejoignez-nous : 2h par semaine suffisent pour changer une journée.","field":"title"},"home.team.cta2a":{"type":"cta","value":"Devenir bénévole","field":"title"},"home.team.cta2b":{"type":"cta","value":"Notre histoire","field":"title"},"home.news.link":{"type":"cta","value":"Toutes les actualités","field":"title"},"home.contact.cta_aide":{"type":"cta","value":"Demande d'aide — formulaire","field":"title"},"home.contact.cta_contact":{"type":"cta","value":"Nous contacter","field":"title"},"home.impact.quote_role":{"type":"title","value":"Fille de bénéficiaire — Taourirt","field":"title"},"home.sponsors.eyebrow":{"type":"eyebrow","value":"Nos partenaires","field":"title"},"home.sponsors.title":{"type":"title","value":"Ils nous <i>soutiennent<\/i>.","field":"title"}},"stats":{"stat.hero_beneficiaires":{"type":"stat","key":"hero_beneficiaires","id":1,"number":"+100","label":"Bénéficiaires accompagnés","label_fr":"Bénéficiaires accompagnés","is_visible":1,"sort_order":0},"stat.hero_annees":{"type":"stat","key":"hero_annees","id":2,"number":"27+","label":"Ans au service des aînés","label_fr":"Ans au service des aînés","is_visible":1,"sort_order":1},"stat.hero_projets":{"type":"stat","key":"hero_projets","id":3,"number":"40+","label":"Projets solidaires menés","label_fr":"Projets solidaires menés","is_visible":1,"sort_order":2},"stat.impact_repas":{"type":"stat","key":"impact_repas","id":4,"number":"14 400","label":"Repas distribués (2024)","label_fr":"Repas distribués (2024)","is_visible":1,"sort_order":3},"stat.impact_visites":{"type":"stat","key":"impact_visites","id":5,"number":"340","label":"Visites à domicile / an","label_fr":"Visites à domicile / an","is_visible":1,"sort_order":4},"stat.impact_aines":{"type":"stat","key":"impact_aines","id":6,"number":"62","label":"Aînés suivis régulièrement","label_fr":"Aînés suivis régulièrement","is_visible":1,"sort_order":5},"stat.impact_benevolat":{"type":"stat","key":"impact_benevolat","id":7,"number":"98%","label":"Bénévolat opérationnel","label_fr":"Bénévolat opérationnel","is_visible":1,"sort_order":6},"stat.mission_ans":{"type":"stat","key":"mission_ans","id":8,"number":"27+","label":"Ans d'engagement","label_fr":"Ans d'engagement","is_visible":1,"sort_order":7},"stat.mission_benef":{"type":"stat","key":"mission_benef","id":9,"number":"1 200","label":"Bénéficiaires/an","label_fr":"Bénéficiaires/an","is_visible":1,"sort_order":8},"stat.mission_visites":{"type":"stat","key":"mission_visites","id":10,"number":"340","label":"Visites/an","label_fr":"Visites/an","is_visible":1,"sort_order":9}},"lang":"fr","page":"home"},"mission|ar":{"blocks":{"mission.head.title":{"type":"title","value":"شعارنا الانسانية في حياتنا اليومية","field":"title"},"mission.head.body":{"type":"body","value":"ترسيخ وعيش ثقافة الإنسانية في خدمة المسنين. في تاوريرت، التقدم في السن بكرامة ليس امتيازا — بل حق ندافع عنه، وجها لوجه، منذ 1998.","field":"body"},"mission.vision.eyebrow":{"type":"eyebrow","value":"الإنسانية في صميم رعايتنا","field":"title"},"mission.vision.title":{"type":"title","value":"الإنسانية <i>في صميم رعايتنا<\/i>","field":"title"},"mission.vision.body1":{"type":"body","value":"الإنسانية هي ببساطة احترام الكرامة وتضامن وإحسان. هذا بالضبط الحمض النووي لجمعيتنا. منذ 1998، يتناوب المتطوعون ومقدمو الرعاية والمتبرعون لتقديم الحضور والرعاية والمواساة للمسنين المعزولين في تاوريرت والدواوير المجاورة.","field":"body"},"mission.vision.body2":{"type":"body","value":"نتدخل في المنازل بشراكة مع المركز الصحي المحلي، وننشط مكان استقبال دافئ تنسج فيه الروابط بين الأجيال. كل زيارة وكل وجبة وكل بسمة مهمة.","field":"body"},"mission.vision.card.title":{"type":"title","value":"رؤيتنا","field":"title"},"mission.vision.card.body":{"type":"body","value":"مدينة لا يشعر فيها أي مسن بالنسيان، حيث كل مسن محاط ومسموع ومحترم.","field":"body"},"mission.promise.card.title":{"type":"title","value":"وعدنا","field":"title"},"mission.promise.card.body":{"type":"body","value":"التدخل خلال 48 ساعة بعد التبليغ، بسرية ودون شروط، مع متابعة إنسانية.","field":"body"},"mission.terrain.card.title":{"type":"title","value":"في الميدان، كل يوم","field":"title"},"mission.terrain.card.body":{"type":"body","value":"إصغاء وتسوق ومتابعة خفيفة ووجبات مشتركة — حضور إنساني أولا، ليس فقط مساعدة مادية.","field":"body"},"mission.timeline.eyebrow":{"type":"eyebrow","value":"قصتنا","field":"title"},"mission.timeline.title":{"type":"title","value":"من 1998 إلى اليوم، <i>استمرارية<\/i>.","field":"title"},"mission.timeline.body":{"type":"body","value":"جمعية ولدت من مبادرة مواطنة، تهيكلت عبر السنوات دون أن تفقد روحها: القرب.","field":"body"},"mission.timeline.98.title":{"type":"title","value":"1998 — التأسيس","field":"title"},"mission.timeline.98.body":{"type":"body","value":"تجتمع بعض أسر تاوريرت لزيارة ودعم المسنين المعزولين.","field":"body"},"mission.timeline.05.title":{"type":"title","value":"2005 — أول مقر","field":"title"},"mission.timeline.05.body":{"type":"body","value":"افتتاح المقر الإداري وإطلاق الوجبات التضامنية الأسبوعية.","field":"body"},"mission.timeline.15.title":{"type":"title","value":"2015 — الصحة","field":"title"},"mission.timeline.15.body":{"type":"body","value":"شراكة مع المركز الصحي: فحوصات ومتابعة تمريضية لمستفيدينا.","field":"body"},"mission.timeline.24.title":{"type":"title","value":"2024 — 1.200 أسرة","field":"title"},"mission.timeline.24.body":{"type":"body","value":"أكثر من 14.400 وجبة و340 زيارة منزلية، بفضل 45 متطوعا والمتبرعين.","field":"body"},"mission.valeurs.eyebrow":{"type":"eyebrow","value":"قيمنا","field":"title"},"mission.valeurs.title":{"type":"title","value":"احترام، تضامن، <i>إحسان<\/i>.","field":"title"},"mission.valeurs.body":{"type":"body","value":"ثلاث كلمات بسيطة تترجم إلى أفعال يومية قابلة للقياس ومشتركة.","field":"body"},"mission.approche.eyebrow":{"type":"eyebrow","value":"مقاربتنا","field":"title"},"mission.approche.title":{"type":"title","value":"التدخل بسرعة، <i>المتابعة طويلا<\/i>.","field":"title"},"mission.approche.body":{"type":"body","value":"يكفي تبليغ واحد. منهجنا بسيط وإنساني وصارم — مصمم مع الأسر.","field":"body"},"mission.impact.eyebrow":{"type":"eyebrow","value":"أثر مقاس","field":"title"},"mission.impact.title":{"type":"title","value":"ما <i>تبرعاتكم<\/i> تجعله ممكنا.","field":"title"},"mission.impact.body":{"type":"body","value":"شفافية تامة: كل عمل موثق وكل درهم متتبع ومُشارك مع المتبرعين.","field":"body"},"mission.crumb.home":{"type":"title","value":"الرئيسية","field":"title"},"mission.crumb.current":{"type":"title","value":"من نحن","field":"title"},"mission.hero.cta_actions":{"type":"cta","value":"اكتشف أعمالنا","field":"title"},"mission.hero.cta_aide":{"type":"cta","value":"بلغ عن حالة","field":"title"},"mission.hero.badge_title":{"type":"title","value":"تاوريرت — منذ 2005","field":"title"},"mission.hero.badge_sub":{"type":"title","value":"27+ عاما من الالتزام المتواصل","field":"title"},"mission.terrain.volunteers":{"type":"title","value":"+45 متطوعا","field":"title"},"mission.valeurs.1.title":{"type":"title","value":"الكرامة","field":"title"},"mission.valeurs.1.body":{"type":"body","value":"الحفاظ على استقلالية كل شخص وخصوصيته وخياراته — حتى في تفاصيل الحياة اليومية.","field":"body"},"mission.valeurs.1.tags":{"type":"title","value":"إصغاء · احترام · سرية","field":"title"},"mission.valeurs.2.title":{"type":"title","value":"التضامن","field":"title"},"mission.valeurs.2.body":{"type":"body","value":"شبكة تضامن محلية سريعة الاستجابة لا تترك أحدا خلفها — في المدينة كما في الدوار.","field":"body"},"mission.valeurs.2.tags":{"type":"title","value":"شبكة · استجابة · مشاركة","field":"title"},"mission.valeurs.3.title":{"type":"title","value":"الإحسان","field":"title"},"mission.valeurs.3.body":{"type":"body","value":"الإصغاء دون حكم والطمأنة والابتسام — الحضور الذي يغير يوما وأحيانا حياة.","field":"body"},"mission.valeurs.3.tags":{"type":"title","value":"حضور · لطف · ثقة","field":"title"},"mission.approche.1.title":{"type":"title","value":"التبليغ والإصغاء","field":"title"},"mission.approche.1.body":{"type":"body","value":"استمارة أو مكالمة. إشعار بالاستلام خلال 24 ساعة، بسرية تامة.","field":"body"},"mission.approche.2.title":{"type":"title","value":"الزيارة والتقييم","field":"title"},"mission.approche.2.body":{"type":"body","value":"ثنائي من المتطوعين في عين المكان، مع الأسرة والمركز الصحي عند الحاجة.","field":"body"},"mission.approche.3.title":{"type":"title","value":"مواكبة مستدامة","field":"title"},"mission.approche.3.body":{"type":"body","value":"خطة مساعدة وزيارات منتظمة ووجبات ورابط بين الأجيال — متابعة على المدى الطويل.","field":"body"},"mission.impact.measure.1":{"type":"title","value":"سجل زيارات يوقعه كل مستفيد ومتطوع.","field":"title"},"mission.impact.measure.2":{"type":"title","value":"تقارير شهرية (صور وإيصالات) ترسل إلى المتبرعين المنتظمين.","field":"title"},"mission.impact.measure.3":{"type":"title","value":"شراكة مع المركز الصحي للمتابعة الصحية.","field":"title"},"mission.impact.gov.title":{"type":"title","value":"الحوكمة","field":"title"},"mission.impact.gov.body":{"type":"body","value":"جمعية غير ربحية، تعرض الحسابات في الجمع العام السنوي. تنشر التقارير والصور بانتظام لمتبرعينا.","field":"body"},"mission.impact.gov.link":{"type":"cta","value":"عرض التقارير","field":"title"},"mission.quote.text":{"type":"quote","value":"“بفضل الجمعية، يتلقى والدي زيارات كل أسبوع. <em>نشعر بوحدة أقل.<\/em>”","field":"body"},"mission.quote.role":{"type":"title","value":"ابنة مستفيد — تاوريرت","field":"title"},"mission.trust.eyebrow":{"type":"title","value":"إنهم يثقون بنا","field":"title"},"mission.trust.title":{"type":"title","value":"“التقدم في السن محاطا يعني الاستمرار في الانتماء إلى المدينة.”","field":"title"},"mission.trust.body":{"type":"title","value":"— كلمات مستفيدة تبلغ 82 عاما، تتم مواكبتها منذ 2019.","field":"title"},"mission.trust.cta":{"type":"cta","value":"شاهد أعمالنا","field":"title"},"mission.cta.don":{"type":"cta","value":"ادعم مهمتنا","field":"title"},"mission.cta.projets":{"type":"cta","value":"شاهد المشاريع","field":"title"},"mission.cta.contact":{"type":"cta","value":"قابلنا","field":"title"}},"stats":{"stat.hero_beneficiaires":{"type":"stat","key":"hero_beneficiaires","id":1,"number":"+100","label":"المستفيدون","label_fr":"Bénéficiaires accompagnés","is_visible":1,"sort_order":0},"stat.hero_annees":{"type":"stat","key":"hero_annees","id":2,"number":"27+","label":"سنوات الخدمة","label_fr":"Ans au service des aînés","is_visible":1,"sort_order":1},"stat.hero_projets":{"type":"stat","key":"hero_projets","id":3,"number":"40+","label":"مشاريع","label_fr":"Projets solidaires menés","is_visible":1,"sort_order":2},"stat.impact_repas":{"type":"stat","key":"impact_repas","id":4,"number":"14 400","label":"وجبات","label_fr":"Repas distribués (2024)","is_visible":1,"sort_order":3},"stat.impact_visites":{"type":"stat","key":"impact_visites","id":5,"number":"340","label":"زيارات","label_fr":"Visites à domicile / an","is_visible":1,"sort_order":4},"stat.impact_aines":{"type":"stat","key":"impact_aines","id":6,"number":"62","label":"مسنون","label_fr":"Aînés suivis régulièrement","is_visible":1,"sort_order":5},"stat.impact_benevolat":{"type":"stat","key":"impact_benevolat","id":7,"number":"98%","label":"متطوعين نشطين","label_fr":"Bénévolat opérationnel","is_visible":1,"sort_order":6},"stat.mission_ans":{"type":"stat","key":"mission_ans","id":8,"number":"27+","label":"أعوام من الالتزام","label_fr":"Ans d'engagement","is_visible":1,"sort_order":7},"stat.mission_benef":{"type":"stat","key":"mission_benef","id":9,"number":"1 200","label":"مستفيد/سنة","label_fr":"Bénéficiaires/an","is_visible":1,"sort_order":8},"stat.mission_visites":{"type":"stat","key":"mission_visites","id":10,"number":"340","label":"زيارة/سنة","label_fr":"Visites/an","is_visible":1,"sort_order":9}},"lang":"ar","page":"mission"},"mission|en":{"blocks":{"mission.head.title":{"type":"title","value":"Our mission is to humanise every day.","field":"title"},"mission.head.body":{"type":"body","value":"Introduce and live the culture of humanism for the elderly. In Taourirt, ageing with dignity is not a privilege — it’s a right we defend, face by face, since 1998.","field":"body"},"mission.vision.eyebrow":{"type":"eyebrow","value":"Humanity at the heart of our care","field":"title"},"mission.vision.title":{"type":"title","value":"Humanism <i>at the heart of our care<\/i>","field":"title"},"mission.vision.body1":{"type":"body","value":"Humanism is simply respect for dignity, solidarity and kindness. That is exactly our association’s DNA. Since 1998, volunteers, caregivers and donors take turns offering presence, care and comfort to isolated elders in Taourirt and surrounding douars.","field":"body"},"mission.vision.body2":{"type":"body","value":"We intervene at home, in partnership with the local health centre, and run a warm welcoming place where intergenerational bonds are woven. Each visit, each meal, each smile counts.","field":"body"},"mission.vision.card.title":{"type":"title","value":"Our vision","field":"title"},"mission.vision.card.body":{"type":"body","value":"A city where no elder feels forgotten, where each older person is surrounded, listened to and respected.","field":"body"},"mission.promise.card.title":{"type":"title","value":"Our promise","field":"title"},"mission.promise.card.body":{"type":"body","value":"Intervene within 48h after a report, confidentially and unconditionally, with human follow-up.","field":"body"},"mission.terrain.card.title":{"type":"title","value":"On the ground, every day","field":"title"},"mission.terrain.card.body":{"type":"body","value":"Listening, errands, light follow-up, shared meals — a human presence first, not just material aid.","field":"body"},"mission.timeline.eyebrow":{"type":"eyebrow","value":"Our history","field":"title"},"mission.timeline.title":{"type":"title","value":"From 1998 to today, <i>continuity<\/i>.","field":"title"},"mission.timeline.body":{"type":"body","value":"An association born from civic momentum, structured over the years without ever losing its soul: proximity.","field":"body"},"mission.timeline.98.title":{"type":"title","value":"1998 — Foundation","field":"title"},"mission.timeline.98.body":{"type":"body","value":"A few families in Taourirt gather to visit and support isolated elders.","field":"body"},"mission.timeline.05.title":{"type":"title","value":"2005 — First premises","field":"title"},"mission.timeline.05.body":{"type":"body","value":"Opening of the administrative premises and launch of weekly solidarity meals.","field":"body"},"mission.timeline.15.title":{"type":"title","value":"2015 — Health","field":"title"},"mission.timeline.15.body":{"type":"body","value":"Partnership with the health centre: screenings and nursing follow-up for our beneficiaries.","field":"body"},"mission.timeline.24.title":{"type":"title","value":"2024 — 1,200 households","field":"title"},"mission.timeline.24.body":{"type":"body","value":"Over 14,400 meals and 340 home visits, thanks to 45 volunteers and donors.","field":"body"},"mission.valeurs.eyebrow":{"type":"eyebrow","value":"Our values","field":"title"},"mission.valeurs.title":{"type":"title","value":"Respect, solidarity, <i>kindness<\/i>.","field":"title"},"mission.valeurs.body":{"type":"body","value":"Three simple words translated into daily, measurable, shared gestures.","field":"body"},"mission.approche.eyebrow":{"type":"eyebrow","value":"Our approach","field":"title"},"mission.approche.title":{"type":"title","value":"Intervene quickly, <i>follow long-term<\/i>.","field":"title"},"mission.approche.body":{"type":"body","value":"One report is enough. Our method is simple, human and rigorous — designed with families.","field":"body"},"mission.impact.eyebrow":{"type":"eyebrow","value":"Measured impact","field":"title"},"mission.impact.title":{"type":"title","value":"What <i>your donations<\/i> make possible.","field":"title"},"mission.impact.body":{"type":"body","value":"Total transparency: each action documented, each dirham tracked and shared with donors.","field":"body"},"mission.crumb.home":{"type":"title","value":"Home","field":"title"},"mission.crumb.current":{"type":"title","value":"About us","field":"title"},"mission.hero.cta_actions":{"type":"cta","value":"Discover our work","field":"title"},"mission.hero.cta_aide":{"type":"cta","value":"Report a case","field":"title"},"mission.hero.badge_title":{"type":"title","value":"Taourirt — since 2005","field":"title"},"mission.hero.badge_sub":{"type":"title","value":"27+ years of continuous commitment","field":"title"},"mission.terrain.volunteers":{"type":"title","value":"+45 volunteers","field":"title"},"mission.valeurs.1.title":{"type":"title","value":"Dignity","field":"title"},"mission.valeurs.1.body":{"type":"body","value":"Preserving each person’s autonomy, privacy and choices — down to the smallest daily details.","field":"body"},"mission.valeurs.1.tags":{"type":"title","value":"Listening · Respect · Discretion","field":"title"},"mission.valeurs.2.title":{"type":"title","value":"Solidarity","field":"title"},"mission.valeurs.2.body":{"type":"body","value":"A responsive local mutual-aid network that leaves no one behind — in town and in the douars.","field":"body"},"mission.valeurs.2.tags":{"type":"title","value":"Network · Responsiveness · Sharing","field":"title"},"mission.valeurs.3.title":{"type":"title","value":"Kindness","field":"title"},"mission.valeurs.3.body":{"type":"body","value":"Listening without judging, reassuring, smiling — the presence that changes a day, sometimes a life.","field":"body"},"mission.valeurs.3.tags":{"type":"title","value":"Presence · Gentleness · Trust","field":"title"},"mission.approche.1.title":{"type":"title","value":"Report & listen","field":"title"},"mission.approche.1.body":{"type":"body","value":"Form or call. Acknowledged within 24h, in full confidentiality.","field":"body"},"mission.approche.2.title":{"type":"title","value":"Visit & assessment","field":"title"},"mission.approche.2.body":{"type":"body","value":"Volunteer pair on site, with the family and the health center if needed.","field":"body"},"mission.approche.3.title":{"type":"title","value":"Long-term support","field":"title"},"mission.approche.3.body":{"type":"body","value":"Aid plan, regular visits, meals, intergenerational bonds — support over time.","field":"body"},"mission.impact.measure.1":{"type":"title","value":"Visit log signed by every beneficiary and volunteer.","field":"title"},"mission.impact.measure.2":{"type":"title","value":"Monthly reports (photos, receipts) sent to regular donors.","field":"title"},"mission.impact.measure.3":{"type":"title","value":"Partnership with the health center for medical follow-up.","field":"title"},"mission.impact.gov.title":{"type":"title","value":"Governance","field":"title"},"mission.impact.gov.body":{"type":"body","value":"Non-profit association, accounts presented at the annual general assembly. Reports and galleries are published regularly for our donors.","field":"body"},"mission.impact.gov.link":{"type":"cta","value":"See the reports","field":"title"},"mission.quote.text":{"type":"quote","value":"“Thanks to the association, my father receives visits every week. <em>We feel less alone.<\/em>”","field":"body"},"mission.quote.role":{"type":"title","value":"Beneficiary's daughter — Taourirt","field":"title"},"mission.trust.eyebrow":{"type":"title","value":"They trust us","field":"title"},"mission.trust.title":{"type":"title","value":"“Growing old surrounded means still belonging to the city.”","field":"title"},"mission.trust.body":{"type":"title","value":"— Words of an 82-year-old beneficiary, supported since 2019.","field":"title"},"mission.trust.cta":{"type":"cta","value":"See our work","field":"title"},"mission.cta.don":{"type":"cta","value":"Support our mission","field":"title"},"mission.cta.projets":{"type":"cta","value":"See the projects","field":"title"},"mission.cta.contact":{"type":"cta","value":"Meet us","field":"title"}},"stats":{"stat.hero_beneficiaires":{"type":"stat","key":"hero_beneficiaires","id":1,"number":"+100","label":"People supported","label_fr":"Bénéficiaires accompagnés","is_visible":1,"sort_order":0},"stat.hero_annees":{"type":"stat","key":"hero_annees","id":2,"number":"27+","label":"Years serving elders","label_fr":"Ans au service des aînés","is_visible":1,"sort_order":1},"stat.hero_projets":{"type":"stat","key":"hero_projets","id":3,"number":"40+","label":"Projects led","label_fr":"Projets solidaires menés","is_visible":1,"sort_order":2},"stat.impact_repas":{"type":"stat","key":"impact_repas","id":4,"number":"14 400","label":"Meals (2024)","label_fr":"Repas distribués (2024)","is_visible":1,"sort_order":3},"stat.impact_visites":{"type":"stat","key":"impact_visites","id":5,"number":"340","label":"Home visits / year","label_fr":"Visites à domicile / an","is_visible":1,"sort_order":4},"stat.impact_aines":{"type":"stat","key":"impact_aines","id":6,"number":"62","label":"Elders followed","label_fr":"Aînés suivis régulièrement","is_visible":1,"sort_order":5},"stat.impact_benevolat":{"type":"stat","key":"impact_benevolat","id":7,"number":"98%","label":"Volunteer run","label_fr":"Bénévolat opérationnel","is_visible":1,"sort_order":6},"stat.mission_ans":{"type":"stat","key":"mission_ans","id":8,"number":"27+","label":"Years of commitment","label_fr":"Ans d'engagement","is_visible":1,"sort_order":7},"stat.mission_benef":{"type":"stat","key":"mission_benef","id":9,"number":"1 200","label":"Beneficiaries/year","label_fr":"Bénéficiaires/an","is_visible":1,"sort_order":8},"stat.mission_visites":{"type":"stat","key":"mission_visites","id":10,"number":"340","label":"Visits/year","label_fr":"Visites/an","is_visible":1,"sort_order":9}},"lang":"en","page":"mission"},"mission|es":{"blocks":{"mission.head.title":{"type":"title","value":"Nuestra misión es humanizar cada día.","field":"title"},"mission.head.body":{"type":"body","value":"Introducir y vivir la cultura del humanismo al servicio de las personas mayores. En Taourirt, envejecer con dignidad no es un privilegio — es un derecho que defendemos, rostro a rostro, desde 1998.","field":"body"},"mission.vision.eyebrow":{"type":"eyebrow","value":"La humanidad en el corazón de nuestros cuidados","field":"title"},"mission.vision.title":{"type":"title","value":"Humanismo <i>en el corazón de nuestros cuidados<\/i>","field":"title"},"mission.vision.body1":{"type":"body","value":"El humanismo es simplemente respeto por la dignidad, solidaridad y benevolencia. Ese es exactamente el ADN de nuestra asociación. Desde 1998, voluntarios, cuidadores y donantes se turnan para ofrecer presencia, cuidados y consuelo a los mayores aislados de Taourirt y douars vecinos.","field":"body"},"mission.vision.body2":{"type":"body","value":"Intervenimos a domicilio, en colaboración con el centro de salud local, y animamos un lugar de acogida cálido donde se tejen vínculos intergeneracionales. Cada visita, cada comida, cada sonrisa cuenta.","field":"body"},"mission.vision.card.title":{"type":"title","value":"Nuestra visión","field":"title"},"mission.vision.card.body":{"type":"body","value":"Una ciudad donde ningún mayor se siente olvidado, donde cada persona mayor está rodeada, escuchada y respetada.","field":"body"},"mission.promise.card.title":{"type":"title","value":"Nuestra promesa","field":"title"},"mission.promise.card.body":{"type":"body","value":"Intervenir en 48h tras un aviso, con confidencialidad y sin condiciones, con seguimiento humano.","field":"body"},"mission.terrain.card.title":{"type":"title","value":"En el terreno, cada día","field":"title"},"mission.terrain.card.body":{"type":"body","value":"Escucha, recados, seguimiento ligero, comidas compartidas — una presencia humana ante todo, no solo ayuda material.","field":"body"},"mission.timeline.eyebrow":{"type":"eyebrow","value":"Nuestra historia","field":"title"},"mission.timeline.title":{"type":"title","value":"De 1998 a hoy, <i>una continuidad<\/i>.","field":"title"},"mission.timeline.body":{"type":"body","value":"Una asociación nacida de un impulso ciudadano, que se ha estructurado con los años sin perder nunca su alma: la proximidad.","field":"body"},"mission.timeline.98.title":{"type":"title","value":"1998 — Fundación","field":"title"},"mission.timeline.98.body":{"type":"body","value":"Algunas familias de Taourirt se reúnen para visitar y apoyar a los mayores aislados.","field":"body"},"mission.timeline.05.title":{"type":"title","value":"2005 — Primer local","field":"title"},"mission.timeline.05.body":{"type":"body","value":"Apertura del local administrativo y lanzamiento de comidas solidarias semanales.","field":"body"},"mission.timeline.15.title":{"type":"title","value":"2015 — Salud","field":"title"},"mission.timeline.15.body":{"type":"body","value":"Colaboración con el centro de salud: cribados y seguimiento de enfermería para nuestros beneficiarios.","field":"body"},"mission.timeline.24.title":{"type":"title","value":"2024 — 1.200 hogares","field":"title"},"mission.timeline.24.body":{"type":"body","value":"Más de 14.400 comidas y 340 visitas a domicilio, gracias a 45 voluntarios y donantes.","field":"body"},"mission.valeurs.eyebrow":{"type":"eyebrow","value":"Nuestros valores","field":"title"},"mission.valeurs.title":{"type":"title","value":"Respeto, solidaridad, <i>benevolencia<\/i>.","field":"title"},"mission.valeurs.body":{"type":"body","value":"Tres palabras simples que se traducen en gestos diarios, medibles y compartidos.","field":"body"},"mission.approche.eyebrow":{"type":"eyebrow","value":"Nuestro enfoque","field":"title"},"mission.approche.title":{"type":"title","value":"Intervenir rápido, <i>seguir mucho tiempo<\/i>.","field":"title"},"mission.approche.body":{"type":"body","value":"Basta un aviso. Nuestro método es simple, humano y riguroso — pensado con las familias.","field":"body"},"mission.impact.eyebrow":{"type":"eyebrow","value":"Impacto medido","field":"title"},"mission.impact.title":{"type":"title","value":"Lo que <i>sus donativos<\/i> hacen posible.","field":"title"},"mission.impact.body":{"type":"body","value":"Transparencia total: cada acción documentada, cada dirham rastreado y compartido con donantes.","field":"body"},"mission.crumb.home":{"type":"title","value":"Inicio","field":"title"},"mission.crumb.current":{"type":"title","value":"Quiénes somos","field":"title"},"mission.hero.cta_actions":{"type":"cta","value":"Descubre nuestras acciones","field":"title"},"mission.hero.cta_aide":{"type":"cta","value":"Denunciar un caso","field":"title"},"mission.hero.badge_title":{"type":"title","value":"Taourirt — desde 2005","field":"title"},"mission.hero.badge_sub":{"type":"title","value":"27+ años de compromiso continuo","field":"title"},"mission.terrain.volunteers":{"type":"title","value":"+45 voluntarios","field":"title"},"mission.valeurs.1.title":{"type":"title","value":"Dignidad","field":"title"},"mission.valeurs.1.body":{"type":"body","value":"Preservar la autonomía, la intimidad y las elecciones de cada persona, hasta en los detalles cotidianos.","field":"body"},"mission.valeurs.1.tags":{"type":"title","value":"Escucha · Respeto · Discreción","field":"title"},"mission.valeurs.2.title":{"type":"title","value":"Solidaridad","field":"title"},"mission.valeurs.2.body":{"type":"body","value":"Una red local de ayuda mutua, reactiva, que no deja a nadie de lado, en la ciudad como en el douar.","field":"body"},"mission.valeurs.2.tags":{"type":"title","value":"Red · Reactividad · Compartir","field":"title"},"mission.valeurs.3.title":{"type":"title","value":"Bondad","field":"title"},"mission.valeurs.3.body":{"type":"body","value":"Escuchar sin juzgar, tranquilizar, sonreír: la presencia que cambia un día y a veces una vida.","field":"body"},"mission.valeurs.3.tags":{"type":"title","value":"Presencia · Dulzura · Confianza","field":"title"},"mission.approche.1.title":{"type":"title","value":"Denuncia y escucha","field":"title"},"mission.approche.1.body":{"type":"body","value":"Formulario o llamada. Acuse de recibo en 24h, con total confidencialidad.","field":"body"},"mission.approche.2.title":{"type":"title","value":"Visita y evaluación","field":"title"},"mission.approche.2.body":{"type":"body","value":"Pareja de voluntarios in situ, con la familia y el centro de salud si es necesario.","field":"body"},"mission.approche.3.title":{"type":"title","value":"Acompañamiento duradero","field":"title"},"mission.approche.3.body":{"type":"body","value":"Plan de ayuda, visitas regulares, comidas, vínculo intergeneracional, seguimiento en el tiempo.","field":"body"},"mission.impact.measure.1":{"type":"title","value":"Registro de visitas firmado por cada beneficiario y voluntario.","field":"title"},"mission.impact.measure.2":{"type":"title","value":"Informes mensuales (fotos, recibos) enviados a los donantes habituales.","field":"title"},"mission.impact.measure.3":{"type":"title","value":"Colaboración con el centro de salud para el seguimiento sanitario.","field":"title"},"mission.impact.gov.title":{"type":"title","value":"Gobernanza","field":"title"},"mission.impact.gov.body":{"type":"body","value":"Asociación sin ánimo de lucro, cuentas presentadas en asamblea general anual. Informes y galerías publicados regularmente para nuestros donantes.","field":"body"},"mission.impact.gov.link":{"type":"cta","value":"Ver los informes","field":"title"},"mission.quote.text":{"type":"quote","value":"“Gracias a la asociación, mi padre recibe visitas cada semana. <em>Nos sentimos menos solos.<\/em>”","field":"body"},"mission.quote.role":{"type":"title","value":"Hija de beneficiario — Taourirt","field":"title"},"mission.trust.eyebrow":{"type":"title","value":"Ellos confían en nosotros","field":"title"},"mission.trust.title":{"type":"title","value":"“Envejecer acompañado es seguir perteneciendo a la ciudad.”","field":"title"},"mission.trust.body":{"type":"title","value":"— Palabras de una beneficiaria de 82 años, acompañada desde 2019.","field":"title"},"mission.trust.cta":{"type":"cta","value":"Ver nuestras acciones","field":"title"},"mission.cta.don":{"type":"cta","value":"Apoya nuestra misión","field":"title"},"mission.cta.projets":{"type":"cta","value":"Ver los proyectos","field":"title"},"mission.cta.contact":{"type":"cta","value":"Conócenos","field":"title"}},"stats":{"stat.hero_beneficiaires":{"type":"stat","key":"hero_beneficiaires","id":1,"number":"+100","label":"Beneficiarios","label_fr":"Bénéficiaires accompagnés","is_visible":1,"sort_order":0},"stat.hero_annees":{"type":"stat","key":"hero_annees","id":2,"number":"27+","label":"Años al servicio","label_fr":"Ans au service des aînés","is_visible":1,"sort_order":1},"stat.hero_projets":{"type":"stat","key":"hero_projets","id":3,"number":"40+","label":"Proyectos","label_fr":"Projets solidaires menés","is_visible":1,"sort_order":2},"stat.impact_repas":{"type":"stat","key":"impact_repas","id":4,"number":"14 400","label":"Comidas","label_fr":"Repas distribués (2024)","is_visible":1,"sort_order":3},"stat.impact_visites":{"type":"stat","key":"impact_visites","id":5,"number":"340","label":"Visitas","label_fr":"Visites à domicile / an","is_visible":1,"sort_order":4},"stat.impact_aines":{"type":"stat","key":"impact_aines","id":6,"number":"62","label":"Mayores","label_fr":"Aînés suivis régulièrement","is_visible":1,"sort_order":5},"stat.impact_benevolat":{"type":"stat","key":"impact_benevolat","id":7,"number":"98%","label":"Voluntariado","label_fr":"Bénévolat opérationnel","is_visible":1,"sort_order":6},"stat.mission_ans":{"type":"stat","key":"mission_ans","id":8,"number":"27+","label":"Años de compromiso","label_fr":"Ans d'engagement","is_visible":1,"sort_order":7},"stat.mission_benef":{"type":"stat","key":"mission_benef","id":9,"number":"1 200","label":"Beneficiarios/año","label_fr":"Bénéficiaires/an","is_visible":1,"sort_order":8},"stat.mission_visites":{"type":"stat","key":"mission_visites","id":10,"number":"340","label":"Visitas/año","label_fr":"Visites/an","is_visible":1,"sort_order":9}},"lang":"es","page":"mission"},"mission|fr":{"blocks":{"mission.head.title":{"type":"title","value":"Notre mission est d’humaniser chaque jour.","field":"title"},"mission.head.body":{"type":"body","value":"Introduire et vivre la culture de l’humanisme au service des personnes âgées. À Taourirt, vieillir dans la dignité n’est pas un privilège — c’est un droit que nous défendons, visage après visage, depuis 1998.","field":"body"},"mission.vision.eyebrow":{"type":"eyebrow","value":"الإنسانية في صميم رعايتنا","field":"title"},"mission.vision.title":{"type":"title","value":"L’humanisme <i>au cœur de nos soins<\/i>","field":"title"},"mission.vision.body1":{"type":"body","value":"L’humanisme est tout simplement un respect de la dignité, une solidarité et une bienveillance. C’est exactement l’ADN de notre association. Depuis 1998, bénévoles, soignants et donateurs se relaient pour offrir présence, soins et réconfort aux aînés isolés de Taourirt et des douars avoisinants.","field":"body"},"mission.vision.body2":{"type":"body","value":"Nous intervenons à domicile, en partenariat avec le centre de santé local, et animons un lieu d’accueil chaleureux où se tissent des liens intergénérationnels. Chaque visite, chaque repas, chaque sourire compte.","field":"body"},"mission.vision.card.title":{"type":"title","value":"Notre vision","field":"title"},"mission.vision.card.body":{"type":"body","value":"Une ville où aucun aîné ne se sent oublié, où chaque personne âgée est entourée, écoutée et respectée.","field":"body"},"mission.promise.card.title":{"type":"title","value":"Notre promesse","field":"title"},"mission.promise.card.body":{"type":"body","value":"Intervenir en 48h après un signalement, en toute confidentialité et sans condition, avec un suivi humain.","field":"body"},"mission.terrain.card.title":{"type":"title","value":"Sur le terrain, chaque jour","field":"title"},"mission.terrain.card.body":{"type":"body","value":"Écoute, courses, suivi léger, repas partagés — une présence humaine avant tout, pas seulement une aide matérielle.","field":"body"},"mission.timeline.eyebrow":{"type":"eyebrow","value":"Notre histoire","field":"title"},"mission.timeline.title":{"type":"title","value":"De 1998 à aujourd’hui, <i>une continuité<\/i>.","field":"title"},"mission.timeline.body":{"type":"body","value":"Une association née d’un élan citoyen, qui s’est structurée au fil des années sans jamais perdre son âme : la proximité.","field":"body"},"mission.timeline.98.title":{"type":"title","value":"1998 — Fondation","field":"title"},"mission.timeline.98.body":{"type":"body","value":"Quelques familles de Taourirt se réunissent pour visiter et soutenir les aînés isolés.","field":"body"},"mission.timeline.05.title":{"type":"title","value":"2005 — Premier local","field":"title"},"mission.timeline.05.body":{"type":"body","value":"Ouverture du local administratif et lancement des repas solidaires hebdomadaires.","field":"body"},"mission.timeline.15.title":{"type":"title","value":"2015 — Santé","field":"title"},"mission.timeline.15.body":{"type":"body","value":"Partenariat avec le centre de santé : dépistages et suivi infirmier pour nos bénéficiaires.","field":"body"},"mission.timeline.24.title":{"type":"title","value":"2024 — 1 200 foyers","field":"title"},"mission.timeline.24.body":{"type":"body","value":"Plus de 14 400 repas et 340 visites à domicile, grâce à 45 bénévoles et aux donateurs.","field":"body"},"mission.valeurs.eyebrow":{"type":"eyebrow","value":"Nos valeurs","field":"title"},"mission.valeurs.title":{"type":"title","value":"Respect, solidarité, <i>bienveillance<\/i>.","field":"title"},"mission.valeurs.body":{"type":"body","value":"Trois mots simples qui se traduisent en gestes quotidiens, mesurables et partagés.","field":"body"},"mission.approche.eyebrow":{"type":"eyebrow","value":"Notre approche","field":"title"},"mission.approche.title":{"type":"title","value":"Intervenir vite, <i>suivre longtemps<\/i>.","field":"title"},"mission.approche.body":{"type":"body","value":"Un signalement suffit. Notre méthode est simple, humaine et rigoureuse — pensée avec les familles.","field":"body"},"mission.impact.eyebrow":{"type":"eyebrow","value":"Impact mesuré","field":"title"},"mission.impact.title":{"type":"title","value":"Ce que <i>vos dons<\/i> rendent possible.","field":"title"},"mission.impact.body":{"type":"body","value":"Transparence totale : chaque action documentée, chaque dirham tracé et partagé avec nos donateurs.","field":"body"},"mission.crumb.home":{"type":"title","value":"Accueil","field":"title"},"mission.crumb.current":{"type":"title","value":"Qui sommes-nous","field":"title"},"mission.hero.cta_actions":{"type":"cta","value":"Découvrir nos actions","field":"title"},"mission.hero.cta_aide":{"type":"cta","value":"Signaler un cas","field":"title"},"mission.hero.badge_title":{"type":"title","value":"Taourirt — depuis 2005","field":"title"},"mission.hero.badge_sub":{"type":"title","value":"27+ ans d'engagement continu","field":"title"},"mission.terrain.volunteers":{"type":"title","value":"+45 bénévoles","field":"title"},"mission.valeurs.1.title":{"type":"title","value":"Dignité","field":"title"},"mission.valeurs.1.body":{"type":"body","value":"Préserver l’autonomie, l’intimité et le choix de chaque personne — jusque dans les détails du quotidien.","field":"body"},"mission.valeurs.1.tags":{"type":"title","value":"Écoute · Respect · Discrétion","field":"title"},"mission.valeurs.2.title":{"type":"title","value":"Solidarité","field":"title"},"mission.valeurs.2.body":{"type":"body","value":"Un réseau d’entraide local, réactif, qui ne laisse personne de côté — en ville comme en douar.","field":"body"},"mission.valeurs.2.tags":{"type":"title","value":"Réseau · Réactivité · Partage","field":"title"},"mission.valeurs.3.title":{"type":"title","value":"Bienveillance","field":"title"},"mission.valeurs.3.body":{"type":"body","value":"Écouter sans juger, rassurer, sourire — la présence qui change une journée et parfois une vie.","field":"body"},"mission.valeurs.3.tags":{"type":"title","value":"Présence · Douceur · Confiance","field":"title"},"mission.approche.1.title":{"type":"title","value":"Signalement & écoute","field":"title"},"mission.approche.1.body":{"type":"body","value":"Formulaire ou appel. Accusé de réception sous 24h, en toute confidentialité.","field":"body"},"mission.approche.2.title":{"type":"title","value":"Visite & évaluation","field":"title"},"mission.approche.2.body":{"type":"body","value":"Binôme bénévole sur place, avec la famille et le centre de santé si besoin.","field":"body"},"mission.approche.3.title":{"type":"title","value":"Accompagnement durable","field":"title"},"mission.approche.3.body":{"type":"body","value":"Plan d’aide, visites régulières, repas, lien intergénérationnel — suivi dans la durée.","field":"body"},"mission.impact.measure.1":{"type":"title","value":"Registre de visites signé par chaque bénéficiaire et bénévole.","field":"title"},"mission.impact.measure.2":{"type":"title","value":"Rapports mensuels (photos, reçus) envoyés aux donateurs réguliers.","field":"title"},"mission.impact.measure.3":{"type":"title","value":"Partenariat avec le centre de santé pour le suivi sanitaire.","field":"title"},"mission.impact.gov.title":{"type":"title","value":"Gouvernance","field":"title"},"mission.impact.gov.body":{"type":"body","value":"Association à but non lucratif, comptes présentés en assemblée générale annuelle. Rapports et galeries sont publiés régulièrement pour nos donateurs.","field":"body"},"mission.impact.gov.link":{"type":"cta","value":"Voir les rapports","field":"title"},"mission.quote.text":{"type":"quote","value":"“Grâce à l’association, mon père reçoit des visites chaque semaine. <em>On se sent moins seuls.<\/em>”","field":"body"},"mission.quote.role":{"type":"title","value":"Fille de bénéficiaire — Taourirt","field":"title"},"mission.trust.eyebrow":{"type":"title","value":"Ils nous font confiance","field":"title"},"mission.trust.title":{"type":"title","value":"“Vieillir entouré, c’est continuer d’appartenir à la ville.”","field":"title"},"mission.trust.body":{"type":"title","value":"— Mot d’une bénéficiaire de 82 ans, suivie depuis 2019.","field":"title"},"mission.trust.cta":{"type":"cta","value":"Voir nos actions","field":"title"},"mission.cta.don":{"type":"cta","value":"Soutenir notre mission","field":"title"},"mission.cta.projets":{"type":"cta","value":"Voir les projets","field":"title"},"mission.cta.contact":{"type":"cta","value":"Nous rencontrer","field":"title"}},"stats":{"stat.hero_beneficiaires":{"type":"stat","key":"hero_beneficiaires","id":1,"number":"+100","label":"Bénéficiaires accompagnés","label_fr":"Bénéficiaires accompagnés","is_visible":1,"sort_order":0},"stat.hero_annees":{"type":"stat","key":"hero_annees","id":2,"number":"27+","label":"Ans au service des aînés","label_fr":"Ans au service des aînés","is_visible":1,"sort_order":1},"stat.hero_projets":{"type":"stat","key":"hero_projets","id":3,"number":"40+","label":"Projets solidaires menés","label_fr":"Projets solidaires menés","is_visible":1,"sort_order":2},"stat.impact_repas":{"type":"stat","key":"impact_repas","id":4,"number":"14 400","label":"Repas distribués (2024)","label_fr":"Repas distribués (2024)","is_visible":1,"sort_order":3},"stat.impact_visites":{"type":"stat","key":"impact_visites","id":5,"number":"340","label":"Visites à domicile / an","label_fr":"Visites à domicile / an","is_visible":1,"sort_order":4},"stat.impact_aines":{"type":"stat","key":"impact_aines","id":6,"number":"62","label":"Aînés suivis régulièrement","label_fr":"Aînés suivis régulièrement","is_visible":1,"sort_order":5},"stat.impact_benevolat":{"type":"stat","key":"impact_benevolat","id":7,"number":"98%","label":"Bénévolat opérationnel","label_fr":"Bénévolat opérationnel","is_visible":1,"sort_order":6},"stat.mission_ans":{"type":"stat","key":"mission_ans","id":8,"number":"27+","label":"Ans d'engagement","label_fr":"Ans d'engagement","is_visible":1,"sort_order":7},"stat.mission_benef":{"type":"stat","key":"mission_benef","id":9,"number":"1 200","label":"Bénéficiaires/an","label_fr":"Bénéficiaires/an","is_visible":1,"sort_order":8},"stat.mission_visites":{"type":"stat","key":"mission_visites","id":10,"number":"340","label":"Visites/an","label_fr":"Visites/an","is_visible":1,"sort_order":9}},"lang":"fr","page":"mission"}}};</script>
+</body></html>

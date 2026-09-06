@@ -1,0 +1,1 @@
+{"target":"donors","range":30,"donors":[{"name":"Société Atlas SARL","count":1,"total":1000},{"name":"Mohammed Reqasse","count":1,"total":610},{"name":"Sofia Marouane","count":1,"total":300},{"name":"Fatima Zahra El Idrissi","count":1,"total":250},{"name":"Dr. Salim Berrada","count":1,"total":250}],"maxDonor":1000,"recur":{"monthly":{"c":1,"s":100},"once":{"c":7,"s":2635}}}

@@ -1,0 +1,1 @@
+{"target":"recent","dst":"pending","rows":[{"id":15,"amount":75,"name":"Omar El Fassi","payment_method":"virement","status":"pending","dt":"2026-09-01T17:28"},{"id":10,"amount":100,"name":"Mehdi Tazi","payment_method":"mopay","status":"pending","dt":"2026-09-01T14:09"}],"counts":{"all":14,"new":3,"pending":2,"paid":8},"canDons":true}
