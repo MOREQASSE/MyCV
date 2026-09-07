@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://moreqasse.github.io/MyCV/</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://moreqasse.github.io/MyCV/images/profile.webp</image:loc>
+      <image:title>Mohammed Reqasse — Network and Telecommunications Engineer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://moreqasse.github.io/MyCV/images/MR.webp</image:loc>
+      <image:title>Mohammed Reqasse — Portfolio logo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://moreqasse.github.io/MyCV/CVENG_Mohammed_Reqasse2026.pdf</loc>
@@ -17,11 +26,5 @@
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://moreqasse.github.io/MyCV/privacy.html</loc>
-    <lastmod>2026-08-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
   </url>
 </urlset>

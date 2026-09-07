@@ -16,7 +16,7 @@ const translations = {
 
         // Hero
         hero_title: "Mohammed Reqasse",
-        hero_subtitle: "Network & Telecommunications Engineering Student",
+        hero_subtitle: "Network & Telecommunications Engineer",
         hero_description: "Passionate about technology, innovation, and creating impactful solutions in networking, cybersecurity, and telecommunications.",
         btn_projects: "View Projects",
         btn_contact: "Get In Touch",
@@ -27,7 +27,7 @@ const translations = {
         // About
         tag_about: "About Me",
         title_about: "Who I Am",
-        about_p1: "I'm a 22-year-old Network and Telecommunications Engineering student at ENSA Safi, passionate about technology and innovation. My journey in tech has led me to explore various domains including networking, cybersecurity, web development, and AI.",
+        about_p1: "I'm a 22-year-old Network and Telecommunications Engineer, ENSA Safi graduate, passionate about technology and innovation. My journey in tech has led me to explore various domains including networking, cybersecurity, web development, and AI.",
         about_p2: "As the founder of Devaxio, I've had the opportunity to lead digital transformation for numerous clients, delivering high-performance websites and integrating AI tools to automate workflows. My hands-on experience spans from industrial IoT systems to advanced network security implementations.",
         about_p3: "I'm currently seeking opportunities in networking, telecommunications, or cybersecurity where I can apply my knowledge, learn from experienced professionals, and contribute to meaningful projects that make a difference.",
         available: "Available for opportunities",
@@ -120,7 +120,7 @@ const translations = {
         btn_send: "Send Message",
 
         // Footer
-        footer_desc: "Network & Telecommunications Engineering Student passionate about creating innovative solutions.",
+        footer_desc: "Network & Telecommunications Engineer passionate about creating innovative solutions.",
         footer_rights: "All rights reserved.",
         footer_links: "Quick Links",
         footer_contact: "Contact",
@@ -144,7 +144,7 @@ const translations = {
 
         // Hero
         hero_title: "Mohammed Reqasse",
-        hero_subtitle: "Étudiant en Ingénierie Réseaux & Télécommunications",
+        hero_subtitle: "Ingénieur Réseaux & Télécommunications",
         hero_description: "Passionné par la technologie, l'innovation et la création de solutions impactantes en réseautique, cybersécurité et télécommunications.",
         btn_projects: "Voir les Projets",
         btn_contact: "Me Contacter",
@@ -155,7 +155,7 @@ const translations = {
         // About
         tag_about: "À Propos",
         title_about: "Qui Je Suis",
-        about_p1: "Je suis un étudiant de 22 ans en Ingénierie des Réseaux et Télécommunications à l'ENSA Safi, passionné par la technologie et l'innovation. Mon parcours dans la tech m'a conduit à explorer divers domaines dont la réseautique, la cybersécurité, le développement web et l'IA.",
+        about_p1: "Je suis un Ingénieur Réseaux et Télécommunications de 22 ans, diplômé de l'ENSA Safi, passionné par la technologie et l'innovation. Mon parcours dans la tech m'a conduit à explorer divers domaines dont la réseautique, la cybersécurité, le développement web et l'IA.",
         about_p2: "En tant que fondateur de Devaxio, j'ai eu l'opportunité de diriger la transformation numérique de nombreux clients, en livrant des sites web haute performance et en intégrant des outils d'IA pour automatiser les flux de travail. Mon expérience pratique s'étend des systèmes IoT industriels aux implémentations avancées de sécurité réseau.",
         about_p3: "Je recherche actuellement des opportunités en réseautique, télécommunications ou cybersécurité où je peux appliquer mes connaissances, apprendre auprès de professionnels expérimentés et contribuer à des projets significatifs qui font la différence.",
         available: "Disponible pour opportunités",
@@ -248,7 +248,7 @@ const translations = {
         btn_send: "Envoyer le Message",
 
         // Footer
-        footer_desc: "Étudiant en Ingénierie Réseaux & Télécommunications passionné par la création de solutions innovantes.",
+        footer_desc: "Ingénieur Réseaux & Télécommunications passionné par la création de solutions innovantes.",
         footer_rights: "Tous droits réservés.",
         footer_links: "Liens Rapides",
         footer_contact: "Contact",
@@ -272,7 +272,7 @@ const translations = {
 
         // Hero
         hero_title: "محمد رقاس",
-        hero_subtitle: "طالب هندسة الشبكات والاتصالات",
+        hero_subtitle: "مهندس الشبكات والاتصالات",
         hero_description: "شغوف بالتكنولوجيا والابتكار وإنشاء حلول مؤثرة في مجال الشبكات والأمن السيبراني والاتصالات.",
         btn_projects: "عرض المشاريع",
         btn_contact: "تواصل معي",
@@ -283,7 +283,7 @@ const translations = {
         // About
         tag_about: "نبذة عني",
         title_about: "من أنا",
-        about_p1: "أنا طالب هندسة الشبكات والاتصالات البالغ من العمر 22 عاماً في ENSA Safi، شغوف بالتكنولوجيا والابتكار. رحلتي في مجال التقنية قادتني لاستكشاف مجالات متنوعة تشمل الشبكات والأمن السيبراني وتطوير الويب والذكاء الاصطناعي.",
+        about_p1: "أنا مهندس شبكات واتصالات أبلغ 22 عامًا، خريج المدرسة الوطنية للعلوم التطبيقية بآسفي، شغوف بالتكنولوجيا والابتكار. رحلتي في مجال التقنية قادتني لاستكشاف مجالات متنوعة تشمل الشبكات والأمن السيبراني وتطوير الويب والذكاء الاصطناعي.",
         about_p2: "بصفتي مؤسس Devaxio، كنت قد أتيحت لي الفرصة لقيادة التحول الرقمي لعديد من العملاء، وتقديم مواقع ويب عالية الأداء ودمج أدوات الذكاء الاصطناعي لأتمتة سير العمل. خبرتي العملية تمتد من أنظمة إنترنت الأشياء الصناعية إلى تطبيقات الأمان المتقدمة.",
         about_p3: "أبحث حالياً عن فرص في مجال الشبكات والاتصالات أو الأمن السيبراني حيث يمكنني تطبيق معرفتي والتعلم من المحترفين ذوي الخبرة والمساهمة في مشاريع هادفة تحدث فرقاً.",
         available: "متاح للفرص",
@@ -376,7 +376,7 @@ const translations = {
         btn_send: "إرسال الرسالة",
 
         // Footer
-        footer_desc: "طالب هندسة الشبكات والاتصالات شغوف بإنشاء حلول مبتكرة.",
+        footer_desc: "مهندس شبكات واتصالات شغوف بإنشاء حلول مبتكرة.",
         footer_rights: "جميع الحقوق محفوظة.",
         footer_links: "روابط سريعة",
         footer_contact: "تواصل",
@@ -501,14 +501,14 @@ function initScrollAnimations() {
             { year: '2021', roleKey: 'role_bac', title: 'Lycee Okba Ibnou Nafiaa', descKey: 'bac', tags: 'Physical Sciences, Très Bien (17.59)', color: '#14b8a6', iconPath: 'M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c3 3 9 3 12 0v-5' }
         ];
         var arcDesc = {
-            en: { ocp: 'Built CAT8k\u00b7SYNC: automated Cisco provisioning via RESTCONF (<strong>5.15 s</strong> deploy cycle, <strong>7</strong> live ops), continuous telemetry (<strong>153 samples</strong>/12 days, <strong>3,410</strong> interface records), and compliance scanning (<strong>16 checks</strong> in 44 ms, <strong>19</strong> remediations) with a SHA-256 hash-chained audit ledger.', devaxio: 'Founded and directed Devaxio, leading digital transformation for <strong>15+ clients</strong> with focus on AI integration and web automation.', devosoft: 'Performed technical web development work while handling <strong>10+ clients</strong> and overseeing client relationships in an <strong>8-person team</strong>.', teacher: 'Taught English as a second language to diverse student groups, developing communication and presentation skills.', engineering: 'Pursuing a degree in Network and Telecommunications Engineering, focusing on SDN, network security, and advanced routing protocols.', prepa: 'Completed the intensive cycle preparatoire at ENSA Safi, building a strong foundation in advanced mathematics and physics.', bac: 'Graduated with distinction \u2014 Baccalaur\u00e9at in Physical Sciences with Tr\u00e8s Bien mention (<strong>17.59/20</strong>).' },
-            fr: { ocp: 'Con\u00e7u CAT8k\u00b7SYNC : provision automatique Cisco via RESTCONF (<strong>5,15 s</strong> de cycle, <strong>7</strong> op\u00e9rations live), t\u00e9l\u00e9m\u00e9trie continue (<strong>153 \u00e9chantillons</strong>/12 jours, <strong>3 410</strong> enregistrements d\u2019interfaces) et audit de conformit\u00e9 (<strong>16 v\u00e9rifications</strong> en 44 ms, <strong>19</strong> rem\u00e9diations) avec registre \u00e0 cha\u00eene de hachage SHA-256.', devaxio: 'Fond\u00e9 et dirig\u00e9 Devaxio, menant la transformation num\u00e9rique pour <strong>15+ clients</strong> avec focus sur l\u2019int\u00e9gration IA et l\u2019automatisation web.', devosoft: 'Effectu\u00e9 un travail technique de d\u00e9veloppement web tout en g\u00e9rant <strong>10+ clients</strong> et supervisant les relations clients au sein d\u2019une \u00e9quipe de <strong>8 personnes</strong>.', teacher: 'Enseign\u00e9 l\u2019anglais comme langue seconde \u00e0 des groupes d\u2019\u00e9tudiants divers, d\u00e9veloppant les comp\u00e9tences en communication et pr\u00e9sentation.', engineering: 'Poursuite d\u2019un dipl\u00f4me en Ing\u00e9nierie R\u00e9seaux et T\u00e9l\u00e9communications, avec focus sur le SDN, la s\u00e9curit\u00e9 r\u00e9seau et les protocoles de routage avanc\u00e9s.', prepa: 'Achev\u00e9 le cycle pr\u00e9paratoire intensif \u00e0 l\u2019ENSA Safi, construisant une base solide en math\u00e9matiques avanc\u00e9es et physique.', bac: 'Dipl\u00f4m\u00e9 avec mention \u2014 Baccalaur\u00e9at en Sciences Physiques avec mention Tr\u00e8s Bien (<strong>17,59/20</strong>).' },
-            ar: { ocp: 'بناء CAT8k·SYNC: أتمتة تجهيز معدات Cisco عبر RESTCONF (دورة نشر <strong>5.15 ثانية</strong>، <strong>7</strong> عمليات حيّة)، وقياس مستمر عن بُعد (تيليمتري) (<strong>153 عيّنة</strong>/12 يومًا، <strong>3,410</strong> سجلات واجهات)، وفحص الامتثال (<strong>16 فحصًا</strong> في 44 مللي ثانية، <strong>19</strong> معالجة) مع سجل تدقيق مربوط التجزئة بخوارزمية SHA-256.', devaxio: 'أسّس Devaxio وقاده، وقاد التحول الرقمي لأكثر من <strong>15 عميلًا</strong> مع التركيز على دمج الذكاء الاصطناعي وأتمتة الويب.', devosoft: 'أنجز مهام تقنية في تطوير الويب مع متابعة أكثر من <strong>10 عملاء</strong> والإشراف على علاقات العملاء ضمن فريق من <strong>8 أفراد</strong>.', teacher: 'درّس اللغة الإنجليزية كلغة ثانية لمجموعات متنوعة من الطلاب، وطوّر مهارات التواصل والعرض والإلقاء.', engineering: 'يتابع دراسة سلك الهندسة في الشبكات والاتصالات، مع التركيز على الشبكات المعرّفة بالبرمجيات (SDN) وأمن الشبكات وبروتوكولات التوجيه المتقدمة.', prepa: 'أتمّ السلك التحضيري المكثّف بالمدرسة الوطنية للعلوم التطبيقية بآسفي، وبنى أساسًا متينًا في الرياضيات المتقدمة والفيزياء.', bac: 'تخرّج بميزة — باكالوريا في العلوم الفيزيائية بميزة حسن جدًا (<strong>17.59/20</strong>).'}
+            en: { ocp: 'Built CAT8k\u00b7SYNC: automated Cisco provisioning via RESTCONF (<strong>5.15 s</strong> deploy cycle, <strong>7</strong> live ops), continuous telemetry (<strong>153 samples</strong>/12 days, <strong>3,410</strong> interface records), and compliance scanning (<strong>16 checks</strong> in 44 ms, <strong>19</strong> remediations) with a SHA-256 hash-chained audit ledger.', devaxio: 'Founded and directed Devaxio, leading digital transformation for <strong>15+ clients</strong> with focus on AI integration and web automation.', devosoft: 'Performed technical web development work while handling <strong>10+ clients</strong> and overseeing client relationships in an <strong>8-person team</strong>.', teacher: 'Taught English as a second language to diverse student groups, developing communication and presentation skills.', engineering: 'Graduated in Network and Telecommunications Engineering, focused on SDN, network security, and advanced routing protocols.', prepa: 'Completed the intensive cycle preparatoire at ENSA Safi, building a strong foundation in advanced mathematics and physics.', bac: 'Graduated with distinction \u2014 Baccalaur\u00e9at in Physical Sciences with Tr\u00e8s Bien mention (<strong>17.59/20</strong>).' },
+            fr: { ocp: 'Con\u00e7u CAT8k\u00b7SYNC : provision automatique Cisco via RESTCONF (<strong>5,15 s</strong> de cycle, <strong>7</strong> op\u00e9rations live), t\u00e9l\u00e9m\u00e9trie continue (<strong>153 \u00e9chantillons</strong>/12 jours, <strong>3 410</strong> enregistrements d\u2019interfaces) et audit de conformit\u00e9 (<strong>16 v\u00e9rifications</strong> en 44 ms, <strong>19</strong> rem\u00e9diations) avec registre \u00e0 cha\u00eene de hachage SHA-256.', devaxio: 'Fond\u00e9 et dirig\u00e9 Devaxio, menant la transformation num\u00e9rique pour <strong>15+ clients</strong> avec focus sur l\u2019int\u00e9gration IA et l\u2019automatisation web.', devosoft: 'Effectu\u00e9 un travail technique de d\u00e9veloppement web tout en g\u00e9rant <strong>10+ clients</strong> et supervisant les relations clients au sein d\u2019une \u00e9quipe de <strong>8 personnes</strong>.', teacher: 'Enseign\u00e9 l\u2019anglais comme langue seconde \u00e0 des groupes d\u2019\u00e9tudiants divers, d\u00e9veloppant les comp\u00e9tences en communication et pr\u00e9sentation.', engineering: 'Dipl\u00f4m\u00e9 en Ing\u00e9nierie R\u00e9seaux et T\u00e9l\u00e9communications, sp\u00e9cialis\u00e9 en SDN, la s\u00e9curit\u00e9 r\u00e9seau et les protocoles de routage avanc\u00e9s.', prepa: 'Achev\u00e9 le cycle pr\u00e9paratoire intensif \u00e0 l\u2019ENSA Safi, construisant une base solide en math\u00e9matiques avanc\u00e9es et physique.', bac: 'Dipl\u00f4m\u00e9 avec mention \u2014 Baccalaur\u00e9at en Sciences Physiques avec mention Tr\u00e8s Bien (<strong>17,59/20</strong>).' },
+            ar: { ocp: 'بناء CAT8k·SYNC: أتمتة تجهيز معدات Cisco عبر RESTCONF (دورة نشر <strong>5.15 ثانية</strong>، <strong>7</strong> عمليات حيّة)، وقياس مستمر عن بُعد (تيليمتري) (<strong>153 عيّنة</strong>/12 يومًا، <strong>3,410</strong> سجلات واجهات)، وفحص الامتثال (<strong>16 فحصًا</strong> في 44 مللي ثانية، <strong>19</strong> معالجة) مع سجل تدقيق مربوط التجزئة بخوارزمية SHA-256.', devaxio: 'أسّس Devaxio وقاده، وقاد التحول الرقمي لأكثر من <strong>15 عميلًا</strong> مع التركيز على دمج الذكاء الاصطناعي وأتمتة الويب.', devosoft: 'أنجز مهام تقنية في تطوير الويب مع متابعة أكثر من <strong>10 عملاء</strong> والإشراف على علاقات العملاء ضمن فريق من <strong>8 أفراد</strong>.', teacher: 'درّس اللغة الإنجليزية كلغة ثانية لمجموعات متنوعة من الطلاب، وطوّر مهارات التواصل والعرض والإلقاء.', engineering: 'خريج سلك الهندسة في الشبكات والاتصالات، متخصص في الشبكات المعرّفة بالبرمجيات (SDN) وأمن الشبكات وبروتوكولات التوجيه المتقدمة.', prepa: 'أتمّ السلك التحضيري المكثّف بالمدرسة الوطنية للعلوم التطبيقية بآسفي، وبنى أساسًا متينًا في الرياضيات المتقدمة والفيزياء.', bac: 'تخرّج بميزة — باكالوريا في العلوم الفيزيائية بميزة حسن جدًا (<strong>17.59/20</strong>).'}
         };
         var arcRoles = {
-            en: { role_founder: 'Founder / Lead Developer', role_intern: 'Summer Intern - Web Development', role_intern_ocp: 'Network Engineering Intern', role_teacher: 'English Second Language Teacher', role_engineering: 'Network & Telecommunications Engineering Student', role_prepa: 'Cycle Preparatoire - Mathematics & Physics', role_bac: 'Baccalaureate in Physical Sciences' },
-            fr: { role_founder: 'Fondateur / D\u00e9veloppeur Principal', role_intern: 'Stagiaire - D\u00e9veloppement Web', role_intern_ocp: 'Stagiaire Ing\u00e9nierie R\u00e9seaux', role_teacher: 'Professeur d\u2019Anglais Langue Seconde', role_engineering: '\u00c9tudiant en Ing\u00e9nierie R\u00e9seaux et T\u00e9l\u00e9communications', role_prepa: 'Cycle Pr\u00e9paratoire - Math\u00e9matiques et Physique', role_bac: 'Baccalaur\u00e9at en Sciences Physiques' },
-            ar: { role_founder: 'المؤسس / المطوّر الرئيسي', role_intern: 'متدرب صيفي في تطوير الويب', role_intern_ocp: 'متدرب في هندسة الشبكات', role_teacher: 'مدرّس اللغة الإنجليزية كلغة ثانية', role_engineering: 'طالب سلك الهندسة في الشبكات والاتصالات', role_prepa: 'السلك التحضيري — الرياضيات والفيزياء', role_bac: 'باكالوريا في العلوم الفيزيائية'}
+            en: { role_founder: 'Founder / Lead Developer', role_intern: 'Summer Intern - Web Development', role_intern_ocp: 'Network Engineering Intern', role_teacher: 'English Second Language Teacher', role_engineering: 'Network & Telecommunications Engineer', role_prepa: 'Cycle Preparatoire - Mathematics & Physics', role_bac: 'Baccalaureate in Physical Sciences' },
+            fr: { role_founder: 'Fondateur / D\u00e9veloppeur Principal', role_intern: 'Stagiaire - D\u00e9veloppement Web', role_intern_ocp: 'Stagiaire Ing\u00e9nierie R\u00e9seaux', role_teacher: 'Professeur d\u2019Anglais Langue Seconde', role_engineering: 'Ing\u00e9nieur en R\u00e9seaux et T\u00e9l\u00e9communications', role_prepa: 'Cycle Pr\u00e9paratoire - Math\u00e9matiques et Physique', role_bac: 'Baccalaur\u00e9at en Sciences Physiques' },
+            ar: { role_founder: 'المؤسس / المطوّر الرئيسي', role_intern: 'متدرب صيفي في تطوير الويب', role_intern_ocp: 'متدرب في هندسة الشبكات', role_teacher: 'مدرّس اللغة الإنجليزية كلغة ثانية', role_engineering: 'مهندس في الشبكات والاتصالات', role_prepa: 'السلك التحضيري — الرياضيات والفيزياء', role_bac: 'باكالوريا في العلوم الفيزيائية'}
         };
 
         // --- Geometry: responsive to viewport width ---

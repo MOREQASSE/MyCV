@@ -2,8 +2,9 @@
 User-agent: *
 Allow: /
 
-Disallow: /.well-known/
-Disallow: /.git/
+Disallow: /MyCV/.well-known/
+Disallow: /MyCV/.git/
+Disallow: /MyCV/Admin_Demo/
 
 # Sitemap
 Sitemap: https://moreqasse.github.io/MyCV/sitemap.xml
