@@ -81,19 +81,15 @@
     <link rel="apple-touch-icon" href="images/MR.webp">
     <link rel="shortcut icon" href="images/MR.webp" type="image/png">
     
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- Stylesheets (critical) -->
-    <link rel="stylesheet" href="style.css?v=1.2">
-    
-    <!-- Non-render-blocking external CSS -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <!-- Self-hosted icon subset (52 glyphs, font-display:swap) — zero CDN -->
+    <style>@font-face{font-family:'FA-Solid';font-style:normal;font-weight:900;font-display:swap;src:url(data:font/woff2;base64,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) format('woff2');}.fa-at:before{content:"\40";}.fa-bolt:before{content:"\f0e7";}.fa-brain:before{content:"\f5dc";}.fa-broadcast-tower:before{content:"\f519";}.fa-building:before{content:"\f1ad";}.fa-calculator:before{content:"\f1ec";}.fa-chart-line:before{content:"\f201";}.fa-check-circle:before{content:"\f058";}.fa-chevron-down:before{content:"\f078";}.fa-chevron-left:before{content:"\f053";}.fa-chevron-right:before{content:"\f054";}.fa-circle:before{content:"\f111";}.fa-code:before{content:"\f121";}.fa-comment-dots:before{content:"\f4ad";}.fa-compress:before{content:"\f066";}.fa-cube:before{content:"\f1b2";}.fa-database:before{content:"\f1c0";}.fa-download:before{content:"\f019";}.fa-envelope:before{content:"\f0e0";}.fa-exchange-alt:before{content:"\f362";}.fa-external-link-alt:before{content:"\f35d";}.fa-file-alt:before{content:"\f15c";}.fa-file-code:before{content:"\f1c9";}.fa-file-pdf:before{content:"\f1c1";}.fa-globe:before{content:"\f0ac";}.fa-graduation-cap:before{content:"\f19d";}.fa-heart:before{content:"\f004";}.fa-image:before{content:"\f03e";}.fa-lock:before{content:"\f023";}.fa-map-marker-alt:before{content:"\f3c5";}.fa-moon:before{content:"\f186";}.fa-network-wired:before{content:"\f6ff";}.fa-paper-plane:before{content:"\f1d8";}.fa-phone:before{content:"\f095";}.fa-play-circle:before{content:"\f144";}.fa-route:before{content:"\f4d7";}.fa-shield-alt:before{content:"\f3ed";}.fa-sun:before{content:"\f185";}.fa-tag:before{content:"\f02b";}.fa-up-right-from-square:before{content:"\f35d";}.fa-user:before{content:"\f007";}.fa-user-shield:before{content:"\f505";}@font-face{font-family:'FA-Brands';font-style:normal;font-weight:400;font-display:swap;src:url(data:font/woff2;base64,d09GMgABAAAAAAi4AAoAAAAADmgAAAhxAwQBAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAfMqUSgE2AiQDLMsYBCAFgzQHIBu3DREVqxEF0EjtNZ8pfqye/3xO/e55KCBbsmQIWhMrDRtktZwC0wfADBJnGFdE2w+0SgLgaK1V9fZRPEKIJGiESmk7c9j+YbqIJbGjqTbTUuni1mhqlW5eaYTQWcYmZfQajIN+DiTwL7yOJBH24Boi2r6Ln6YavSidkeS0Owpo8I3HD++lxcde9dRxLC4vEiFI5okIdgmr8GEiGrElYrqcRgOPaCvouvcipoA4qcde9dg7H/vn42ue6Dz5yie/9uQfnvzXU8eXl4l094V/t3+t3/R+5v7BedDZ7+ROZn+RQGCPCKLlf2AR76OIajRJW4kw2tSqUoqSuDvaKfp5qZe1UqR5t5I1s3Yr7xX9bieJE6VVKtO8n7UyNiCpWPl3+wY6cRZdwfuWFjwzBnughUv/37S5Gdh+U4KSZQO2VUJ9E5Ss1QyNzfNQQVBrBwHD+0zLLQFfPiTogQjYn//8ZF6Mu1kKbPvJ66JyiSEI4hv+POhaNgYGp+4mg2j5T3gMXyODSlSnR+il9Dp6O32AqFBpM7/4JWQqiYt+1tKFqsTdft5KQ6XbSsdJCst6OQxramVCOMAAA4q+juQldEDR0qB38wFz7TJBihJel8IqSkNRnEQVqrSYA4MPP3NwFjGWiTLKOvsIhIKQGIYkMAVMyeESyk03btnCMDOztwxWKkeRYRgOU7oE17XLldgRztToKFPSYYyZ5WqNDY2ODLtOEDgmY9zRGkGpXh8MgPKemWlgtLly1bY3Mc4Z44zbnAOcs1HGBQcXzGHqMN4VQpgo6zQBziD4YcejbMuWG47Oz9fhCjtJGKSKmeca0AqQotxQVYtF4bbIdR1VLte553LThGEozevlsnJcN5pLYsNgdjo26EoX9fn5o9uKYmQYSx89PcFSgzEwbXoV6MUeExwBgrUWbE8wiDmFNN1DkZa6WStrt7KfA2unEw2Dkn4x2JWzZ2cS3wfqjUYd4JaT4BVnmWE0U9vG2VMw46S5JYkZYXKFRabhwPOC4VxdLn3qDY1ajSFJht5k0FPo+WDZ+PoPEWtJugsnTVKVqIGkCEdlmnR9tNNZdIexAWnW1ZS++93p0gJ6X5OfdS/hsprj/Vx91Hlc4n1Ld/V6eNVC+82Nxp6W769/wxwRb6Gkt52hu/CuENqPEl3E3Xa/wOoq4K1Z6IJBoVsTpTrS9sTl8lZ1GgLSCPPoZruZtnRUb4mXz3WjJAZbt2HQFA9vOr2+0xkaxODwPe1V7K53h4ZQLo28uzupt4ViACzv7dvTLxjP831XpedJLYVUXBjVctkXWhqMg3MhmJKQSpmEGDBNvnpZq2Z1z3dMxxGaM8WA8/PA4FCns35t987hhv+zp8fHR5Y+gZoob9HT+b5ejn5/z768x17BtWJSS625krbnNZQSnpQwDcuQDocGhG2HUSkQgNlohDZnjGltxZIz0K9nPAAjLG59QrYK2U/onkSr5J23ktRvm+d98RFxm35QPTHd6cBs5w2Dg7taXrAOM7N89ncUC4ppXVhYGoXce0eb/hJYMZOLvFtJWPxBYfRupYh+on/B4GG8YP6ZlLC4NP8USqWBWuDrphHGmLi8utx0hhowDN9KPBcISgPj0ahVCoGG1fA9hOEw3rc0j8WlD44GPiy7FIWMD772tfN8PKoyFtpSKWl6fq0a+EBaCYFSYAnb9+qDvk/ECMs/xCK+RZvpfqKkOYtW0YdZhxFvQH8denKBDzWIqAdlD3mv6MZJRenmbYERmAYMQwyepUWvggIMLlrVlsVr8NHB3a0uxus4a66Jk2hqJZx2v/iHZa7XADelNBmf5fzrjH+No+l0Ko4NmUiwXJtmeS4Mv+78gEFoWm+OKpMrbDyhnc7wgOMKyCoDk8cPsUrcmkpbtup5rsMgqhKIojWn2Fo5JsDAGZPAAGM3QvyJsxsY2hT+Z44hUxvu7yUgf7+SMWYM2MmfYvtGy7rRjv9ccW5c4wYdR67f0zINA9oIBQPfCKwechwutDaHYJqhkLVKBVj/LVYfoxk6Suf4sQZsllb80yZRqdI4k/I073a4gEy3dqwwfCb0yhs39+ojPZc1UlWi56vND65yYb4dxteU4ybjCMPGjYnvA34Qz62JggA3vi9xbCMI3hECYZmx8j03xkbqfryqM2rbnb4xCcvKMKTnJWMDCwf0hNj/2eqxmLmBMELgJ9dUPFcFgXLdeIXne7XZ9b8MOmF8WGbvMplK7PvCMJTnJitcz2sMVqvDRUBiIV5jiBmWTaSJqMoWcB3VKaetdIzupBfSm4jQSdox4t5wutq94bBu3vyqu0/Vup2PcUCqdZ1n7WZadLr9JPbRZdAIIda1OF10tRDzckV7p9qO0s1Up0VSQmeYP75ly3gGZON0leO8+OSOnROTLiYndu44+bteo4IgEdKTsua68v4xU6taOfQjITxvZPvoN8ZMpSpBYJmAIcSY5ApMyEGlw7HRv+V3rlS9ExyvVJrp+HjaDNWAcJtSErdas7OtVpz0P+mddSWxHVLWbprizA/rtXLwsT9NgRlG4LeCKA6GLYsrduFjN1hbcO9ZCERcgP7yu8+89Ly/9mnDZkRE9I9NV+KotrzIFrAYSQaZRILo/zHR2Vl+bvlx9gJCEcBsLNjB4f0Y7cACeB1gKW65pnUtTuGD+A1bYJ/nEf+hOCjHqGSpLVZShpLiwViaThEnCNMi6hGtCtDqnoKRR7coOG17qLKwU0i68v2tUNRDa/Ott91/x/XXXnfXyPjlFSPb9PwtUuHGe6/e2bfr5qs68LSPEzfdcdGGXom2I4c0r737potFJRVVlnC6TzM9HDZHx7QgZXdeXyL0tIDajha8sEuraI76MpqHeo6fteo9JTVfPXIWnxV5i+ur9q/Toen6cwIA) format('woff2');}.fa-css3-alt:before{content:"\f38b";}.fa-github:before{content:"\f09b";}.fa-html5:before{content:"\f13b";}.fa-js:before{content:"\f3b8";}.fa-linkedin:before{content:"\f08c";}.fa-linkedin-in:before{content:"\f0e1";}.fa-node-js:before{content:"\f3d3";}.fa-php:before{content:"\f457";}.fa-python:before{content:"\f3e2";}.fa-whatsapp:before{content:"\f232";}.fas,.fa-solid{font-family:'FA-Solid';font-weight:900;}.fab,.fa-brands{font-family:'FA-Brands';font-weight:400;}.fas,.fab{font-style:normal;font-variant:normal;line-height:1;text-rendering:auto;-webkit-font-smoothing:antialiased;display:inline-block;}</style>
+
+    <!-- Kill load-time transition flashes from the async stylesheet swap -->
+    <style>.preload *{transition:none!important}</style>
+    <!-- Critical above-the-fold CSS (8.5KB); full sheet loads async -->
+    <style>.page-loader{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.5s ease,visibility 0.5s ease;}.loader-content{text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.5rem;}.loader-logo{width:80px;height:80px;object-fit:contain;animation:loaderPulse 1.5s ease-in-out infinite;}.loader-spinner{width:40px;height:40px;border:3px solid rgba(26,82,150,0.1);border-top-color:var(--primary);border-radius:50%;animation:loaderSpin 1s linear infinite;}.loader-text{font-size:0.9rem;color:var(--text-medium);font-weight:500;letter-spacing:0.05em;}@keyframes loaderPulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.05);opacity:0.8;}}@keyframes loaderSpin{to{transform:rotate(360deg);}}:root{--primary:#1a5296;--primary-dark:#143d70;--accent:#00d4aa;--text-dark:#1e293b;--text-medium:#64748b;--text-light:#94a3b8;--bg-light:#f8fafc;--bg-medium:#f1f5f9;--bg-white:#ffffff;--border:#e2e8f0;--shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);--shadow-md:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);--shadow-lg:0 20px 25px -5px rgba(0,0,0,0.1),0 10px 10px -5px rgba(0,0,0,0.04);--radius:12px;--transition:all 0.3s cubic-bezier(0.4,0,0.2,1);--font-main:'Rajdhani','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--font-display:'Sakana','Rajdhani','Inter',sans-serif;}[data-theme="dark"]{--primary:#3b82f6;--primary-dark:#60a5fa;--accent:#10b981;--text-dark:#f1f5f9;--text-medium:#94a3b8;--text-light:#64748b;--bg-light:#0f172a;--bg-medium:#1e293b;--bg-white:#162032;--border:#334155;--shadow:0 4px 6px -1px rgba(0,0,0,0.4),0 2px 4px -1px rgba(0,0,0,0.3),0 0 0 1px rgba(59,130,246,0.05);--shadow-md:0 10px 15px -3px rgba(0,0,0,0.5),0 4px 6px -2px rgba(0,0,0,0.4),0 0 0 1px rgba(59,130,246,0.08);--shadow-lg:0 20px 25px -5px rgba(0,0,0,0.6),0 10px 10px -5px rgba(0,0,0,0.5),0 0 0 1px rgba(59,130,246,0.1),0 0 30px -5px rgba(59,130,246,0.15);}.theme-toggle{width:42px;height:42px;border-radius:50%;border:2px solid var(--border);background:var(--bg-white);cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:var(--transition);}*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:var(--font-main);line-height:1.6;color:var(--text-dark);background:var(--bg-light);overflow-x:hidden;}[lang="ar"]{--font-main:'Omar','Inter','Segoe UI','Tahoma',sans-serif;--font-display:'Omar','Inter','Segoe UI','Tahoma',sans-serif;}.hero-title,.section-title,.wt-title{font-family:var(--font-display);letter-spacing:0.01em;}[lang="ar"] .hero-title{line-height:1.9;font-weight:700;letter-spacing:0;padding-bottom:0.12em;}[lang="ar"] .section-title,[lang="ar"] .wt-title{line-height:1.8;letter-spacing:0;padding-bottom:0.1em;}.container{max-width:1200px;margin:0 auto;padding:0 20px;}.skip-link{position:absolute;top:-100px;left:16px;z-index:10000;background:var(--primary);color:#fff;font-weight:700;font-size:0.9rem;padding:0.7rem 1.2rem;border-radius:0 0 10px 10px;text-decoration:none;transition:top 0.2s ease;}.skip-link:focus-visible{top:0;color:#fff;outline:2px solid #fff;outline-offset:-2px;}:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:var(--transition);}.nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:70px;}.nav-logo{display:flex;align-items:center;text-decoration:none;}.nav-menu{display:flex;list-style:none;gap:2rem;}.nav-menu a{text-decoration:none;color:var(--text-medium);font-weight:500;font-size:0.9rem;transition:var(--transition);position:relative;}.language-switcher{position:relative;}.lang-btn{display:flex;align-items:center;gap:6px;background:var(--bg-white);border:1px solid var(--border);padding:8px 14px;border-radius:10px;font-weight:600;font-size:0.85rem;color:var(--text-dark);cursor:pointer;transition:all 0.2s ease;}.lang-dropdown{position:absolute;top:calc(100% + 6px);right:0;background:var(--bg-white);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.12);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-8px) scale(0.96);transition:all 0.2s ease;min-width:150px;z-index:100;}.lang-option{display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;border:none;background:transparent;color:var(--text-dark);cursor:pointer;transition:all 0.15s ease;font-size:0.85rem;text-align:left;}.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;font:inherit;color:inherit;}.hamburger span{width:25px;height:2px;background:var(--text-dark);transition:var(--transition);}.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:70px;overflow:hidden;}.hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);opacity:0.05;z-index:-1;}.hero-content{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}.hero-title{font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:1rem;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.hero-subtitle{font-size:1.25rem;color:var(--text-medium);font-weight:500;margin-bottom:1.5rem;}.hero-description{font-size:1.1rem;color:var(--text-light);margin-bottom:2rem;max-width:500px;}.hero-buttons{display:flex;gap:1rem;margin-bottom:2rem;}.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:9999px;font-weight:700;text-decoration:none;border:3px solid rgba(255,255,255,0.3);cursor:pointer;font-size:15px;position:relative;overflow:hidden;outline:none;transition:all 0.3s ease-in-out;}.btn-primary{background:var(--primary);color:white;box-shadow:0px 10px 20px rgba(0,0,0,0.15);border-color:rgba(255,255,255,0.2);}.btn-secondary{background:transparent;color:var(--primary);border-color:var(--primary);}.hero-socials{display:flex;gap:1rem;}.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:500px;}.hero-orbs{position:absolute;width:100%;height:100%;pointer-events:none;}.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.6;animation:float 8s ease-in-out infinite;}.orb-1{width:300px;height:300px;background:linear-gradient(135deg,var(--primary),var(--accent));top:10%;left:20%;animation-delay:0s;}.orb-2{width:200px;height:200px;background:linear-gradient(135deg,#667eea,#764ba2);bottom:20%;right:10%;animation-delay:-3s;}.orb-3{width:150px;height:150px;background:linear-gradient(135deg,#f093fb,#f5576c);top:40%;right:30%;animation-delay:-5s;opacity:0.4;}.hero-photo{position:relative;z-index:2;}.photo-img{width:340px;height:420px;object-fit:cover;border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;box-shadow:0 20px 60px rgba(26,82,150,0.3),0 0 0 10px rgba(255,255,255,0.1);animation:morphShape 10s ease-in-out infinite;}.floating-stats{position:absolute;width:100%;height:100%;pointer-events:none;z-index:3;}.float-stat{position:absolute;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);padding:0.75rem 1.25rem;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.1);display:flex;flex-direction:column;align-items:center;animation:floatStat 6s ease-in-out infinite;}.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;color:var(--primary);font-size:1.5rem;}@media (max-width:1024px){.hero-content{grid-template-columns:1fr;text-align:center;gap:3rem;}.hero-description{margin-left:auto;margin-right:auto;}.hero-buttons{justify-content:center;}.hero-socials{justify-content:center;}.hero-visual{min-height:400px;order:-1;}.photo-img{width:280px;height:340px;}.orb-1{width:200px;height:200px;}.orb-2{width:150px;height:150px;}.orb-3{width:100px;height:100px;}.float-stat{padding:0.5rem 0.75rem;}}@media (max-width:768px){.nav-menu{position:fixed;left:-100%;top:70px;flex-direction:column;background:var(--bg-white);width:100%;text-align:center;transition:0.3s;box-shadow:var(--shadow);padding:2rem 0;}.hamburger{display:flex;}.hero-title{font-size:2.5rem;}.hero-buttons{flex-direction:row;justify-content:center;align-items:center;gap:0.5rem;}}@media (max-width:480px){.hero-title{font-size:2rem;}}</style>
+    <link rel="stylesheet" href="style.css?v=1.2" media="print" onload="this.media='all';document.body.classList.remove('preload')">
+    <noscript><link rel="stylesheet" href="style.css?v=1.2"></noscript>
     
     <!-- Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -126,6 +122,8 @@
     </script>
 </head>
 <body>
+    <script>document.body.classList.add('preload')</script>
+    <a class="skip-link" href="#main" data-translate="skip_link">Skip to main content</a>
     <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-content">
@@ -136,10 +134,10 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary" data-translate-aria-label="nav_primary">
         <div class="nav-container">
             <a href="#" class="nav-logo">                <img src="images/MR.webp" alt="Mohammed Reqasse Logo" width="45" height="45"></a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" data-translate="nav_home">Home</a></li>
                 <li><a href="#about" data-translate="nav_about">About</a></li>
                 <li><a href="#experience" data-translate="nav_experience">Experience</a></li>
@@ -149,7 +147,7 @@
                 <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
             </ul>
             <div class="language-switcher" id="language-switcher">
-                <button class="lang-btn" id="current-lang" aria-label="Change language">
+                <button class="lang-btn" id="current-lang" aria-label="Change language" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-globe"></i>
                     <span>EN</span>
                 </button>
@@ -172,14 +170,15 @@
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
             </button>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button type="button" class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu" data-translate-aria-label="nav_menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 
+    <main id="main">
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg"></div>
@@ -204,10 +203,10 @@
                     </a>
                 </div>
                 <div class="hero-socials">
-                    <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/MOREQASSE" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="mailto:reqasse@gmail.com"><i class="fas fa-envelope"></i></a>
-                    <a href="https://wa.me/212700821340" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank" aria-label="LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://github.com/MOREQASSE" target="_blank" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="mailto:reqasse@gmail.com" aria-label="Send email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/212700821340" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -217,7 +216,7 @@
                     <div class="orb orb-3"></div>
                 </div>
                 <div class="hero-photo">
-                    <img src="images/profile.webp" alt="Mohammed Reqasse" class="photo-img" width="340" height="420">
+                    <img src="images/profile.webp" alt="Mohammed Reqasse" class="photo-img" width="340" height="420" fetchpriority="high">
                 </div>
                 <div class="floating-stats">
                     <div class="float-stat stat-1">
@@ -598,7 +597,7 @@
             </div>
             <div class="portfolio-controls">
                 <button type="button" id="prev-project" class="portfolio-arrow" aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
-                <div class="portfolio-dots" role="tablist" aria-label="Project slides">
+                <div class="portfolio-dots" role="group" aria-label="Project slides">
                     <button type="button" class="portfolio-dot active" data-index="0" aria-label="Slide 1"></button>
                     <button type="button" class="portfolio-dot" data-index="1" aria-label="Slide 2"></button>
                     <button type="button" class="portfolio-dot" data-index="2" aria-label="Slide 3"></button>
@@ -670,8 +669,8 @@
                     <div class="project-image">
                         <img src="images/analytics_deep_full.webp" alt="CAT8k·SYNC - Cisco Catalyst 8000v network automation dashboard" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
-                            <a href="https://github.com/MOREQASSE/CAT8k-SYNC" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="https://cat8k.reqasse.workers.dev/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/MOREQASSE/CAT8k-SYNC" target="_blank" class="project-link" aria-label="CAT8k-SYNC source code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                            <a href="https://cat8k.reqasse.workers.dev/" target="_blank" class="project-link" aria-label="Open CAT8k-SYNC live demo"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -701,7 +700,7 @@
                     <div class="project-image">
                         <img src="images/MediConnect.webp" alt="MediConnect AI - Healthcare SDN system with OpenDaylight" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
-                            <a href="https://github.com/MOREQASSE/MediConnect-Ai" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/MOREQASSE/MediConnect-Ai" target="_blank" class="project-link" aria-label="MediConnect AI source code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -729,8 +728,8 @@
                     <div class="project-image">
                         <img src="images/LEADFinder.webp" alt="LEADFinder - AI-powered lead discovery engine dashboard" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
-                            <a href="https://github.com/MOREQASSE/leadfinder" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="https://lead-finder.reqasse.workers.dev" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/MOREQASSE/leadfinder" target="_blank" class="project-link" aria-label="LEADFinder source code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                            <a href="https://lead-finder.reqasse.workers.dev" target="_blank" class="project-link" aria-label="Open LEADFinder live demo"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -793,7 +792,7 @@
                     <div class="project-image">
                         <img src="images/TV.webp" alt="TV Image Restoration - MATLAB denoising suite with Chambolle and Split Bregman methods" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
-                            <a href="https://github.com/MOREQASSE/Total-Variation" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/MOREQASSE/Total-Variation" target="_blank" class="project-link" aria-label="TV Image Restoration source code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -820,7 +819,7 @@
                     <div class="project-image">
                         <img src="images/Optique.webp" alt="ODoS Mitigation - Optical Denial of Service attack defense" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" aria-label="ODoS Mitigation project details"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -847,7 +846,7 @@
                     <div class="project-image">
                         <img src="images/RHEL System Security.webp" alt="RHEL System Security - Linux hardening with firewalld and SELinux" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
-                            <a href="https://github.com/MOREQASSE/RHEL-System-Security" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/MOREQASSE/RHEL-System-Security" target="_blank" class="project-link" aria-label="RHEL System Security source code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -870,7 +869,7 @@
                     <div class="project-image">
                         <img src="images/Wavelet transformation.webp" alt="Wavelet Transform - Signal and image processing with MATLAB" loading="lazy" width="600" height="340">
                         <div class="project-overlay">
-                            <a href="https://github.com/MOREQASSE/WaveletProject" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/MOREQASSE/WaveletProject" target="_blank" class="project-link" aria-label="Wavelet Transform source code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="project-content">
@@ -1016,7 +1015,7 @@
                 <h2 class="section-title" data-translate="title_skills">Skills & Certifications</h2>
             </div>
             <div class="skills-content">
-                <div class="skills-categories">
+                <div class="skills-categories" tabindex="0" role="region" aria-label="Skills categories" data-translate-aria-label="skills_region">
                     <div class="skill-category">
                         <h3><i class="fas fa-network-wired"></i> <span data-translate="skill_networking">Networking & SDN</span></h3>
                         <div class="skill-items">
@@ -1215,7 +1214,7 @@
                                 </div>
                             </div>
                             <div class="lang-info">
-                                <h4 class="lang-name" data-translate="lang_arabic_name">Arabic</h4>
+                                <h3 class="lang-name" data-translate="lang_arabic_name">Arabic</h3>
                                 <span class="lang-level" data-translate="lang_arabic_level">Native</span>
                                 <div class="lang-badge native" data-percent="100">100%</div>
                             </div>
@@ -1233,7 +1232,7 @@
                                 </div>
                             </div>
                             <div class="lang-info">
-                                <h4 class="lang-name" data-translate="lang_english_name">English</h4>
+                                <h3 class="lang-name" data-translate="lang_english_name">English</h3>
                                 <span class="lang-level" data-translate="lang_english_level">C2 Proficient</span>
                                 <div class="lang-badge fluent" data-percent="95">95%</div>
                             </div>
@@ -1251,7 +1250,7 @@
                                 </div>
                             </div>
                             <div class="lang-info">
-                                <h4 class="lang-name" data-translate="lang_french_name">French</h4>
+                                <h3 class="lang-name" data-translate="lang_french_name">French</h3>
                                 <span class="lang-level" data-translate="lang_french_level">B2 Upper-Intermediate</span>
                                 <div class="lang-badge intermediate" data-percent="75">75%</div>
                             </div>
@@ -1314,7 +1313,7 @@
                                 <span class="ccard-label" data-translate="email">Email</span>
                                 <span class="ccard-value">reqasse@gmail.com</span>
                             </div>
-                            <i class="fas fa-arrow-up-right ccard-arrow"></i>
+                            <i class="fas fa-up-right-from-square ccard-arrow"></i>
                         </a>
                         <a href="tel:+212700821340" class="ccard">
                             <div class="ccard-icon ccard-icon--phone"><i class="fas fa-phone"></i></div>
@@ -1322,7 +1321,7 @@
                                 <span class="ccard-label" data-translate="phone">Phone</span>
                                 <span class="ccard-value">+212 700 82 13 40</span>
                             </div>
-                            <i class="fas fa-arrow-up-right ccard-arrow"></i>
+                            <i class="fas fa-up-right-from-square ccard-arrow"></i>
                         </a>
                         <div class="ccard ccard--static">
                             <div class="ccard-icon ccard-icon--loc"><i class="fas fa-map-marker-alt"></i></div>
@@ -1334,9 +1333,9 @@
                     </div>
 
                     <div class="contact-socials">
-                        <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank" class="csocial csocial--linkedin"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/MOREQASSE" target="_blank" class="csocial csocial--github"><i class="fab fa-github"></i></a>
-                        <a href="https://wa.me/212700821340" target="_blank" class="csocial csocial--wa"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank" class="csocial csocial--linkedin" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://github.com/MOREQASSE" target="_blank" class="csocial csocial--github" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/212700821340" target="_blank" class="csocial csocial--wa" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -1385,6 +1384,8 @@
     </section>
 
     <!-- Footer -->
+    </main>
+
     <footer class="footer">
         <div class="footer-top">
             <div class="container">
@@ -1407,7 +1408,7 @@
 
                     <!-- Quick Links -->
                     <div class="footer-column">
-                        <h4 class="footer-heading" data-translate="footer_links">Quick Links</h4>
+                        <h3 class="footer-heading" data-translate="footer_links">Quick Links</h3>
                         <ul class="footer-list">
                             <li><a href="#home" data-translate="nav_home">Home</a></li>
                             <li><a href="#about" data-translate="nav_about">About</a></li>
@@ -1420,7 +1421,7 @@
 
                     <!-- Contact Info -->
                     <div class="footer-column">
-                        <h4 class="footer-heading" data-translate="footer_contact">Contact</h4>
+                        <h3 class="footer-heading" data-translate="footer_contact">Contact</h3>
                         <ul class="footer-list">
                             <li>
                                 <a href="mailto:reqasse@gmail.com">
@@ -1445,7 +1446,7 @@
 
                     <!-- Social & CTA -->
                     <div class="footer-column">
-                        <h4 class="footer-heading" data-translate="footer_follow">Follow Me</h4>
+                        <h3 class="footer-heading" data-translate="footer_follow">Follow Me</h3>
                         <div class="footer-socials">
                             <a href="https://linkedin.com/in/mohammed-reqasse-860a03219" target="_blank" aria-label="LinkedIn">
                                 <i class="fab fa-linkedin-in"></i>
@@ -1535,10 +1536,10 @@
 
     <!-- Admin demo explainer modal (Taourirt slide) -->
     <div class="pj-modal-ov" id="adminDemoModal" hidden>
-        <div class="pj-modal-card" role="dialog" aria-modal="true" aria-labelledby="amTitle">
+        <div class="pj-modal-card" role="dialog" aria-modal="true" aria-labelledby="amTitle" aria-describedby="amDesc">
             <span class="pj-magic-tag" data-am-tag></span>
             <h3 id="amTitle" data-am-title dir="auto"></h3>
-            <p data-am-body dir="auto"></p>
+            <p id="amDesc" data-am-body dir="auto"></p>
             <p class="pj-modal-creds"><code>admin@demo.com</code> / <code>admin123</code></p>
             <div class="pj-modal-actions">
                 <a class="pj-modal-go" data-am-go href="Admin_Demo/login.html" target="_blank" rel="noopener noreferrer"></a>

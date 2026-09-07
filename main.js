@@ -9,6 +9,10 @@ const translations = {
         nav_projects: "Projects",
         nav_skills: "Skills",
         nav_contact: "Contact",
+        nav_primary: "Primary",
+        nav_menu: "Menu",
+        skip_link: "Skip to main content",
+        skills_region: "Skills categories",
 
         // Hero
         hero_title: "Mohammed Reqasse",
@@ -133,6 +137,10 @@ const translations = {
         nav_projects: "Projets",
         nav_skills: "Compétences",
         nav_contact: "Contact",
+        nav_primary: "Principale",
+        nav_menu: "Menu",
+        skip_link: "Aller au contenu principal",
+        skills_region: "Catégories de compétences",
 
         // Hero
         hero_title: "Mohammed Reqasse",
@@ -257,6 +265,10 @@ const translations = {
         nav_projects: "المشاريع",
         nav_skills: "المهارات",
         nav_contact: "تواصل",
+        nav_primary: "الرئيسية",
+        nav_menu: "القائمة",
+        skip_link: "تخطَّ إلى المحتوى الرئيسي",
+        skills_region: "فئات المهارات",
 
         // Hero
         hero_title: "محمد رقاس",
@@ -405,16 +417,22 @@ function changeLanguage(lang) {
         }
     });
 
+    // Update accessible names
+    document.querySelectorAll('[data-translate-aria-label]').forEach(element => {
+        const key = element.getAttribute('data-translate-aria-label');
+        if (translations[lang][key]) {
+            element.setAttribute('aria-label', translations[lang][key]);
+        }
+    });
+
     // Update HTML lang attribute
     document.documentElement.lang = lang;
     
-    // RTL support for Arabic
+    // RTL support for Arabic (fonts handled in CSS via [lang="ar"] --font-main)
     if (lang === 'ar') {
         document.documentElement.dir = 'rtl';
-        document.body.style.fontFamily = "'Inter', 'Segoe UI', 'Tahoma', sans-serif";
     } else {
         document.documentElement.dir = 'ltr';
-        document.body.style.fontFamily = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
     }
 
     // Save preference
@@ -485,12 +503,12 @@ function initScrollAnimations() {
         var arcDesc = {
             en: { ocp: 'Built CAT8k\u00b7SYNC: automated Cisco provisioning via RESTCONF (<strong>5.15 s</strong> deploy cycle, <strong>7</strong> live ops), continuous telemetry (<strong>153 samples</strong>/12 days, <strong>3,410</strong> interface records), and compliance scanning (<strong>16 checks</strong> in 44 ms, <strong>19</strong> remediations) with a SHA-256 hash-chained audit ledger.', devaxio: 'Founded and directed Devaxio, leading digital transformation for <strong>15+ clients</strong> with focus on AI integration and web automation.', devosoft: 'Performed technical web development work while handling <strong>10+ clients</strong> and overseeing client relationships in an <strong>8-person team</strong>.', teacher: 'Taught English as a second language to diverse student groups, developing communication and presentation skills.', engineering: 'Pursuing a degree in Network and Telecommunications Engineering, focusing on SDN, network security, and advanced routing protocols.', prepa: 'Completed the intensive cycle preparatoire at ENSA Safi, building a strong foundation in advanced mathematics and physics.', bac: 'Graduated with distinction \u2014 Baccalaur\u00e9at in Physical Sciences with Tr\u00e8s Bien mention (<strong>17.59/20</strong>).' },
             fr: { ocp: 'Con\u00e7u CAT8k\u00b7SYNC : provision automatique Cisco via RESTCONF (<strong>5,15 s</strong> de cycle, <strong>7</strong> op\u00e9rations live), t\u00e9l\u00e9m\u00e9trie continue (<strong>153 \u00e9chantillons</strong>/12 jours, <strong>3 410</strong> enregistrements d\u2019interfaces) et audit de conformit\u00e9 (<strong>16 v\u00e9rifications</strong> en 44 ms, <strong>19</strong> rem\u00e9diations) avec registre \u00e0 cha\u00eene de hachage SHA-256.', devaxio: 'Fond\u00e9 et dirig\u00e9 Devaxio, menant la transformation num\u00e9rique pour <strong>15+ clients</strong> avec focus sur l\u2019int\u00e9gration IA et l\u2019automatisation web.', devosoft: 'Effectu\u00e9 un travail technique de d\u00e9veloppement web tout en g\u00e9rant <strong>10+ clients</strong> et supervisant les relations clients au sein d\u2019une \u00e9quipe de <strong>8 personnes</strong>.', teacher: 'Enseign\u00e9 l\u2019anglais comme langue seconde \u00e0 des groupes d\u2019\u00e9tudiants divers, d\u00e9veloppant les comp\u00e9tences en communication et pr\u00e9sentation.', engineering: 'Poursuite d\u2019un dipl\u00f4me en Ing\u00e9nierie R\u00e9seaux et T\u00e9l\u00e9communications, avec focus sur le SDN, la s\u00e9curit\u00e9 r\u00e9seau et les protocoles de routage avanc\u00e9s.', prepa: 'Achev\u00e9 le cycle pr\u00e9paratoire intensif \u00e0 l\u2019ENSA Safi, construisant une base solide en math\u00e9matiques avanc\u00e9es et physique.', bac: 'Dipl\u00f4m\u00e9 avec mention \u2014 Baccalaur\u00e9at en Sciences Physiques avec mention Tr\u00e8s Bien (<strong>17,59/20</strong>).' },
-            ar: { ocp: '\u0628\u0646\u0627\u0621 CAT8k\u00b7SYNC: \u0623\u062a\u0645\u062a\u0629 \u0623\u062f\u0648\u0627\u062a Cisco \u0628\u0639\u0631\u0636 RESTCONF (<strong>5.15 \u062b\u0627\u0646\u064a\u0629</strong> \u062f\u0639\u0631\u0629 \u0645\u0628\u0627\u0634\u0631\u0629\u060c <strong>7</strong> \u0639\u0645\u0644\u064a\u0627\u062a \u0645\u0628\u0627\u0634\u0631\u0629)\u060c \u062a\u0644\u0645\u064a\u062a \u0645\u0633\u062a\u0645\u0631 (<strong>153 \u0639\u064a\u0646\u0648\u0627\u0646</strong>/12 \u064a\u0648\u0645\u060c <strong>3,410</strong> \u0633\u062c\u0644 \u0648\u0636\u0639\u064a)\u060c \u0648\u0641\u062d\u0635 \u0627\u0644\u0627\u0645\u062a\u062b\u0627\u0644 (<strong>16 \u0641\u062d\u0635</strong> \u0641\u064a 44 ms\u060c <strong>19</strong> \u062a\u0635\u0644\u064a\u062d) \u0645\u0639 \u0633\u062c\u0644 \u0645\u0631\u062c\u0639\u064a \u0645\u0639\u062a\u0645\u062b\u0644 SHA-256.', devaxio: '\u0623\u0633\u0633 \u0648\u0642\u0627\u062f Devaxio\u060c \u0645\u0627 \u0623\u062f\u0649 \u0625\u0644\u0649 \u0627\u0644\u062a\u062d\u0648\u0644 \u0627\u0644\u0631\u0642\u0645\u064a \u0644\u0640 <strong>15+ \u0639\u0645\u064a\u0644\u0627\u064b</strong> \u0645\u0639 \u0627\u0644\u062a\u0631\u0643\u064a\u0632 \u0639\u0644\u0649 \u062f\u0645\u062c \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u0648\u0623\u062a\u0645\u062a\u0629 \u0627\u0644\u0648\u064a\u0628.', devosoft: '\u0623\u062f\u0649 \u0639\u0645\u0644\u0627\u064b \u062a\u0642\u0646\u064a\u0627\u064b \u0641\u064a \u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0648\u064a\u0628 \u0645\u0639 \u0627\u0644\u062a\u0639\u0627\u0645\u0644 \u0645\u0639 <strong>10+ \u0639\u0645\u0644\u0627\u0621</strong> \u0648\u0625\u0634\u0631\u0627\u0641 \u0639\u0644\u0649 \u0639\u0644\u0627\u0642\u0627\u062a \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0636\u0645\u0646 \u0641\u0631\u064a\u0642 \u0645\u0646 <strong>8 \u0623\u0634\u062e\u0627\u0635</strong>.', teacher: '\u062f\u0631\u0651\u0633 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0625\u0646\u062c\u0644\u064a\u0632\u064a\u0629 \u0643\u0644\u063a\u0629 \u062b\u0627\u0646\u064a\u0629 \u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0645\u062a\u0646\u0648\u0639\u0629 \u0645\u0646 \u0627\u0644\u0637\u0627\u0644\u0628\u0627\u062a\u060c \u0648\u0637\u0648\u0651\u0631 \u0645\u0647\u0627\u0631\u0627\u062a \u0627\u0644\u062a\u0648\u0627\u0635\u0644 \u0648\u0627\u0644\u0639\u0631\u0636.' , engineering: 'الاستمرار بدراسة الهندسة الشبكات والاتصالات', prepa: 'أكمل دراسة الدورة التأسيسية المكثفة في ENSA الصافي', bac: 'تخرج بفوق — بغالوريا في العلوم الصفرية مع تميز جيد (النصية 17.59/20)'}
+            ar: { ocp: 'بناء CAT8k·SYNC: أتمتة تجهيز معدات Cisco عبر RESTCONF (دورة نشر <strong>5.15 ثانية</strong>، <strong>7</strong> عمليات حيّة)، وقياس مستمر عن بُعد (تيليمتري) (<strong>153 عيّنة</strong>/12 يومًا، <strong>3,410</strong> سجلات واجهات)، وفحص الامتثال (<strong>16 فحصًا</strong> في 44 مللي ثانية، <strong>19</strong> معالجة) مع سجل تدقيق مربوط التجزئة بخوارزمية SHA-256.', devaxio: 'أسّس Devaxio وقاده، وقاد التحول الرقمي لأكثر من <strong>15 عميلًا</strong> مع التركيز على دمج الذكاء الاصطناعي وأتمتة الويب.', devosoft: 'أنجز مهام تقنية في تطوير الويب مع متابعة أكثر من <strong>10 عملاء</strong> والإشراف على علاقات العملاء ضمن فريق من <strong>8 أفراد</strong>.', teacher: 'درّس اللغة الإنجليزية كلغة ثانية لمجموعات متنوعة من الطلاب، وطوّر مهارات التواصل والعرض والإلقاء.', engineering: 'يتابع دراسة سلك الهندسة في الشبكات والاتصالات، مع التركيز على الشبكات المعرّفة بالبرمجيات (SDN) وأمن الشبكات وبروتوكولات التوجيه المتقدمة.', prepa: 'أتمّ السلك التحضيري المكثّف بالمدرسة الوطنية للعلوم التطبيقية بآسفي، وبنى أساسًا متينًا في الرياضيات المتقدمة والفيزياء.', bac: 'تخرّج بميزة — باكالوريا في العلوم الفيزيائية بميزة حسن جدًا (<strong>17.59/20</strong>).'}
         };
         var arcRoles = {
             en: { role_founder: 'Founder / Lead Developer', role_intern: 'Summer Intern - Web Development', role_intern_ocp: 'Network Engineering Intern', role_teacher: 'English Second Language Teacher', role_engineering: 'Network & Telecommunications Engineering Student', role_prepa: 'Cycle Preparatoire - Mathematics & Physics', role_bac: 'Baccalaureate in Physical Sciences' },
             fr: { role_founder: 'Fondateur / D\u00e9veloppeur Principal', role_intern: 'Stagiaire - D\u00e9veloppement Web', role_intern_ocp: 'Stagiaire Ing\u00e9nierie R\u00e9seaux', role_teacher: 'Professeur d\u2019Anglais Langue Seconde', role_engineering: '\u00c9tudiant en Ing\u00e9nierie R\u00e9seaux et T\u00e9l\u00e9communications', role_prepa: 'Cycle Pr\u00e9paratoire - Math\u00e9matiques et Physique', role_bac: 'Baccalaur\u00e9at en Sciences Physiques' },
-            ar: { role_founder: '\u0627\u0644\u0645\u0624\u0633\u0633 / \u0627\u0644\u0645\u0637\u0648\u0631 \u0627\u0644\u0631\u0626\u064a\u0633\u064a', role_intern: '\u0645\u062a\u062f\u0631\u0628 \u062a\u0637\u0648\u064a\u0631 \u0627\u0644\u0648\u064a\u0628', role_intern_ocp: '\u0645\u062a\u062f\u0631\u0628 \u0647\u0646\u062f\u0633\u0629 \u0627\u0644\u0634\u0628\u0643\u0627\u062a', role_teacher: '\u0645\u0639\u0644\u0645 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0625\u0646\u062c\u0644\u064a\u0632\u064a\u0629', role_engineering: '\u0637\u0627\u0644\u0628 \u0641\u064a \u0647\u0646\u062f\u0633\u0629 \u0627\u0644\u0634\u0628\u0643\u0627\u062a \u0648\u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a', role_prepa: '\u062f\u0631\u0627\u0633\u0629 \u0627\u0644\u062f\u0648\u0631\u0629 \u0627\u0644\u062a\u0623\u0633\u064a\u0633\u064a\u0629', role_bac: '\u0628\u063a\u0627\u0644\u0648\u0631\u064a\u0627 \u0641\u064a \u0627\u0644\u0639\u0644\u0648\u0645 \u0627\u0644\u0635\u0641\u0631\u064a\u0629' }
+            ar: { role_founder: 'المؤسس / المطوّر الرئيسي', role_intern: 'متدرب صيفي في تطوير الويب', role_intern_ocp: 'متدرب في هندسة الشبكات', role_teacher: 'مدرّس اللغة الإنجليزية كلغة ثانية', role_engineering: 'طالب سلك الهندسة في الشبكات والاتصالات', role_prepa: 'السلك التحضيري — الرياضيات والفيزياء', role_bac: 'باكالوريا في العلوم الفيزيائية'}
         };
 
         // --- Geometry: responsive to viewport width ---
@@ -895,8 +913,9 @@ function initMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
 
     hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
+        const open = navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
     // Close menu when clicking a link
@@ -904,6 +923,7 @@ function initMobileMenu() {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
         });
     });
 }
@@ -1231,18 +1251,21 @@ function initLanguageSwitcher() {
 
     btn.addEventListener('click', function (e) {
         e.stopPropagation();
-        switcher.classList.toggle('open');
+        const open = switcher.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
     document.addEventListener('click', function (e) {
         if (!switcher.contains(e.target)) {
             switcher.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
         }
     });
 
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             switcher.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
         }
     });
 }
@@ -1264,6 +1287,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
+        const syncPressed = () => {
+            themeToggle.setAttribute('aria-pressed',
+                document.documentElement.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
+        };
+        syncPressed();
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             if (currentTheme === 'dark') {
@@ -1273,6 +1301,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 localStorage.setItem('preferredTheme', 'dark');
             }
+            syncPressed();
         });
     }
 
@@ -1282,23 +1311,28 @@ document.addEventListener('DOMContentLoaded', () => {
         changeLanguage(savedLang);
     }
 
-    // Initialize all functions
-    initScrollAnimations();
+    // Initialize: critical interaction first, below-fold work on idle
     initNavbarScroll();
     initMobileMenu();
     initSmoothScroll();
     initTypingEffect();
-    initAboutTyping();
-    initTerminalTyping();
-    initParallax();
-    initFormHandling();
-    initScrollIndicator();
-    initSkillsCarousel();
-    initActiveNavLink();
-    initCounters();
     initCVButton();
-    initWebPortfolioCarousel();
+    initFormHandling();
+    initActiveNavLink();
     initLanguageSwitcher();
+
+    // Non-critical (below fold): deferred so first paint isn't blocked
+    const onIdle = window.requestIdleCallback || function (fn) { return setTimeout(fn, 1); };
+    onIdle(function () {
+        initScrollAnimations();
+        initAboutTyping();
+        initTerminalTyping();
+        initParallax();
+        initScrollIndicator();
+        initSkillsCarousel();
+        initCounters();
+        initWebPortfolioCarousel();
+    });
 });
 
 // ===== FLOATING CV BUTTON =====
@@ -1564,6 +1598,8 @@ function initWebPortfolioCarousel() {
         dots.forEach(function (d, i) {
             d.classList.toggle('active', i === index);
             d.setAttribute('aria-label', 'Slide ' + (i + 1));
+            if (i === index) d.setAttribute('aria-current', 'true');
+            else d.removeAttribute('aria-current');
         });
 
         current = index;
@@ -1645,7 +1681,7 @@ var adminModalCopy = {
         fr: 'Le vrai panneau admin est en production — il gère de vrais dons, messages et contenus, son accès ne peut donc tout simplement pas être partagé. Ce que vous pouvez ouvrir ici est une maquette frontend statique que j’ai construite pour montrer où est allée la majorité du travail : tableaux de bord des dons en temps réel, validation des dons, éditeur visuel de pages, messagerie, sponsors et plus. Sans backend ni données réelles — juste l’idée complète. Connectez-vous avec :',
         ar: 'لوحة الإدارة الحقيقية تعمل في الإنتاج — تدير تبرعات ورسائل ومحتوى حقيقيًا، لذا لا يمكن مشاركة الوصول إليها إطلاقًا. ما يمكنك فتحه هنا هو نموذج واجهة ثابت بنيتُه لأُظهر أين ذهب معظم العمل: لوحات التبرعات المباشرة، والتحقق من التبرعات، والمحرر المرئي للصفحات، والمراسلة، والجهات الراعية والمزيد. بدون backend أو بيانات حقيقية — فقط الفكرة الكاملة. سجل الدخول بـ:'
     },
-    go: { en: 'Enter the Demo →', fr: 'Entrer dans la Démo →', ar: 'ادخل إلى النموذج ←' },
+    go: { en: 'Enter the Demo »', fr: 'Entrer dans la Démo »', ar: 'ادخل إلى النموذج »' },
     close: { en: 'Close', fr: 'Fermer', ar: 'إغلاق' }
 };
 
@@ -1667,9 +1703,12 @@ function refreshAdminModal() {
     if (ov && !ov.hidden) fillAdminModal();
 }
 
+var adminModalTrigger = null;
+
 function openAdminModal() {
     var ov = document.getElementById('adminDemoModal');
     if (!ov) return;
+    adminModalTrigger = document.activeElement;
     fillAdminModal();
     ov.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -1682,6 +1721,10 @@ function closeAdminModal() {
     if (!ov) return;
     ov.hidden = true;
     document.body.style.overflow = '';
+    if (adminModalTrigger && adminModalTrigger.focus) {
+        try { adminModalTrigger.focus(); } catch (e) {}
+    }
+    adminModalTrigger = null;
 }
 
 document.addEventListener('click', function (e) {
@@ -1692,4 +1735,19 @@ document.addEventListener('click', function (e) {
 });
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeAdminModal();
+    // Keep tab inside the open dialog
+    if (e.key === 'Tab') {
+        var ov = document.getElementById('adminDemoModal');
+        if (!ov || ov.hidden) return;
+        var focusables = ov.querySelectorAll('a[href], button:not([disabled])');
+        if (!focusables.length) return;
+        var first = focusables[0], last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    }
 });
