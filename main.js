@@ -1311,28 +1311,23 @@ document.addEventListener('DOMContentLoaded', () => {
         changeLanguage(savedLang);
     }
 
-    // Initialize: critical interaction first, below-fold work on idle
+    // Initialize all functions
+    initScrollAnimations();
     initNavbarScroll();
     initMobileMenu();
     initSmoothScroll();
     initTypingEffect();
-    initCVButton();
+    initAboutTyping();
+    initTerminalTyping();
+    initParallax();
     initFormHandling();
+    initScrollIndicator();
+    initSkillsCarousel();
     initActiveNavLink();
+    initCounters();
+    initCVButton();
+    initWebPortfolioCarousel();
     initLanguageSwitcher();
-
-    // Non-critical (below fold): deferred so first paint isn't blocked
-    const onIdle = window.requestIdleCallback || function (fn) { return setTimeout(fn, 1); };
-    onIdle(function () {
-        initScrollAnimations();
-        initAboutTyping();
-        initTerminalTyping();
-        initParallax();
-        initScrollIndicator();
-        initSkillsCarousel();
-        initCounters();
-        initWebPortfolioCarousel();
-    });
 });
 
 // ===== FLOATING CV BUTTON =====
