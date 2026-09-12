@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Newsletter - Admin Panel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin mobile-first layer (tables→lists, touch targets, stacking) -->
+    <link rel="stylesheet" href="assets/css/admin-mobile.css?v=3">
+
+    <style>
+        :root {
+            --nb-bg: #1a0a2e;
+            --nb-bg-dark: #0d0d0d;
+            --nb-surface: #f5f0ff;
+            --nb-surface-2: #ece4fa;
+            --nb-primary: #7c3aed;
+            --nb-primary-dark: #4c1d95;
+            --nb-primary-light: #a78bfa;
+            --nb-accent: #ff2d95;
+            --nb-accent-alt: #00f0ff;
+            --nb-ink: #111111;
+            --nb-text: #111111;
+            --nb-muted: #6b7280;
+            --nb-border: #111111;
+            --nb-success: #00ff88;
+            --nb-danger: #ff1744;
+            --nb-warning: #ffa500;
+            --nb-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+            --nb-font-heading: 'Playfair Display', serif;
+            --nb-shadow-sm: 3px 3px 0 #111;
+            --nb-shadow-md: 6px 6px 0 #111;
+            --nb-shadow-lg: 8px 8px 0 #111;
+            --nb-radius: 0px;
+            --nb-radius-sm: 4px;
+            --nb-sidebar-width: 250px;
+            --nb-header-height: 64px;
+        }
+
+        body {
+            font-family: var(--nb-font-body);
+            background-color: var(--nb-surface);
+            color: var(--nb-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6, .card-header {
+            font-family: var(--nb-font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Sidebar ===== */
+        .nb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--nb-sidebar-width);
+            z-index: 1000;
+            background: var(--nb-bg);
+            color: #fff;
+            border-right: 3px solid var(--nb-border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nb-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.25rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nb-sidebar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .nb-sidebar-title {
+            font-family: var(--nb-font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            display: block;
+        }
+        .nb-sidebar-title em {
+            color: var(--nb-accent-alt);
+            font-style: normal;
+        }
+        .nb-sidebar-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nb-sidebar-nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .nb-sidebar-section {
+            display: block;
+            padding: 0.9rem 1.25rem 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--nb-primary-light);
+        }
+
+        .nb-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.15rem 0.6rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--nb-radius-sm);
+            transition: all 0.15s;
+        }
+        .nb-nav-link i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .nb-nav-link:hover {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            transform: translate(-1px, -1px);
+        }
+        .nb-nav-link.active {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            font-weight: 700;
+        }
+        .nb-nav-link.active::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-accent);
+            flex-shrink: 0;
+        }
+        .nb-nav-link.nb-nav-danger:hover {
+            background: var(--nb-danger);
+        }
+
+        .nb-sidebar-footer {
+            border-top: 3px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0;
+        }
+
+        /* ===== Topbar ===== */
+        .nb-topbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--nb-sidebar-width);
+            z-index: 999;
+            height: var(--nb-header-height);
+            background: #fff;
+            border-bottom: 3px solid var(--nb-border);
+            box-shadow: var(--nb-shadow-sm);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nb-topbar .nb-toggle {
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            border-radius: var(--nb-radius-sm);
+            font-size: 1.1rem;
+            padding: 0.35rem 0.65rem;
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-topbar .nb-toggle:hover {
+            background: var(--nb-primary);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+
+        .nb-user-dropdown .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--nb-text);
+            text-decoration: none;
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+            border-radius: var(--nb-radius-sm);
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-user-dropdown .dropdown-toggle:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .nb-user-dropdown img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+        }
+
+        /* ===== Main content ===== */
+        .nb-main {
+            margin-left: var(--nb-sidebar-width);
+            padding: calc(var(--nb-header-height) + 24px) 24px 24px;
+            flex: 1;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-md);
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background: var(--nb-surface-2);
+            border-bottom: 3px solid var(--nb-border);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            font-weight: 600;
+            transition: all 0.12s;
+        }
+        .btn-primary {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #111;
+        }
+        .btn-outline-primary {
+            color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            box-shadow: 2px 2px 0 #111;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--nb-primary);
+            color: #fff;
+        }
+        .btn-success { background-color: var(--nb-success); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-danger { background-color: var(--nb-danger); border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-warning { background-color: var(--nb-warning); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-info { background-color: var(--nb-accent-alt); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-secondary { background-color: #d1d5db; border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-accent { background-color: var(--nb-accent); border-color: var(--nb-border); color: #fff; box-shadow: 3px 3px 0 #111; }
+        .btn-accent:hover { background-color: #e11d7d; color: #fff; }
+        .btn-sm { box-shadow: 2px 2px 0 #111; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111 !important; }
+
+        /* ===== Forms ===== */
+        .form-control, .form-select {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-family: var(--nb-font-body);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--nb-primary);
+            box-shadow: 3px 3px 0 var(--nb-primary-light);
+        }
+        .form-check-input:checked {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+        }
+
+        /* ===== Tables ===== */
+        .table {
+            border: 2px solid var(--nb-border);
+            background: #fff;
+        }
+        .table thead th {
+            background: var(--nb-bg);
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 3px solid var(--nb-border);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--nb-surface);
+        }
+        .table-hover tbody tr:hover {
+            background-color: var(--nb-surface-2);
+        }
+        .table td {
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* ===== Badges & alerts ===== */
+        .badge {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-weight: 600;
+        }
+        .alert {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-sm);
+        }
+        .alert-success { background-color: var(--nb-success); color: var(--nb-text); }
+        .alert-danger { background-color: var(--nb-danger); color: #fff; }
+        .alert-warning { background-color: var(--nb-warning); color: var(--nb-text); }
+        .alert-info { background-color: var(--nb-accent-alt); color: var(--nb-text); }
+
+        /* ===== Modals ===== */
+        .modal {
+            z-index: 99999 !important;
+        }
+        .modal-backdrop {
+            z-index: 99998 !important;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        .modal-dialog {
+            z-index: 99999 !important;
+        }
+        .modal-content {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-lg);
+        }
+        .modal-header {
+            border-bottom: 3px solid var(--nb-border);
+            font-family: var(--nb-font-heading);
+        }
+        .modal-footer {
+            border-top: 3px solid var(--nb-border);
+        }
+
+        /* ===== Pills/tabs ===== */
+        .nav-pills .nav-link {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            margin-right: 0.35rem;
+            color: var(--nb-text);
+            background: #fff;
+            box-shadow: 2px 2px 0 #111;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--nb-primary);
+            color: #fff;
+        }
+
+        /* ===== Admin footer ===== */
+        .nb-admin-footer {
+            border-top: 3px solid var(--nb-border);
+            background: var(--nb-bg);
+            color: #fff;
+            padding: 1.25rem 24px;
+            margin-left: var(--nb-sidebar-width);
+        }
+        .nb-admin-footer a {
+            color: var(--nb-primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nb-admin-footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nb-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .nb-sidebar.active {
+                transform: translateX(0);
+            }
+            .nb-main, .nb-admin-footer {
+                margin-left: 0;
+            }
+            .nb-topbar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+
+
+<nav class="nb-sidebar" id="adminSidebar">
+    <div class="nb-sidebar-brand">
+        <img src="assets/images/CHESS club logo ups.webp" alt="Chess Club ENSAS Logo" class="nb-sidebar-logo" width="40" height="40" loading="lazy" decoding="async">
+        <div>
+            <span class="nb-sidebar-title">Chess Club <em>ENSAS</em></span>
+            <small class="nb-sidebar-sub">Admin Panel</small>
+        </div>
+    </div>
+
+    <div class="nb-sidebar-nav">
+        <span class="nb-sidebar-section">Main</span>
+
+        <a class="nb-nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </a>
+                <a class="nb-nav-link " href="members.html">
+            <i class="fas fa-users"></i><span>Members</span>
+        </a>
+                        <a class="nb-nav-link " href="tournaments.html">
+            <i class="fas fa-trophy"></i><span>League & Tournaments</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Media</span>
+                <a class="nb-nav-link " href="announcements.html">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+                        <a class="nb-nav-link " href="formations.html">
+            <i class="fas fa-chess-board"></i><span>Formations</span>
+        </a>
+                        <a class="nb-nav-link " href="newsletter.html">
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Business</span>
+                <a class="nb-nav-link " href="sponsors.html">
+            <i class="fas fa-handshake"></i><span>Sponsors</span>
+        </a>
+                        <a class="nb-nav-link " href="products.html">
+            <i class="fas fa-shopping-bag"></i><span>Products</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Recruitment</span>
+        <a class="nb-nav-link " href="announcements-forms.html">
+            <i class="fas fa-file-alt"></i><span>Recruitment Forms</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Administration</span>
+        <a class="nb-nav-link " href="admins.html">
+            <i class="fas fa-user-shield"></i><span>Admins</span>
+        </a>
+        <a class="nb-nav-link " href="settings.html">
+            <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+        
+        <span class="nb-sidebar-section">Account</span>
+        <a class="nb-nav-link " href="profile.html">
+            <i class="fas fa-user-cog"></i><span>Profile</span>
+        </a>
+    </div>
+
+    <div class="nb-sidebar-footer">
+        <a class="nb-nav-link" href="https://moreqasse.github.io/MyCV/" target="_blank">
+            <i class="fas fa-external-link-alt"></i><span>Visit Website</span>
+        </a>
+        <a class="nb-nav-link nb-nav-danger" href="login.html">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Topbar -->
+<nav class="nb-topbar">
+    <div>
+        <button class="nb-toggle d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="d-none d-lg-inline text-muted small">
+            <i class="fas fa-desktop me-1"></i> Best on PC for full features
+        </span>
+    </div>
+
+    <div class="nb-user-dropdown">
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/placeholder.png" alt="User">
+                <span class="d-none d-md-inline">DemoAdmin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="nb-main">
+    
+            <style>
+/* ===== Mini scroll container ===== */
+.nb-scroll {
+    max-height: 540px;
+    overflow-y: auto;
+    border-bottom: 3px solid var(--nb-border);
+    scrollbar-width: thin;
+    scrollbar-color: var(--nb-primary) var(--nb-surface-2);
+}
+.nb-scroll-soft { max-height: 280px; border-bottom: 0; }
+.nb-scroll::-webkit-scrollbar { width: 8px; }
+.nb-scroll::-webkit-scrollbar-track { background: var(--nb-surface-2); border-left: 2px solid var(--nb-border); }
+.nb-scroll::-webkit-scrollbar-thumb { background: var(--nb-primary); border: 1px solid var(--nb-border); }
+.nb-scroll thead th {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--nb-surface-2);
+    border-bottom: 3px solid var(--nb-border);
+    color: var(--nb-primary-dark);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+/* ===== Instant lookup ===== */
+.search-ico {
+    position: absolute; top: 50%; left: 0.9rem;
+    transform: translateY(-50%); color: var(--nb-muted); z-index: 2; pointer-events: none;
+}
+.clear-search {
+    position: absolute; top: 50%; right: 0.55rem;
+    transform: translateY(-50%); border: 2px solid transparent; background: transparent;
+    color: var(--nb-muted); display: none; line-height: 1;
+    padding: 0.25rem 0.4rem;
+}
+.clear-search:hover { color: var(--nb-danger); }
+/* ===== Stat pills ===== */
+.nb-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.72rem; font-weight: 800; white-space: nowrap;
+    padding: 0.32rem 0.7rem; border: 2px solid var(--nb-border);
+    background: var(--nb-surface-2); color: var(--nb-text);
+    box-shadow: 2px 2px 0 var(--nb-border);
+}
+.nb-pill-live { border-left: 5px solid var(--nb-primary); }
+.nb-pill[role="button"] { cursor: pointer; transition: all 0.12s; }
+.nb-pill[role="button"]:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--nb-border); }
+.nb-pill[role="button"]:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--nb-border); }
+.nb-pill-active { background: var(--nb-primary); color: #fff !important; }
+/* ===== Bulk action bar ===== */
+.bulk-bar {
+    display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    padding: 0.55rem 0.9rem;
+    background: var(--nb-bg); border-bottom: 3px solid var(--nb-border);
+    color: #fff;
+}
+.bulk-count { font-weight: 800; letter-spacing: 0.02em; }
+.bulk-sep { width: 2px; align-self: stretch; background: rgba(255, 255, 255, 0.25); }
+.bulk-btn { border: 2px solid #111 !important; box-shadow: 2px 2px 0 #111 !important; font-weight: 700; }
+.bulk-btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 #111 !important; }
+</style>
+<script>
+function initTableTools(cfg) {
+    const scope      = document.querySelector(cfg.scope || 'body');
+    const liveSearch = cfg.search     ? document.getElementById(cfg.search) : null;
+    const clearBtn   = cfg.clear      ? document.getElementById(cfg.clear) : null;
+    const liveCount  = cfg.count      ? document.getElementById(cfg.count) : null;
+    const selectAll  = cfg.selectAll  ? document.getElementById(cfg.selectAll) : null;
+    const bulkForm   = cfg.bulkForm   ? document.getElementById(cfg.bulkForm) : null;
+    const bulkAction = cfg.bulkAction ? document.getElementById(cfg.bulkAction) : null;
+    const bulkBar    = cfg.bulkBar    ? document.getElementById(cfg.bulkBar) : null;
+    const bulkCount  = cfg.bulkCount  ? document.getElementById(cfg.bulkCount) : null;
+    const bulkClear  = cfg.bulkClear  ? document.getElementById(cfg.bulkClear) : null;
+    const filters    = cfg.filters || {};
+    const confirms   = cfg.confirmActions || {};
+    if (!scope) return;
+
+    // All filterable rows (desktop table rows + mobile card rows).
+    // When a page renders both layouts, only the currently visible
+    // layout's rows participate (see layoutRows()) — the hidden twins
+    // stay out of counts, select-all and the "x/y shown" tally.
+    const allRows = Array.prototype.slice.call(scope.querySelectorAll('[data-search]'));
+
+    function activeLayout() {
+        const mob = scope.querySelector('.nb-mob-only');
+        if (mob && getComputedStyle(mob).display !== 'none') return 'mob';
+        return 'desk';
+    }
+    function layoutRows() {
+        const lay = activeLayout();
+        return allRows.filter(function (r) {
+            return (r.closest('.nb-mob-only') ? 'mob' : 'desk') === lay;
+        });
+    }
+
+    function visibleRowChecks() {
+        const checks = [];
+        layoutRows().forEach(function (row) {
+            if (row.style.display !== 'none') {
+                const c = row.querySelector('.row-check');
+                if (c) checks.push(c);
+            }
+        });
+        return checks;
+    }
+
+    function updateBulkBar() {
+        const count = document.querySelectorAll(cfg.scope + ' .row-check:checked').length;
+        if (bulkCount) bulkCount.textContent = count;
+        if (bulkBar) bulkBar.classList.toggle('d-none', count === 0);
+    }
+
+    let filterMode = '';
+    const filterPills = document.querySelectorAll('.nb-pill[data-filter]');
+
+    function applyLiveFilter() {
+        const q = liveSearch && liveSearch.value ? liveSearch.value.trim().toLowerCase() : '';
+        const rows = layoutRows();
+        let visible = 0;
+        rows.forEach(function (row) {
+            let show = true;
+            if (q && row.getAttribute('data-search').indexOf(q) === -1) show = false;
+            if (show && filterMode && filters[filterMode]) {
+                const f = filters[filterMode];
+                if (row.getAttribute(f[0]) !== f[1]) show = false;
+            }
+            row.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        if (liveCount) liveCount.textContent = visible + '/' + rows.length;
+        if (selectAll) selectAll.checked = false;
+        if (clearBtn && liveSearch) clearBtn.style.display = liveSearch.value ? 'block' : 'none';
+        updateBulkBar();
+    }
+
+    function setFilterMode(mode) {
+        filterMode = mode;
+        filterPills.forEach(function (p) {
+            p.classList.toggle('nb-pill-active', p.dataset.filter === mode);
+        });
+        applyLiveFilter();
+    }
+
+    filterPills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+            setFilterMode(pill.dataset.filter === filterMode ? '' : pill.dataset.filter);
+        });
+    });
+
+    if (liveSearch) {
+        liveSearch.addEventListener('input', applyLiveFilter);
+        if (clearBtn) {
+            clearBtn.addEventListener('click', function () {
+                liveSearch.value = '';
+                setFilterMode('');
+                liveSearch.focus();
+            });
+        }
+    }
+
+    scope.querySelectorAll('.row-check').forEach(function (c) {
+        c.addEventListener('change', updateBulkBar);
+    });
+
+    if (selectAll) {
+        selectAll.addEventListener('change', function () {
+            visibleRowChecks().forEach(function (c) { c.checked = selectAll.checked; });
+            updateBulkBar();
+        });
+    }
+
+    if (bulkClear) {
+        bulkClear.addEventListener('click', function () {
+            document.querySelectorAll(cfg.scope + ' .row-check').forEach(function (c) { c.checked = false; });
+            if (selectAll) selectAll.checked = false;
+            updateBulkBar();
+        });
+    }
+
+    document.querySelectorAll('.bulk-btn[data-bulk-action]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const count = document.querySelectorAll(cfg.scope + ' .row-check:checked').length;
+            if (count === 0) return;
+            const action = btn.dataset.bulkAction;
+            // Opt-in interception (e.g. chunked progress UI). Return false to
+            // take over and skip the native submit.
+            if (typeof cfg.beforeSubmit === 'function') {
+                try { if (cfg.beforeSubmit(action, count) === false) return; } catch (e) {}
+            }
+            const run = function () {
+                if (bulkAction) bulkAction.value = action;
+                if (bulkForm) bulkForm.submit();
+            };
+            const spec = confirms[action];
+            if (spec && typeof nbConfirm === 'function') {
+                nbConfirm({
+                    title: spec.title,
+                    message: spec.message.replace('{count}', count),
+                    icon: spec.icon,
+                    tone: spec.tone,
+                    confirmText: spec.confirmText
+                }).then(run).catch(function () {});
+            } else {
+                run();
+            }
+        });
+    });
+}
+</script>
+
+<div class="container-fluid">
+<div class="row"><main class="col-12 px-md-4">
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
+    <h1 class="h2"><i class="fas fa-paper-plane me-2"></i>Newsletter</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+            </div>
+</div>
+
+<!-- TAB BAR -->
+<ul class="nav nav-tabs mt-3">
+    <li class="nav-item"><a class="nav-link active" href="newsletter.html"><i class="fas fa-newspaper me-1"></i> Articles</a></li>
+    <li class="nav-item"><a class="nav-link " href="newsletter-subs.html"><i class="fas fa-users me-1"></i> Subscribers</a></li>
+    <li class="nav-item"><a class="nav-link " href="newsletter.html"><i class="fas fa-gear me-1"></i> Settings</a></li>
+</ul>
+
+
+<!-- ================= SUBSCRIBERS ================= -->
+
+<div class="d-flex gap-2 my-3 flex-wrap">
+        <span class="nb-pill" role="button" data-filter="all" title="Show all campaigns"><i class="fas fa-newspaper me-1"></i>1 total</span>
+    <span class="nb-pill" role="button" data-filter="draft" style="border-left:5px solid var(--nb-warning);" title="Filter: drafts"><i class="fas fa-file-pen me-1"></i>1 drafts</span>
+    <span class="nb-pill" role="button" data-filter="scheduled" style="border-left:5px solid var(--nb-info);" title="Filter: scheduled"><i class="fas fa-clock me-1"></i>0 scheduled</span>
+    <span class="nb-pill" role="button" data-filter="sent" style="border-left:5px solid var(--nb-success);" title="Filter: sent"><i class="fas fa-paper-plane me-1"></i>0 sent</span>
+    <span class="nb-pill nb-pill-live"><i class="fas fa-filter me-1"></i><span id="liveCount">1/1</span> shown</span>
+</div>
+
+<!-- Bulk action bar -->
+<div id="bulkBar" class="bulk-bar d-none">
+    <span class="bulk-count"><span id="bulkCount">0</span> selected</span>
+    <span class="bulk-sep"></span>
+    <button type="button" class="btn btn-sm btn-danger bulk-btn" data-bulk-action="delete"><i class="fas fa-trash me-1"></i>Delete</button>
+    <button type="button" class="btn btn-sm btn-outline-light bulk-btn ms-auto" id="bulkClear"><i class="fas fa-times me-1"></i>Clear</button>
+</div>
+
+<!-- Instant lookup -->
+<div class="card mb-3">
+    <div class="card-header">
+        <div class="row align-items-center g-3">
+            <div class="col-md-7">
+                <div class="position-relative">
+                    <i class="fas fa-search search-ico"></i>
+                    <input type="search" id="liveSearch" class="form-control ps-5" placeholder="Instant lookup — title or subject..." autocomplete="off">
+                    <button type="button" class="clear-search" id="clearSearch" title="Clear search"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="col-md-5 text-md-end">
+                <a href="newsletter-edit.html?id=0" class="btn btn-sm btn-primary"><i class="fas fa-plus me-1"></i>New Article</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <form method="post" action="#" data-demo-form="1" id="bulkCampaignsForm">
+            <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">
+            <input type="hidden" name="nl_action" value="bulk_campaigns">
+            <input type="hidden" name="bulk_action" id="bulkAction">
+            <div class="nb-scroll">
+                <table class="table table-striped table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width:42px;">
+                                <input class="form-check-input" type="checkbox" id="selectAllList" title="Select all visible">
+                            </th>
+                            <th>Title</th><th>Subject</th><th>Status</th><th>Recipients</th><th>Updated</th><th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                            <tr data-search="test test again" data-status="draft">
+                            <td class="text-center">
+                                <input class="form-check-input row-check" type="checkbox" name="bulk_campaign_ids[]" value="19">
+                            </td>
+                            <td class="fw-bold">test</td>
+                            <td><small>Test again</small></td>
+                            <td>
+                                                                <span class="badge bg-warning text-dark">Draft</span>
+                            </td>
+                            <td>0</td>
+                            <td><small>Sep 9, 2026 13:14</small></td>
+                            <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                    <a href="newsletter-edit.html?id=19" class="btn btn-outline-primary" title="Edit"><i class="fas fa-pen"></i></a>
+                                    <a href="?type=articles&view=preview&id=19" target="_blank" class="btn btn-outline-secondary" title="Preview"><i class="fas fa-eye"></i></a>
+                                    <a href="?type=articles&action=duplicate_campaign&id=19&token=demo-csrf-token-placeholder-000000000000000000000000" class="btn btn-outline-info" title="Duplicate"><i class="fas fa-copy"></i></a>
+                                                                        <a href="?type=articles&action=delete_campaign&id=19&token=demo-csrf-token-placeholder-000000000000000000000000"
+                                       class="btn btn-outline-danger" data-nb-confirm="Delete 'test'?" data-nb-confirm-title="Delete Campaign"
+                                       data-nb-confirm-icon="fas fa-trash" data-nb-confirm-text="Delete" data-nb-confirm-tone="danger"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                                        </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+initTableTools({
+    scope: '#bulkCampaignsForm',
+    search: 'liveSearch',
+    clear: 'clearSearch',
+    count: 'liveCount',
+    selectAll: 'selectAllList',
+    bulkForm: 'bulkCampaignsForm',
+    bulkAction: 'bulkAction',
+    bulkBar: 'bulkBar',
+    bulkCount: 'bulkCount',
+    bulkClear: 'bulkClear',
+    filters: {
+        draft:     ['data-status', 'draft'],
+        scheduled: ['data-status', 'scheduled'],
+        sent:      ['data-status', 'sent']
+    },
+    confirmActions: {
+        delete: {
+            title: 'Delete Campaigns',
+            message: 'Delete {count} selected campaign(s)? Local records are removed — sent campaigns remain archived in MailerLite.',
+            icon: 'fas fa-trash',
+            tone: 'danger',
+            confirmText: 'Delete'
+        }
+    }
+});
+</script>
+
+<!-- ================= SETTINGS ================= -->
+
+</main></div>
+</div>
+
+    </div> <!-- End .nb-main -->
+
+    <!-- Admin Footer -->
+    <footer class="nb-admin-footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    <i class="fas fa-copyright me-1"></i>&copy; 2026 Chess Club ENSAS Administration Panel
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-shield-alt me-1"></i>Secure Management System
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    Developed by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank">Mohammed Reqasse</a>
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-palette me-1"></i>Professional Web Development
+                </p>
+            </div>
+            <div class="text-md-end">
+                <button class="btn btn-outline-light btn-sm mb-2" onclick="openContactSupport()">
+                    <i class="fas fa-headset me-2"></i>Contact Support
+                </button>
+                <div>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block"><i class="fas fa-user me-1"></i>Mohammed Reqasse</small>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block">
+                        <i class="fas fa-phone me-1"></i>
+                        <a href="tel:+212600000000" style="color: rgba(255,255,255,0.55);">+212 610 100 100</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal -->
+    <div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contactSupportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px solid #111; box-shadow: 4px 4px 0 #111;">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h6 class="fw-bold">Mohammed Reqasse</h6>
+                        <p class="text-muted mb-3">Website Creator</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Phone Support</h6>
+                                <a href="tel:+212600000000" class="text-decoration-none fw-bold">+212 610 100 100</a>
+                                <p class="text-muted small mb-0">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Email Support</h6>
+                                <a href="mailto:reqasse@gmail.com" class="text-decoration-none fw-bold">reqasse@gmail.com</a>
+                                <p class="text-muted small mb-0">Response within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Web Support</h6>
+                                <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" class="text-decoration-none fw-bold">https://moreqasse.github.io/MyCV/</a>
+                                <p class="text-muted small mb-0">Online resources & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <a href="tel:+212600000000" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Reusable Confirmation Modal Component (nbConfirm) -->
+    <!-- ===== Reusable Confirm Modal Component ===== -->
+<div class="modal fade" id="nbConfirmModal" tabindex="-1" aria-labelledby="nbConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111;overflow:hidden;">
+            <div class="modal-header" style="background:#1a0a2e;border-bottom:3px solid #111;border-radius:0;padding:0.9rem 1.25rem;">
+                <h5 class="modal-title text-white fw-bold mb-0" id="nbConfirmModalLabel" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.1rem;">
+                    <i class="fas fa-question-circle me-2" style="color:#ff2d95;"></i>Confirmation
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div id="nbConfirmIcon" class="d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+                     style="width:72px;height:72px;border:3px solid #111;box-shadow:4px 4px 0 #111;background:#7c3aed;color:#fff;font-size:1.9rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h6 class="fw-bold mb-2" id="nbConfirmTitle" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.15rem;color:#111;">Are you sure?</h6>
+                <p class="text-muted mb-0" id="nbConfirmMessage" style="font-size:0.92rem;line-height:1.5;"></p>
+            </div>
+            <div class="modal-footer" style="border-top:3px solid #111;border-radius:0;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="nbConfirmCancel">
+                    <i class="fas fa-times me-2"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="nbConfirmOk">
+                    <i class="fas fa-check me-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var modalEl = document.getElementById('nbConfirmModal');
+    if (!modalEl || typeof bootstrap === 'undefined') return;
+
+    var modal = new bootstrap.Modal(modalEl);
+    var okBtn = document.getElementById('nbConfirmOk');
+    var cancelBtn = document.getElementById('nbConfirmCancel');
+    var titleEl = document.getElementById('nbConfirmTitle');
+    var msgEl = document.getElementById('nbConfirmMessage');
+    var iconEl = document.getElementById('nbConfirmIcon');
+    var pending = null;
+
+    var tones = {
+        danger:  { iconBg: '#ff1744', btn: 'btn-danger' },
+        success: { iconBg: '#00ff88', btn: 'btn-success' },
+        warning: { iconBg: '#ffa500', btn: 'btn-warning' },
+        info:    { iconBg: '#00f0ff', btn: 'btn-info' },
+        primary: { iconBg: '#7c3aed', btn: 'btn-primary' }
+    };
+
+    function readOptions(el) {
+        return {
+            title: el.getAttribute('data-nb-confirm-title') || 'Are you sure?',
+            message: el.getAttribute('data-nb-confirm') || 'This action cannot be undone.',
+            tone: el.getAttribute('data-nb-confirm-tone') || 'danger',
+            icon: el.getAttribute('data-nb-confirm-icon') || 'fas fa-exclamation-triangle',
+            confirmText: el.getAttribute('data-nb-confirm-text') || 'Confirm'
+        };
+    }
+
+    window.nbConfirm = function (options) {
+        options = options || {};
+        var tone = tones[options.tone] || tones.primary;
+        var title = options.title || 'Are you sure?';
+        var message = options.message || 'This action cannot be undone.';
+        var icon = options.icon || 'fas fa-exclamation-triangle';
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.innerHTML = '<i class="' + icon + '"></i>';
+        iconEl.style.background = tone.iconBg;
+        iconEl.style.color = (options.tone === 'success' || options.tone === 'warning') ? '#111' : '#fff';
+        okBtn.className = 'btn ' + (options.confirmClass || tone.btn);
+        okBtn.innerHTML = '<i class="fas fa-check me-2"></i>' + (options.confirmText || 'Confirm');
+
+        pending = null;
+
+        return new Promise(function (resolve, reject) {
+            pending = { resolve: resolve, reject: reject };
+
+            function cleanup() {
+                okBtn.onclick = null;
+                cancelBtn.onclick = null;
+                modalEl.removeEventListener('hidden.bs.modal', onHidden);
+            }
+            function onHidden() {
+                cleanup();
+                if (pending) {
+                    pending.reject(new Error('cancelled'));
+                    pending = null;
+                }
+            }
+
+            modalEl.addEventListener('hidden.bs.modal', onHidden);
+
+            okBtn.onclick = function () {
+                modal.hide();
+                cleanup();
+                if (pending) {
+                    pending.resolve();
+                    pending = null;
+                }
+            };
+            cancelBtn.onclick = function () {
+                modal.hide();
+            };
+
+            modal.show();
+        });
+    };
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[data-nb-confirm]') : null;
+        if (!link) return;
+        e.preventDefault();
+        var href = link.getAttribute('href');
+        nbConfirm(readOptions(link)).then(function () {
+            window.location.href = href;
+        }).catch(function () {});
+    });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-nb-confirm]') : null;
+        if (!btn || btn.type !== 'submit' || !btn.form) return;
+        e.preventDefault();
+        var opts = readOptions(btn);
+        if (btn.hasAttribute('data-nb-confirm-text')) {
+            opts.confirmText = btn.getAttribute('data-nb-confirm-text');
+        }
+        nbConfirm(opts).then(function () {
+            var clone = document.createElement('input');
+            clone.type = 'hidden';
+            clone.name = btn.name;
+            clone.value = btn.value;
+            btn.form.appendChild(clone);
+            btn.form.submit();
+        }).catch(function () {});
+    });
+
+    document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.hasAttribute('data-nb-confirm')) return;
+        e.preventDefault();
+        nbConfirm(readOptions(form)).then(function () {
+            form.submit();
+        }).catch(function () {});
+    });
+})();
+</script>
+
+    <!-- Custom scripts -->
+    <script>
+        // Toggle sidebar on mobile (+ dim backdrop via body class)
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            var sb = document.getElementById('adminSidebar');
+            if (!sb) return;
+            sb.classList.toggle('active');
+            document.body.classList.toggle('nb-nav-open', sb.classList.contains('active'));
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('adminSidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar && sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                sidebarToggle && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('nb-nav-open');
+            }
+        });
+
+        // Mobile tables → lists: copy each <th> label into its column's <td>
+        // as data-th (used by admin-mobile.css). Skips .nb-keep-table
+        // (members page) and header-less tables. Checkbox-only cells and
+        // action cells get docking classes instead of labels.
+        (function nbResponsiveTables() {
+            function isCheckCell(td) {
+                var kids = Array.prototype.filter.call(td.childNodes, function (n) {
+                    if (n.nodeType === 3) return n.textContent.trim() !== '';
+                    if (n.nodeType !== 1) return false;
+                    var tag = n.tagName.toLowerCase();
+                    return !(tag === 'input' && (n.type === 'checkbox' || n.type === 'radio'));
+                });
+                return kids.length === 0 && td.querySelector('input[type="checkbox"], input[type="radio"]');
+            }
+            document.querySelectorAll('table.table:not(.nb-keep-table)').forEach(function (table) {
+                var headers = Array.prototype.map.call(
+                    table.querySelectorAll('thead tr:last-child th'),
+                    function (th) { return th.textContent.trim().replace(/\s+/g, ' '); }
+                );
+                if (!headers.length) return;
+                table.querySelectorAll('tbody tr').forEach(function (tr) {
+                    Array.prototype.forEach.call(tr.children, function (td, i) {
+                        if (td.tagName.toLowerCase() !== 'td') return;
+                        if (td.hasAttribute('colspan')) { td.classList.add('nb-no-label'); return; }
+                        if (isCheckCell(td)) { td.classList.add('nb-cell-check'); return; }
+                        if (td.querySelector('.btn, .btn-group, .dropdown')) { td.classList.add('nb-cell-actions'); return; }
+                        if (headers[i]) td.setAttribute('data-th', headers[i]);
+                        else td.classList.add('nb-no-label');
+                    });
+                });
+            });
+        })();
+
+        // Initialize tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(function(el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // Initialize popovers
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(function(el) {
+            return new bootstrap.Popover(el);
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert.alert-dismissible').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+
+        // Confirm before deleting (uses the shared nbConfirm component when available)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    if (typeof nbConfirm === 'function') {
+                        e.preventDefault();
+                        nbConfirm({
+                            title: 'Delete Item',
+                            message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                            icon: 'fas fa-trash',
+                            tone: 'danger',
+                            confirmText: 'Delete'
+                        }).then(function() {
+                            if (button.tagName === 'A') {
+                                window.location.href = button.href;
+                            } else if (button.form) {
+                                button.form.submit();
+                            }
+                        }).catch(function() {});
+                    } else if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            var togglePassword = document.querySelector('.toggle-password');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    var passwordInput = document.querySelector('#password');
+                    var icon = this.querySelector('i');
+                    if (passwordInput && passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else if (passwordInput) {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+        });
+
+        // Contact Support Modal Function
+        function openContactSupport() {
+            var modal = new bootstrap.Modal(document.getElementById('contactSupportModal'));
+            modal.show();
+        }
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>
+
+<!-- TinyMCE for article body -->
+<script src="assets/js/tinymce-stub.js" referrerpolicy="origin"></script>
+<script>
+(function(){
+    // If the cloud script was blocked (offline, ad-blocker, CSP), say so
+    // loudly instead of leaving a dead-looking textarea.
+    if (!window.tinymce) {
+        var ta = document.getElementById('nl_body');
+        if (ta) {
+            var warn = document.createElement('div');
+            warn.style.cssText = 'background:#fff3cd;color:#856404;border:2px solid #111;padding:0.6rem 0.9rem;margin-bottom:0.6rem;font-size:0.85rem;font-weight:700;';
+            warn.textContent = '⚠ Rich editor failed to load (check connection / ad-blocker) — raw HTML below still saves fine.';
+            ta.parentNode.insertBefore(warn, ta);
+        }
+        return;
+    }
+    tinymce.init({
+        selector: '#nl_body',
+        height: 420,
+        menubar: false,
+        plugins: 'lists link image table code help',
+        toolbar: 'undo redo | bold italic underline | forecolor backcolor | alignleft aligncenter alignright | bullist numlist | link image table | code',
+        content_style: 'body{font-family:Space Grotesk,Arial,sans-serif;font-size:15px;}',
+        convert_urls: false,
+        relative_urls: false,
+        branding: false
+    });
+})();
+</script>

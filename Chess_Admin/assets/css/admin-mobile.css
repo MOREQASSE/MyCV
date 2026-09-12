@@ -1,0 +1,174 @@
+/* ============================================================
+   Chess Club ENSAS — Admin mobile layer (mobile-first UI)
+   Loaded on every admin page after Bootstrap. Everything in here
+   applies at <=767.98px (same breakpoint as the admin shell).
+   Tables become card-lists automatically (see footer JS which injects
+   data-th labels) — opt a table OUT with class "nb-keep-table".
+   ============================================================ */
+@media (max-width: 767.98px) {
+
+    /* ---------- Shell: topbar, titles, content padding ---------- */
+    .nb-main { padding: calc(var(--nb-header-height) + 14px) 12px 16px; }
+    .nb-topbar { padding: 0 12px; }
+    .nb-main h1.h3, .nb-main h1 { font-size: 1.35rem; line-height: 1.2; }
+    .nb-admin-footer { padding: 1rem 12px; font-size: 0.8rem; }
+
+    /* Sidebar slides over content + dim backdrop (body.nb-nav-open set by footer JS) */
+    .nb-sidebar { width: min(270px, 82vw); box-shadow: 6px 0 0 rgba(0,0,0,0.35); }
+    body.nb-nav-open { overflow: hidden; }
+    body.nb-nav-open::after {
+        content: ''; position: fixed; inset: 0; z-index: 999;
+        background: rgba(13, 13, 13, 0.55);
+    }
+
+    /* ---------- Cards & headers wrap instead of squeeze ---------- */
+    .card { margin-bottom: 14px; }
+    .card-header { padding: 0.7rem 0.85rem; font-size: 0.95rem; }
+    .card-header.d-flex { flex-wrap: wrap; gap: 0.5rem; }
+    .card-body { padding: 0.85rem; }
+    .card-body.p-0 { padding: 0 !important; }
+
+    /* ---------- Touch targets ---------- */
+    .btn { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
+    .btn-sm { min-height: 38px; }
+    .btn-group { flex-wrap: wrap; gap: 0.35rem; }
+    .btn-group > .btn { border-radius: var(--nb-radius-sm) !important; }
+    .form-control, .form-select { min-height: 44px; font-size: 1rem; }
+    .form-check-input { width: 1.35em; height: 1.35em; }
+    .nav-pills { flex-wrap: wrap; gap: 0.4rem; }
+    .nav-pills .nav-link { margin-right: 0; min-height: 42px; display: inline-flex; align-items: center; }
+
+    /* ---------- Filter / toolbar rows stack ---------- */
+    .d-flex.gap-2, .d-flex.gap-3 { flex-wrap: wrap; }
+    .modal-dialog { margin: 0.75rem; }
+    img { max-width: 100%; height: auto; }
+
+    /* ============================================================
+       TABLES → LISTS (opt out with .nb-keep-table, e.g. members)
+       Each row becomes a card; each cell a label:value line using
+       the data-th attribute injected by footer JS. Checkbox-only
+       cells pin to the card corner; action cells dock at the bottom.
+       ============================================================ */
+    table.table:not(.nb-keep-table) { border: none; background: transparent; }
+    table.table:not(.nb-keep-table) thead { display: none; }
+    table.table:not(.nb-keep-table),
+    table.table:not(.nb-keep-table) tbody,
+    table.table:not(.nb-keep-table) tr,
+    table.table:not(.nb-keep-table) td { display: block; width: 100%; }
+    table.table:not(.nb-keep-table) tbody tr {
+        position: relative;
+        background: #fff;
+        border: 3px solid var(--nb-border);
+        box-shadow: 4px 4px 0 #111;
+        border-radius: var(--nb-radius-sm);
+        margin-bottom: 0.8rem;
+        padding: 0.7rem 0.85rem 0.75rem;
+    }
+    table.table:not(.nb-keep-table) tbody td {
+        border: none;
+        padding: 0.32rem 0;
+        font-size: 0.88rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.75rem;
+        min-width: 0;
+    }
+    table.table:not(.nb-keep-table) tbody td + td { border-top: 2px dashed #e5e7eb; }
+    table.table:not(.nb-keep-table) tbody td::before {
+        content: attr(data-th);
+        flex: 0 0 auto;
+        max-width: 42%;
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--nb-muted);
+        padding-top: 0.15rem;
+    }
+    table.table:not(.nb-keep-table) tbody td.nb-no-label { display: block; }
+    table.table:not(.nb-keep-table) tbody td.nb-no-label::before { display: none; }
+    /* empty-state rows (colspan) */
+    table.table:not(.nb-keep-table) tbody td[colspan] { display: block; text-align: center; }
+    table.table:not(.nb-keep-table) tbody td[colspan]::before { display: none; }
+    /* row-select checkbox pins to the card corner */
+    table.table:not(.nb-keep-table) tbody td.nb-cell-check {
+        position: absolute; top: 0.55rem; right: 0.6rem;
+        display: block; padding: 0; border: none !important;
+    }
+    table.table:not(.nb-keep-table) tbody td.nb-cell-check::before { display: none; }
+    table.table:not(.nb-keep-table) tbody td.nb-cell-check .form-check-input { width: 1.5em; height: 1.5em; margin: 0; }
+    /* actions dock full-width at the card bottom */
+    table.table:not(.nb-keep-table) tbody td.nb-cell-actions { display: block; border-top: 2px solid var(--nb-border) !important; margin-top: 0.4rem; padding-top: 0.6rem; }
+    table.table:not(.nb-keep-table) tbody td.nb-cell-actions::before { display: none; }
+    table.table:not(.nb-keep-table) tbody td.nb-cell-actions .btn { flex: 1 1 auto; }
+    /* media inside cells stays sane */
+    table.table:not(.nb-keep-table) tbody td img { max-width: 56px; max-height: 56px; object-fit: cover; }
+
+    /* bulk bars & list toolbars */
+    .bulk-bar { flex-wrap: wrap; gap: 0.5rem; }
+    .nb-scroll { overflow-x: visible; }
+
+    /* ============================================================
+       MEMBERS — compact mobile list (desktop table hidden <768px)
+       Row: [check] name + icon actions on top, single icon strip
+       (contacts · league · bureau · paid) right below the name.
+       ============================================================ */
+    .nb-member-list { display: flex; flex-direction: column; gap: 0.6rem; max-height: 400px; overflow-y: auto; padding: 0.1rem 0.25rem 0.4rem 0.1rem; scrollbar-width: thin; scrollbar-color: var(--nb-primary) var(--nb-surface-2); }
+    .nb-member-list::-webkit-scrollbar { width: 8px; }
+    .nb-member-list::-webkit-scrollbar-track { background: var(--nb-surface-2); border-left: 2px solid var(--nb-border); }
+    .nb-member-list::-webkit-scrollbar-thumb { background: var(--nb-primary); border: 1px solid var(--nb-border); }
+    .nb-mrow {
+        display: flex; gap: 0.6rem; align-items: flex-start;
+        background: #fff; border: 3px solid var(--nb-border);
+        box-shadow: 4px 4px 0 #111; border-radius: var(--nb-radius-sm);
+        padding: 0.65rem 0.7rem;
+    }
+    .nb-mrow-check { flex: 0 0 auto; width: 1.4em; height: 1.4em; margin-top: 0.15rem; }
+    .nb-mrow-main { flex: 1; min-width: 0; }
+    .nb-mrow-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .nb-mrow-name { font-weight: 800; font-size: 0.95rem; color: var(--nb-text); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .nb-mrow-actions { display: flex; gap: 0.35rem; flex: 0 0 auto; }
+    .nb-mrow-act {
+        width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;
+        border: 2px solid var(--nb-border); border-radius: var(--nb-radius-sm);
+        box-shadow: 2px 2px 0 #111; font-size: 0.85rem; text-decoration: none;
+    }
+    .nb-mrow-act:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111; }
+    .nb-mrow-act-view { background: var(--nb-accent-alt); color: #111; }
+    .nb-mrow-act-edit { background: var(--nb-primary); color: #fff; }
+    .nb-mrow-act-del { background: var(--nb-danger); color: #fff; }
+    .nb-mrow-icons { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+    .nb-mrow-icons .contact-ico { width: 32px; height: 32px; font-size: 0.8rem; }
+    .nb-mrow-icons .nb-ico-league { color: #4c1d95; }
+    .nb-mrow-icons .nb-ico-bureau { color: #0e7490; }
+    .nb-mrow-icons .nb-ico-paid { color: #0e9f6e; }
+    .nb-mrow-empty { text-align: center; color: var(--nb-muted); padding: 1.5rem; background: #fff; border: 3px dashed var(--nb-border); }
+
+    /* ============================================================
+       ATTENDANCE MANAGEMENT — compact mobile list (name + pts on
+       top, icon-only actions below). Desktop table hidden <768px.
+       ============================================================ */
+    .nb-att-list { display: flex; flex-direction: column; gap: 0.6rem; max-height: 400px; overflow-y: auto; padding: 0.1rem 0.25rem 0.4rem 0.1rem; scrollbar-width: thin; scrollbar-color: var(--nb-primary) var(--nb-surface-2); }
+    .nb-att-list::-webkit-scrollbar { width: 8px; }
+    .nb-att-list::-webkit-scrollbar-track { background: var(--nb-surface-2); border-left: 2px solid var(--nb-border); }
+    .nb-att-list::-webkit-scrollbar-thumb { background: var(--nb-primary); border: 1px solid var(--nb-border); }
+    .nb-att-row {
+        background: #fff; border: 3px solid var(--nb-border);
+        box-shadow: 4px 4px 0 #111; border-radius: var(--nb-radius-sm);
+        padding: 0.65rem 0.7rem;
+    }
+    .nb-att-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .nb-att-name { font-weight: 800; font-size: 0.92rem; color: var(--nb-text); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .nb-att-actions { display: flex; gap: 0.4rem; margin-top: 0.55rem; }
+    .nb-att-act {
+        flex: 1; min-height: 42px; display: inline-flex; align-items: center; justify-content: center;
+        border: 2px solid var(--nb-border); border-radius: var(--nb-radius-sm);
+        box-shadow: 2px 2px 0 #111; font-size: 0.9rem; color: #111;
+    }
+    .nb-att-act:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111; }
+    .nb-att-ds { background: var(--nb-success); }
+    .nb-att-j { background: var(--nb-accent-alt); }
+    .nb-att-sj { background: var(--nb-warning); }
+    .nb-att-nj { background: var(--nb-danger); color: #fff; }
+}

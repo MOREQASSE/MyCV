@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administrator Management</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin mobile-first layer (tables→lists, touch targets, stacking) -->
+    <link rel="stylesheet" href="assets/css/admin-mobile.css?v=3">
+
+    <style>
+        :root {
+            --nb-bg: #1a0a2e;
+            --nb-bg-dark: #0d0d0d;
+            --nb-surface: #f5f0ff;
+            --nb-surface-2: #ece4fa;
+            --nb-primary: #7c3aed;
+            --nb-primary-dark: #4c1d95;
+            --nb-primary-light: #a78bfa;
+            --nb-accent: #ff2d95;
+            --nb-accent-alt: #00f0ff;
+            --nb-ink: #111111;
+            --nb-text: #111111;
+            --nb-muted: #6b7280;
+            --nb-border: #111111;
+            --nb-success: #00ff88;
+            --nb-danger: #ff1744;
+            --nb-warning: #ffa500;
+            --nb-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+            --nb-font-heading: 'Playfair Display', serif;
+            --nb-shadow-sm: 3px 3px 0 #111;
+            --nb-shadow-md: 6px 6px 0 #111;
+            --nb-shadow-lg: 8px 8px 0 #111;
+            --nb-radius: 0px;
+            --nb-radius-sm: 4px;
+            --nb-sidebar-width: 250px;
+            --nb-header-height: 64px;
+        }
+
+        body {
+            font-family: var(--nb-font-body);
+            background-color: var(--nb-surface);
+            color: var(--nb-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6, .card-header {
+            font-family: var(--nb-font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Sidebar ===== */
+        .nb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--nb-sidebar-width);
+            z-index: 1000;
+            background: var(--nb-bg);
+            color: #fff;
+            border-right: 3px solid var(--nb-border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nb-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.25rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nb-sidebar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .nb-sidebar-title {
+            font-family: var(--nb-font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            display: block;
+        }
+        .nb-sidebar-title em {
+            color: var(--nb-accent-alt);
+            font-style: normal;
+        }
+        .nb-sidebar-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nb-sidebar-nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .nb-sidebar-section {
+            display: block;
+            padding: 0.9rem 1.25rem 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--nb-primary-light);
+        }
+
+        .nb-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.15rem 0.6rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--nb-radius-sm);
+            transition: all 0.15s;
+        }
+        .nb-nav-link i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .nb-nav-link:hover {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            transform: translate(-1px, -1px);
+        }
+        .nb-nav-link.active {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            font-weight: 700;
+        }
+        .nb-nav-link.active::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-accent);
+            flex-shrink: 0;
+        }
+        .nb-nav-link.nb-nav-danger:hover {
+            background: var(--nb-danger);
+        }
+
+        .nb-sidebar-footer {
+            border-top: 3px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0;
+        }
+
+        /* ===== Topbar ===== */
+        .nb-topbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--nb-sidebar-width);
+            z-index: 999;
+            height: var(--nb-header-height);
+            background: #fff;
+            border-bottom: 3px solid var(--nb-border);
+            box-shadow: var(--nb-shadow-sm);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nb-topbar .nb-toggle {
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            border-radius: var(--nb-radius-sm);
+            font-size: 1.1rem;
+            padding: 0.35rem 0.65rem;
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-topbar .nb-toggle:hover {
+            background: var(--nb-primary);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+
+        .nb-user-dropdown .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--nb-text);
+            text-decoration: none;
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+            border-radius: var(--nb-radius-sm);
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-user-dropdown .dropdown-toggle:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .nb-user-dropdown img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+        }
+
+        /* ===== Main content ===== */
+        .nb-main {
+            margin-left: var(--nb-sidebar-width);
+            padding: calc(var(--nb-header-height) + 24px) 24px 24px;
+            flex: 1;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-md);
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background: var(--nb-surface-2);
+            border-bottom: 3px solid var(--nb-border);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            font-weight: 600;
+            transition: all 0.12s;
+        }
+        .btn-primary {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #111;
+        }
+        .btn-outline-primary {
+            color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            box-shadow: 2px 2px 0 #111;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--nb-primary);
+            color: #fff;
+        }
+        .btn-success { background-color: var(--nb-success); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-danger { background-color: var(--nb-danger); border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-warning { background-color: var(--nb-warning); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-info { background-color: var(--nb-accent-alt); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-secondary { background-color: #d1d5db; border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-accent { background-color: var(--nb-accent); border-color: var(--nb-border); color: #fff; box-shadow: 3px 3px 0 #111; }
+        .btn-accent:hover { background-color: #e11d7d; color: #fff; }
+        .btn-sm { box-shadow: 2px 2px 0 #111; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111 !important; }
+
+        /* ===== Forms ===== */
+        .form-control, .form-select {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-family: var(--nb-font-body);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--nb-primary);
+            box-shadow: 3px 3px 0 var(--nb-primary-light);
+        }
+        .form-check-input:checked {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+        }
+
+        /* ===== Tables ===== */
+        .table {
+            border: 2px solid var(--nb-border);
+            background: #fff;
+        }
+        .table thead th {
+            background: var(--nb-bg);
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 3px solid var(--nb-border);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--nb-surface);
+        }
+        .table-hover tbody tr:hover {
+            background-color: var(--nb-surface-2);
+        }
+        .table td {
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* ===== Badges & alerts ===== */
+        .badge {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-weight: 600;
+        }
+        .alert {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-sm);
+        }
+        .alert-success { background-color: var(--nb-success); color: var(--nb-text); }
+        .alert-danger { background-color: var(--nb-danger); color: #fff; }
+        .alert-warning { background-color: var(--nb-warning); color: var(--nb-text); }
+        .alert-info { background-color: var(--nb-accent-alt); color: var(--nb-text); }
+
+        /* ===== Modals ===== */
+        .modal {
+            z-index: 99999 !important;
+        }
+        .modal-backdrop {
+            z-index: 99998 !important;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        .modal-dialog {
+            z-index: 99999 !important;
+        }
+        .modal-content {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-lg);
+        }
+        .modal-header {
+            border-bottom: 3px solid var(--nb-border);
+            font-family: var(--nb-font-heading);
+        }
+        .modal-footer {
+            border-top: 3px solid var(--nb-border);
+        }
+
+        /* ===== Pills/tabs ===== */
+        .nav-pills .nav-link {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            margin-right: 0.35rem;
+            color: var(--nb-text);
+            background: #fff;
+            box-shadow: 2px 2px 0 #111;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--nb-primary);
+            color: #fff;
+        }
+
+        /* ===== Admin footer ===== */
+        .nb-admin-footer {
+            border-top: 3px solid var(--nb-border);
+            background: var(--nb-bg);
+            color: #fff;
+            padding: 1.25rem 24px;
+            margin-left: var(--nb-sidebar-width);
+        }
+        .nb-admin-footer a {
+            color: var(--nb-primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nb-admin-footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nb-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .nb-sidebar.active {
+                transform: translateX(0);
+            }
+            .nb-main, .nb-admin-footer {
+                margin-left: 0;
+            }
+            .nb-topbar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+
+
+<nav class="nb-sidebar" id="adminSidebar">
+    <div class="nb-sidebar-brand">
+        <img src="assets/images/CHESS club logo ups.webp" alt="Chess Club ENSAS Logo" class="nb-sidebar-logo" width="40" height="40" loading="lazy" decoding="async">
+        <div>
+            <span class="nb-sidebar-title">Chess Club <em>ENSAS</em></span>
+            <small class="nb-sidebar-sub">Admin Panel</small>
+        </div>
+    </div>
+
+    <div class="nb-sidebar-nav">
+        <span class="nb-sidebar-section">Main</span>
+
+        <a class="nb-nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </a>
+                <a class="nb-nav-link " href="members.html">
+            <i class="fas fa-users"></i><span>Members</span>
+        </a>
+                        <a class="nb-nav-link " href="tournaments.html">
+            <i class="fas fa-trophy"></i><span>League & Tournaments</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Media</span>
+                <a class="nb-nav-link " href="announcements.html">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+                        <a class="nb-nav-link " href="formations.html">
+            <i class="fas fa-chess-board"></i><span>Formations</span>
+        </a>
+                        <a class="nb-nav-link " href="newsletter.html">
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Business</span>
+                <a class="nb-nav-link " href="sponsors.html">
+            <i class="fas fa-handshake"></i><span>Sponsors</span>
+        </a>
+                        <a class="nb-nav-link " href="products.html">
+            <i class="fas fa-shopping-bag"></i><span>Products</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Recruitment</span>
+        <a class="nb-nav-link " href="announcements-forms.html">
+            <i class="fas fa-file-alt"></i><span>Recruitment Forms</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Administration</span>
+        <a class="nb-nav-link " href="admins.html">
+            <i class="fas fa-user-shield"></i><span>Admins</span>
+        </a>
+        <a class="nb-nav-link " href="settings.html">
+            <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+        
+        <span class="nb-sidebar-section">Account</span>
+        <a class="nb-nav-link " href="profile.html">
+            <i class="fas fa-user-cog"></i><span>Profile</span>
+        </a>
+    </div>
+
+    <div class="nb-sidebar-footer">
+        <a class="nb-nav-link" href="https://moreqasse.github.io/MyCV/" target="_blank">
+            <i class="fas fa-external-link-alt"></i><span>Visit Website</span>
+        </a>
+        <a class="nb-nav-link nb-nav-danger" href="login.html">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Topbar -->
+<nav class="nb-topbar">
+    <div>
+        <button class="nb-toggle d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="d-none d-lg-inline text-muted small">
+            <i class="fas fa-desktop me-1"></i> Best on PC for full features
+        </span>
+    </div>
+
+    <div class="nb-user-dropdown">
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/placeholder.png" alt="User">
+                <span class="d-none d-md-inline">DemoAdmin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="nb-main">
+    
+            
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar removed - using header sidebar only -->
+        
+        <!-- Main Content -->
+        <main class="col-12 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">
+                    Edit Admin                </h1>
+                            </div>
+
+            
+                                            <!-- Admin Form -->
+                <div class="card">
+                    <div class="card-header d-flex align-items-center gap-2 flex-wrap">
+                        <span class="d-inline-flex align-items-center justify-content-center rounded-circle text-white fw-bold"
+                              style="width:44px;height:44px;background:var(--nb-primary);border:2px solid #111;font-size:1.1rem;">
+                            M                        </span>
+                        <div>
+                            <strong>Demo Admin</strong>
+                            <div class="text-muted small">
+                                reqasse@gmail.com                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="#" data-demo-form="1" data-demo-args="?action=edit&id=1">
+                            <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">
+                            <h6 class="fw-bold text-uppercase small mb-3" style="letter-spacing:0.06em;border-left:5px solid var(--nb-primary);padding-left:0.6rem;">
+                                <i class="fas fa-user me-1"></i>Account
+                            </h6>
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="username" class="form-label">
+                                        <i class="fas fa-user me-2 text-muted"></i>Username *
+                                    </label>
+                                    <input type="text" class="form-control" id="username" name="username"
+                                           value="Demo Admin" required
+                                           autocomplete="off"
+                                           >
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope me-2 text-muted"></i>Email *
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           value="reqasse@gmail.com" required
+                                           autocomplete="off"
+                                           >
+                                </div>
+                            </div>
+
+                                                        <h6 class="fw-bold text-uppercase small mb-3" style="letter-spacing:0.06em;border-left:5px solid var(--nb-warning);padding-left:0.6rem;">
+                                <i class="fas fa-lock me-1"></i>Security
+                            </h6>
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="password" class="form-label">
+                                        <i class="fas fa-key me-2 text-muted"></i>Password
+                                                                                    <small class="text-muted">(Leave blank to keep current)</small>
+                                                                            </label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" name="password"
+                                               autocomplete="new-password"
+                                               >
+                                        <button type="button" class="btn btn-outline-secondary" id="nbGenPass" title="Generate a strong password">
+                                            <i class="fas fa-dice"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary" id="nbShowPass" title="Show / hide">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h6 class="fw-bold text-uppercase small mb-3" style="letter-spacing:0.06em;border-left:5px solid var(--nb-danger);padding-left:0.6rem;">
+                                <i class="fas fa-user-shield me-1"></i>Role & page access
+                            </h6>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="is_super_admin" name="is_super_admin"
+                                               value="1" checked                                               >
+                                        <label class="form-check-label fw-bold" for="is_super_admin">
+                                            <i class="fas fa-crown me-2 text-warning"></i>Super Admin
+                                        </label>
+                                    </div>
+                                    <div class="form-text mt-2">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        Super admins open every page (including Admins &amp; Settings) and manage other administrators.
+                                    </div>
+                                </div>
+                            </div>
+
+                                                            <div id="nbAccessBox">
+                                    <label class="form-label fw-bold">Start from a role preset <small class="text-muted fw-normal">(optional — you can still flip pages after)</small></label>
+                                    <div class="d-flex flex-wrap gap-2 mb-3" id="nbPresetRow">
+                                                                                    <button type="button" class="btn btn-sm btn-outline-primary nb-preset" data-preset="president" title="Every page except Admins &amp; Settings (super-admin only).">
+                                                President                                            </button>
+                                                                                    <button type="button" class="btn btn-sm btn-outline-primary nb-preset" data-preset="media" title="Announcements, Formations, Products, Newsletter.">
+                                                Media Manager                                            </button>
+                                                                                    <button type="button" class="btn btn-sm btn-outline-primary nb-preset" data-preset="relations" title="Sponsors, League &amp; Tournaments, Members.">
+                                                External / Internal Relations                                            </button>
+                                                                                    <button type="button" class="btn btn-sm btn-outline-primary nb-preset" data-preset="formations_mgr" title="Formations and Tournaments.">
+                                                Formations Manager                                            </button>
+                                                                                    <button type="button" class="btn btn-sm btn-outline-primary nb-preset" data-preset="rh" title="Members, League &amp; Tournaments, Recruitment Forms.">
+                                                RH                                            </button>
+                                                                            </div>
+                                    <div class="form-text mb-3" id="nbPresetDesc">Pick a preset to pre-fill the toggles, then fine-tune below.</div>
+                                    <label class="form-label fw-bold">Page access <small class="text-muted fw-normal">(toggles, not checkmarks)</small></label>
+                                    <div class="row g-2" id="nbPermGrid">
+                                                                                    <div class="col-6 col-md-4 col-lg-3">
+                                                <div class="form-check form-switch border rounded p-2 ps-5 bg-light">
+                                                    <input class="form-check-input nb-perm-toggle" type="checkbox"
+                                                           name="permissions[]" value="members" id="perm_members"
+                                                           >
+                                                    <label class="form-check-label small fw-bold" for="perm_members">
+                                                        <i class="fas fa-users me-1"></i>Members                                                    </label>
+                                                </div>
+                                            </div>
+                                                                                    <div class="col-6 col-md-4 col-lg-3">
+                                                <div class="form-check form-switch border rounded p-2 ps-5 bg-light">
+                                                    <input class="form-check-input nb-perm-toggle" type="checkbox"
+                                                           name="permissions[]" value="tournaments" id="perm_tournaments"
+                                                           >
+                                                    <label class="form-check-label small fw-bold" for="perm_tournaments">
+                                                        <i class="fas fa-trophy me-1"></i>League &amp; Tournaments                                                    </label>
+                                                </div>
+                                            </div>
+                                                                                    <div class="col-6 col-md-4 col-lg-3">
+                                                <div class="form-check form-switch border rounded p-2 ps-5 bg-light">
+                                                    <input class="form-check-input nb-perm-toggle" type="checkbox"
+                                                           name="permissions[]" value="announcements" id="perm_announcements"
+                                                           >
+                                                    <label class="form-check-label small fw-bold" for="perm_announcements">
+                                                        <i class="fas fa-bullhorn me-1"></i>Announcements                                                    </label>
+                                                </div>
+                                            </div>
+                                                                                    <div class="col-6 col-md-4 col-lg-3">
+                                                <div class="form-check form-switch border rounded p-2 ps-5 bg-light">
+                                                    <input class="form-check-input nb-perm-toggle" type="checkbox"
+                                                           name="permissions[]" value="formations" id="perm_formations"
+                                                           >
+                                                    <label class="form-check-label small fw-bold" for="perm_formations">
+                                                        <i class="fas fa-chess-board me-1"></i>Formations                                                    </label>
+                                                </div>
+                                            </div>
+                                                                                    <div class="col-6 col-md-4 col-lg-3">
+                                                <div class="form-check form-switch border rounded p-2 ps-5 bg-light">
+                                                    <input class="form-check-input nb-perm-toggle" type="checkbox"
+                                                           name="permissions[]" value="newsletter" id="perm_newsletter"
+                                                           >
+                                                    <label class="form-check-label small fw-bold" for="perm_newsletter">
+                                                        <i class="fas fa-paper-plane me-1"></i>Newsletter                                                    </label>
+                                                </div>
+                                            </div>
+                                                                                    <div class="col-6 col-md-4 col-lg-3">
+                                                <div class="form-check form-switch border rounded p-2 ps-5 bg-light">
+                                                    <input class="form-check-input nb-perm-toggle" type="checkbox"
+                                                           name="permissions[]" value="products" id="perm_products"
+                                                           >
+                                                    <label class="form-check-label small fw-bold" for="perm_products">
+                                                        <i class="fas fa-shopping-bag me-1"></i>Products                                                    </label>
+                                                </div>
+                                            </div>
+                                                                                    <div class="col-6 col-md-4 col-lg-3">
+                                                <div class="form-check form-switch border rounded p-2 ps-5 bg-light">
+                                                    <input class="form-check-input nb-perm-toggle" type="checkbox"
+                                                           name="permissions[]" value="sponsors" id="perm_sponsors"
+                                                           >
+                                                    <label class="form-check-label small fw-bold" for="perm_sponsors">
+                                                        <i class="fas fa-handshake me-1"></i>Sponsors                                                    </label>
+                                                </div>
+                                            </div>
+                                                                                    <div class="col-6 col-md-4 col-lg-3">
+                                                <div class="form-check form-switch border rounded p-2 ps-5 bg-light">
+                                                    <input class="form-check-input nb-perm-toggle" type="checkbox"
+                                                           name="permissions[]" value="recruitment" id="perm_recruitment"
+                                                           >
+                                                    <label class="form-check-label small fw-bold" for="perm_recruitment">
+                                                        <i class="fas fa-file-alt me-1"></i>Recruitment Forms                                                    </label>
+                                                </div>
+                                            </div>
+                                                                            </div>
+                                    <div class="alert alert-warning mt-3 mb-0" id="nbPermNote" style="display:none;">
+                                        <i class="fas fa-crown me-1"></i>Super Admin is ON — every page is included automatically.
+                                    </div>
+                                    <div class="form-text mt-2"><i class="fas fa-lock me-1"></i>Admins &amp; Settings are never listed here — super-admin only, always.</div>
+                                </div>
+                            
+                                                            <div class="mt-4 d-flex gap-2 flex-wrap">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Save Admin
+                                    </button>
+                                    <a href="admins.html" class="btn btn-secondary">Cancel</a>
+                                </div>
+                                                    </form>
+                    </div>
+                </div>
+                                <script>
+                (function(){
+                    var superBox = document.getElementById('is_super_admin');
+                    var box = document.getElementById('nbAccessBox');
+                    var toggles = Array.prototype.slice.call(document.querySelectorAll('.nb-perm-toggle'));
+                    var presetBtns = Array.prototype.slice.call(document.querySelectorAll('.nb-preset'));
+                    var desc = document.getElementById('nbPresetDesc');
+                    var presets = {"president":["members","tournaments","announcements","formations","newsletter","products","sponsors","recruitment"],"media":["announcements","formations","products","newsletter"],"relations":["sponsors","tournaments","members"],"formations_mgr":["formations","tournaments"],"rh":["members","tournaments","recruitment"]};
+                    var presetDescs = {"president":"Every page except Admins & Settings (super-admin only).","media":"Announcements, Formations, Products, Newsletter.","relations":"Sponsors, League & Tournaments, Members.","formations_mgr":"Formations and Tournaments.","rh":"Members, League & Tournaments, Recruitment Forms."};
+
+                    function currentPages(){
+                        return toggles.filter(function(t){ return t.checked; }).map(function(t){ return t.value; }).sort();
+                    }
+                    function markActivePreset(){
+                        var cur = currentPages().join('|');
+                        var found = '';
+                        presetBtns.forEach(function(b){
+                            var key = b.getAttribute('data-preset');
+                            var match = (presets[key] || []).slice().sort().join('|') === cur;
+                            b.classList.toggle('btn-primary', match);
+                            b.classList.toggle('btn-outline-primary', !match);
+                            if (match) found = key;
+                        });
+                        if (desc) desc.textContent = found && presetDescs[found]
+                            ? presetDescs[found]
+                            : 'Pick a preset to pre-fill the toggles, then fine-tune below.';
+                    }
+                    function paintSuper(){
+                        var on = !!(superBox && superBox.checked);
+                        toggles.forEach(function(t){ if (on) t.checked = true; t.disabled = on; });
+                        var note = document.getElementById('nbPermNote');
+                        if (note) note.style.display = on ? '' : 'none';
+                        if (box) box.classList.toggle('opacity-75', on);
+                        if (on) {
+                            // Super covers Admins & Settings too — no preset matches that
+                            presetBtns.forEach(function(b){ b.classList.remove('btn-primary'); b.classList.add('btn-outline-primary'); });
+                            if (desc) desc.textContent = 'Super Admin includes every page (Admins & Settings included).';
+                        } else { markActivePreset(); }
+                    }
+                    if (superBox) { superBox.addEventListener('change', paintSuper); paintSuper(); }
+                    toggles.forEach(function(t){ t.addEventListener('change', markActivePreset); });
+                    presetBtns.forEach(function(b){
+                        b.addEventListener('click', function(){
+                            if (superBox && superBox.checked) { superBox.checked = false; paintSuper(); }
+                            var pages = presets[b.getAttribute('data-preset')] || [];
+                            toggles.forEach(function(t){ t.checked = pages.indexOf(t.value) !== -1; });
+                            markActivePreset();
+                        });
+                    });
+                    markActivePreset();
+
+                    // Password helpers
+                    var gen = document.getElementById('nbGenPass');
+                    var pwd = document.getElementById('password');
+                    if (gen && pwd) gen.addEventListener('click', function(){
+                        var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%';
+                        var s = '';
+                        for (var i = 0; i < 16; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
+                        pwd.value = s;
+                        pwd.type = 'text';
+                        pwd.focus();
+                    });
+                    var show = document.getElementById('nbShowPass');
+                    if (show && pwd) show.addEventListener('click', function(){
+                        pwd.type = pwd.type === 'password' ? 'text' : 'password';
+                        var ic = show.querySelector('i');
+                        if (ic) { ic.classList.toggle('fa-eye'); ic.classList.toggle('fa-eye-slash'); }
+                    });
+                })();
+                </script>
+                                    </main>
+    </div>
+</div>
+
+
+
+    </div> <!-- End .nb-main -->
+
+    <!-- Admin Footer -->
+    <footer class="nb-admin-footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    <i class="fas fa-copyright me-1"></i>&copy; 2026 Chess Club ENSAS Administration Panel
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-shield-alt me-1"></i>Secure Management System
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    Developed by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank">Mohammed Reqasse</a>
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-palette me-1"></i>Professional Web Development
+                </p>
+            </div>
+            <div class="text-md-end">
+                <button class="btn btn-outline-light btn-sm mb-2" onclick="openContactSupport()">
+                    <i class="fas fa-headset me-2"></i>Contact Support
+                </button>
+                <div>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block"><i class="fas fa-user me-1"></i>Mohammed Reqasse</small>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block">
+                        <i class="fas fa-phone me-1"></i>
+                        <a href="tel:+212600000000" style="color: rgba(255,255,255,0.55);">+212 610 100 100</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal -->
+    <div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contactSupportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px solid #111; box-shadow: 4px 4px 0 #111;">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h6 class="fw-bold">Mohammed Reqasse</h6>
+                        <p class="text-muted mb-3">Website Creator</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Phone Support</h6>
+                                <a href="tel:+212600000000" class="text-decoration-none fw-bold">+212 610 100 100</a>
+                                <p class="text-muted small mb-0">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Email Support</h6>
+                                <a href="mailto:reqasse@gmail.com" class="text-decoration-none fw-bold">reqasse@gmail.com</a>
+                                <p class="text-muted small mb-0">Response within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Web Support</h6>
+                                <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" class="text-decoration-none fw-bold">https://moreqasse.github.io/MyCV/</a>
+                                <p class="text-muted small mb-0">Online resources & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <a href="tel:+212600000000" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Reusable Confirmation Modal Component (nbConfirm) -->
+    <!-- ===== Reusable Confirm Modal Component ===== -->
+<div class="modal fade" id="nbConfirmModal" tabindex="-1" aria-labelledby="nbConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111;overflow:hidden;">
+            <div class="modal-header" style="background:#1a0a2e;border-bottom:3px solid #111;border-radius:0;padding:0.9rem 1.25rem;">
+                <h5 class="modal-title text-white fw-bold mb-0" id="nbConfirmModalLabel" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.1rem;">
+                    <i class="fas fa-question-circle me-2" style="color:#ff2d95;"></i>Confirmation
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div id="nbConfirmIcon" class="d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+                     style="width:72px;height:72px;border:3px solid #111;box-shadow:4px 4px 0 #111;background:#7c3aed;color:#fff;font-size:1.9rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h6 class="fw-bold mb-2" id="nbConfirmTitle" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.15rem;color:#111;">Are you sure?</h6>
+                <p class="text-muted mb-0" id="nbConfirmMessage" style="font-size:0.92rem;line-height:1.5;"></p>
+            </div>
+            <div class="modal-footer" style="border-top:3px solid #111;border-radius:0;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="nbConfirmCancel">
+                    <i class="fas fa-times me-2"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="nbConfirmOk">
+                    <i class="fas fa-check me-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var modalEl = document.getElementById('nbConfirmModal');
+    if (!modalEl || typeof bootstrap === 'undefined') return;
+
+    var modal = new bootstrap.Modal(modalEl);
+    var okBtn = document.getElementById('nbConfirmOk');
+    var cancelBtn = document.getElementById('nbConfirmCancel');
+    var titleEl = document.getElementById('nbConfirmTitle');
+    var msgEl = document.getElementById('nbConfirmMessage');
+    var iconEl = document.getElementById('nbConfirmIcon');
+    var pending = null;
+
+    var tones = {
+        danger:  { iconBg: '#ff1744', btn: 'btn-danger' },
+        success: { iconBg: '#00ff88', btn: 'btn-success' },
+        warning: { iconBg: '#ffa500', btn: 'btn-warning' },
+        info:    { iconBg: '#00f0ff', btn: 'btn-info' },
+        primary: { iconBg: '#7c3aed', btn: 'btn-primary' }
+    };
+
+    function readOptions(el) {
+        return {
+            title: el.getAttribute('data-nb-confirm-title') || 'Are you sure?',
+            message: el.getAttribute('data-nb-confirm') || 'This action cannot be undone.',
+            tone: el.getAttribute('data-nb-confirm-tone') || 'danger',
+            icon: el.getAttribute('data-nb-confirm-icon') || 'fas fa-exclamation-triangle',
+            confirmText: el.getAttribute('data-nb-confirm-text') || 'Confirm'
+        };
+    }
+
+    window.nbConfirm = function (options) {
+        options = options || {};
+        var tone = tones[options.tone] || tones.primary;
+        var title = options.title || 'Are you sure?';
+        var message = options.message || 'This action cannot be undone.';
+        var icon = options.icon || 'fas fa-exclamation-triangle';
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.innerHTML = '<i class="' + icon + '"></i>';
+        iconEl.style.background = tone.iconBg;
+        iconEl.style.color = (options.tone === 'success' || options.tone === 'warning') ? '#111' : '#fff';
+        okBtn.className = 'btn ' + (options.confirmClass || tone.btn);
+        okBtn.innerHTML = '<i class="fas fa-check me-2"></i>' + (options.confirmText || 'Confirm');
+
+        pending = null;
+
+        return new Promise(function (resolve, reject) {
+            pending = { resolve: resolve, reject: reject };
+
+            function cleanup() {
+                okBtn.onclick = null;
+                cancelBtn.onclick = null;
+                modalEl.removeEventListener('hidden.bs.modal', onHidden);
+            }
+            function onHidden() {
+                cleanup();
+                if (pending) {
+                    pending.reject(new Error('cancelled'));
+                    pending = null;
+                }
+            }
+
+            modalEl.addEventListener('hidden.bs.modal', onHidden);
+
+            okBtn.onclick = function () {
+                modal.hide();
+                cleanup();
+                if (pending) {
+                    pending.resolve();
+                    pending = null;
+                }
+            };
+            cancelBtn.onclick = function () {
+                modal.hide();
+            };
+
+            modal.show();
+        });
+    };
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[data-nb-confirm]') : null;
+        if (!link) return;
+        e.preventDefault();
+        var href = link.getAttribute('href');
+        nbConfirm(readOptions(link)).then(function () {
+            window.location.href = href;
+        }).catch(function () {});
+    });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-nb-confirm]') : null;
+        if (!btn || btn.type !== 'submit' || !btn.form) return;
+        e.preventDefault();
+        var opts = readOptions(btn);
+        if (btn.hasAttribute('data-nb-confirm-text')) {
+            opts.confirmText = btn.getAttribute('data-nb-confirm-text');
+        }
+        nbConfirm(opts).then(function () {
+            var clone = document.createElement('input');
+            clone.type = 'hidden';
+            clone.name = btn.name;
+            clone.value = btn.value;
+            btn.form.appendChild(clone);
+            btn.form.submit();
+        }).catch(function () {});
+    });
+
+    document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.hasAttribute('data-nb-confirm')) return;
+        e.preventDefault();
+        nbConfirm(readOptions(form)).then(function () {
+            form.submit();
+        }).catch(function () {});
+    });
+})();
+</script>
+
+    <!-- Custom scripts -->
+    <script>
+        // Toggle sidebar on mobile (+ dim backdrop via body class)
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            var sb = document.getElementById('adminSidebar');
+            if (!sb) return;
+            sb.classList.toggle('active');
+            document.body.classList.toggle('nb-nav-open', sb.classList.contains('active'));
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('adminSidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar && sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                sidebarToggle && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('nb-nav-open');
+            }
+        });
+
+        // Mobile tables → lists: copy each <th> label into its column's <td>
+        // as data-th (used by admin-mobile.css). Skips .nb-keep-table
+        // (members page) and header-less tables. Checkbox-only cells and
+        // action cells get docking classes instead of labels.
+        (function nbResponsiveTables() {
+            function isCheckCell(td) {
+                var kids = Array.prototype.filter.call(td.childNodes, function (n) {
+                    if (n.nodeType === 3) return n.textContent.trim() !== '';
+                    if (n.nodeType !== 1) return false;
+                    var tag = n.tagName.toLowerCase();
+                    return !(tag === 'input' && (n.type === 'checkbox' || n.type === 'radio'));
+                });
+                return kids.length === 0 && td.querySelector('input[type="checkbox"], input[type="radio"]');
+            }
+            document.querySelectorAll('table.table:not(.nb-keep-table)').forEach(function (table) {
+                var headers = Array.prototype.map.call(
+                    table.querySelectorAll('thead tr:last-child th'),
+                    function (th) { return th.textContent.trim().replace(/\s+/g, ' '); }
+                );
+                if (!headers.length) return;
+                table.querySelectorAll('tbody tr').forEach(function (tr) {
+                    Array.prototype.forEach.call(tr.children, function (td, i) {
+                        if (td.tagName.toLowerCase() !== 'td') return;
+                        if (td.hasAttribute('colspan')) { td.classList.add('nb-no-label'); return; }
+                        if (isCheckCell(td)) { td.classList.add('nb-cell-check'); return; }
+                        if (td.querySelector('.btn, .btn-group, .dropdown')) { td.classList.add('nb-cell-actions'); return; }
+                        if (headers[i]) td.setAttribute('data-th', headers[i]);
+                        else td.classList.add('nb-no-label');
+                    });
+                });
+            });
+        })();
+
+        // Initialize tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(function(el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // Initialize popovers
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(function(el) {
+            return new bootstrap.Popover(el);
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert.alert-dismissible').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+
+        // Confirm before deleting (uses the shared nbConfirm component when available)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    if (typeof nbConfirm === 'function') {
+                        e.preventDefault();
+                        nbConfirm({
+                            title: 'Delete Item',
+                            message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                            icon: 'fas fa-trash',
+                            tone: 'danger',
+                            confirmText: 'Delete'
+                        }).then(function() {
+                            if (button.tagName === 'A') {
+                                window.location.href = button.href;
+                            } else if (button.form) {
+                                button.form.submit();
+                            }
+                        }).catch(function() {});
+                    } else if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            var togglePassword = document.querySelector('.toggle-password');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    var passwordInput = document.querySelector('#password');
+                    var icon = this.querySelector('i');
+                    if (passwordInput && passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else if (passwordInput) {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+        });
+
+        // Contact Support Modal Function
+        function openContactSupport() {
+            var modal = new bootstrap.Modal(document.getElementById('contactSupportModal'));
+            modal.show();
+        }
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>

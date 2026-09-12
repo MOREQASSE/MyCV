@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Members Management</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin mobile-first layer (tables→lists, touch targets, stacking) -->
+    <link rel="stylesheet" href="assets/css/admin-mobile.css?v=3">
+
+    <style>
+        :root {
+            --nb-bg: #1a0a2e;
+            --nb-bg-dark: #0d0d0d;
+            --nb-surface: #f5f0ff;
+            --nb-surface-2: #ece4fa;
+            --nb-primary: #7c3aed;
+            --nb-primary-dark: #4c1d95;
+            --nb-primary-light: #a78bfa;
+            --nb-accent: #ff2d95;
+            --nb-accent-alt: #00f0ff;
+            --nb-ink: #111111;
+            --nb-text: #111111;
+            --nb-muted: #6b7280;
+            --nb-border: #111111;
+            --nb-success: #00ff88;
+            --nb-danger: #ff1744;
+            --nb-warning: #ffa500;
+            --nb-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+            --nb-font-heading: 'Playfair Display', serif;
+            --nb-shadow-sm: 3px 3px 0 #111;
+            --nb-shadow-md: 6px 6px 0 #111;
+            --nb-shadow-lg: 8px 8px 0 #111;
+            --nb-radius: 0px;
+            --nb-radius-sm: 4px;
+            --nb-sidebar-width: 250px;
+            --nb-header-height: 64px;
+        }
+
+        body {
+            font-family: var(--nb-font-body);
+            background-color: var(--nb-surface);
+            color: var(--nb-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6, .card-header {
+            font-family: var(--nb-font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Sidebar ===== */
+        .nb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--nb-sidebar-width);
+            z-index: 1000;
+            background: var(--nb-bg);
+            color: #fff;
+            border-right: 3px solid var(--nb-border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nb-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.25rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nb-sidebar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .nb-sidebar-title {
+            font-family: var(--nb-font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            display: block;
+        }
+        .nb-sidebar-title em {
+            color: var(--nb-accent-alt);
+            font-style: normal;
+        }
+        .nb-sidebar-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nb-sidebar-nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .nb-sidebar-section {
+            display: block;
+            padding: 0.9rem 1.25rem 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--nb-primary-light);
+        }
+
+        .nb-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.15rem 0.6rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--nb-radius-sm);
+            transition: all 0.15s;
+        }
+        .nb-nav-link i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .nb-nav-link:hover {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            transform: translate(-1px, -1px);
+        }
+        .nb-nav-link.active {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            font-weight: 700;
+        }
+        .nb-nav-link.active::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-accent);
+            flex-shrink: 0;
+        }
+        .nb-nav-link.nb-nav-danger:hover {
+            background: var(--nb-danger);
+        }
+
+        .nb-sidebar-footer {
+            border-top: 3px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0;
+        }
+
+        /* ===== Topbar ===== */
+        .nb-topbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--nb-sidebar-width);
+            z-index: 999;
+            height: var(--nb-header-height);
+            background: #fff;
+            border-bottom: 3px solid var(--nb-border);
+            box-shadow: var(--nb-shadow-sm);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nb-topbar .nb-toggle {
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            border-radius: var(--nb-radius-sm);
+            font-size: 1.1rem;
+            padding: 0.35rem 0.65rem;
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-topbar .nb-toggle:hover {
+            background: var(--nb-primary);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+
+        .nb-user-dropdown .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--nb-text);
+            text-decoration: none;
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+            border-radius: var(--nb-radius-sm);
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-user-dropdown .dropdown-toggle:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .nb-user-dropdown img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+        }
+
+        /* ===== Main content ===== */
+        .nb-main {
+            margin-left: var(--nb-sidebar-width);
+            padding: calc(var(--nb-header-height) + 24px) 24px 24px;
+            flex: 1;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-md);
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background: var(--nb-surface-2);
+            border-bottom: 3px solid var(--nb-border);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            font-weight: 600;
+            transition: all 0.12s;
+        }
+        .btn-primary {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #111;
+        }
+        .btn-outline-primary {
+            color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            box-shadow: 2px 2px 0 #111;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--nb-primary);
+            color: #fff;
+        }
+        .btn-success { background-color: var(--nb-success); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-danger { background-color: var(--nb-danger); border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-warning { background-color: var(--nb-warning); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-info { background-color: var(--nb-accent-alt); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-secondary { background-color: #d1d5db; border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-accent { background-color: var(--nb-accent); border-color: var(--nb-border); color: #fff; box-shadow: 3px 3px 0 #111; }
+        .btn-accent:hover { background-color: #e11d7d; color: #fff; }
+        .btn-sm { box-shadow: 2px 2px 0 #111; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111 !important; }
+
+        /* ===== Forms ===== */
+        .form-control, .form-select {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-family: var(--nb-font-body);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--nb-primary);
+            box-shadow: 3px 3px 0 var(--nb-primary-light);
+        }
+        .form-check-input:checked {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+        }
+
+        /* ===== Tables ===== */
+        .table {
+            border: 2px solid var(--nb-border);
+            background: #fff;
+        }
+        .table thead th {
+            background: var(--nb-bg);
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 3px solid var(--nb-border);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--nb-surface);
+        }
+        .table-hover tbody tr:hover {
+            background-color: var(--nb-surface-2);
+        }
+        .table td {
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* ===== Badges & alerts ===== */
+        .badge {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-weight: 600;
+        }
+        .alert {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-sm);
+        }
+        .alert-success { background-color: var(--nb-success); color: var(--nb-text); }
+        .alert-danger { background-color: var(--nb-danger); color: #fff; }
+        .alert-warning { background-color: var(--nb-warning); color: var(--nb-text); }
+        .alert-info { background-color: var(--nb-accent-alt); color: var(--nb-text); }
+
+        /* ===== Modals ===== */
+        .modal {
+            z-index: 99999 !important;
+        }
+        .modal-backdrop {
+            z-index: 99998 !important;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        .modal-dialog {
+            z-index: 99999 !important;
+        }
+        .modal-content {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-lg);
+        }
+        .modal-header {
+            border-bottom: 3px solid var(--nb-border);
+            font-family: var(--nb-font-heading);
+        }
+        .modal-footer {
+            border-top: 3px solid var(--nb-border);
+        }
+
+        /* ===== Pills/tabs ===== */
+        .nav-pills .nav-link {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            margin-right: 0.35rem;
+            color: var(--nb-text);
+            background: #fff;
+            box-shadow: 2px 2px 0 #111;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--nb-primary);
+            color: #fff;
+        }
+
+        /* ===== Admin footer ===== */
+        .nb-admin-footer {
+            border-top: 3px solid var(--nb-border);
+            background: var(--nb-bg);
+            color: #fff;
+            padding: 1.25rem 24px;
+            margin-left: var(--nb-sidebar-width);
+        }
+        .nb-admin-footer a {
+            color: var(--nb-primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nb-admin-footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nb-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .nb-sidebar.active {
+                transform: translateX(0);
+            }
+            .nb-main, .nb-admin-footer {
+                margin-left: 0;
+            }
+            .nb-topbar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+
+
+<nav class="nb-sidebar" id="adminSidebar">
+    <div class="nb-sidebar-brand">
+        <img src="assets/images/CHESS club logo ups.webp" alt="Chess Club ENSAS Logo" class="nb-sidebar-logo" width="40" height="40" loading="lazy" decoding="async">
+        <div>
+            <span class="nb-sidebar-title">Chess Club <em>ENSAS</em></span>
+            <small class="nb-sidebar-sub">Admin Panel</small>
+        </div>
+    </div>
+
+    <div class="nb-sidebar-nav">
+        <span class="nb-sidebar-section">Main</span>
+
+        <a class="nb-nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </a>
+                <a class="nb-nav-link " href="members.html">
+            <i class="fas fa-users"></i><span>Members</span>
+        </a>
+                        <a class="nb-nav-link " href="tournaments.html">
+            <i class="fas fa-trophy"></i><span>League & Tournaments</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Media</span>
+                <a class="nb-nav-link " href="announcements.html">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+                        <a class="nb-nav-link " href="formations.html">
+            <i class="fas fa-chess-board"></i><span>Formations</span>
+        </a>
+                        <a class="nb-nav-link " href="newsletter.html">
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Business</span>
+                <a class="nb-nav-link " href="sponsors.html">
+            <i class="fas fa-handshake"></i><span>Sponsors</span>
+        </a>
+                        <a class="nb-nav-link " href="products.html">
+            <i class="fas fa-shopping-bag"></i><span>Products</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Recruitment</span>
+        <a class="nb-nav-link " href="announcements-forms.html">
+            <i class="fas fa-file-alt"></i><span>Recruitment Forms</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Administration</span>
+        <a class="nb-nav-link " href="admins.html">
+            <i class="fas fa-user-shield"></i><span>Admins</span>
+        </a>
+        <a class="nb-nav-link " href="settings.html">
+            <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+        
+        <span class="nb-sidebar-section">Account</span>
+        <a class="nb-nav-link " href="profile.html">
+            <i class="fas fa-user-cog"></i><span>Profile</span>
+        </a>
+    </div>
+
+    <div class="nb-sidebar-footer">
+        <a class="nb-nav-link" href="https://moreqasse.github.io/MyCV/" target="_blank">
+            <i class="fas fa-external-link-alt"></i><span>Visit Website</span>
+        </a>
+        <a class="nb-nav-link nb-nav-danger" href="login.html">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Topbar -->
+<nav class="nb-topbar">
+    <div>
+        <button class="nb-toggle d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="d-none d-lg-inline text-muted small">
+            <i class="fas fa-desktop me-1"></i> Best on PC for full features
+        </span>
+    </div>
+
+    <div class="nb-user-dropdown">
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/placeholder.png" alt="User">
+                <span class="d-none d-md-inline">DemoAdmin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="nb-main">
+    
+            <style>
+/* ===== Mini scroll container ===== */
+.nb-scroll {
+    max-height: 540px;
+    overflow-y: auto;
+    border-bottom: 3px solid var(--nb-border);
+    scrollbar-width: thin;
+    scrollbar-color: var(--nb-primary) var(--nb-surface-2);
+}
+.nb-scroll-soft { max-height: 280px; border-bottom: 0; }
+.nb-scroll::-webkit-scrollbar { width: 8px; }
+.nb-scroll::-webkit-scrollbar-track { background: var(--nb-surface-2); border-left: 2px solid var(--nb-border); }
+.nb-scroll::-webkit-scrollbar-thumb { background: var(--nb-primary); border: 1px solid var(--nb-border); }
+.nb-scroll thead th {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--nb-surface-2);
+    border-bottom: 3px solid var(--nb-border);
+    color: var(--nb-primary-dark);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+/* ===== Instant lookup ===== */
+.search-ico {
+    position: absolute; top: 50%; left: 0.9rem;
+    transform: translateY(-50%); color: var(--nb-muted); z-index: 2; pointer-events: none;
+}
+.clear-search {
+    position: absolute; top: 50%; right: 0.55rem;
+    transform: translateY(-50%); border: 2px solid transparent; background: transparent;
+    color: var(--nb-muted); display: none; line-height: 1;
+    padding: 0.25rem 0.4rem;
+}
+.clear-search:hover { color: var(--nb-danger); }
+/* ===== Stat pills ===== */
+.nb-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.72rem; font-weight: 800; white-space: nowrap;
+    padding: 0.32rem 0.7rem; border: 2px solid var(--nb-border);
+    background: var(--nb-surface-2); color: var(--nb-text);
+    box-shadow: 2px 2px 0 var(--nb-border);
+}
+.nb-pill-live { border-left: 5px solid var(--nb-primary); }
+.nb-pill[role="button"] { cursor: pointer; transition: all 0.12s; }
+.nb-pill[role="button"]:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--nb-border); }
+.nb-pill[role="button"]:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--nb-border); }
+.nb-pill-active { background: var(--nb-primary); color: #fff !important; }
+/* ===== Bulk action bar ===== */
+.bulk-bar {
+    display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    padding: 0.55rem 0.9rem;
+    background: var(--nb-bg); border-bottom: 3px solid var(--nb-border);
+    color: #fff;
+}
+.bulk-count { font-weight: 800; letter-spacing: 0.02em; }
+.bulk-sep { width: 2px; align-self: stretch; background: rgba(255, 255, 255, 0.25); }
+.bulk-btn { border: 2px solid #111 !important; box-shadow: 2px 2px 0 #111 !important; font-weight: 700; }
+.bulk-btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 #111 !important; }
+</style>
+<script>
+function initTableTools(cfg) {
+    const scope      = document.querySelector(cfg.scope || 'body');
+    const liveSearch = cfg.search     ? document.getElementById(cfg.search) : null;
+    const clearBtn   = cfg.clear      ? document.getElementById(cfg.clear) : null;
+    const liveCount  = cfg.count      ? document.getElementById(cfg.count) : null;
+    const selectAll  = cfg.selectAll  ? document.getElementById(cfg.selectAll) : null;
+    const bulkForm   = cfg.bulkForm   ? document.getElementById(cfg.bulkForm) : null;
+    const bulkAction = cfg.bulkAction ? document.getElementById(cfg.bulkAction) : null;
+    const bulkBar    = cfg.bulkBar    ? document.getElementById(cfg.bulkBar) : null;
+    const bulkCount  = cfg.bulkCount  ? document.getElementById(cfg.bulkCount) : null;
+    const bulkClear  = cfg.bulkClear  ? document.getElementById(cfg.bulkClear) : null;
+    const filters    = cfg.filters || {};
+    const confirms   = cfg.confirmActions || {};
+    if (!scope) return;
+
+    // All filterable rows (desktop table rows + mobile card rows).
+    // When a page renders both layouts, only the currently visible
+    // layout's rows participate (see layoutRows()) — the hidden twins
+    // stay out of counts, select-all and the "x/y shown" tally.
+    const allRows = Array.prototype.slice.call(scope.querySelectorAll('[data-search]'));
+
+    function activeLayout() {
+        const mob = scope.querySelector('.nb-mob-only');
+        if (mob && getComputedStyle(mob).display !== 'none') return 'mob';
+        return 'desk';
+    }
+    function layoutRows() {
+        const lay = activeLayout();
+        return allRows.filter(function (r) {
+            return (r.closest('.nb-mob-only') ? 'mob' : 'desk') === lay;
+        });
+    }
+
+    function visibleRowChecks() {
+        const checks = [];
+        layoutRows().forEach(function (row) {
+            if (row.style.display !== 'none') {
+                const c = row.querySelector('.row-check');
+                if (c) checks.push(c);
+            }
+        });
+        return checks;
+    }
+
+    function updateBulkBar() {
+        const count = document.querySelectorAll(cfg.scope + ' .row-check:checked').length;
+        if (bulkCount) bulkCount.textContent = count;
+        if (bulkBar) bulkBar.classList.toggle('d-none', count === 0);
+    }
+
+    let filterMode = '';
+    const filterPills = document.querySelectorAll('.nb-pill[data-filter]');
+
+    function applyLiveFilter() {
+        const q = liveSearch && liveSearch.value ? liveSearch.value.trim().toLowerCase() : '';
+        const rows = layoutRows();
+        let visible = 0;
+        rows.forEach(function (row) {
+            let show = true;
+            if (q && row.getAttribute('data-search').indexOf(q) === -1) show = false;
+            if (show && filterMode && filters[filterMode]) {
+                const f = filters[filterMode];
+                if (row.getAttribute(f[0]) !== f[1]) show = false;
+            }
+            row.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        if (liveCount) liveCount.textContent = visible + '/' + rows.length;
+        if (selectAll) selectAll.checked = false;
+        if (clearBtn && liveSearch) clearBtn.style.display = liveSearch.value ? 'block' : 'none';
+        updateBulkBar();
+    }
+
+    function setFilterMode(mode) {
+        filterMode = mode;
+        filterPills.forEach(function (p) {
+            p.classList.toggle('nb-pill-active', p.dataset.filter === mode);
+        });
+        applyLiveFilter();
+    }
+
+    filterPills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+            setFilterMode(pill.dataset.filter === filterMode ? '' : pill.dataset.filter);
+        });
+    });
+
+    if (liveSearch) {
+        liveSearch.addEventListener('input', applyLiveFilter);
+        if (clearBtn) {
+            clearBtn.addEventListener('click', function () {
+                liveSearch.value = '';
+                setFilterMode('');
+                liveSearch.focus();
+            });
+        }
+    }
+
+    scope.querySelectorAll('.row-check').forEach(function (c) {
+        c.addEventListener('change', updateBulkBar);
+    });
+
+    if (selectAll) {
+        selectAll.addEventListener('change', function () {
+            visibleRowChecks().forEach(function (c) { c.checked = selectAll.checked; });
+            updateBulkBar();
+        });
+    }
+
+    if (bulkClear) {
+        bulkClear.addEventListener('click', function () {
+            document.querySelectorAll(cfg.scope + ' .row-check').forEach(function (c) { c.checked = false; });
+            if (selectAll) selectAll.checked = false;
+            updateBulkBar();
+        });
+    }
+
+    document.querySelectorAll('.bulk-btn[data-bulk-action]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const count = document.querySelectorAll(cfg.scope + ' .row-check:checked').length;
+            if (count === 0) return;
+            const action = btn.dataset.bulkAction;
+            // Opt-in interception (e.g. chunked progress UI). Return false to
+            // take over and skip the native submit.
+            if (typeof cfg.beforeSubmit === 'function') {
+                try { if (cfg.beforeSubmit(action, count) === false) return; } catch (e) {}
+            }
+            const run = function () {
+                if (bulkAction) bulkAction.value = action;
+                if (bulkForm) bulkForm.submit();
+            };
+            const spec = confirms[action];
+            if (spec && typeof nbConfirm === 'function') {
+                nbConfirm({
+                    title: spec.title,
+                    message: spec.message.replace('{count}', count),
+                    icon: spec.icon,
+                    tone: spec.tone,
+                    confirmText: spec.confirmText
+                }).then(run).catch(function () {});
+            } else {
+                run();
+            }
+        });
+    });
+}
+</script>
+
+<style>
+.btn-outline-pink {
+    border-color: #ec4899 !important;
+    color: #ec4899 !important;
+}
+.btn-outline-pink:hover {
+    background-color: #ec4899 !important;
+    color: white !important;
+}
+.btn-outline-pink:checked {
+    background-color: #ec4899 !important;
+    border-color: #ec4899 !important;
+    color: white !important;
+}
+.btn-outline-primary:hover {
+    background-color: #3b82f6 !important;
+    color: white !important;
+}
+.btn-outline-primary:checked {
+    background-color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+    color: white !important;
+}
+.btn-check:checked + .btn-outline-pink {
+    background-color: #ec4899 !important;
+    border-color: #ec4899 !important;
+    color: white !important;
+}
+.btn-check:checked + .btn-outline-primary {
+    background-color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+    color: white !important;
+}
+.btn-check:checked + .btn-outline-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: white !important;
+}
+/* ===== Mini scroll container / instant lookup / pills / bulk bar ===== */
+/* Shared with newsletter — lives in admin/includes/table-tools.php */
+/* Members-specific pill variants */
+.nb-pill-paid { border-left: 5px solid var(--nb-success); }
+.nb-pill-league { border-left: 5px solid var(--nb-accent-alt); }
+.nb-pill-bureau { border-left: 5px solid var(--nb-accent); }
+/* ===== Contact icon chips ===== */
+.contact-icos { display: flex; gap: 0.35rem; }
+.contact-ico {
+    width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center;
+    border: 2px solid var(--nb-border); background: var(--nb-surface-2); color: var(--nb-ink);
+    font-size: 0.72rem; box-shadow: 2px 2px 0 var(--nb-border);
+    text-decoration: none; transition: all 0.12s;
+}
+.contact-ico:hover { background: var(--nb-primary); color: #fff; transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--nb-border); }
+.contact-ico-wa { color: #1f9e54; }
+.contact-ico-ig { color: #d62976; }
+.contact-ico-none { color: var(--nb-muted); opacity: 0.5; }
+/* ===== Bulk action bar — shared, lives in admin/includes/table-tools.php ===== */
+/* ===== Photo uploader ===== */
+.photo-uploader {
+    border: 3px dashed var(--nb-border);
+    background: var(--nb-surface);
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.photo-uploader:hover { background: var(--nb-surface-2); }
+.photo-uploader-dragover {
+    background: var(--nb-surface-2);
+    border-style: solid;
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--nb-border);
+}
+.photo-uploader-disabled { pointer-events: none; opacity: 0.6; cursor: not-allowed; }
+.photo-uploader-ico { font-size: 1.8rem; color: var(--nb-primary); }
+.photo-uploader-title { margin: 0.5rem 0 0; font-weight: 700; color: var(--nb-text); font-size: 0.95rem; }
+.photo-uploader-sub { margin: 0; font-size: 0.75rem; color: var(--nb-muted); }
+.photo-preview-wrap { display: flex; align-items: center; gap: 1rem; }
+.photo-preview-card {
+    position: relative;
+    width: 132px;
+    border: 3px solid var(--nb-border);
+    background: var(--nb-surface-2);
+    box-shadow: 3px 3px 0 var(--nb-border);
+    padding: 6px;
+}
+.photo-preview-img {
+    width: 100%; height: 120px; object-fit: cover;
+    border: 2px solid var(--nb-border);
+    display: block;
+}
+.photo-badge {
+    position: absolute; top: 10px; left: 10px;
+    font-size: 0.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em;
+    background: var(--nb-primary); color: #fff;
+    border: 2px solid var(--nb-border); padding: 0.15rem 0.4rem; line-height: 1;
+}
+.photo-badge-new { background: var(--nb-accent); }
+.photo-badge-delete { background: var(--nb-danger); }
+.photo-remove {
+    position: absolute; top: 10px; right: 10px;
+    width: 26px; height: 26px; line-height: 1; padding: 0;
+    border: 2px solid var(--nb-border); background: var(--nb-danger); color: #fff;
+    font-size: 0.85rem; font-weight: 900; box-shadow: 2px 2px 0 var(--nb-border);
+    transition: all 0.12s;
+}
+.photo-remove:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--nb-border); }
+.photo-preview-hint { font-size: 0.75rem; color: var(--nb-muted); margin: 0; }
+.photo-preview-hint-error { color: var(--nb-danger) !important; font-weight: 700; }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar removed - using header sidebar only -->
+        
+        <!-- Main Content -->
+        <main class="col-12 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">
+                    Members Management                </h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                                            <a href="members.html" class="btn btn-sm btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to List
+                        </a>
+                                    </div>
+            </div>
+
+            
+                            <!-- Member Form -->
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" action="#" data-demo-form="1" data-demo-args="?action=add">
+                            <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="first_name" class="form-label">
+                                        <i class="fas fa-user me-2 text-muted"></i>First Name *
+                                    </label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" 
+                                           value="" required 
+                                           >
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="last_name" class="form-label">
+                                        <i class="fas fa-user me-2 text-muted"></i>Last Name *
+                                    </label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" 
+                                           value="" required
+                                           >
+                                </div>
+                            </div>
+
+                            <!-- Gender Selection -->
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label class="form-label">
+                                        <i class="fas fa-venus-mars me-2 text-muted"></i>Gender
+                                    </label>
+                                    <div class="btn-group w-100" role="group" >
+                                        <input type="radio" class="btn-check" name="gender" id="gender_male" value="male" 
+                                                
+                                               >
+                                        <label class="btn btn-outline-primary" for="gender_male" 
+                                               style="border-color: #3b82f6; color: #3b82f6;">
+                                            <i class="fas fa-mars me-2"></i>Male
+                                        </label>
+                                        
+                                        <input type="radio" class="btn-check" name="gender" id="gender_female" value="female" 
+                                                
+                                               >
+                                        <label class="btn btn-outline-pink" for="gender_female" 
+                                               style="border-color: #ec4899; color: #ec4899;">
+                                            <i class="fas fa-venus me-2"></i>Female
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope me-2 text-muted"></i>Email
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email" 
+                                           value=""
+                                           >
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone_whatsapp" class="form-label">
+                                        <i class="fab fa-whatsapp me-2 text-muted"></i>Phone (WhatsApp)
+                                    </label>
+                                    <input type="tel" class="form-control" id="phone_whatsapp" name="phone_whatsapp" 
+                                           value=""
+                                           >
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="instagram_username" class="form-label">
+                                        <i class="fab fa-instagram me-2 text-muted"></i>Instagram Username
+                                    </label>
+                                    <input type="text" class="form-control" id="instagram_username" name="instagram_username" 
+                                           value=""
+                                           >
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="is_league_player" name="is_league_player" 
+                                               value="1"  
+                                               >
+                                        <label class="form-check-label" for="is_league_player">
+                                            <i class="fas fa-chess me-2 text-muted"></i>League Player
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="has_paid" name="has_paid" 
+                                               value="1"                                                >
+                                        <label class="form-check-label" for="has_paid">
+                                            <i class="fas fa-credit-card me-2 text-muted"></i>Has Paid
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bureau Member Section -->
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="is_bureau_member" name="is_bureau_member" 
+                                               value="1"  
+                                               onchange="toggleBureauPosition()"
+                                               >
+                                        <label class="form-check-label" for="is_bureau_member">
+                                            <i class="fas fa-user-tie me-2 text-muted"></i>Bureau Member
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch" id="vice_container" style="display: none;">
+                                        <input class="form-check-input" type="checkbox" id="is_vice" name="is_vice" 
+                                               value="1"  
+                                               >
+                                        <label class="form-check-label" for="is_vice">
+                                            <i class="fas fa-user-tag me-2 text-muted"></i>Vice Position
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Profile Image Upload (only for bureau members) -->
+                                                        <div class="row mb-3" id="profile_image_row" style="display: none;">
+                                <div class="col-md-12">
+                                    <label for="profile_image" class="form-label text-primary">
+                                        <i class="fas fa-camera me-2 text-muted"></i>Profile Photo
+                                                                            </label>
+                                    <div class="photo-uploader " id="photoDropzone">
+                                        <input type="file" id="profile_image" name="profile_image"
+                                               accept="image/*"
+                                                                                              hidden>
+                                        <i class="fas fa-cloud-arrow-up photo-uploader-ico"></i>
+                                        <p class="photo-uploader-title">Click to upload or drag &amp; drop</p>
+                                        <p class="photo-uploader-sub">JPG, PNG, GIF or WEBP — max 2 MB</p>
+                                    </div>
+                                    <div class="photo-preview-wrap mt-3" id="photoPreviewWrap" style="display: none;">
+                                        <div class="photo-preview-card">
+                                                                                            <img src="" id="photoPreviewImg" class="photo-preview-img" alt="New profile photo">
+                                                                                        <span class="photo-badge" id="photoBadge">New</span>
+                                                                                            <button type="button" class="photo-remove" id="photoRemoveBtn" title="Remove new photo">×</button>
+                                                                                    </div>
+                                        <p class="photo-preview-hint" id="photoHint">
+                                                                                            No photo yet — upload one above.
+                                                                                    </p>
+                                    </div>
+                                                                    </div>
+                            </div>
+
+                            <div class="row mb-3" id="bureau_position_row" style="display: none;">
+                                <div class="col-md-6">
+                                    <label for="bureau_position" class="form-label text-primary">
+                                        <i class="fas fa-user-tie me-1"></i>Bureau Position
+                                    </label>
+                                    <select class="form-select shadow-sm" id="bureau_position" name="bureau_position" 
+                                            style="border-radius: 6px; border: 1px solid #e9ecef; transition: all 0.2s ease;"
+                                            onfocus="this.style.borderColor='#6366f1'; this.style.boxShadow='0 0 0 0.15rem rgba(99, 102, 241, 0.25)'"
+                                            onblur="this.style.borderColor='#e9ecef'; this.style.boxShadow='none'"
+                                            >
+                                        <option value="" class="text-muted">Select position...</option>
+                                        <option value="President" >President</option>
+                                        <option value="Conseillor" >Conseillor</option>
+                                        <option value="Media Manager" >Media Manager</option>
+                                        <option value="Website Manager" >Website Manager</option>
+                                        <option value="Organisation manager" >Organisation Manager</option>
+                                        <option value="HR manager" >HR Manager</option>
+                                        <option value="Internal relations manager" >Internal Relations Manager</option>
+                                        <option value="external relations manager" >External Relations Manager</option>
+                                        <option value="secretary" >Secretary</option>
+                                        <option value="tresorer" >Tresorer</option>
+                                        <option value="content creator" >Content Creator</option>
+                                        <option value="formations manager" >Formations Manager</option>
+                                        <option value="event manager" >Event Manager</option>
+                                        <option value="Other" >Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                                                            <div class="mt-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Save Member
+                                    </button>
+                                                                        <a href="members.html" class="btn btn-secondary">Cancel</a>
+                                </div>
+                                                    </form>
+                    </div>
+                </div>
+                
+                <script>
+                function toggleBureauPosition() {
+                    const checkbox = document.getElementById('is_bureau_member');
+                    const positionRow = document.getElementById('bureau_position_row');
+                    const viceContainer = document.getElementById('vice_container');
+                    const profileImageRow = document.getElementById('profile_image_row');
+                    
+                    if (checkbox.checked) {
+                        positionRow.style.display = 'block';
+                        viceContainer.style.display = 'block';
+                        profileImageRow.style.display = 'block';
+                    } else {
+                        positionRow.style.display = 'none';
+                        viceContainer.style.display = 'none';
+                        profileImageRow.style.display = 'none';
+                        document.getElementById('bureau_position').value = '';
+                        document.getElementById('is_vice').checked = false;
+                    }
+                }
+                
+                // ===== Photo uploader: click / drag & drop / live preview =====
+                function initPhotoUploader() {
+                    var dropzone = document.getElementById('photoDropzone');
+                    var fileInput = document.getElementById('profile_image');
+                    if (!dropzone || !fileInput || fileInput.disabled) return;
+
+                    var img = document.getElementById('photoPreviewImg');
+                    var badge = document.getElementById('photoBadge');
+                    var hint = document.getElementById('photoHint');
+                    var removeBtn = document.getElementById('photoRemoveBtn');
+                    var deleteCheck = document.getElementById('delete_profile_image');
+                    var wrap = document.getElementById('photoPreviewWrap');
+                    var originalSrc = document.getElementById('photoOriginalSrc');
+                    var pendingUrl = null;
+                    var MAX_BYTES = 2 * 1024 * 1024;
+
+                    dropzone.addEventListener('click', function () { fileInput.click(); });
+
+                    ['dragenter', 'dragover'].forEach(function (ev) {
+                        dropzone.addEventListener(ev, function (e) {
+                            e.preventDefault();
+                            dropzone.classList.add('photo-uploader-dragover');
+                        });
+                    });
+                    ['dragleave', 'drop'].forEach(function (ev) {
+                        dropzone.addEventListener(ev, function (e) {
+                            e.preventDefault();
+                            dropzone.classList.remove('photo-uploader-dragover');
+                        });
+                    });
+                    dropzone.addEventListener('drop', function (e) {
+                        if (e.dataTransfer.files.length) {
+                            fileInput.files = e.dataTransfer.files;
+                            handleFile(e.dataTransfer.files[0]);
+                        }
+                    });
+                    fileInput.addEventListener('change', function () {
+                        if (fileInput.files.length) handleFile(fileInput.files[0]);
+                    });
+
+                    function setHint(text, isError) {
+                        if (!hint) return;
+                        hint.textContent = text;
+                        hint.classList.toggle('photo-preview-hint-error', !!isError);
+                    }
+
+                    function handleFile(file) {
+                        if (!file.type.match(/^image\//)) {
+                            fileInput.value = '';
+                            setHint('That file is not an image. Choose a JPG, PNG, GIF or WEBP.', true);
+                            return;
+                        }
+                        if (file.size > MAX_BYTES) {
+                            fileInput.value = '';
+                            setHint('Image is larger than 2 MB. Choose a smaller one.', true);
+                            return;
+                        }
+                        var reader = new FileReader();
+                        reader.onload = function (ev) {
+                            pendingUrl = ev.target.result;
+                            if (img) { img.src = pendingUrl; img.alt = 'New profile photo'; }
+                            if (wrap) wrap.style.display = 'flex';
+                            if (badge) { badge.textContent = 'New'; badge.classList.remove('photo-badge-delete'); badge.classList.add('photo-badge-new'); }
+                            if (deleteCheck) deleteCheck.checked = false;
+                            if (removeBtn) { removeBtn.style.display = ''; removeBtn.textContent = '×'; removeBtn.title = 'Remove new photo'; }
+                            setHint('New photo selected — it will replace the current one when you save.');
+                        };
+                        reader.readAsDataURL(file);
+                    }
+
+                    if (removeBtn) {
+                        removeBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            if (pendingUrl) {
+                                pendingUrl = null;
+                                fileInput.value = '';
+                                if (deleteCheck) deleteCheck.checked = false;
+                                if (originalSrc && originalSrc.value) {
+                                    img.src = originalSrc.value;
+                                    img.alt = 'Current profile photo';
+                                    badge.textContent = 'Current';
+                                    badge.classList.remove('photo-badge-new', 'photo-badge-delete');
+                                    removeBtn.title = 'Remove current photo';
+                                    setHint('Current photo. Click the uploader above to replace it, or use × to remove it.');
+                                } else {
+                                    wrap.style.display = 'none';
+                                }
+                            } else if (deleteCheck) {
+                                deleteCheck.checked = !deleteCheck.checked;
+                                if (deleteCheck.checked) {
+                                    badge.textContent = 'To delete';
+                                    badge.classList.add('photo-badge-delete');
+                                    badge.classList.remove('photo-badge-new');
+                                    removeBtn.textContent = '↺';
+                                    removeBtn.title = 'Undo deletion';
+                                    setHint('Marked for deletion — this photo will be removed when you save.', true);
+                                } else {
+                                    badge.textContent = 'Current';
+                                    badge.classList.remove('photo-badge-delete');
+                                    removeBtn.textContent = '×';
+                                    removeBtn.title = 'Remove current photo';
+                                    setHint('Current photo. Click the uploader above to replace it, or use × to remove it.');
+                                }
+                            }
+                        });
+                    }
+                }
+                initPhotoUploader();
+
+                // Initialize bureau position visibility on page load
+                document.addEventListener('DOMContentLoaded', function() {
+                    const isBureauMember = document.getElementById('is_bureau_member');
+                    if (isBureauMember && isBureauMember.checked) {
+                        document.getElementById('bureau_position_row').style.display = 'block';
+                        document.getElementById('vice_container').style.display = 'block';
+                        document.getElementById('profile_image_row').style.display = 'block';
+                    }
+                });
+                </script>
+                    </main>
+    </div>
+</div>
+
+    </div> <!-- End .nb-main -->
+
+    <!-- Admin Footer -->
+    <footer class="nb-admin-footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    <i class="fas fa-copyright me-1"></i>&copy; 2026 Chess Club ENSAS Administration Panel
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-shield-alt me-1"></i>Secure Management System
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    Developed by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank">Mohammed Reqasse</a>
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-palette me-1"></i>Professional Web Development
+                </p>
+            </div>
+            <div class="text-md-end">
+                <button class="btn btn-outline-light btn-sm mb-2" onclick="openContactSupport()">
+                    <i class="fas fa-headset me-2"></i>Contact Support
+                </button>
+                <div>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block"><i class="fas fa-user me-1"></i>Mohammed Reqasse</small>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block">
+                        <i class="fas fa-phone me-1"></i>
+                        <a href="tel:+212600000000" style="color: rgba(255,255,255,0.55);">+212 610 100 100</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal -->
+    <div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contactSupportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px solid #111; box-shadow: 4px 4px 0 #111;">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h6 class="fw-bold">Mohammed Reqasse</h6>
+                        <p class="text-muted mb-3">Website Creator</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Phone Support</h6>
+                                <a href="tel:+212600000000" class="text-decoration-none fw-bold">+212 610 100 100</a>
+                                <p class="text-muted small mb-0">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Email Support</h6>
+                                <a href="mailto:reqasse@gmail.com" class="text-decoration-none fw-bold">reqasse@gmail.com</a>
+                                <p class="text-muted small mb-0">Response within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Web Support</h6>
+                                <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" class="text-decoration-none fw-bold">https://moreqasse.github.io/MyCV/</a>
+                                <p class="text-muted small mb-0">Online resources & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <a href="tel:+212600000000" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Reusable Confirmation Modal Component (nbConfirm) -->
+    <!-- ===== Reusable Confirm Modal Component ===== -->
+<div class="modal fade" id="nbConfirmModal" tabindex="-1" aria-labelledby="nbConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111;overflow:hidden;">
+            <div class="modal-header" style="background:#1a0a2e;border-bottom:3px solid #111;border-radius:0;padding:0.9rem 1.25rem;">
+                <h5 class="modal-title text-white fw-bold mb-0" id="nbConfirmModalLabel" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.1rem;">
+                    <i class="fas fa-question-circle me-2" style="color:#ff2d95;"></i>Confirmation
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div id="nbConfirmIcon" class="d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+                     style="width:72px;height:72px;border:3px solid #111;box-shadow:4px 4px 0 #111;background:#7c3aed;color:#fff;font-size:1.9rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h6 class="fw-bold mb-2" id="nbConfirmTitle" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.15rem;color:#111;">Are you sure?</h6>
+                <p class="text-muted mb-0" id="nbConfirmMessage" style="font-size:0.92rem;line-height:1.5;"></p>
+            </div>
+            <div class="modal-footer" style="border-top:3px solid #111;border-radius:0;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="nbConfirmCancel">
+                    <i class="fas fa-times me-2"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="nbConfirmOk">
+                    <i class="fas fa-check me-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var modalEl = document.getElementById('nbConfirmModal');
+    if (!modalEl || typeof bootstrap === 'undefined') return;
+
+    var modal = new bootstrap.Modal(modalEl);
+    var okBtn = document.getElementById('nbConfirmOk');
+    var cancelBtn = document.getElementById('nbConfirmCancel');
+    var titleEl = document.getElementById('nbConfirmTitle');
+    var msgEl = document.getElementById('nbConfirmMessage');
+    var iconEl = document.getElementById('nbConfirmIcon');
+    var pending = null;
+
+    var tones = {
+        danger:  { iconBg: '#ff1744', btn: 'btn-danger' },
+        success: { iconBg: '#00ff88', btn: 'btn-success' },
+        warning: { iconBg: '#ffa500', btn: 'btn-warning' },
+        info:    { iconBg: '#00f0ff', btn: 'btn-info' },
+        primary: { iconBg: '#7c3aed', btn: 'btn-primary' }
+    };
+
+    function readOptions(el) {
+        return {
+            title: el.getAttribute('data-nb-confirm-title') || 'Are you sure?',
+            message: el.getAttribute('data-nb-confirm') || 'This action cannot be undone.',
+            tone: el.getAttribute('data-nb-confirm-tone') || 'danger',
+            icon: el.getAttribute('data-nb-confirm-icon') || 'fas fa-exclamation-triangle',
+            confirmText: el.getAttribute('data-nb-confirm-text') || 'Confirm'
+        };
+    }
+
+    window.nbConfirm = function (options) {
+        options = options || {};
+        var tone = tones[options.tone] || tones.primary;
+        var title = options.title || 'Are you sure?';
+        var message = options.message || 'This action cannot be undone.';
+        var icon = options.icon || 'fas fa-exclamation-triangle';
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.innerHTML = '<i class="' + icon + '"></i>';
+        iconEl.style.background = tone.iconBg;
+        iconEl.style.color = (options.tone === 'success' || options.tone === 'warning') ? '#111' : '#fff';
+        okBtn.className = 'btn ' + (options.confirmClass || tone.btn);
+        okBtn.innerHTML = '<i class="fas fa-check me-2"></i>' + (options.confirmText || 'Confirm');
+
+        pending = null;
+
+        return new Promise(function (resolve, reject) {
+            pending = { resolve: resolve, reject: reject };
+
+            function cleanup() {
+                okBtn.onclick = null;
+                cancelBtn.onclick = null;
+                modalEl.removeEventListener('hidden.bs.modal', onHidden);
+            }
+            function onHidden() {
+                cleanup();
+                if (pending) {
+                    pending.reject(new Error('cancelled'));
+                    pending = null;
+                }
+            }
+
+            modalEl.addEventListener('hidden.bs.modal', onHidden);
+
+            okBtn.onclick = function () {
+                modal.hide();
+                cleanup();
+                if (pending) {
+                    pending.resolve();
+                    pending = null;
+                }
+            };
+            cancelBtn.onclick = function () {
+                modal.hide();
+            };
+
+            modal.show();
+        });
+    };
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[data-nb-confirm]') : null;
+        if (!link) return;
+        e.preventDefault();
+        var href = link.getAttribute('href');
+        nbConfirm(readOptions(link)).then(function () {
+            window.location.href = href;
+        }).catch(function () {});
+    });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-nb-confirm]') : null;
+        if (!btn || btn.type !== 'submit' || !btn.form) return;
+        e.preventDefault();
+        var opts = readOptions(btn);
+        if (btn.hasAttribute('data-nb-confirm-text')) {
+            opts.confirmText = btn.getAttribute('data-nb-confirm-text');
+        }
+        nbConfirm(opts).then(function () {
+            var clone = document.createElement('input');
+            clone.type = 'hidden';
+            clone.name = btn.name;
+            clone.value = btn.value;
+            btn.form.appendChild(clone);
+            btn.form.submit();
+        }).catch(function () {});
+    });
+
+    document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.hasAttribute('data-nb-confirm')) return;
+        e.preventDefault();
+        nbConfirm(readOptions(form)).then(function () {
+            form.submit();
+        }).catch(function () {});
+    });
+})();
+</script>
+
+    <!-- Custom scripts -->
+    <script>
+        // Toggle sidebar on mobile (+ dim backdrop via body class)
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            var sb = document.getElementById('adminSidebar');
+            if (!sb) return;
+            sb.classList.toggle('active');
+            document.body.classList.toggle('nb-nav-open', sb.classList.contains('active'));
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('adminSidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar && sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                sidebarToggle && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('nb-nav-open');
+            }
+        });
+
+        // Mobile tables → lists: copy each <th> label into its column's <td>
+        // as data-th (used by admin-mobile.css). Skips .nb-keep-table
+        // (members page) and header-less tables. Checkbox-only cells and
+        // action cells get docking classes instead of labels.
+        (function nbResponsiveTables() {
+            function isCheckCell(td) {
+                var kids = Array.prototype.filter.call(td.childNodes, function (n) {
+                    if (n.nodeType === 3) return n.textContent.trim() !== '';
+                    if (n.nodeType !== 1) return false;
+                    var tag = n.tagName.toLowerCase();
+                    return !(tag === 'input' && (n.type === 'checkbox' || n.type === 'radio'));
+                });
+                return kids.length === 0 && td.querySelector('input[type="checkbox"], input[type="radio"]');
+            }
+            document.querySelectorAll('table.table:not(.nb-keep-table)').forEach(function (table) {
+                var headers = Array.prototype.map.call(
+                    table.querySelectorAll('thead tr:last-child th'),
+                    function (th) { return th.textContent.trim().replace(/\s+/g, ' '); }
+                );
+                if (!headers.length) return;
+                table.querySelectorAll('tbody tr').forEach(function (tr) {
+                    Array.prototype.forEach.call(tr.children, function (td, i) {
+                        if (td.tagName.toLowerCase() !== 'td') return;
+                        if (td.hasAttribute('colspan')) { td.classList.add('nb-no-label'); return; }
+                        if (isCheckCell(td)) { td.classList.add('nb-cell-check'); return; }
+                        if (td.querySelector('.btn, .btn-group, .dropdown')) { td.classList.add('nb-cell-actions'); return; }
+                        if (headers[i]) td.setAttribute('data-th', headers[i]);
+                        else td.classList.add('nb-no-label');
+                    });
+                });
+            });
+        })();
+
+        // Initialize tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(function(el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // Initialize popovers
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(function(el) {
+            return new bootstrap.Popover(el);
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert.alert-dismissible').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+
+        // Confirm before deleting (uses the shared nbConfirm component when available)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    if (typeof nbConfirm === 'function') {
+                        e.preventDefault();
+                        nbConfirm({
+                            title: 'Delete Item',
+                            message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                            icon: 'fas fa-trash',
+                            tone: 'danger',
+                            confirmText: 'Delete'
+                        }).then(function() {
+                            if (button.tagName === 'A') {
+                                window.location.href = button.href;
+                            } else if (button.form) {
+                                button.form.submit();
+                            }
+                        }).catch(function() {});
+                    } else if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            var togglePassword = document.querySelector('.toggle-password');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    var passwordInput = document.querySelector('#password');
+                    var icon = this.querySelector('i');
+                    if (passwordInput && passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else if (passwordInput) {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+        });
+
+        // Contact Support Modal Function
+        function openContactSupport() {
+            var modal = new bootstrap.Modal(document.getElementById('contactSupportModal'));
+            modal.show();
+        }
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>

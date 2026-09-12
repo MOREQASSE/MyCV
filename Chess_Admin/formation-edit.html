@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel - Chess Club ENSAS</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin mobile-first layer (tables→lists, touch targets, stacking) -->
+    <link rel="stylesheet" href="assets/css/admin-mobile.css?v=3">
+
+    <style>
+        :root {
+            --nb-bg: #1a0a2e;
+            --nb-bg-dark: #0d0d0d;
+            --nb-surface: #f5f0ff;
+            --nb-surface-2: #ece4fa;
+            --nb-primary: #7c3aed;
+            --nb-primary-dark: #4c1d95;
+            --nb-primary-light: #a78bfa;
+            --nb-accent: #ff2d95;
+            --nb-accent-alt: #00f0ff;
+            --nb-ink: #111111;
+            --nb-text: #111111;
+            --nb-muted: #6b7280;
+            --nb-border: #111111;
+            --nb-success: #00ff88;
+            --nb-danger: #ff1744;
+            --nb-warning: #ffa500;
+            --nb-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+            --nb-font-heading: 'Playfair Display', serif;
+            --nb-shadow-sm: 3px 3px 0 #111;
+            --nb-shadow-md: 6px 6px 0 #111;
+            --nb-shadow-lg: 8px 8px 0 #111;
+            --nb-radius: 0px;
+            --nb-radius-sm: 4px;
+            --nb-sidebar-width: 250px;
+            --nb-header-height: 64px;
+        }
+
+        body {
+            font-family: var(--nb-font-body);
+            background-color: var(--nb-surface);
+            color: var(--nb-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6, .card-header {
+            font-family: var(--nb-font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Sidebar ===== */
+        .nb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--nb-sidebar-width);
+            z-index: 1000;
+            background: var(--nb-bg);
+            color: #fff;
+            border-right: 3px solid var(--nb-border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nb-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.25rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nb-sidebar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .nb-sidebar-title {
+            font-family: var(--nb-font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            display: block;
+        }
+        .nb-sidebar-title em {
+            color: var(--nb-accent-alt);
+            font-style: normal;
+        }
+        .nb-sidebar-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nb-sidebar-nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .nb-sidebar-section {
+            display: block;
+            padding: 0.9rem 1.25rem 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--nb-primary-light);
+        }
+
+        .nb-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.15rem 0.6rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--nb-radius-sm);
+            transition: all 0.15s;
+        }
+        .nb-nav-link i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .nb-nav-link:hover {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            transform: translate(-1px, -1px);
+        }
+        .nb-nav-link.active {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            font-weight: 700;
+        }
+        .nb-nav-link.active::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-accent);
+            flex-shrink: 0;
+        }
+        .nb-nav-link.nb-nav-danger:hover {
+            background: var(--nb-danger);
+        }
+
+        .nb-sidebar-footer {
+            border-top: 3px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0;
+        }
+
+        /* ===== Topbar ===== */
+        .nb-topbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--nb-sidebar-width);
+            z-index: 999;
+            height: var(--nb-header-height);
+            background: #fff;
+            border-bottom: 3px solid var(--nb-border);
+            box-shadow: var(--nb-shadow-sm);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nb-topbar .nb-toggle {
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            border-radius: var(--nb-radius-sm);
+            font-size: 1.1rem;
+            padding: 0.35rem 0.65rem;
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-topbar .nb-toggle:hover {
+            background: var(--nb-primary);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+
+        .nb-user-dropdown .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--nb-text);
+            text-decoration: none;
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+            border-radius: var(--nb-radius-sm);
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-user-dropdown .dropdown-toggle:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .nb-user-dropdown img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+        }
+
+        /* ===== Main content ===== */
+        .nb-main {
+            margin-left: var(--nb-sidebar-width);
+            padding: calc(var(--nb-header-height) + 24px) 24px 24px;
+            flex: 1;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-md);
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background: var(--nb-surface-2);
+            border-bottom: 3px solid var(--nb-border);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            font-weight: 600;
+            transition: all 0.12s;
+        }
+        .btn-primary {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #111;
+        }
+        .btn-outline-primary {
+            color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            box-shadow: 2px 2px 0 #111;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--nb-primary);
+            color: #fff;
+        }
+        .btn-success { background-color: var(--nb-success); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-danger { background-color: var(--nb-danger); border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-warning { background-color: var(--nb-warning); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-info { background-color: var(--nb-accent-alt); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-secondary { background-color: #d1d5db; border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-accent { background-color: var(--nb-accent); border-color: var(--nb-border); color: #fff; box-shadow: 3px 3px 0 #111; }
+        .btn-accent:hover { background-color: #e11d7d; color: #fff; }
+        .btn-sm { box-shadow: 2px 2px 0 #111; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111 !important; }
+
+        /* ===== Forms ===== */
+        .form-control, .form-select {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-family: var(--nb-font-body);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--nb-primary);
+            box-shadow: 3px 3px 0 var(--nb-primary-light);
+        }
+        .form-check-input:checked {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+        }
+
+        /* ===== Tables ===== */
+        .table {
+            border: 2px solid var(--nb-border);
+            background: #fff;
+        }
+        .table thead th {
+            background: var(--nb-bg);
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 3px solid var(--nb-border);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--nb-surface);
+        }
+        .table-hover tbody tr:hover {
+            background-color: var(--nb-surface-2);
+        }
+        .table td {
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* ===== Badges & alerts ===== */
+        .badge {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-weight: 600;
+        }
+        .alert {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-sm);
+        }
+        .alert-success { background-color: var(--nb-success); color: var(--nb-text); }
+        .alert-danger { background-color: var(--nb-danger); color: #fff; }
+        .alert-warning { background-color: var(--nb-warning); color: var(--nb-text); }
+        .alert-info { background-color: var(--nb-accent-alt); color: var(--nb-text); }
+
+        /* ===== Modals ===== */
+        .modal {
+            z-index: 99999 !important;
+        }
+        .modal-backdrop {
+            z-index: 99998 !important;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        .modal-dialog {
+            z-index: 99999 !important;
+        }
+        .modal-content {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-lg);
+        }
+        .modal-header {
+            border-bottom: 3px solid var(--nb-border);
+            font-family: var(--nb-font-heading);
+        }
+        .modal-footer {
+            border-top: 3px solid var(--nb-border);
+        }
+
+        /* ===== Pills/tabs ===== */
+        .nav-pills .nav-link {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            margin-right: 0.35rem;
+            color: var(--nb-text);
+            background: #fff;
+            box-shadow: 2px 2px 0 #111;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--nb-primary);
+            color: #fff;
+        }
+
+        /* ===== Admin footer ===== */
+        .nb-admin-footer {
+            border-top: 3px solid var(--nb-border);
+            background: var(--nb-bg);
+            color: #fff;
+            padding: 1.25rem 24px;
+            margin-left: var(--nb-sidebar-width);
+        }
+        .nb-admin-footer a {
+            color: var(--nb-primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nb-admin-footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nb-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .nb-sidebar.active {
+                transform: translateX(0);
+            }
+            .nb-main, .nb-admin-footer {
+                margin-left: 0;
+            }
+            .nb-topbar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+
+
+<nav class="nb-sidebar" id="adminSidebar">
+    <div class="nb-sidebar-brand">
+        <img src="assets/images/CHESS club logo ups.webp" alt="Chess Club ENSAS Logo" class="nb-sidebar-logo" width="40" height="40" loading="lazy" decoding="async">
+        <div>
+            <span class="nb-sidebar-title">Chess Club <em>ENSAS</em></span>
+            <small class="nb-sidebar-sub">Admin Panel</small>
+        </div>
+    </div>
+
+    <div class="nb-sidebar-nav">
+        <span class="nb-sidebar-section">Main</span>
+
+        <a class="nb-nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </a>
+                <a class="nb-nav-link " href="members.html">
+            <i class="fas fa-users"></i><span>Members</span>
+        </a>
+                        <a class="nb-nav-link " href="tournaments.html">
+            <i class="fas fa-trophy"></i><span>League & Tournaments</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Media</span>
+                <a class="nb-nav-link " href="announcements.html">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+                        <a class="nb-nav-link " href="formations.html">
+            <i class="fas fa-chess-board"></i><span>Formations</span>
+        </a>
+                        <a class="nb-nav-link " href="newsletter.html">
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Business</span>
+                <a class="nb-nav-link " href="sponsors.html">
+            <i class="fas fa-handshake"></i><span>Sponsors</span>
+        </a>
+                        <a class="nb-nav-link " href="products.html">
+            <i class="fas fa-shopping-bag"></i><span>Products</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Recruitment</span>
+        <a class="nb-nav-link " href="announcements-forms.html">
+            <i class="fas fa-file-alt"></i><span>Recruitment Forms</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Administration</span>
+        <a class="nb-nav-link " href="admins.html">
+            <i class="fas fa-user-shield"></i><span>Admins</span>
+        </a>
+        <a class="nb-nav-link " href="settings.html">
+            <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+        
+        <span class="nb-sidebar-section">Account</span>
+        <a class="nb-nav-link " href="profile.html">
+            <i class="fas fa-user-cog"></i><span>Profile</span>
+        </a>
+    </div>
+
+    <div class="nb-sidebar-footer">
+        <a class="nb-nav-link" href="https://moreqasse.github.io/MyCV/" target="_blank">
+            <i class="fas fa-external-link-alt"></i><span>Visit Website</span>
+        </a>
+        <a class="nb-nav-link nb-nav-danger" href="login.html">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Topbar -->
+<nav class="nb-topbar">
+    <div>
+        <button class="nb-toggle d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="d-none d-lg-inline text-muted small">
+            <i class="fas fa-desktop me-1"></i> Best on PC for full features
+        </span>
+    </div>
+
+    <div class="nb-user-dropdown">
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/placeholder.png" alt="User">
+                <span class="d-none d-md-inline">DemoAdmin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="nb-main">
+    
+            
+<!-- Year-End Cleanup Advisory -->
+<div class="alert alert-warning fade show" role="alert" id="yearEndCleanupAlert" style="position: relative;">
+    <div class="d-flex align-items-start">
+        <i class="fas fa-exclamation-triangle me-3 mt-1"></i>
+        <div class="flex-grow-1">
+            <h6 class="alert-heading mb-2">
+                <strong>📅 Year-End Server Cleanup Reminder</strong>
+            </h6>
+            <p class="mb-2">
+                <strong>Storage Budget Notice:</strong> Please delete old formations and their support files from the previous year to save server space and reduce hosting costs.
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-graduation-cap text-primary me-2"></i>
+                        <span><strong>Formations:</strong> Review and delete outdated formations</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-file-alt text-success me-2"></i>
+                        <span><strong>Support Files:</strong> Remove unused PDF/DOC files</span>
+                    </div>
+                </div>
+            </div>
+            <p class="mb-0 text-muted">
+                <small><i class="fas fa-info-circle"></i> This helps maintain optimal server performance and keeps storage costs within budget.</small>
+            </p>
+        </div>
+        <button type="button" class="btn-close" id="manualCloseAlert" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+    </div>
+</div>
+
+<script>
+// Complete control over alert timing - no Bootstrap interference
+document.addEventListener('DOMContentLoaded', function() {
+    const yearEndAlert = document.getElementById('yearEndCleanupAlert');
+    const manualCloseBtn = document.getElementById('manualCloseAlert');
+    
+    if (yearEndAlert && manualCloseBtn) {
+        // Set the 40-second timer
+        const alertTimer = setTimeout(function() {
+            if (yearEndAlert && document.body.contains(yearEndAlert)) {
+                yearEndAlert.classList.remove('show');
+                setTimeout(function() {
+                    if (yearEndAlert && document.body.contains(yearEndAlert)) {
+                        yearEndAlert.remove();
+                    }
+                }, 150); // Allow fade out animation
+            }
+        }, 40000); // 40 seconds
+        
+        // Manual close functionality
+        manualCloseBtn.addEventListener('click', function() {
+            clearTimeout(alertTimer); // Cancel the auto-close timer
+            yearEndAlert.classList.remove('show');
+            setTimeout(function() {
+                if (yearEndAlert && document.body.contains(yearEndAlert)) {
+                    yearEndAlert.remove();
+                }
+            }, 150); // Allow fade out animation
+        });
+        
+        // Prevent any Bootstrap alert initialization
+        yearEndAlert.removeAttribute('data-bs-dismiss');
+        manualCloseBtn.removeAttribute('data-bs-dismiss');
+        
+        // Override any Bootstrap alert attempts
+        yearEndAlert.addEventListener('closed.bs.alert', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        
+        yearEndAlert.addEventListener('close.bs.alert', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    }
+});
+</script>
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Edit Formation</h1>
+                    <a href="formations.html" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+                <i class="fas fa-arrow-left fa-sm text-white-50"></i> Back to List
+            </a>
+            </div>
+
+    
+    
+            <!-- Add/Edit Formation Form -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Edit Formation</h6>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="title" name="title" 
+                                       value="Formation Session 1+2" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="2">First formation session of the year.</textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="content" class="form-label">Content</label>
+                                <textarea class="form-control" id="content" name="content" rows="8">&lt;article class=&quot;text-token-text-primary w-full focus:outline-none [--shadow-height:45px] has-data-writing-block:pointer-events-none has-data-writing-block:-mt-(--shadow-height) has-data-writing-block:pt-(--shadow-height) [&amp;amp;:has([data-writing-block])&amp;gt;*]:pointer-events-auto scroll-mt-[calc(var(--header-height)+min(200px,max(70px,20svh)))]&quot; dir=&quot;auto&quot; tabindex=&quot;-1&quot; data-turn-id=&quot;request-WEB:6817d1ed-c7de-46f9-8525-077c6518ad46-1&quot; data-testid=&quot;conversation-turn-4&quot; data-scroll-anchor=&quot;true&quot; data-turn=&quot;assistant&quot;&gt;
+&lt;div class=&quot;text-base my-auto mx-auto pb-10 [--thread-content-margin:--spacing(4)] thread-sm:[--thread-content-margin:--spacing(6)] thread-lg:[--thread-content-margin:--spacing(16)] px-(--thread-content-margin)&quot;&gt;
+&lt;div class=&quot;[--thread-content-max-width:40rem] thread-lg:[--thread-content-max-width:48rem] mx-auto max-w-(--thread-content-max-width) flex-1 group/turn-messages focus-visible:outline-hidden relative flex w-full min-w-0 flex-col agent-turn&quot; tabindex=&quot;-1&quot;&gt;
+&lt;div class=&quot;flex max-w-full flex-col grow&quot;&gt;
+&lt;div class=&quot;min-h-8 text-message relative flex w-full flex-col items-end gap-2 text-start break-words whitespace-normal [.text-message+&amp;amp;]:mt-1&quot; dir=&quot;auto&quot; data-message-author-role=&quot;assistant&quot; data-message-id=&quot;741d597f-ebc3-4573-b2a0-b5868e27dc90&quot; data-message-model-slug=&quot;gpt-5-1&quot;&gt;
+&lt;div class=&quot;flex w-full flex-col gap-1 empty:hidden first:pt-[1px]&quot;&gt;
+&lt;div class=&quot;markdown prose dark:prose-invert w-full break-words dark markdown-new-styling&quot;&gt;
+&lt;p data-start=&quot;239&quot; data-end=&quot;389&quot;&gt;Les &amp;eacute;checs sont un jeu de strat&amp;eacute;gie &amp;agrave; deux joueurs, jou&amp;eacute; sur un plateau carr&amp;eacute; de &lt;strong data-start=&quot;320&quot; data-end=&quot;332&quot;&gt;64 cases&lt;/strong&gt;. L&amp;rsquo;objectif : &lt;strong data-start=&quot;347&quot; data-end=&quot;388&quot;&gt;mettre le roi adverse en &amp;eacute;chec et mat&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr data-start=&quot;391&quot; data-end=&quot;394&quot;&gt;
+&lt;h1 data-start=&quot;396&quot; data-end=&quot;434&quot;&gt;♟️ 1. Le Plateau et la Mise en Place&lt;/h1&gt;
+&lt;ul data-start=&quot;435&quot; data-end=&quot;786&quot;&gt;
+&lt;li data-start=&quot;435&quot; data-end=&quot;479&quot;&gt;
+&lt;p data-start=&quot;437&quot; data-end=&quot;479&quot;&gt;Plateau 8&amp;times;8 cases, alternant noir/blanc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;480&quot; data-end=&quot;609&quot;&gt;
+&lt;p data-start=&quot;482&quot; data-end=&quot;525&quot;&gt;Chaque joueur commence avec &lt;strong data-start=&quot;510&quot; data-end=&quot;523&quot;&gt;16 pi&amp;egrave;ces&lt;/strong&gt; :&lt;/p&gt;
+&lt;ul data-start=&quot;528&quot; data-end=&quot;609&quot;&gt;
+&lt;li data-start=&quot;528&quot; data-end=&quot;537&quot;&gt;
+&lt;p data-start=&quot;530&quot; data-end=&quot;537&quot;&gt;1 Roi&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;540&quot; data-end=&quot;550&quot;&gt;
+&lt;p data-start=&quot;542&quot; data-end=&quot;550&quot;&gt;1 Dame&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;553&quot; data-end=&quot;564&quot;&gt;
+&lt;p data-start=&quot;555&quot; data-end=&quot;564&quot;&gt;2 Tours&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;567&quot; data-end=&quot;577&quot;&gt;
+&lt;p data-start=&quot;569&quot; data-end=&quot;577&quot;&gt;2 Fous&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;580&quot; data-end=&quot;595&quot;&gt;
+&lt;p data-start=&quot;582&quot; data-end=&quot;595&quot;&gt;2 Cavaliers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;598&quot; data-end=&quot;609&quot;&gt;
+&lt;p data-start=&quot;600&quot; data-end=&quot;609&quot;&gt;8 Pions&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;610&quot; data-end=&quot;714&quot;&gt;
+&lt;p data-start=&quot;612&quot; data-end=&quot;714&quot;&gt;La &lt;strong data-start=&quot;615&quot; data-end=&quot;654&quot;&gt;dame commence sur sa propre couleur&lt;/strong&gt; (dame blanche sur case blanche, dame noire sur case noire).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;715&quot; data-end=&quot;786&quot;&gt;
+&lt;p data-start=&quot;717&quot; data-end=&quot;786&quot;&gt;Les pions sont plac&amp;eacute;s sur la 2ᵉ rang&amp;eacute;e, les pi&amp;egrave;ces sur la 1ʳᵉ rang&amp;eacute;e.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr data-start=&quot;788&quot; data-end=&quot;791&quot;&gt;
+&lt;h1 data-start=&quot;793&quot; data-end=&quot;824&quot;&gt;♟️ 2. D&amp;eacute;placements des Pi&amp;egrave;ces&lt;/h1&gt;
+&lt;h2 data-start=&quot;826&quot; data-end=&quot;832&quot;&gt;Roi&lt;/h2&gt;
+&lt;ul data-start=&quot;833&quot; data-end=&quot;909&quot;&gt;
+&lt;li data-start=&quot;833&quot; data-end=&quot;874&quot;&gt;
+&lt;p data-start=&quot;835&quot; data-end=&quot;874&quot;&gt;1 case dans n&amp;rsquo;importe quelle direction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;875&quot; data-end=&quot;909&quot;&gt;
+&lt;p data-start=&quot;877&quot; data-end=&quot;909&quot;&gt;Pi&amp;egrave;ce la plus importante du jeu.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;911&quot; data-end=&quot;918&quot;&gt;Dame&lt;/h2&gt;
+&lt;ul data-start=&quot;919&quot; data-end=&quot;1011&quot;&gt;
+&lt;li data-start=&quot;919&quot; data-end=&quot;948&quot;&gt;
+&lt;p data-start=&quot;921&quot; data-end=&quot;948&quot;&gt;La pi&amp;egrave;ce la plus puissante.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;949&quot; data-end=&quot;1011&quot;&gt;
+&lt;p data-start=&quot;951&quot; data-end=&quot;1011&quot;&gt;Se d&amp;eacute;place en ligne droite : horizontal, vertical, diagonal.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;1013&quot; data-end=&quot;1020&quot;&gt;Tour&lt;/h2&gt;
+&lt;ul data-start=&quot;1021&quot; data-end=&quot;1108&quot;&gt;
+&lt;li data-start=&quot;1021&quot; data-end=&quot;1077&quot;&gt;
+&lt;p data-start=&quot;1023&quot; data-end=&quot;1077&quot;&gt;D&amp;eacute;placements en ligne droite : horizontal et vertical.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1078&quot; data-end=&quot;1108&quot;&gt;
+&lt;p data-start=&quot;1080&quot; data-end=&quot;1108&quot;&gt;Tr&amp;egrave;s forte en fin de partie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;1110&quot; data-end=&quot;1116&quot;&gt;Fou&lt;/h2&gt;
+&lt;ul data-start=&quot;1117&quot; data-end=&quot;1206&quot;&gt;
+&lt;li data-start=&quot;1117&quot; data-end=&quot;1154&quot;&gt;
+&lt;p data-start=&quot;1119&quot; data-end=&quot;1154&quot;&gt;Se d&amp;eacute;place uniquement en diagonale.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1155&quot; data-end=&quot;1206&quot;&gt;
+&lt;p data-start=&quot;1157&quot; data-end=&quot;1206&quot;&gt;Chaque fou reste sur une couleur (blanc ou noir).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;1208&quot; data-end=&quot;1219&quot;&gt;Cavalier&lt;/h2&gt;
+&lt;ul data-start=&quot;1220&quot; data-end=&quot;1354&quot;&gt;
+&lt;li data-start=&quot;1220&quot; data-end=&quot;1295&quot;&gt;
+&lt;p data-start=&quot;1222&quot; data-end=&quot;1295&quot;&gt;Mouvement en &lt;strong data-start=&quot;1235&quot; data-end=&quot;1240&quot;&gt;L&lt;/strong&gt; : 2 cases dans une direction + 1 case perpendiculaire.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1296&quot; data-end=&quot;1354&quot;&gt;
+&lt;p data-start=&quot;1298&quot; data-end=&quot;1354&quot;&gt;&lt;strong data-start=&quot;1298&quot; data-end=&quot;1331&quot;&gt;Seule pi&amp;egrave;ce capable de sauter&lt;/strong&gt; par-dessus les autres.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;1356&quot; data-end=&quot;1363&quot;&gt;Pion&lt;/h2&gt;
+&lt;ul data-start=&quot;1364&quot; data-end=&quot;1461&quot;&gt;
+&lt;li data-start=&quot;1364&quot; data-end=&quot;1410&quot;&gt;
+&lt;p data-start=&quot;1366&quot; data-end=&quot;1410&quot;&gt;Avance d&amp;rsquo;une case (2 cases au premier coup).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1411&quot; data-end=&quot;1438&quot;&gt;
+&lt;p data-start=&quot;1413&quot; data-end=&quot;1438&quot;&gt;Capture &lt;strong data-start=&quot;1421&quot; data-end=&quot;1437&quot;&gt;en diagonale&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1439&quot; data-end=&quot;1461&quot;&gt;
+&lt;p data-start=&quot;1441&quot; data-end=&quot;1461&quot;&gt;Ne peut pas reculer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr data-start=&quot;1463&quot; data-end=&quot;1466&quot;&gt;
+&lt;h1 data-start=&quot;1468&quot; data-end=&quot;1507&quot;&gt;♟️ 3. R&amp;egrave;gles Sp&amp;eacute;ciales Indispensables&lt;/h1&gt;
+&lt;h2 data-start=&quot;1509&quot; data-end=&quot;1528&quot;&gt;Roque (Castling)&lt;/h2&gt;
+&lt;p data-start=&quot;1529&quot; data-end=&quot;1590&quot;&gt;Objectif : prot&amp;eacute;ger le roi et activer la tour.&lt;br data-start=&quot;1575&quot; data-end=&quot;1578&quot;&gt;Conditions :&lt;/p&gt;
+&lt;ul data-start=&quot;1591&quot; data-end=&quot;1738&quot;&gt;
+&lt;li data-start=&quot;1591&quot; data-end=&quot;1620&quot;&gt;
+&lt;p data-start=&quot;1593&quot; data-end=&quot;1620&quot;&gt;Ni roi ni tour n&amp;rsquo;ont boug&amp;eacute;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1621&quot; data-end=&quot;1651&quot;&gt;
+&lt;p data-start=&quot;1623&quot; data-end=&quot;1651&quot;&gt;Aucune pi&amp;egrave;ce entre les deux.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1652&quot; data-end=&quot;1738&quot;&gt;
+&lt;p data-start=&quot;1654&quot; data-end=&quot;1738&quot;&gt;Le roi ne doit pas passer par une case attaqu&amp;eacute;e ou &amp;ecirc;tre en &amp;eacute;chec au moment du roque.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;1740&quot; data-end=&quot;1752&quot;&gt;Promotion&lt;/h2&gt;
+&lt;ul data-start=&quot;1753&quot; data-end=&quot;1868&quot;&gt;
+&lt;li data-start=&quot;1753&quot; data-end=&quot;1868&quot;&gt;
+&lt;p data-start=&quot;1755&quot; data-end=&quot;1810&quot;&gt;Lorsqu&amp;rsquo;un pion atteint la derni&amp;egrave;re rang&amp;eacute;e, il devient :&lt;/p&gt;
+&lt;ul data-start=&quot;1813&quot; data-end=&quot;1868&quot;&gt;
+&lt;li data-start=&quot;1813&quot; data-end=&quot;1838&quot;&gt;
+&lt;p data-start=&quot;1815&quot; data-end=&quot;1838&quot;&gt;Dame (le plus fr&amp;eacute;quent)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1841&quot; data-end=&quot;1847&quot;&gt;
+&lt;p data-start=&quot;1843&quot; data-end=&quot;1847&quot;&gt;Tour&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1850&quot; data-end=&quot;1855&quot;&gt;
+&lt;p data-start=&quot;1852&quot; data-end=&quot;1855&quot;&gt;Fou&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;1858&quot; data-end=&quot;1868&quot;&gt;
+&lt;p data-start=&quot;1860&quot; data-end=&quot;1868&quot;&gt;Cavalier&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;1870&quot; data-end=&quot;1889&quot;&gt;Prise en passant&lt;/h2&gt;
+&lt;ul data-start=&quot;1890&quot; data-end=&quot;2097&quot;&gt;
+&lt;li data-start=&quot;1890&quot; data-end=&quot;2097&quot;&gt;
+&lt;p data-start=&quot;1892&quot; data-end=&quot;1956&quot;&gt;Si un pion avance de 2 cases et passe &amp;agrave; c&amp;ocirc;t&amp;eacute; d&amp;rsquo;un pion adverse :&lt;/p&gt;
+&lt;ul data-start=&quot;1959&quot; data-end=&quot;2097&quot;&gt;
+&lt;li data-start=&quot;1959&quot; data-end=&quot;2039&quot;&gt;
+&lt;p data-start=&quot;1961&quot; data-end=&quot;2039&quot;&gt;Le pion adverse peut le capturer &lt;strong data-start=&quot;1994&quot; data-end=&quot;2038&quot;&gt;comme s&amp;rsquo;il n&amp;rsquo;avait avanc&amp;eacute; que d&amp;rsquo;une case&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;2042&quot; data-end=&quot;2097&quot;&gt;
+&lt;p data-start=&quot;2044&quot; data-end=&quot;2097&quot;&gt;Valable uniquement &lt;strong data-start=&quot;2063&quot; data-end=&quot;2096&quot;&gt;au coup imm&amp;eacute;diatement suivant&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr data-start=&quot;2099&quot; data-end=&quot;2102&quot;&gt;
+&lt;h1 data-start=&quot;2104&quot; data-end=&quot;2146&quot;&gt;♟️ 4. &amp;Eacute;chec, &amp;Eacute;chec et Mat, Fin de Partie&lt;/h1&gt;
+&lt;h2 data-start=&quot;2148&quot; data-end=&quot;2156&quot;&gt;&amp;Eacute;chec&lt;/h2&gt;
+&lt;ul data-start=&quot;2157&quot; data-end=&quot;2264&quot;&gt;
+&lt;li data-start=&quot;2157&quot; data-end=&quot;2196&quot;&gt;
+&lt;p data-start=&quot;2159&quot; data-end=&quot;2196&quot;&gt;Le roi est menac&amp;eacute;.&lt;br data-start=&quot;2177&quot; data-end=&quot;2180&quot;&gt;Le joueur doit :&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;2197&quot; data-end=&quot;2219&quot;&gt;
+&lt;p data-start=&quot;2199&quot; data-end=&quot;2219&quot;&gt;Bloquer l&amp;rsquo;attaque,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;2220&quot; data-end=&quot;2242&quot;&gt;
+&lt;p data-start=&quot;2222&quot; data-end=&quot;2242&quot;&gt;Capturer la pi&amp;egrave;ce,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;2243&quot; data-end=&quot;2264&quot;&gt;
+&lt;p data-start=&quot;2245&quot; data-end=&quot;2264&quot;&gt;Ou d&amp;eacute;placer le roi.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;2266&quot; data-end=&quot;2281&quot;&gt;&amp;Eacute;chec et Mat&lt;/h2&gt;
+&lt;ul data-start=&quot;2282&quot; data-end=&quot;2365&quot;&gt;
+&lt;li data-start=&quot;2282&quot; data-end=&quot;2365&quot;&gt;
+&lt;p data-start=&quot;2284&quot; data-end=&quot;2365&quot;&gt;Le roi est attaqu&amp;eacute; et &lt;strong data-start=&quot;2306&quot; data-end=&quot;2334&quot;&gt;aucune solution n&amp;rsquo;existe&lt;/strong&gt;.&lt;br data-start=&quot;2335&quot; data-end=&quot;2338&quot;&gt;&amp;rarr; Le joueur perd la partie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;2367&quot; data-end=&quot;2385&quot;&gt;Pat (Stalemate)&lt;/h2&gt;
+&lt;ul data-start=&quot;2386&quot; data-end=&quot;2464&quot;&gt;
+&lt;li data-start=&quot;2386&quot; data-end=&quot;2464&quot;&gt;
+&lt;p data-start=&quot;2388&quot; data-end=&quot;2464&quot;&gt;Le joueur n&amp;rsquo;a plus de coup l&amp;eacute;gal mais n&amp;rsquo;est &lt;strong data-start=&quot;2432&quot; data-end=&quot;2439&quot;&gt;pas&lt;/strong&gt; en &amp;eacute;chec.&lt;br data-start=&quot;2449&quot; data-end=&quot;2452&quot;&gt;&amp;rarr; Match nul.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-start=&quot;2466&quot; data-end=&quot;2484&quot;&gt;Autres &amp;eacute;galit&amp;eacute;s&lt;/h2&gt;
+&lt;ul data-start=&quot;2485&quot; data-end=&quot;2602&quot;&gt;
+&lt;li data-start=&quot;2485&quot; data-end=&quot;2510&quot;&gt;
+&lt;p data-start=&quot;2487&quot; data-end=&quot;2510&quot;&gt;R&amp;eacute;p&amp;eacute;tition de position.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;2511&quot; data-end=&quot;2585&quot;&gt;
+&lt;p data-start=&quot;2513&quot; data-end=&quot;2585&quot;&gt;R&amp;egrave;gle des 50 coups (aucune prise ni mouvement de pion pendant 50 coups).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li data-start=&quot;2586&quot; data-end=&quot;2602&quot;&gt;
+&lt;p data-start=&quot;2588&quot; data-end=&quot;2602&quot;&gt;Accord mutuel.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr data-start=&quot;2604&quot; data-end=&quot;2607&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/article&gt;</textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="formation_date" class="form-label">Formation Date <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" id="formation_date" name="formation_date" 
+                                       value="2025-10-28" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="formation_time" class="form-label">Formation Time <span class="text-danger">*</span></label>
+                                <input type="time" class="form-control" id="formation_time" name="formation_time" 
+                                       value="12:45" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="level" class="form-label">Level <span class="text-danger">*</span></label>
+                                <select class="form-select" id="level" name="level" required>
+                                    <option value="beginner" selected>Beginner</option>
+                                    <option value="intermediate" >Intermediate</option>
+                                    <option value="advanced" >Advanced</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="youtube_link" class="form-label">YouTube Video Link</label>
+                                <input type="url" class="form-control" id="youtube_link" name="youtube_link" 
+                                       value="https://youtu.be/upixcS1m540?si=dzfaNxmeunPE2vyI" 
+                                       placeholder="https://www.youtube.com/watch?v=...">
+                                <small class="text-muted">Enter YouTube video URL for embedded display</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="puzzle_id" class="form-label">Chess.com Puzzle ID</label>
+                                <input type="text" class="form-control" id="puzzle_id" name="puzzle_id" 
+                                       value="W1PlK" 
+                                       placeholder="exemple: 00143">
+                                <small class="text-muted">Enter lichess.org  puzzle ID to display a chess puzzle (if no puzzle id is provided , it will show the daily puzzle)</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="class" class="form-label">Class Room</label>
+                                <input type="text" class="form-control" id="class" name="class" 
+                                       value="Salle 9" 
+                                       placeholder="e.g., A1, B2, 3C">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="thumbnail" class="form-label">Thumbnail Image</label>
+                                <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/jpeg,image/png,image/gif,image/webp,.jpg,.jpeg,.png,.gif,.webp">
+                                <input type="hidden" name="current_thumbnail" value="public/uploads/thumbnails/691ca68a6edc2.png">
+                                <small class="text-muted d-block mt-1">Preferred: <strong>WebP</strong> (smaller &amp; faster) — JPG, PNG, GIF also work. Convert free: <a href="https://cloudconvert.com/png-to-webp" target="_blank" rel="noopener">cloudconvert.com/png-to-webp</a></small>
+                                                                    <div class="mt-2 d-flex gap-2 align-items-start" id="currentThumbnailWrap">
+                                        <img src="uploads/thumbnails/691ca68a6edc2.png" alt="Current thumbnail" class="img-thumbnail" style="max-width:220px;">
+                                        <button type="button" class="btn btn-sm btn-outline-danger remove-file" data-target="thumbnail">
+                                            <i class="fas fa-trash"></i> Remove
+                                        </button>
+                                    </div>
+                                                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="support_file" class="form-label">Support File
+                                    <small class="text-muted">(PDF, PPT, PPTX, DOC, DOCX, TXT only - Max 5MB)</small>
+                                </label>
+                                <div class="file-upload-container">
+                                    <input type="file" class="form-control" id="support_file" name="support_file" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt" onchange="validateFileSize(this)">
+                                    <div id="progress-container" class="mt-2 d-none">
+                                        <div class="progress">
+                                            <div id="upload-progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%">0%</div>
+                                        </div>
+                                        <small id="upload-status" class="text-muted">Uploading...</small>
+                                    </div>
+                                                                            <div class="mt-2 d-flex gap-2" id="currentSupportWrap">
+                                            <a href="#demo-missing" target="_blank" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-download"></i> View Current File
+                                            </a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger remove-file" data-target="support_file">
+                                                <i class="fas fa-trash"></i> Remove
+                                            </button>
+                                            <input type="hidden" name="current_support_file" value="public/uploads/support_files/692d7ce61069e.pdf">
+                                        </div>
+                                                                    </div>
+                                <input type="hidden" name="current_support_file" value="public/uploads/support_files/692d7ce61069e.pdf">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="is_published" name="is_published" 
+                                           checked>
+                                    <label class="form-check-label" for="is_published">
+                                        Published (show on website)
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-1"></i> Update Formation                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+                
+        <!-- Include TinyMCE for rich text editing -->
+        <script src="assets/js/tinymce-stub.js" referrerpolicy="origin"></script>
+        <script>
+        (function(){
+            if (!window.tinymce) {
+                var ta = document.getElementById('content');
+                if (ta) {
+                    var warn = document.createElement('div');
+                    warn.style.cssText = 'background:#fff3cd;color:#856404;border:2px solid #111;padding:0.6rem 0.9rem;margin-bottom:0.6rem;font-size:0.85rem;font-weight:700;';
+                    warn.textContent = '⚠ Rich editor failed to load (check connection / ad-blocker) — raw HTML below still saves fine.';
+                    ta.parentNode.insertBefore(warn, ta);
+                }
+                return;
+            }
+            tinymce.init({
+                selector: '#content',
+                plugins: 'link image code',
+                toolbar: 'undo redo | formatselect | bold italic backcolor | \
+                         alignleft aligncenter alignright alignjustify | \
+                         bullist numlist outdent indent | removeformat | help',
+                height: 300,
+                content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 14px; }',
+                file_picker_types: 'file image media',
+                images_upload_url: 'upload.php',
+                automatic_uploads: true,
+                relative_urls: false,
+                remove_script_host: false
+            });
+            })();
+
+            function validateFileSize(input) {
+                const maxSize = 5 * 1024 * 1024; // 5MB
+                if (input.files[0].size > maxSize) {
+                    alert('File size exceeds 5MB limit. Please choose a smaller file.');
+                    input.value = '';
+                    return false;
+                }
+                return true;
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.querySelector('form[enctype="multipart/form-data"]');
+                const fileInput = document.getElementById('support_file');
+                const progressBar = document.getElementById('upload-progress');
+                const progressContainer = document.getElementById('progress-container');
+                const uploadStatus = document.getElementById('upload-status');
+                
+                // Handle remove file button click (support file + thumbnail)
+                document.querySelectorAll('.remove-file').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const target = this.getAttribute('data-target');
+                        const container = this.closest('.file-upload-container') || this.closest('.mb-3');
+                        const form = document.querySelector('form[enctype="multipart/form-data"]');
+
+                        function markRemoved(inputName, hideSelector) {
+                            // Clear file input
+                            const fi = document.getElementById(target);
+                            if (fi) fi.value = '';
+                            // Flag removal for the server
+                            const removeInput = document.createElement('input');
+                            removeInput.type = 'hidden';
+                            removeInput.name = inputName;
+                            removeInput.value = '1';
+                            form.appendChild(removeInput);
+                            // Hide the current-file section
+                            const currentFileSection = container.querySelector(hideSelector);
+                            if (currentFileSection) {
+                                currentFileSection.style.display = 'none';
+                            }
+                            // Show success message
+                            const status = document.createElement('small');
+                            status.className = 'text-success mt-2 d-block';
+                            status.textContent = 'File will be removed when you save the form.';
+                            container.appendChild(status);
+                            // Remove the status after 3 seconds
+                            setTimeout(() => {
+                                status.remove();
+                            }, 3000);
+                        }
+
+                        // Clear file input
+                        if (target === 'support_file') {
+                            markRemoved('remove_support_file', '#currentSupportWrap');
+                        } else if (target === 'thumbnail') {
+                            markRemoved('remove_thumbnail', '#currentThumbnailWrap');
+                        }
+                    });
+                });
+
+                form.addEventListener('submit', function(e) {
+                    const file = fileInput.files[0];
+                    if (!file) return;
+
+                    e.preventDefault();
+                    
+                    const formData = new FormData(form);
+                    const xhr = new XMLHttpRequest();
+                    
+                    // Show progress bar
+                    progressContainer.classList.remove('d-none');
+                    progressBar.style.width = '0%';
+                    progressBar.textContent = '0%';
+                    uploadStatus.textContent = 'Uploading...';
+                    
+                    xhr.upload.addEventListener('progress', function(e) {
+                        if (e.lengthComputable) {
+                            const percentComplete = Math.round((e.loaded / e.total) * 100);
+                            progressBar.style.width = percentComplete + '%';
+                            progressBar.textContent = percentComplete + '%';
+                            
+                            if (percentComplete === 100) {
+                                uploadStatus.textContent = 'Processing file...';
+                            }
+                        }
+                    });
+                    
+                    xhr.addEventListener('load', function() {
+                        if (xhr.status === 200) {
+                            // Form submitted successfully, redirect to list page
+                            window.location.href = 'formations.html';
+                        } else {
+                            // Show error message
+                            uploadStatus.textContent = 'Upload failed. Please try again.';
+                            uploadStatus.className = 'text-danger';
+                            progressBar.className = 'progress-bar bg-danger';
+                            
+                            // Reset form after a short delay
+                            setTimeout(() => {
+                                progressContainer.classList.add('d-none');
+                                progressBar.className = 'progress-bar progress-bar-striped progress-bar-animated';
+                                uploadStatus.className = 'text-muted';
+                            }, 3000);
+                        }
+                    });
+                    
+                    xhr.open('POST', form.action + (form.action.includes('?') ? '&' : '?') + 'ajax=1');
+                    xhr.send(formData);
+                });
+            });
+        </script>
+        <style>
+            .file-upload-container {
+                margin-bottom: 1rem;
+            }
+            .progress {
+                height: 25px;
+                margin-bottom: 5px;
+            }
+            .progress-bar {
+                transition: width 0.3s ease;
+                line-height: 25px;
+                font-size: 12px;
+            }
+            #upload-status {
+                display: block;
+                font-size: 0.8rem;
+                margin-top: 2px;
+            }
+        </style>
+        
+    </div>
+
+    </div> <!-- End .nb-main -->
+
+    <!-- Admin Footer -->
+    <footer class="nb-admin-footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    <i class="fas fa-copyright me-1"></i>&copy; 2026 Chess Club ENSAS Administration Panel
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-shield-alt me-1"></i>Secure Management System
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    Developed by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank">Mohammed Reqasse</a>
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-palette me-1"></i>Professional Web Development
+                </p>
+            </div>
+            <div class="text-md-end">
+                <button class="btn btn-outline-light btn-sm mb-2" onclick="openContactSupport()">
+                    <i class="fas fa-headset me-2"></i>Contact Support
+                </button>
+                <div>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block"><i class="fas fa-user me-1"></i>Mohammed Reqasse</small>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block">
+                        <i class="fas fa-phone me-1"></i>
+                        <a href="tel:+212600000000" style="color: rgba(255,255,255,0.55);">+212 610 100 100</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal -->
+    <div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contactSupportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px solid #111; box-shadow: 4px 4px 0 #111;">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h6 class="fw-bold">Mohammed Reqasse</h6>
+                        <p class="text-muted mb-3">Website Creator</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Phone Support</h6>
+                                <a href="tel:+212600000000" class="text-decoration-none fw-bold">+212 610 100 100</a>
+                                <p class="text-muted small mb-0">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Email Support</h6>
+                                <a href="mailto:reqasse@gmail.com" class="text-decoration-none fw-bold">reqasse@gmail.com</a>
+                                <p class="text-muted small mb-0">Response within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Web Support</h6>
+                                <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" class="text-decoration-none fw-bold">https://moreqasse.github.io/MyCV/</a>
+                                <p class="text-muted small mb-0">Online resources & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <a href="tel:+212600000000" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Reusable Confirmation Modal Component (nbConfirm) -->
+    <!-- ===== Reusable Confirm Modal Component ===== -->
+<div class="modal fade" id="nbConfirmModal" tabindex="-1" aria-labelledby="nbConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111;overflow:hidden;">
+            <div class="modal-header" style="background:#1a0a2e;border-bottom:3px solid #111;border-radius:0;padding:0.9rem 1.25rem;">
+                <h5 class="modal-title text-white fw-bold mb-0" id="nbConfirmModalLabel" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.1rem;">
+                    <i class="fas fa-question-circle me-2" style="color:#ff2d95;"></i>Confirmation
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div id="nbConfirmIcon" class="d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+                     style="width:72px;height:72px;border:3px solid #111;box-shadow:4px 4px 0 #111;background:#7c3aed;color:#fff;font-size:1.9rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h6 class="fw-bold mb-2" id="nbConfirmTitle" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.15rem;color:#111;">Are you sure?</h6>
+                <p class="text-muted mb-0" id="nbConfirmMessage" style="font-size:0.92rem;line-height:1.5;"></p>
+            </div>
+            <div class="modal-footer" style="border-top:3px solid #111;border-radius:0;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="nbConfirmCancel">
+                    <i class="fas fa-times me-2"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="nbConfirmOk">
+                    <i class="fas fa-check me-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var modalEl = document.getElementById('nbConfirmModal');
+    if (!modalEl || typeof bootstrap === 'undefined') return;
+
+    var modal = new bootstrap.Modal(modalEl);
+    var okBtn = document.getElementById('nbConfirmOk');
+    var cancelBtn = document.getElementById('nbConfirmCancel');
+    var titleEl = document.getElementById('nbConfirmTitle');
+    var msgEl = document.getElementById('nbConfirmMessage');
+    var iconEl = document.getElementById('nbConfirmIcon');
+    var pending = null;
+
+    var tones = {
+        danger:  { iconBg: '#ff1744', btn: 'btn-danger' },
+        success: { iconBg: '#00ff88', btn: 'btn-success' },
+        warning: { iconBg: '#ffa500', btn: 'btn-warning' },
+        info:    { iconBg: '#00f0ff', btn: 'btn-info' },
+        primary: { iconBg: '#7c3aed', btn: 'btn-primary' }
+    };
+
+    function readOptions(el) {
+        return {
+            title: el.getAttribute('data-nb-confirm-title') || 'Are you sure?',
+            message: el.getAttribute('data-nb-confirm') || 'This action cannot be undone.',
+            tone: el.getAttribute('data-nb-confirm-tone') || 'danger',
+            icon: el.getAttribute('data-nb-confirm-icon') || 'fas fa-exclamation-triangle',
+            confirmText: el.getAttribute('data-nb-confirm-text') || 'Confirm'
+        };
+    }
+
+    window.nbConfirm = function (options) {
+        options = options || {};
+        var tone = tones[options.tone] || tones.primary;
+        var title = options.title || 'Are you sure?';
+        var message = options.message || 'This action cannot be undone.';
+        var icon = options.icon || 'fas fa-exclamation-triangle';
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.innerHTML = '<i class="' + icon + '"></i>';
+        iconEl.style.background = tone.iconBg;
+        iconEl.style.color = (options.tone === 'success' || options.tone === 'warning') ? '#111' : '#fff';
+        okBtn.className = 'btn ' + (options.confirmClass || tone.btn);
+        okBtn.innerHTML = '<i class="fas fa-check me-2"></i>' + (options.confirmText || 'Confirm');
+
+        pending = null;
+
+        return new Promise(function (resolve, reject) {
+            pending = { resolve: resolve, reject: reject };
+
+            function cleanup() {
+                okBtn.onclick = null;
+                cancelBtn.onclick = null;
+                modalEl.removeEventListener('hidden.bs.modal', onHidden);
+            }
+            function onHidden() {
+                cleanup();
+                if (pending) {
+                    pending.reject(new Error('cancelled'));
+                    pending = null;
+                }
+            }
+
+            modalEl.addEventListener('hidden.bs.modal', onHidden);
+
+            okBtn.onclick = function () {
+                modal.hide();
+                cleanup();
+                if (pending) {
+                    pending.resolve();
+                    pending = null;
+                }
+            };
+            cancelBtn.onclick = function () {
+                modal.hide();
+            };
+
+            modal.show();
+        });
+    };
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[data-nb-confirm]') : null;
+        if (!link) return;
+        e.preventDefault();
+        var href = link.getAttribute('href');
+        nbConfirm(readOptions(link)).then(function () {
+            window.location.href = href;
+        }).catch(function () {});
+    });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-nb-confirm]') : null;
+        if (!btn || btn.type !== 'submit' || !btn.form) return;
+        e.preventDefault();
+        var opts = readOptions(btn);
+        if (btn.hasAttribute('data-nb-confirm-text')) {
+            opts.confirmText = btn.getAttribute('data-nb-confirm-text');
+        }
+        nbConfirm(opts).then(function () {
+            var clone = document.createElement('input');
+            clone.type = 'hidden';
+            clone.name = btn.name;
+            clone.value = btn.value;
+            btn.form.appendChild(clone);
+            btn.form.submit();
+        }).catch(function () {});
+    });
+
+    document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.hasAttribute('data-nb-confirm')) return;
+        e.preventDefault();
+        nbConfirm(readOptions(form)).then(function () {
+            form.submit();
+        }).catch(function () {});
+    });
+})();
+</script>
+
+    <!-- Custom scripts -->
+    <script>
+        // Toggle sidebar on mobile (+ dim backdrop via body class)
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            var sb = document.getElementById('adminSidebar');
+            if (!sb) return;
+            sb.classList.toggle('active');
+            document.body.classList.toggle('nb-nav-open', sb.classList.contains('active'));
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('adminSidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar && sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                sidebarToggle && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('nb-nav-open');
+            }
+        });
+
+        // Mobile tables → lists: copy each <th> label into its column's <td>
+        // as data-th (used by admin-mobile.css). Skips .nb-keep-table
+        // (members page) and header-less tables. Checkbox-only cells and
+        // action cells get docking classes instead of labels.
+        (function nbResponsiveTables() {
+            function isCheckCell(td) {
+                var kids = Array.prototype.filter.call(td.childNodes, function (n) {
+                    if (n.nodeType === 3) return n.textContent.trim() !== '';
+                    if (n.nodeType !== 1) return false;
+                    var tag = n.tagName.toLowerCase();
+                    return !(tag === 'input' && (n.type === 'checkbox' || n.type === 'radio'));
+                });
+                return kids.length === 0 && td.querySelector('input[type="checkbox"], input[type="radio"]');
+            }
+            document.querySelectorAll('table.table:not(.nb-keep-table)').forEach(function (table) {
+                var headers = Array.prototype.map.call(
+                    table.querySelectorAll('thead tr:last-child th'),
+                    function (th) { return th.textContent.trim().replace(/\s+/g, ' '); }
+                );
+                if (!headers.length) return;
+                table.querySelectorAll('tbody tr').forEach(function (tr) {
+                    Array.prototype.forEach.call(tr.children, function (td, i) {
+                        if (td.tagName.toLowerCase() !== 'td') return;
+                        if (td.hasAttribute('colspan')) { td.classList.add('nb-no-label'); return; }
+                        if (isCheckCell(td)) { td.classList.add('nb-cell-check'); return; }
+                        if (td.querySelector('.btn, .btn-group, .dropdown')) { td.classList.add('nb-cell-actions'); return; }
+                        if (headers[i]) td.setAttribute('data-th', headers[i]);
+                        else td.classList.add('nb-no-label');
+                    });
+                });
+            });
+        })();
+
+        // Initialize tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(function(el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // Initialize popovers
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(function(el) {
+            return new bootstrap.Popover(el);
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert.alert-dismissible').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+
+        // Confirm before deleting (uses the shared nbConfirm component when available)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    if (typeof nbConfirm === 'function') {
+                        e.preventDefault();
+                        nbConfirm({
+                            title: 'Delete Item',
+                            message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                            icon: 'fas fa-trash',
+                            tone: 'danger',
+                            confirmText: 'Delete'
+                        }).then(function() {
+                            if (button.tagName === 'A') {
+                                window.location.href = button.href;
+                            } else if (button.form) {
+                                button.form.submit();
+                            }
+                        }).catch(function() {});
+                    } else if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            var togglePassword = document.querySelector('.toggle-password');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    var passwordInput = document.querySelector('#password');
+                    var icon = this.querySelector('i');
+                    if (passwordInput && passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else if (passwordInput) {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+        });
+
+        // Contact Support Modal Function
+        function openContactSupport() {
+            var modal = new bootstrap.Modal(document.getElementById('contactSupportModal'));
+            modal.show();
+        }
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>

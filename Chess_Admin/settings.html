@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin mobile-first layer (tables→lists, touch targets, stacking) -->
+    <link rel="stylesheet" href="assets/css/admin-mobile.css?v=3">
+
+    <style>
+        :root {
+            --nb-bg: #1a0a2e;
+            --nb-bg-dark: #0d0d0d;
+            --nb-surface: #f5f0ff;
+            --nb-surface-2: #ece4fa;
+            --nb-primary: #7c3aed;
+            --nb-primary-dark: #4c1d95;
+            --nb-primary-light: #a78bfa;
+            --nb-accent: #ff2d95;
+            --nb-accent-alt: #00f0ff;
+            --nb-ink: #111111;
+            --nb-text: #111111;
+            --nb-muted: #6b7280;
+            --nb-border: #111111;
+            --nb-success: #00ff88;
+            --nb-danger: #ff1744;
+            --nb-warning: #ffa500;
+            --nb-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+            --nb-font-heading: 'Playfair Display', serif;
+            --nb-shadow-sm: 3px 3px 0 #111;
+            --nb-shadow-md: 6px 6px 0 #111;
+            --nb-shadow-lg: 8px 8px 0 #111;
+            --nb-radius: 0px;
+            --nb-radius-sm: 4px;
+            --nb-sidebar-width: 250px;
+            --nb-header-height: 64px;
+        }
+
+        body {
+            font-family: var(--nb-font-body);
+            background-color: var(--nb-surface);
+            color: var(--nb-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6, .card-header {
+            font-family: var(--nb-font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Sidebar ===== */
+        .nb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--nb-sidebar-width);
+            z-index: 1000;
+            background: var(--nb-bg);
+            color: #fff;
+            border-right: 3px solid var(--nb-border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nb-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.25rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nb-sidebar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .nb-sidebar-title {
+            font-family: var(--nb-font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            display: block;
+        }
+        .nb-sidebar-title em {
+            color: var(--nb-accent-alt);
+            font-style: normal;
+        }
+        .nb-sidebar-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nb-sidebar-nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .nb-sidebar-section {
+            display: block;
+            padding: 0.9rem 1.25rem 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--nb-primary-light);
+        }
+
+        .nb-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.15rem 0.6rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--nb-radius-sm);
+            transition: all 0.15s;
+        }
+        .nb-nav-link i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .nb-nav-link:hover {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            transform: translate(-1px, -1px);
+        }
+        .nb-nav-link.active {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            font-weight: 700;
+        }
+        .nb-nav-link.active::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-accent);
+            flex-shrink: 0;
+        }
+        .nb-nav-link.nb-nav-danger:hover {
+            background: var(--nb-danger);
+        }
+
+        .nb-sidebar-footer {
+            border-top: 3px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0;
+        }
+
+        /* ===== Topbar ===== */
+        .nb-topbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--nb-sidebar-width);
+            z-index: 999;
+            height: var(--nb-header-height);
+            background: #fff;
+            border-bottom: 3px solid var(--nb-border);
+            box-shadow: var(--nb-shadow-sm);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nb-topbar .nb-toggle {
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            border-radius: var(--nb-radius-sm);
+            font-size: 1.1rem;
+            padding: 0.35rem 0.65rem;
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-topbar .nb-toggle:hover {
+            background: var(--nb-primary);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+
+        .nb-user-dropdown .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--nb-text);
+            text-decoration: none;
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+            border-radius: var(--nb-radius-sm);
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-user-dropdown .dropdown-toggle:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .nb-user-dropdown img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+        }
+
+        /* ===== Main content ===== */
+        .nb-main {
+            margin-left: var(--nb-sidebar-width);
+            padding: calc(var(--nb-header-height) + 24px) 24px 24px;
+            flex: 1;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-md);
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background: var(--nb-surface-2);
+            border-bottom: 3px solid var(--nb-border);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            font-weight: 600;
+            transition: all 0.12s;
+        }
+        .btn-primary {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #111;
+        }
+        .btn-outline-primary {
+            color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            box-shadow: 2px 2px 0 #111;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--nb-primary);
+            color: #fff;
+        }
+        .btn-success { background-color: var(--nb-success); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-danger { background-color: var(--nb-danger); border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-warning { background-color: var(--nb-warning); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-info { background-color: var(--nb-accent-alt); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-secondary { background-color: #d1d5db; border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-accent { background-color: var(--nb-accent); border-color: var(--nb-border); color: #fff; box-shadow: 3px 3px 0 #111; }
+        .btn-accent:hover { background-color: #e11d7d; color: #fff; }
+        .btn-sm { box-shadow: 2px 2px 0 #111; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111 !important; }
+
+        /* ===== Forms ===== */
+        .form-control, .form-select {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-family: var(--nb-font-body);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--nb-primary);
+            box-shadow: 3px 3px 0 var(--nb-primary-light);
+        }
+        .form-check-input:checked {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+        }
+
+        /* ===== Tables ===== */
+        .table {
+            border: 2px solid var(--nb-border);
+            background: #fff;
+        }
+        .table thead th {
+            background: var(--nb-bg);
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 3px solid var(--nb-border);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--nb-surface);
+        }
+        .table-hover tbody tr:hover {
+            background-color: var(--nb-surface-2);
+        }
+        .table td {
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* ===== Badges & alerts ===== */
+        .badge {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-weight: 600;
+        }
+        .alert {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-sm);
+        }
+        .alert-success { background-color: var(--nb-success); color: var(--nb-text); }
+        .alert-danger { background-color: var(--nb-danger); color: #fff; }
+        .alert-warning { background-color: var(--nb-warning); color: var(--nb-text); }
+        .alert-info { background-color: var(--nb-accent-alt); color: var(--nb-text); }
+
+        /* ===== Modals ===== */
+        .modal {
+            z-index: 99999 !important;
+        }
+        .modal-backdrop {
+            z-index: 99998 !important;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        .modal-dialog {
+            z-index: 99999 !important;
+        }
+        .modal-content {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-lg);
+        }
+        .modal-header {
+            border-bottom: 3px solid var(--nb-border);
+            font-family: var(--nb-font-heading);
+        }
+        .modal-footer {
+            border-top: 3px solid var(--nb-border);
+        }
+
+        /* ===== Pills/tabs ===== */
+        .nav-pills .nav-link {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            margin-right: 0.35rem;
+            color: var(--nb-text);
+            background: #fff;
+            box-shadow: 2px 2px 0 #111;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--nb-primary);
+            color: #fff;
+        }
+
+        /* ===== Admin footer ===== */
+        .nb-admin-footer {
+            border-top: 3px solid var(--nb-border);
+            background: var(--nb-bg);
+            color: #fff;
+            padding: 1.25rem 24px;
+            margin-left: var(--nb-sidebar-width);
+        }
+        .nb-admin-footer a {
+            color: var(--nb-primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nb-admin-footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nb-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .nb-sidebar.active {
+                transform: translateX(0);
+            }
+            .nb-main, .nb-admin-footer {
+                margin-left: 0;
+            }
+            .nb-topbar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+
+
+<nav class="nb-sidebar" id="adminSidebar">
+    <div class="nb-sidebar-brand">
+        <img src="assets/images/CHESS club logo ups.webp" alt="Chess Club ENSAS Logo" class="nb-sidebar-logo" width="40" height="40" loading="lazy" decoding="async">
+        <div>
+            <span class="nb-sidebar-title">Chess Club <em>ENSAS</em></span>
+            <small class="nb-sidebar-sub">Admin Panel</small>
+        </div>
+    </div>
+
+    <div class="nb-sidebar-nav">
+        <span class="nb-sidebar-section">Main</span>
+
+        <a class="nb-nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </a>
+                <a class="nb-nav-link " href="members.html">
+            <i class="fas fa-users"></i><span>Members</span>
+        </a>
+                        <a class="nb-nav-link " href="tournaments.html">
+            <i class="fas fa-trophy"></i><span>League & Tournaments</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Media</span>
+                <a class="nb-nav-link " href="announcements.html">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+                        <a class="nb-nav-link " href="formations.html">
+            <i class="fas fa-chess-board"></i><span>Formations</span>
+        </a>
+                        <a class="nb-nav-link " href="newsletter.html">
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Business</span>
+                <a class="nb-nav-link " href="sponsors.html">
+            <i class="fas fa-handshake"></i><span>Sponsors</span>
+        </a>
+                        <a class="nb-nav-link " href="products.html">
+            <i class="fas fa-shopping-bag"></i><span>Products</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Recruitment</span>
+        <a class="nb-nav-link " href="announcements-forms.html">
+            <i class="fas fa-file-alt"></i><span>Recruitment Forms</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Administration</span>
+        <a class="nb-nav-link " href="admins.html">
+            <i class="fas fa-user-shield"></i><span>Admins</span>
+        </a>
+        <a class="nb-nav-link " href="settings.html">
+            <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+        
+        <span class="nb-sidebar-section">Account</span>
+        <a class="nb-nav-link " href="profile.html">
+            <i class="fas fa-user-cog"></i><span>Profile</span>
+        </a>
+    </div>
+
+    <div class="nb-sidebar-footer">
+        <a class="nb-nav-link" href="https://moreqasse.github.io/MyCV/" target="_blank">
+            <i class="fas fa-external-link-alt"></i><span>Visit Website</span>
+        </a>
+        <a class="nb-nav-link nb-nav-danger" href="login.html">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Topbar -->
+<nav class="nb-topbar">
+    <div>
+        <button class="nb-toggle d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="d-none d-lg-inline text-muted small">
+            <i class="fas fa-desktop me-1"></i> Best on PC for full features
+        </span>
+    </div>
+
+    <div class="nb-user-dropdown">
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/placeholder.png" alt="User">
+                <span class="d-none d-md-inline">DemoAdmin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="nb-main">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-3 mb-3 border-bottom" style="border-bottom: 3px solid #111 !important;">
+        <h1 class="h3 mb-0" style="font-family: var(--nb-font-heading); font-weight: 800;">Settings</h1>
+    </div>
+    
+            
+<style>
+.nb-settings-layout {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 22px;
+    align-items: start;
+}
+
+/* ===== Tab rail ===== */
+.settings-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: sticky;
+    top: calc(var(--nb-header-height) + 24px);
+}
+.settings-tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    padding: 0.65rem 0.9rem;
+    background: #fff;
+    border: 2px solid var(--nb-border);
+    border-radius: var(--nb-radius-sm);
+    box-shadow: 2px 2px 0 #111;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--nb-text);
+    transition: all 0.12s;
+}
+.settings-tab i {
+    width: 1.15rem;
+    text-align: center;
+    color: var(--nb-primary);
+}
+.settings-tab:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 #111;
+}
+.settings-tab.active {
+    background: var(--nb-primary);
+    color: #fff;
+}
+.settings-tab.active i {
+    color: #fff;
+}
+
+/* ===== Panels ===== */
+.settings-panel { display: none; }
+.settings-panel.active { display: block; }
+
+.nb-group-head {
+    font-family: var(--nb-font-body);
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--nb-primary-dark);
+    border-bottom: 2px dashed #c4b5fd;
+    padding-bottom: 0.4rem;
+    margin: 1.6rem 0 0.25rem;
+}
+.nb-group-head:first-child { margin-top: 0; }
+
+/* ===== Field rows ===== */
+.nb-field {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed #d1d5db;
+}
+.nb-field:last-child { border-bottom: none; }
+.nb-field-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+.nb-field-head strong {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+.nb-field-head small {
+    display: block;
+    color: var(--nb-muted);
+    font-size: 0.78rem;
+    margin-top: 2px;
+    max-width: 620px;
+}
+.nb-field > .form-control,
+.nb-field > .form-select,
+.nb-field > textarea.form-control {
+    margin-top: 0.55rem;
+}
+
+/* ===== Toggle switch ===== */
+.nb-switch {
+    position: relative;
+    display: inline-block;
+    width: 54px;
+    height: 29px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.nb-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.nb-switch-slider {
+    position: absolute;
+    inset: 0;
+    background: #cbd5e1;
+    border: 2px solid var(--nb-border);
+    border-radius: 999px;
+    transition: background 0.15s;
+}
+.nb-switch-slider::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 2px;
+    width: 19px;
+    height: 19px;
+    background: #fff;
+    border: 2px solid var(--nb-border);
+    border-radius: 50%;
+    transition: transform 0.15s;
+}
+.nb-switch input:checked + .nb-switch-slider { background: var(--nb-primary); }
+.nb-switch input:checked + .nb-switch-slider::before { transform: translateX(24px); }
+.nb-switch input:focus-visible + .nb-switch-slider { box-shadow: 0 0 0 3px var(--nb-primary-light); }
+
+/* ===== Secrets ===== */
+.nb-secret-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0.6rem 0 0.5rem;
+}
+.nb-secret-mask {
+    background: var(--nb-surface-2);
+    border: 2px solid var(--nb-border);
+    border-radius: var(--nb-radius-sm);
+    padding: 0.18rem 0.5rem;
+    font-size: 0.8rem;
+    color: var(--nb-primary-dark);
+    letter-spacing: 0.04em;
+}
+
+/* ===== Advanced (hidden by default) ===== */
+.nb-field-advanced {
+    display: none;
+}
+form.show-advanced .nb-field-advanced {
+    display: block;
+}
+form.show-advanced .nb-field-advanced.nb-field-row {
+    display: flex;
+}
+.nb-adv-toggle {
+    margin: 0.75rem 0 0.25rem;
+    color: var(--nb-muted) !important;
+}
+.nb-adv-toggle i {
+    transition: transform 0.15s;
+}
+form.show-advanced .nb-adv-toggle i {
+    transform: rotate(180deg);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    .nb-settings-layout { grid-template-columns: 1fr; }
+    .settings-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        position: static;
+        padding-bottom: 6px;
+        scrollbar-width: thin;
+    }
+    .settings-tab { width: auto; white-space: nowrap; }
+}
+</style>
+
+<div class="nb-settings-layout">
+    <!-- Tab rail -->
+    <div class="settings-tabs" id="settingsTabs">
+                <button type="button" class="settings-tab active" data-tab="general">
+            <i class="fas fa-sliders-h"></i><span>General &amp; Club</span>
+        </button>
+                <button type="button" class="settings-tab " data-tab="payment">
+            <i class="fas fa-credit-card"></i><span>Payments</span>
+        </button>
+                <button type="button" class="settings-tab " data-tab="attendance">
+            <i class="fas fa-clipboard-check"></i><span>Attendance &amp; League</span>
+        </button>
+                <button type="button" class="settings-tab " data-tab="email">
+            <i class="fas fa-envelope"></i><span>Email &amp; SMTP</span>
+        </button>
+                <button type="button" class="settings-tab " data-tab="ai">
+            <i class="fas fa-robot"></i><span>AI &amp; Integrations</span>
+        </button>
+                <button type="button" class="settings-tab " data-tab="workflow">
+            <i class="fas fa-bolt"></i><span>Workflow &amp; Triggers</span>
+        </button>
+            </div>
+
+    <!-- Panels -->
+        <section class="settings-panel active" data-panel="general" id="panel-general">
+        <form method="post" action="#" data-demo-form="1" class="card">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <span><i class="fas fa-sliders-h me-2"></i>General &amp; Club</span>
+                <span class="d-flex align-items-center gap-2 flex-wrap">
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save me-1"></i>Save changes</button>
+                </span>
+            </div>
+            <div class="card-body pb-0">
+                <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                <input type="hidden" name="tab" value="general">
+
+                
+                
+                <h6 class="nb-group-head">General &amp; Club</h6><div class="nb-field"><div class="nb-field-head"><strong>Club name</strong><small>Shown in the navbar, footer and page titles.</small></div><input type="text" class="form-control" name="s[site_name]" value="Chess Club ENSAS"></div><div class="nb-field"><div class="nb-field-head"><strong>Tagline</strong><small>Short subtitle displayed under the club name.</small></div><input type="text" class="form-control" name="s[site_tagline]" value="Where strategy meets friendship" placeholder="Where strategy meets friendship"></div><div class="nb-field"><div class="nb-field-head"><strong>Public contact email</strong><small>Address shown to visitors (footer, contact page).</small></div><input type="text" class="form-control" name="s[contact_email]" value="support@demo-club.example" placeholder="support@demo-club.example"></div><div class="nb-field"><div class="nb-field-head"><strong>Currency</strong><small>Symbol or code used on payment and merch pages.</small></div><input type="text" class="form-control" name="s[currency]" value="MAD" placeholder="MAD"></div><div class="nb-field"><div class="nb-field-head"><strong>Timezone</strong><small>Used for dates, deadlines and notifications.</small></div><input type="text" class="form-control" name="s[timezone]" value="Africa/Casablanca" placeholder="Africa/Casablanca"></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Open new member registration</strong><small>Allow new members to register on the site.</small></div><label class="nb-switch"><input type="hidden" name="s[registration_open]" value="0"><input type="checkbox" name="s[registration_open]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Maintenance mode</strong><small>Shows a maintenance notice to visitors. Admins keep full access.</small></div><label class="nb-switch"><input type="hidden" name="s[maintenance_mode]" value="0"><input type="checkbox" name="s[maintenance_mode]" value="1"><span class="nb-switch-slider"></span></label></div>            </div>
+            <div class="card-body pt-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <small class="text-muted">Settings are saved per tab — other tabs keep their values.</small>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Save changes</button>
+            </div>
+        </form>
+    </section>
+        <section class="settings-panel" data-panel="payment" id="panel-payment">
+        <form method="post" action="#" data-demo-form="1" class="card">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <span><i class="fas fa-credit-card me-2"></i>Payments</span>
+                <span class="d-flex align-items-center gap-2 flex-wrap">
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save me-1"></i>Save changes</button>
+                </span>
+            </div>
+            <div class="card-body pb-0">
+                <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                <input type="hidden" name="tab" value="payment">
+
+                
+                
+                <h6 class="nb-group-head">Payments</h6><div class="nb-field"><div class="nb-field-head"><strong>Membership amount</strong><small>Amount charged per membership period.</small></div><input type="number" class="form-control" name="s[payment_amount]" value="30" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Payment frequency</strong><small>How often the membership amount applies.</small></div><select class="form-select" name="s[payment_frequency]"><option value="monthly">Monthly</option><option value="yearly" selected>Yearly</option><option value="one_time">One-time</option></select></div><div class="nb-field"><div class="nb-field-head"><strong>Payment deadline (days)</strong><small>Days allowed to pay after joining or renewing.</small></div><input type="number" class="form-control" name="s[payment_deadline_days]" value="30" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Reminder before deadline (days)</strong><small>Reminder sent this many days before the deadline.</small></div><input type="number" class="form-control" name="s[payment_reminder_days]" value="7" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Late payment penalty</strong><small>Extra amount charged after the deadline (0 = none).</small></div><input type="number" class="form-control" name="s[late_payment_penalty]" value="0" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Early payment bonus (points)</strong><small>Bonus attendance points for paying before the deadline.</small></div><input type="number" class="form-control" name="s[payment_bonus_points]" value="3" step="1"></div><h6 class="nb-group-head">Accepted payment methods</h6><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Accept cash</strong></div><label class="nb-switch"><input type="hidden" name="s[method_cash]" value="0"><input type="checkbox" name="s[method_cash]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Accept card</strong></div><label class="nb-switch"><input type="hidden" name="s[method_card]" value="0"><input type="checkbox" name="s[method_card]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Accept bank transfer</strong></div><label class="nb-switch"><input type="hidden" name="s[method_transfer]" value="0"><input type="checkbox" name="s[method_transfer]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Accept PayPal</strong></div><label class="nb-switch"><input type="hidden" name="s[method_paypal]" value="0"><input type="checkbox" name="s[method_paypal]" value="1"><span class="nb-switch-slider"></span></label></div>            </div>
+            <div class="card-body pt-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <small class="text-muted">Settings are saved per tab — other tabs keep their values.</small>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Save changes</button>
+            </div>
+        </form>
+    </section>
+        <section class="settings-panel" data-panel="attendance" id="panel-attendance">
+        <form method="post" action="#" data-demo-form="1" class="card">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <span><i class="fas fa-clipboard-check me-2"></i>Attendance &amp; League</span>
+                <span class="d-flex align-items-center gap-2 flex-wrap">
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save me-1"></i>Save changes</button>
+                </span>
+            </div>
+            <div class="card-body pb-0">
+                <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                <input type="hidden" name="tab" value="attendance">
+
+                
+                
+                <h6 class="nb-group-head">Attendance &amp; League</h6><div class="nb-field"><div class="nb-field-head"><strong>Starting points</strong><small>Points awarded to every member at season start.</small></div><input type="number" class="form-control" name="s[attendance_start_points]" value="4" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Points per attended session</strong></div><input type="number" class="form-control" name="s[points_attended]" value="2" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Points for justified absence</strong></div><input type="number" class="form-control" name="s[points_justified]" value="1" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Points for semi-justified absence</strong></div><input type="number" class="form-control" name="s[points_semijustified]" value="0" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Points per unjustified absence</strong><small>Use a negative value.</small></div><input type="number" class="form-control" name="s[points_absence]" value="-2" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Minimum points for league</strong><small>Members below this threshold cannot join the league (0 = no limit).</small></div><input type="number" class="form-control" name="s[league_min_points]" value="0" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>League player limit</strong><small>Maximum players per league season (0 = unlimited).</small></div><input type="number" class="form-control" name="s[league_players_limit]" value="24" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Rounds per season</strong><small>Used by rankings and standings calculations.</small></div><input type="number" class="form-control" name="s[season_total_rounds]" value="10" step="1"></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Auto-exclude at zero points</strong><small>Members hitting 0 points are marked excluded automatically.</small></div><label class="nb-switch"><input type="hidden" name="s[auto_exclude_at_zero]" value="0"><input type="checkbox" name="s[auto_exclude_at_zero]" value="1" checked><span class="nb-switch-slider"></span></label></div>            </div>
+            <div class="card-body pt-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <small class="text-muted">Settings are saved per tab — other tabs keep their values.</small>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Save changes</button>
+            </div>
+        </form>
+    </section>
+        <section class="settings-panel" data-panel="email" id="panel-email">
+        <form method="post" action="#" data-demo-form="1" class="card">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <span><i class="fas fa-envelope me-2"></i>Email &amp; SMTP</span>
+                <span class="d-flex align-items-center gap-2 flex-wrap">
+                                        <button type="submit" name="send_test" value="1" class="btn btn-accent btn-sm">
+                        <i class="fas fa-paper-plane me-1"></i>Send test email
+                    </button>
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save me-1"></i>Save changes</button>
+                </span>
+            </div>
+            <div class="card-body pb-0">
+                <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                <input type="hidden" name="tab" value="email">
+
+                                <div class="alert alert-warning small py-2 px-3 mb-2">
+                    <i class="fas fa-shield-alt me-2"></i>
+                    Secret keys are <strong>encrypted at rest</strong> (AES-256-GCM) with the local app key and are never
+                    displayed in plain text. If you migrate servers, also copy <code>storage/keys/app.key</code>.
+                </div>
+                
+                                <div class="alert alert-info small py-2 px-3 mb-2">
+                    <i class="fas fa-envelope-open-text me-2"></i>
+                    <strong>Test recipient:</strong>
+                    reqasse@gmail.com                    — "Send test email" saves this tab first, then sends a test message with the settings above.
+                </div>
+                
+                <h6 class="nb-group-head">Mailer</h6><div class="nb-field"><div class="nb-field-head"><strong>Mail driver</strong><small>SMTP is configured for Gmail by default; mail() uses the server sendmail.</small></div><select class="form-select" name="s[mailer_driver]"><option value="mail">PHP mail()</option><option value="smtp" selected>SMTP</option></select></div><div class="nb-field"><div class="nb-field-head"><strong>SMTP host</strong><small>e.g. smtp.gmail.com</small></div><input type="text" class="form-control" name="s[smtp_host]" value="smtp.gmail.com" placeholder="smtp.gmail.com"></div><div class="nb-field"><div class="nb-field-head"><strong>SMTP port</strong><small>Common: 25, 465 (SSL), 587 (TLS).</small></div><input type="number" class="form-control" name="s[smtp_port]" value="587" step="1" placeholder="587"></div><div class="nb-field"><div class="nb-field-head"><strong>SMTP encryption</strong></div><select class="form-select" name="s[smtp_encryption]"><option value="none">None</option><option value="ssl">SSL</option><option value="tls" selected>TLS</option></select></div><div class="nb-field"><div class="nb-field-head"><strong>SMTP username</strong><small>For Gmail this is your full Gmail address, e.g. yourname@gmail.com.</small></div><input type="text" class="form-control" name="s[smtp_username]" value="support@demo-club.example" placeholder="yourname@gmail.com"></div><div class="nb-field"><div class="nb-field-head"><strong>SMTP password</strong><small>For Gmail: the 16-character app password (Google Account → Security → App passwords), not your normal password.</small></div><div class="nb-secret-row"><span class="badge bg-success">Set</span><code class="nb-secret-mask">••••••••</code></div><input type="password" class="form-control" name="secret[smtp_password]" autocomplete="off" placeholder="Leave blank to keep the current key"></div><button type="button" class="nb-adv-toggle btn btn-sm btn-outline-secondary" data-adv-toggle="email"><i class="fas fa-angle-down me-1"></i>Show advanced settings</button><div class="nb-field nb-field-advanced"><div class="nb-field-head"><strong>From address</strong><small>Sender shown on outgoing emails. For Gmail this must match your SMTP username, so it is synced automatically and hidden here by default.</small></div><input type="text" class="form-control" name="s[mail_from_address]" value="support@demo-club.example" placeholder="yourname@gmail.com"></div><div class="nb-field nb-field-advanced"><div class="nb-field-head"><strong>From name</strong><small>Shown next to the sender address in the recipient inbox.</small></div><input type="text" class="form-control" name="s[mail_from_name]" value="Chess Club ENSAS" placeholder="Chess Club ENSAS"></div><h6 class="nb-group-head">Notifications</h6><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Send welcome email</strong><small>Sent when a new member account is created.</small></div><label class="nb-switch"><input type="hidden" name="s[send_welcome_email]" value="0"><input type="checkbox" name="s[send_welcome_email]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Notify admins on new member</strong><small>Email to all admins when someone registers.</small></div><label class="nb-switch"><input type="hidden" name="s[notify_admin_new_member]" value="0"><input type="checkbox" name="s[notify_admin_new_member]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Notify admins on new candidate</strong><small>Email to all admins when a recruitment form is submitted.</small></div><label class="nb-switch"><input type="hidden" name="s[notify_admin_new_candidate]" value="0"><input type="checkbox" name="s[notify_admin_new_candidate]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Send confirmation to candidate</strong><small>Email the candidate when their form is submitted.</small></div><label class="nb-switch"><input type="hidden" name="s[email_candidate_received]" value="0"><input type="checkbox" name="s[email_candidate_received]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Notify candidate on status change</strong><small>Email candidate when their status changes (contacted, interviewed, rejected).</small></div><label class="nb-switch"><input type="hidden" name="s[email_candidate_status]" value="0"><input type="checkbox" name="s[email_candidate_status]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Notify member on payment confirmed</strong><small>Email member when marked as paid (+3 bonus points).</small></div><label class="nb-switch"><input type="hidden" name="s[email_payment_paid]" value="0"><input type="checkbox" name="s[email_payment_paid]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Send payment reminder</strong><small>Email member when marked unpaid or approaching deadline.</small></div><label class="nb-switch"><input type="hidden" name="s[email_payment_reminder]" value="0"><input type="checkbox" name="s[email_payment_reminder]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Notify member on attendance change</strong><small>Email member when their attendance points change (high volume — disable if chatty).</small></div><label class="nb-switch"><input type="hidden" name="s[email_attendance_update]" value="0"><input type="checkbox" name="s[email_attendance_update]" value="1"><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Warn on low points (1-2)</strong><small>Email member when attendance_with_bonus drops to 1 or 2 points.</small></div><label class="nb-switch"><input type="hidden" name="s[email_low_points_warning]" value="0"><input type="checkbox" name="s[email_low_points_warning]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Notify on exclusion (0 points)</strong><small>Email member immediately when they reach 0 points and are excluded.</small></div><label class="nb-switch"><input type="hidden" name="s[email_exclusion_notice]" value="0"><input type="checkbox" name="s[email_exclusion_notice]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Final notice before auto-delete (48h)</strong><small>Email member 2 days before auto-deletion (only when auto-delete is enabled).</small></div><label class="nb-switch"><input type="hidden" name="s[email_auto_delete_warning]" value="0"><input type="checkbox" name="s[email_auto_delete_warning]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Notify admin on member deletion</strong><small>Email all admins when a member is deleted (manual or auto).</small></div><label class="nb-switch"><input type="hidden" name="s[email_deletion_notice]" value="0"><input type="checkbox" name="s[email_deletion_notice]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Notify on league join/remove</strong><small>Email member when league player status changes.</small></div><label class="nb-switch"><input type="hidden" name="s[email_league_assignment]" value="0"><input type="checkbox" name="s[email_league_assignment]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Broadcast on attendance reset</strong><small>Email all members when admin resets attendance (season start).</small></div><label class="nb-switch"><input type="hidden" name="s[email_season_reset]" value="0"><input type="checkbox" name="s[email_season_reset]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Security login alerts</strong><small>Email member on new device/location login (future).</small></div><label class="nb-switch"><input type="hidden" name="s[email_login_security]" value="0"><input type="checkbox" name="s[email_login_security]" value="1"><span class="nb-switch-slider"></span></label></div><h6 class="nb-group-head">Newsletter</h6><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Newsletter system enabled</strong><small>Master switch — footer form and admin sending stop when off.</small></div><label class="nb-switch"><input type="hidden" name="s[newsletter_enabled]" value="0"><input type="checkbox" name="s[newsletter_enabled]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Show footer subscribe form</strong><small>Displays the newsletter signup in the public site footer.</small></div><label class="nb-switch"><input type="hidden" name="s[newsletter_show_footer_form]" value="0"><input type="checkbox" name="s[newsletter_show_footer_form]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field"><div class="nb-field-head"><strong>Newsletter transport</strong><small>MailerLite delivers campaigns over HTTPS (works on free hosting). SMTP fallback uses Gmail.</small></div><select class="form-select" name="s[newsletter_transport]"><option value="mailerlite" selected>MailerLite API (recommended)</option><option value="smtp">Local SMTP (Gmail)</option></select></div><div class="nb-field"><div class="nb-field-head"><strong>MailerLite API token</strong><small>dashboard.mailerlite.com → Integrations → MailerLite API → Generate new token. Stored encrypted.</small></div><div class="nb-secret-row"><span class="badge bg-success">Set</span><code class="nb-secret-mask">••••••••</code></div><input type="password" class="form-control" name="secret[mailerlite_api_key]" autocomplete="off" placeholder="Leave blank to keep the current key"></div><div class="nb-field"><div class="nb-field-head"><strong>MailerLite Group ID</strong><small>Numeric ID of the subscriber group new signups join (Subscribers → Groups).</small></div><input type="text" class="form-control" name="s[mailerlite_group_id]" value="1234567890" placeholder="1234567890"></div>            </div>
+            <div class="card-body pt-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <small class="text-muted">Settings are saved per tab — other tabs keep their values.</small>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Save changes</button>
+            </div>
+        </form>
+    </section>
+        <section class="settings-panel" data-panel="ai" id="panel-ai">
+        <form method="post" action="#" data-demo-form="1" class="card">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <span><i class="fas fa-robot me-2"></i>AI &amp; Integrations</span>
+                <span class="d-flex align-items-center gap-2 flex-wrap">
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save me-1"></i>Save changes</button>
+                </span>
+            </div>
+            <div class="card-body pb-0">
+                <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                <input type="hidden" name="tab" value="ai">
+
+                                <div class="alert alert-warning small py-2 px-3 mb-2">
+                    <i class="fas fa-shield-alt me-2"></i>
+                    Secret keys are <strong>encrypted at rest</strong> (AES-256-GCM) with the local app key and are never
+                    displayed in plain text. If you migrate servers, also copy <code>storage/keys/app.key</code>.
+                </div>
+                
+                
+                <h6 class="nb-group-head">Behavior</h6><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Enable AI assistant</strong><small>Turns on the AI-powered writer/assistant for admins.</small></div><label class="nb-switch"><input type="hidden" name="s[ai_enabled]" value="0"><input type="checkbox" name="s[ai_enabled]" value="1"><span class="nb-switch-slider"></span></label></div><div class="nb-field"><div class="nb-field-head"><strong>Default provider</strong><small>Used when no provider is specified for a task.</small></div><select class="form-select" name="s[ai_default_provider]"><option value="openai" selected>OpenAI</option><option value="anthropic">Anthropic</option><option value="gemini">Google Gemini</option><option value="openrouter">OpenRouter</option><option value="opencode_zen">OpenCode Zen</option><option value="github">GitHub</option><option value="github_azure">GitHub Azure</option><option value="deepseek">DeepSeek</option><option value="groq">Groq</option><option value="mistral">Mistral</option><option value="custom">Custom endpoint</option></select></div><div class="nb-field"><div class="nb-field-head"><strong>Default model</strong><small>e.g. gpt-4o, claude-3-5-sonnet, gemini-1.5-pro. Leave blank to use the provider default.</small></div><input type="text" class="form-control" name="s[ai_default_model]" value="" placeholder="gpt-4o, claude-3-5-sonnet, gemini-1.5-pro…"></div><div class="nb-field"><div class="nb-field-head"><strong>Temperature</strong><small>Creativity 0–2. Lower = more focused, higher = more varied.</small></div><input type="number" class="form-control" name="s[ai_temperature]" value="0.7" step="0.1"></div><div class="nb-field"><div class="nb-field-head"><strong>Max tokens per call</strong><small>Upper limit for generated content.</small></div><input type="number" class="form-control" name="s[ai_max_tokens]" value="2048" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>System prompt</strong><small>Instructions prepended to every AI call.</small></div><textarea class="form-control" name="s[ai_system_prompt]" rows="3">You are a helpful assistant for the Chess Club ENSAS admin panel.</textarea></div><h6 class="nb-group-head">Provider API keys</h6><div class="nb-field"><div class="nb-field-head"><strong>OpenAI API key</strong><small>platform.openai.com</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_openai]" autocomplete="off" placeholder="sk-…"></div><div class="nb-field"><div class="nb-field-head"><strong>Anthropic API key</strong><small>console.anthropic.com</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_anthropic]" autocomplete="off" placeholder="sk-ant-…"></div><div class="nb-field"><div class="nb-field-head"><strong>Google Gemini API key</strong><small>aistudio.google.com</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_gemini]" autocomplete="off" placeholder="AIza…"></div><div class="nb-field"><div class="nb-field-head"><strong>OpenRouter API key</strong><small>openrouter.ai</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_openrouter]" autocomplete="off" placeholder="sk-or-…"></div><div class="nb-field"><div class="nb-field-head"><strong>OpenCode Zen API key</strong><small>opencode.ai</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_opencode_zen]" autocomplete="off" placeholder="zen-…"></div><div class="nb-field"><div class="nb-field-head"><strong>GitHub API key</strong><small>github.com/settings/tokens</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_github]" autocomplete="off" placeholder="github_pat_…"></div><div class="nb-field"><div class="nb-field-head"><strong>GitHub Azure API key</strong><small>Azure-hosted GitHub Models endpoint.</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_github_azure]" autocomplete="off" placeholder="…"></div><div class="nb-field"><div class="nb-field-head"><strong>DeepSeek API key</strong><small>platform.deepseek.com</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_deepseek]" autocomplete="off" placeholder="sk-…"></div><div class="nb-field"><div class="nb-field-head"><strong>Groq API key</strong><small>console.groq.com</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_groq]" autocomplete="off" placeholder="gsk_…"></div><div class="nb-field"><div class="nb-field-head"><strong>Mistral API key</strong><small>console.mistral.ai</small></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_mistral]" autocomplete="off" placeholder="…"></div><div class="nb-field"><div class="nb-field-head"><strong>Custom provider API key</strong></div><div class="nb-secret-row"><span class="badge bg-secondary">Not set</span></div><input type="password" class="form-control" name="secret[key_custom]" autocomplete="off" placeholder="API key for your endpoint"></div><h6 class="nb-group-head">Custom endpoint</h6><div class="nb-field"><div class="nb-field-head"><strong>Custom provider base URL</strong><small>e.g. https://api.example.com/v1</small></div><input type="text" class="form-control" name="s[custom_base_url]" value="" placeholder="https://api.example.com/v1"></div><div class="nb-field"><div class="nb-field-head"><strong>Custom provider model</strong><small>Model identifier expected by your endpoint.</small></div><input type="text" class="form-control" name="s[custom_model]" value="" placeholder="model-name"></div>            </div>
+            <div class="card-body pt-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <small class="text-muted">Settings are saved per tab — other tabs keep their values.</small>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Save changes</button>
+            </div>
+        </form>
+    </section>
+        <section class="settings-panel" data-panel="workflow" id="panel-workflow">
+        <form method="post" action="#" data-demo-form="1" class="card">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <span><i class="fas fa-bolt me-2"></i>Workflow &amp; Triggers</span>
+                <span class="d-flex align-items-center gap-2 flex-wrap">
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save me-1"></i>Save changes</button>
+                </span>
+            </div>
+            <div class="card-body pb-0">
+                <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                <input type="hidden" name="tab" value="workflow">
+
+                
+                
+                <h6 class="nb-group-head">Message wall</h6><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Auto-approve wall messages</strong><small>New wall messages skip the pending queue and are published instantly.</small></div><label class="nb-switch"><input type="hidden" name="s[wall_auto_approve]" value="0"><input type="checkbox" name="s[wall_auto_approve]" value="1"><span class="nb-switch-slider"></span></label></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Require approval for wall messages</strong><small>Only approved messages are visible to visitors.</small></div><label class="nb-switch"><input type="hidden" name="s[wall_requires_approval]" value="0"><input type="checkbox" name="s[wall_requires_approval]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field"><div class="nb-field-head"><strong>Max wall message length (characters)</strong><small>Applied on the public wall and in the admin panel.</small></div><input type="number" class="form-control" name="s[wall_max_message_length]" value="500" step="1"></div><h6 class="nb-group-head">Content</h6><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Auto-publish announcements</strong><small>New announcements go live without extra admin review.</small></div><label class="nb-switch"><input type="hidden" name="s[auto_publish_announcements]" value="0"><input type="checkbox" name="s[auto_publish_announcements]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field"><div class="nb-field-head"><strong>Archive stale candidates (days)</strong><small>Recruitment candidates untouched for this long are moved to Archived.</small></div><input type="number" class="form-control" name="s[candidate_archive_days]" value="30" step="1"></div><h6 class="nb-group-head">Membership</h6><div class="nb-field"><div class="nb-field-head"><strong>Default status for new members</strong><small>Applied when a member is created by an admin.</small></div><select class="form-select" name="s[new_member_default_status]"><option value="active" selected>Active</option><option value="pending">Pending</option></select></div><div class="nb-field nb-field-row"><div class="nb-field-head"><strong>Automatic deletion of excluded members</strong><small>When enabled, members who reach 0 points are automatically deleted after the grace period.</small></div><label class="nb-switch"><input type="hidden" name="s[auto_delete_excluded]" value="0"><input type="checkbox" name="s[auto_delete_excluded]" value="1" checked><span class="nb-switch-slider"></span></label></div><div class="nb-field"><div class="nb-field-head"><strong>Days after exclusion before deletion</strong><small>Grace period after a member reaches 0 points. Default is 7 days.</small></div><input type="number" class="form-control" name="s[auto_delete_excluded_days]" value="10" step="1"></div><h6 class="nb-group-head">Dashboard</h6><div class="nb-field"><div class="nb-field-head"><strong>Stale candidate threshold (days)</strong><small>Candidates in New/Contacted untouched for this long are flagged on the dashboard Action Center.</small></div><input type="number" class="form-control" name="s[hub_stale_candidate_days]" value="14" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Wall moderation SLA (days)</strong><small>Wall messages pending longer than this are flagged on the dashboard Action Center.</small></div><input type="number" class="form-control" name="s[hub_wall_sla_days]" value="7" step="1"></div><div class="nb-field"><div class="nb-field-head"><strong>Low stock threshold (units)</strong><small>Products at or below this quantity are flagged as low stock.</small></div><input type="number" class="form-control" name="s[hub_low_stock_qty]" value="2" step="1"></div>            </div>
+            <div class="card-body pt-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <small class="text-muted">Settings are saved per tab — other tabs keep their values.</small>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>Save changes</button>
+            </div>
+        </form>
+    </section>
+    </div>
+
+<script>
+(function () {
+    var tabs = document.querySelectorAll('.settings-tab');
+    var panels = document.querySelectorAll('.settings-panel');
+
+    function activate(id) {
+        tabs.forEach(function (t) {
+            t.classList.toggle('active', t.dataset.tab === id);
+        });
+        panels.forEach(function (p) {
+            p.classList.toggle('active', p.dataset.panel === id);
+        });
+        try {
+            history.replaceState(null, '', '#tab-' + id);
+        } catch (e) {}
+    }
+
+    tabs.forEach(function (t) {
+        t.addEventListener('click', function () {
+            activate(t.dataset.tab);
+        });
+    });
+
+    var match = (location.hash || '').match(/^#tab-(.+)$/);
+    if (match) {
+        activate(match[1]);
+    }
+
+    // Advanced-settings toggles (hide/show From address / From name etc.)
+    document.querySelectorAll('.nb-adv-toggle').forEach(function (btn) {
+        var formEl = btn.closest('form');
+        btn.addEventListener('click', function () {
+            formEl.classList.toggle('show-advanced');
+        });
+    });
+
+    // Gmail requires the From address to match the SMTP username. When those
+    // fields are hidden inside the advanced section, keep From synced with the
+    // username so the saved config always sends from the authenticated address.
+    var emailSection = document.getElementById('panel-email');
+    if (emailSection) {
+        var emailForm = emailSection.querySelector('form');
+        var usernameField = emailSection.querySelector('input[name="s[smtp_username]"]');
+        var fromField = emailSection.querySelector('input[name="s[mail_from_address]"]');
+        if (emailForm && usernameField && fromField) {
+            var sync = function () {
+                if (!emailForm.classList.contains('show-advanced') && usernameField.value.trim() !== '') {
+                    fromField.value = usernameField.value.trim();
+                }
+            };
+            usernameField.addEventListener('change', sync);
+            usernameField.addEventListener('blur', sync);
+        }
+    }
+
+    // Workflow > Membership: auto-delete excluded members — show days only when toggle is on
+    var workflowPanel = document.getElementById('panel-workflow');
+    if (workflowPanel) {
+        var toggle = workflowPanel.querySelector('input[type="checkbox"][name="s[auto_delete_excluded]"]');
+        var daysInput = workflowPanel.querySelector('input[name="s[auto_delete_excluded_days]"]');
+        if (toggle && daysInput) {
+            var daysRow = daysInput.closest('.nb-field');
+            var syncDays = function () {
+                var enabled = toggle.checked;
+                if (daysRow) {
+                    daysRow.style.display = enabled ? '' : 'none';
+                    daysRow.style.opacity = enabled ? '1' : '0.5';
+                }
+                daysInput.required = enabled;
+                if (enabled && (daysInput.value === '' || parseInt(daysInput.value, 10) < 1)) {
+                    daysInput.value = '7';
+                }
+            };
+            toggle.addEventListener('change', syncDays);
+            syncDays();
+        }
+    }
+})();
+</script>
+
+    </div> <!-- End .nb-main -->
+
+    <!-- Admin Footer -->
+    <footer class="nb-admin-footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    <i class="fas fa-copyright me-1"></i>&copy; 2026 Chess Club ENSAS Administration Panel
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-shield-alt me-1"></i>Secure Management System
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    Developed by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank">Mohammed Reqasse</a>
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-palette me-1"></i>Professional Web Development
+                </p>
+            </div>
+            <div class="text-md-end">
+                <button class="btn btn-outline-light btn-sm mb-2" onclick="openContactSupport()">
+                    <i class="fas fa-headset me-2"></i>Contact Support
+                </button>
+                <div>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block"><i class="fas fa-user me-1"></i>Mohammed Reqasse</small>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block">
+                        <i class="fas fa-phone me-1"></i>
+                        <a href="tel:+212600000000" style="color: rgba(255,255,255,0.55);">+212 610 100 100</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal -->
+    <div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contactSupportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px solid #111; box-shadow: 4px 4px 0 #111;">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h6 class="fw-bold">Mohammed Reqasse</h6>
+                        <p class="text-muted mb-3">Website Creator</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Phone Support</h6>
+                                <a href="tel:+212600000000" class="text-decoration-none fw-bold">+212 610 100 100</a>
+                                <p class="text-muted small mb-0">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Email Support</h6>
+                                <a href="mailto:reqasse@gmail.com" class="text-decoration-none fw-bold">reqasse@gmail.com</a>
+                                <p class="text-muted small mb-0">Response within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Web Support</h6>
+                                <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" class="text-decoration-none fw-bold">https://moreqasse.github.io/MyCV/</a>
+                                <p class="text-muted small mb-0">Online resources & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <a href="tel:+212600000000" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Reusable Confirmation Modal Component (nbConfirm) -->
+    <!-- ===== Reusable Confirm Modal Component ===== -->
+<div class="modal fade" id="nbConfirmModal" tabindex="-1" aria-labelledby="nbConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111;overflow:hidden;">
+            <div class="modal-header" style="background:#1a0a2e;border-bottom:3px solid #111;border-radius:0;padding:0.9rem 1.25rem;">
+                <h5 class="modal-title text-white fw-bold mb-0" id="nbConfirmModalLabel" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.1rem;">
+                    <i class="fas fa-question-circle me-2" style="color:#ff2d95;"></i>Confirmation
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div id="nbConfirmIcon" class="d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+                     style="width:72px;height:72px;border:3px solid #111;box-shadow:4px 4px 0 #111;background:#7c3aed;color:#fff;font-size:1.9rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h6 class="fw-bold mb-2" id="nbConfirmTitle" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.15rem;color:#111;">Are you sure?</h6>
+                <p class="text-muted mb-0" id="nbConfirmMessage" style="font-size:0.92rem;line-height:1.5;"></p>
+            </div>
+            <div class="modal-footer" style="border-top:3px solid #111;border-radius:0;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="nbConfirmCancel">
+                    <i class="fas fa-times me-2"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="nbConfirmOk">
+                    <i class="fas fa-check me-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var modalEl = document.getElementById('nbConfirmModal');
+    if (!modalEl || typeof bootstrap === 'undefined') return;
+
+    var modal = new bootstrap.Modal(modalEl);
+    var okBtn = document.getElementById('nbConfirmOk');
+    var cancelBtn = document.getElementById('nbConfirmCancel');
+    var titleEl = document.getElementById('nbConfirmTitle');
+    var msgEl = document.getElementById('nbConfirmMessage');
+    var iconEl = document.getElementById('nbConfirmIcon');
+    var pending = null;
+
+    var tones = {
+        danger:  { iconBg: '#ff1744', btn: 'btn-danger' },
+        success: { iconBg: '#00ff88', btn: 'btn-success' },
+        warning: { iconBg: '#ffa500', btn: 'btn-warning' },
+        info:    { iconBg: '#00f0ff', btn: 'btn-info' },
+        primary: { iconBg: '#7c3aed', btn: 'btn-primary' }
+    };
+
+    function readOptions(el) {
+        return {
+            title: el.getAttribute('data-nb-confirm-title') || 'Are you sure?',
+            message: el.getAttribute('data-nb-confirm') || 'This action cannot be undone.',
+            tone: el.getAttribute('data-nb-confirm-tone') || 'danger',
+            icon: el.getAttribute('data-nb-confirm-icon') || 'fas fa-exclamation-triangle',
+            confirmText: el.getAttribute('data-nb-confirm-text') || 'Confirm'
+        };
+    }
+
+    window.nbConfirm = function (options) {
+        options = options || {};
+        var tone = tones[options.tone] || tones.primary;
+        var title = options.title || 'Are you sure?';
+        var message = options.message || 'This action cannot be undone.';
+        var icon = options.icon || 'fas fa-exclamation-triangle';
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.innerHTML = '<i class="' + icon + '"></i>';
+        iconEl.style.background = tone.iconBg;
+        iconEl.style.color = (options.tone === 'success' || options.tone === 'warning') ? '#111' : '#fff';
+        okBtn.className = 'btn ' + (options.confirmClass || tone.btn);
+        okBtn.innerHTML = '<i class="fas fa-check me-2"></i>' + (options.confirmText || 'Confirm');
+
+        pending = null;
+
+        return new Promise(function (resolve, reject) {
+            pending = { resolve: resolve, reject: reject };
+
+            function cleanup() {
+                okBtn.onclick = null;
+                cancelBtn.onclick = null;
+                modalEl.removeEventListener('hidden.bs.modal', onHidden);
+            }
+            function onHidden() {
+                cleanup();
+                if (pending) {
+                    pending.reject(new Error('cancelled'));
+                    pending = null;
+                }
+            }
+
+            modalEl.addEventListener('hidden.bs.modal', onHidden);
+
+            okBtn.onclick = function () {
+                modal.hide();
+                cleanup();
+                if (pending) {
+                    pending.resolve();
+                    pending = null;
+                }
+            };
+            cancelBtn.onclick = function () {
+                modal.hide();
+            };
+
+            modal.show();
+        });
+    };
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[data-nb-confirm]') : null;
+        if (!link) return;
+        e.preventDefault();
+        var href = link.getAttribute('href');
+        nbConfirm(readOptions(link)).then(function () {
+            window.location.href = href;
+        }).catch(function () {});
+    });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-nb-confirm]') : null;
+        if (!btn || btn.type !== 'submit' || !btn.form) return;
+        e.preventDefault();
+        var opts = readOptions(btn);
+        if (btn.hasAttribute('data-nb-confirm-text')) {
+            opts.confirmText = btn.getAttribute('data-nb-confirm-text');
+        }
+        nbConfirm(opts).then(function () {
+            var clone = document.createElement('input');
+            clone.type = 'hidden';
+            clone.name = btn.name;
+            clone.value = btn.value;
+            btn.form.appendChild(clone);
+            btn.form.submit();
+        }).catch(function () {});
+    });
+
+    document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.hasAttribute('data-nb-confirm')) return;
+        e.preventDefault();
+        nbConfirm(readOptions(form)).then(function () {
+            form.submit();
+        }).catch(function () {});
+    });
+})();
+</script>
+
+    <!-- Custom scripts -->
+    <script>
+        // Toggle sidebar on mobile (+ dim backdrop via body class)
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            var sb = document.getElementById('adminSidebar');
+            if (!sb) return;
+            sb.classList.toggle('active');
+            document.body.classList.toggle('nb-nav-open', sb.classList.contains('active'));
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('adminSidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar && sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                sidebarToggle && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('nb-nav-open');
+            }
+        });
+
+        // Mobile tables → lists: copy each <th> label into its column's <td>
+        // as data-th (used by admin-mobile.css). Skips .nb-keep-table
+        // (members page) and header-less tables. Checkbox-only cells and
+        // action cells get docking classes instead of labels.
+        (function nbResponsiveTables() {
+            function isCheckCell(td) {
+                var kids = Array.prototype.filter.call(td.childNodes, function (n) {
+                    if (n.nodeType === 3) return n.textContent.trim() !== '';
+                    if (n.nodeType !== 1) return false;
+                    var tag = n.tagName.toLowerCase();
+                    return !(tag === 'input' && (n.type === 'checkbox' || n.type === 'radio'));
+                });
+                return kids.length === 0 && td.querySelector('input[type="checkbox"], input[type="radio"]');
+            }
+            document.querySelectorAll('table.table:not(.nb-keep-table)').forEach(function (table) {
+                var headers = Array.prototype.map.call(
+                    table.querySelectorAll('thead tr:last-child th'),
+                    function (th) { return th.textContent.trim().replace(/\s+/g, ' '); }
+                );
+                if (!headers.length) return;
+                table.querySelectorAll('tbody tr').forEach(function (tr) {
+                    Array.prototype.forEach.call(tr.children, function (td, i) {
+                        if (td.tagName.toLowerCase() !== 'td') return;
+                        if (td.hasAttribute('colspan')) { td.classList.add('nb-no-label'); return; }
+                        if (isCheckCell(td)) { td.classList.add('nb-cell-check'); return; }
+                        if (td.querySelector('.btn, .btn-group, .dropdown')) { td.classList.add('nb-cell-actions'); return; }
+                        if (headers[i]) td.setAttribute('data-th', headers[i]);
+                        else td.classList.add('nb-no-label');
+                    });
+                });
+            });
+        })();
+
+        // Initialize tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(function(el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // Initialize popovers
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(function(el) {
+            return new bootstrap.Popover(el);
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert.alert-dismissible').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+
+        // Confirm before deleting (uses the shared nbConfirm component when available)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    if (typeof nbConfirm === 'function') {
+                        e.preventDefault();
+                        nbConfirm({
+                            title: 'Delete Item',
+                            message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                            icon: 'fas fa-trash',
+                            tone: 'danger',
+                            confirmText: 'Delete'
+                        }).then(function() {
+                            if (button.tagName === 'A') {
+                                window.location.href = button.href;
+                            } else if (button.form) {
+                                button.form.submit();
+                            }
+                        }).catch(function() {});
+                    } else if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            var togglePassword = document.querySelector('.toggle-password');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    var passwordInput = document.querySelector('#password');
+                    var icon = this.querySelector('i');
+                    if (passwordInput && passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else if (passwordInput) {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+        });
+
+        // Contact Support Modal Function
+        function openContactSupport() {
+            var modal = new bootstrap.Modal(document.getElementById('contactSupportModal'));
+            modal.show();
+        }
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,2322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin mobile-first layer (tables→lists, touch targets, stacking) -->
+    <link rel="stylesheet" href="assets/css/admin-mobile.css?v=3">
+
+    <style>
+        :root {
+            --nb-bg: #1a0a2e;
+            --nb-bg-dark: #0d0d0d;
+            --nb-surface: #f5f0ff;
+            --nb-surface-2: #ece4fa;
+            --nb-primary: #7c3aed;
+            --nb-primary-dark: #4c1d95;
+            --nb-primary-light: #a78bfa;
+            --nb-accent: #ff2d95;
+            --nb-accent-alt: #00f0ff;
+            --nb-ink: #111111;
+            --nb-text: #111111;
+            --nb-muted: #6b7280;
+            --nb-border: #111111;
+            --nb-success: #00ff88;
+            --nb-danger: #ff1744;
+            --nb-warning: #ffa500;
+            --nb-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+            --nb-font-heading: 'Playfair Display', serif;
+            --nb-shadow-sm: 3px 3px 0 #111;
+            --nb-shadow-md: 6px 6px 0 #111;
+            --nb-shadow-lg: 8px 8px 0 #111;
+            --nb-radius: 0px;
+            --nb-radius-sm: 4px;
+            --nb-sidebar-width: 250px;
+            --nb-header-height: 64px;
+        }
+
+        body {
+            font-family: var(--nb-font-body);
+            background-color: var(--nb-surface);
+            color: var(--nb-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6, .card-header {
+            font-family: var(--nb-font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Sidebar ===== */
+        .nb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--nb-sidebar-width);
+            z-index: 1000;
+            background: var(--nb-bg);
+            color: #fff;
+            border-right: 3px solid var(--nb-border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nb-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.25rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nb-sidebar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .nb-sidebar-title {
+            font-family: var(--nb-font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            display: block;
+        }
+        .nb-sidebar-title em {
+            color: var(--nb-accent-alt);
+            font-style: normal;
+        }
+        .nb-sidebar-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nb-sidebar-nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .nb-sidebar-section {
+            display: block;
+            padding: 0.9rem 1.25rem 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--nb-primary-light);
+        }
+
+        .nb-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.15rem 0.6rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--nb-radius-sm);
+            transition: all 0.15s;
+        }
+        .nb-nav-link i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .nb-nav-link:hover {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            transform: translate(-1px, -1px);
+        }
+        .nb-nav-link.active {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            font-weight: 700;
+        }
+        .nb-nav-link.active::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-accent);
+            flex-shrink: 0;
+        }
+        .nb-nav-link.nb-nav-danger:hover {
+            background: var(--nb-danger);
+        }
+
+        .nb-sidebar-footer {
+            border-top: 3px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0;
+        }
+
+        /* ===== Topbar ===== */
+        .nb-topbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--nb-sidebar-width);
+            z-index: 999;
+            height: var(--nb-header-height);
+            background: #fff;
+            border-bottom: 3px solid var(--nb-border);
+            box-shadow: var(--nb-shadow-sm);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nb-topbar .nb-toggle {
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            border-radius: var(--nb-radius-sm);
+            font-size: 1.1rem;
+            padding: 0.35rem 0.65rem;
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-topbar .nb-toggle:hover {
+            background: var(--nb-primary);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+
+        .nb-user-dropdown .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--nb-text);
+            text-decoration: none;
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+            border-radius: var(--nb-radius-sm);
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-user-dropdown .dropdown-toggle:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .nb-user-dropdown img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+        }
+
+        /* ===== Main content ===== */
+        .nb-main {
+            margin-left: var(--nb-sidebar-width);
+            padding: calc(var(--nb-header-height) + 24px) 24px 24px;
+            flex: 1;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-md);
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background: var(--nb-surface-2);
+            border-bottom: 3px solid var(--nb-border);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            font-weight: 600;
+            transition: all 0.12s;
+        }
+        .btn-primary {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #111;
+        }
+        .btn-outline-primary {
+            color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            box-shadow: 2px 2px 0 #111;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--nb-primary);
+            color: #fff;
+        }
+        .btn-success { background-color: var(--nb-success); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-danger { background-color: var(--nb-danger); border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-warning { background-color: var(--nb-warning); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-info { background-color: var(--nb-accent-alt); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-secondary { background-color: #d1d5db; border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-accent { background-color: var(--nb-accent); border-color: var(--nb-border); color: #fff; box-shadow: 3px 3px 0 #111; }
+        .btn-accent:hover { background-color: #e11d7d; color: #fff; }
+        .btn-sm { box-shadow: 2px 2px 0 #111; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111 !important; }
+
+        /* ===== Forms ===== */
+        .form-control, .form-select {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-family: var(--nb-font-body);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--nb-primary);
+            box-shadow: 3px 3px 0 var(--nb-primary-light);
+        }
+        .form-check-input:checked {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+        }
+
+        /* ===== Tables ===== */
+        .table {
+            border: 2px solid var(--nb-border);
+            background: #fff;
+        }
+        .table thead th {
+            background: var(--nb-bg);
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 3px solid var(--nb-border);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--nb-surface);
+        }
+        .table-hover tbody tr:hover {
+            background-color: var(--nb-surface-2);
+        }
+        .table td {
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* ===== Badges & alerts ===== */
+        .badge {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-weight: 600;
+        }
+        .alert {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-sm);
+        }
+        .alert-success { background-color: var(--nb-success); color: var(--nb-text); }
+        .alert-danger { background-color: var(--nb-danger); color: #fff; }
+        .alert-warning { background-color: var(--nb-warning); color: var(--nb-text); }
+        .alert-info { background-color: var(--nb-accent-alt); color: var(--nb-text); }
+
+        /* ===== Modals ===== */
+        .modal {
+            z-index: 99999 !important;
+        }
+        .modal-backdrop {
+            z-index: 99998 !important;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        .modal-dialog {
+            z-index: 99999 !important;
+        }
+        .modal-content {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-lg);
+        }
+        .modal-header {
+            border-bottom: 3px solid var(--nb-border);
+            font-family: var(--nb-font-heading);
+        }
+        .modal-footer {
+            border-top: 3px solid var(--nb-border);
+        }
+
+        /* ===== Pills/tabs ===== */
+        .nav-pills .nav-link {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            margin-right: 0.35rem;
+            color: var(--nb-text);
+            background: #fff;
+            box-shadow: 2px 2px 0 #111;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--nb-primary);
+            color: #fff;
+        }
+
+        /* ===== Admin footer ===== */
+        .nb-admin-footer {
+            border-top: 3px solid var(--nb-border);
+            background: var(--nb-bg);
+            color: #fff;
+            padding: 1.25rem 24px;
+            margin-left: var(--nb-sidebar-width);
+        }
+        .nb-admin-footer a {
+            color: var(--nb-primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nb-admin-footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nb-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .nb-sidebar.active {
+                transform: translateX(0);
+            }
+            .nb-main, .nb-admin-footer {
+                margin-left: 0;
+            }
+            .nb-topbar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+
+
+<nav class="nb-sidebar" id="adminSidebar">
+    <div class="nb-sidebar-brand">
+        <img src="assets/images/CHESS club logo ups.webp" alt="Chess Club ENSAS Logo" class="nb-sidebar-logo" width="40" height="40" loading="lazy" decoding="async">
+        <div>
+            <span class="nb-sidebar-title">Chess Club <em>ENSAS</em></span>
+            <small class="nb-sidebar-sub">Admin Panel</small>
+        </div>
+    </div>
+
+    <div class="nb-sidebar-nav">
+        <span class="nb-sidebar-section">Main</span>
+
+        <a class="nb-nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </a>
+                <a class="nb-nav-link " href="members.html">
+            <i class="fas fa-users"></i><span>Members</span>
+        </a>
+                        <a class="nb-nav-link " href="tournaments.html">
+            <i class="fas fa-trophy"></i><span>League & Tournaments</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Media</span>
+                <a class="nb-nav-link " href="announcements.html">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+                        <a class="nb-nav-link " href="formations.html">
+            <i class="fas fa-chess-board"></i><span>Formations</span>
+        </a>
+                        <a class="nb-nav-link " href="newsletter.html">
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Business</span>
+                <a class="nb-nav-link " href="sponsors.html">
+            <i class="fas fa-handshake"></i><span>Sponsors</span>
+        </a>
+                        <a class="nb-nav-link " href="products.html">
+            <i class="fas fa-shopping-bag"></i><span>Products</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Recruitment</span>
+        <a class="nb-nav-link " href="announcements-forms.html">
+            <i class="fas fa-file-alt"></i><span>Recruitment Forms</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Administration</span>
+        <a class="nb-nav-link " href="admins.html">
+            <i class="fas fa-user-shield"></i><span>Admins</span>
+        </a>
+        <a class="nb-nav-link " href="settings.html">
+            <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+        
+        <span class="nb-sidebar-section">Account</span>
+        <a class="nb-nav-link " href="profile.html">
+            <i class="fas fa-user-cog"></i><span>Profile</span>
+        </a>
+    </div>
+
+    <div class="nb-sidebar-footer">
+        <a class="nb-nav-link" href="https://moreqasse.github.io/MyCV/" target="_blank">
+            <i class="fas fa-external-link-alt"></i><span>Visit Website</span>
+        </a>
+        <a class="nb-nav-link nb-nav-danger" href="login.html">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Topbar -->
+<nav class="nb-topbar">
+    <div>
+        <button class="nb-toggle d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="d-none d-lg-inline text-muted small">
+            <i class="fas fa-desktop me-1"></i> Best on PC for full features
+        </span>
+    </div>
+
+    <div class="nb-user-dropdown">
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/placeholder.png" alt="User">
+                <span class="d-none d-md-inline">DemoAdmin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="nb-main">
+    
+            
+<div class="hl-wrap">
+
+    <!-- ============ HERO ============ -->
+    <div class="hl-card hl-hero mb-4">
+        <div class="hl-hero-grid">
+            <div>
+                <div class="hl-hero-kicker"><i class="fas fa-terminal me-2"></i>Control Room</div>
+                <h2 class="hl-hero-title mb-0">Admin Dashboard<span class="hl-name-dot">.</span></h2>
+                <div class="hl-hero-date"><i class="far fa-calendar me-1"></i>Saturday, September 12, 2026</div>
+            </div>
+            <div class="hl-hero-status">
+                <span class="hl-status hl-status-fin"><i class="fas fa-trophy me-1"></i>Season Finished</span>
+                                <div class="hl-hero-season">Chess League 2026</div>
+                            </div>
+            <div class="hl-hero-tip">
+                <div class="hl-tip-label"><i class="fas fa-comments me-1"></i>Wall Queue</div>
+                <div class="hl-tip-value">
+                    <strong>1</strong> pending
+                    <span style="color:var(--hl-muted);font-weight:600;">·</span>
+                    <strong style="color:var(--hl-success);">14</strong> live
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ STAT TILES ============ -->
+    <div class="hl-tiles mb-4">
+        <div class="hl-tile">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-primary"><i class="fas fa-users"></i></span><span class="hl-tile-value">80</span></div>
+            <div class="hl-tile-label">Total Members</div>
+            <div class="hl-tile-note">Club roster</div>
+        </div>
+        <div class="hl-tile">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-deep"><i class="fas fa-chess-knight"></i></span><span class="hl-tile-value">3</span></div>
+            <div class="hl-tile-label">League Players</div>
+            <div class="hl-tile-note">Competing this season</div>
+        </div>
+        <div class="hl-tile">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-cyan"><i class="fas fa-user-tie"></i></span><span class="hl-tile-value">13</span></div>
+            <div class="hl-tile-label">Bureau Members</div>
+            <div class="hl-tile-note">Club leadership</div>
+        </div>
+        <div class="hl-tile">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-warn"><i class="fas fa-file-signature"></i></span><span class="hl-tile-value">2</span></div>
+            <div class="hl-tile-label">Pending Candidates</div>
+            <div class="hl-tile-note">Awaiting follow-up</div>
+        </div>
+        <div class="hl-tile">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-warn"><i class="fas fa-clock"></i></span><span class="hl-tile-value hl-tile-value-warn" id="hlWallPendingTile">1</span></div>
+            <div class="hl-tile-label">Wall Pending</div>
+            <div class="hl-tile-note">Needs moderation</div>
+        </div>
+        <div class="hl-tile">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-ok"><i class="fas fa-comments"></i></span><span class="hl-tile-value hl-tile-value-ok" id="hlWallApprovedTile">14</span></div>
+            <div class="hl-tile-label">Wall Approved</div>
+            <div class="hl-tile-note">Visible to members</div>
+        </div>
+        <!-- Decision-hub health tiles -->
+        <a href="members.html?filter=risk" class="hl-tile" style="text-decoration:none;">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-warn"><i class="fas fa-exclamation-triangle"></i></span><span class="hl-tile-value ">0</span></div>
+            <div class="hl-tile-label">At Risk (≤2 pts)</div>
+            <div class="hl-tile-note">Exclusion prevention</div>
+        </a>
+        <a href="members.html?filter=excluded" class="hl-tile" style="text-decoration:none;">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-warn"><i class="fas fa-user-clock"></i></span><span class="hl-tile-value ">0</span></div>
+            <div class="hl-tile-label">Excluded (0 pts)</div>
+            <div class="hl-tile-note">Grace period status</div>
+        </a>
+        <a href="members.html?filter=unpaid" class="hl-tile" style="text-decoration:none;">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-deep"><i class="fas fa-credit-card"></i></span><span class="hl-tile-value">79</span></div>
+            <div class="hl-tile-label">Unpaid</div>
+            <div class="hl-tile-note">Follow-up list</div>
+        </a>
+        <div class="hl-tile">
+            <div class="hl-tile-top"><span class="hl-tile-icon hl-tile-icon-cyan"><i class="fas fa-moon"></i></span><span class="hl-tile-value ">79</span></div>
+            <div class="hl-tile-label">Never Logged In</div>
+            <div class="hl-tile-note">Adoption gap</div>
+        </div>
+    </div>
+
+    <!-- ============ ACTION CENTER + LEAGUE PULSE + FUNNEL ============ -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-accent"><i class="fas fa-bolt"></i></span>
+                    <div>
+                        <h5 class="mb-0">Action Center</h5>
+                        <small class="hl-card-sub">3 item(s) need attention</small>
+                    </div>
+                </div>
+                <div class="hl-card-body">
+                                                                    <a href="announcements-forms.html" class="hl-row" style="text-decoration:none;">
+                            <span class="hl-badge hl-badge-warn" style="min-width:30px;text-align:center;"><i class="fas fa-user-clock"></i></span>
+                            <div class="hl-row-main">
+                                <div class="hl-row-title" style="white-space:normal;">1 candidate(s) untouched for 14+ days</div>
+                            </div>
+                            <i class="fas fa-chevron-right ms-auto" style="color:var(--hl-muted);font-size:0.7rem;"></i>
+                        </a>
+                                                <a href="dashboard.html#wall" class="hl-row" style="text-decoration:none;">
+                            <span class="hl-badge hl-badge-warn" style="min-width:30px;text-align:center;"><i class="fas fa-comments"></i></span>
+                            <div class="hl-row-main">
+                                <div class="hl-row-title" style="white-space:normal;">1 wall message(s) pending 19+ day(s) (SLA 7d)</div>
+                            </div>
+                            <i class="fas fa-chevron-right ms-auto" style="color:var(--hl-muted);font-size:0.7rem;"></i>
+                        </a>
+                                                <a href="announcements.html" class="hl-row" style="text-decoration:none;">
+                            <span class="hl-badge hl-badge-info" style="min-width:30px;text-align:center;"><i class="fas fa-file-pen"></i></span>
+                            <div class="hl-row-main">
+                                <div class="hl-row-title" style="white-space:normal;">1 unpublished draft(s) (announcements/formations)</div>
+                            </div>
+                            <i class="fas fa-chevron-right ms-auto" style="color:var(--hl-muted);font-size:0.7rem;"></i>
+                        </a>
+                                                            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-primary"><i class="fas fa-chess"></i></span>
+                    <div>
+                        <h5 class="mb-0">League Pulse</h5>
+                        <small class="hl-card-sub">Chess League 2026</small>
+                    </div>
+                </div>
+                <div class="hl-card-body">
+                    <div class="hl-pulse">
+                                        <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-weight:700;color:var(--hl-muted);margin-bottom:0.3rem;">
+                        <span>Round 20 / 23</span>
+                                            </div>
+                    <div style="height:10px;background:rgba(255,255,255,0.08);border:2px solid #111;">
+                        <div style="height:100%;width:87%;background:linear-gradient(90deg,var(--hl-primary),var(--hl-accent));transition:width 0.8s;"></div>
+                    </div>
+                    <div style="display:flex;gap:1rem;margin:0.75rem 0;font-size:0.75rem;color:var(--hl-muted);">
+                        <span><i class="fas fa-users me-1"></i>24 players</span>
+                        <span class=""><i class="fas fa-hourglass-half me-1"></i>0 pending</span>
+                    </div>
+                                        <div style="border-top:2px solid rgba(255,255,255,0.08);padding-top:0.5rem;">
+                                                <div style="display:flex;align-items:center;gap:0.5rem;padding:0.25rem 0;font-size:0.8rem;">
+                            <span style="width:24px;text-align:center;">🥇</span>
+                            <span style="flex:1;color:var(--hl-ink);font-weight:600;">Soufiane Mansouri</span>
+                            <span style="color:#ffd700;font-weight:800;">19.5</span>
+                        </div>
+                                                <div style="display:flex;align-items:center;gap:0.5rem;padding:0.25rem 0;font-size:0.8rem;">
+                            <span style="width:24px;text-align:center;">🥈</span>
+                            <span style="flex:1;color:var(--hl-ink);font-weight:600;">Younes Cherkaoui</span>
+                            <span style="color:#ffd700;font-weight:800;">17</span>
+                        </div>
+                                                <div style="display:flex;align-items:center;gap:0.5rem;padding:0.25rem 0;font-size:0.8rem;">
+                            <span style="width:24px;text-align:center;">🥉</span>
+                            <span style="flex:1;color:var(--hl-ink);font-weight:600;">Nabil Mansouri</span>
+                            <span style="color:#ffd700;font-weight:800;">16.5</span>
+                        </div>
+                                                <div style="display:flex;align-items:center;gap:0.5rem;padding:0.25rem 0;font-size:0.8rem;">
+                            <span style="width:24px;text-align:center;">4.</span>
+                            <span style="flex:1;color:var(--hl-ink);font-weight:600;">Nizar Mekouar</span>
+                            <span style="color:#ffd700;font-weight:800;">12.5</span>
+                        </div>
+                                                <div style="display:flex;align-items:center;gap:0.5rem;padding:0.25rem 0;font-size:0.8rem;">
+                            <span style="width:24px;text-align:center;">5.</span>
+                            <span style="flex:1;color:var(--hl-ink);font-weight:600;">Younes Berrada</span>
+                            <span style="color:#ffd700;font-weight:800;">12.5</span>
+                        </div>
+                                            </div>
+                                                            </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-violet"><i class="fas fa-filter-circle-dollar"></i></span>
+                    <div>
+                        <h5 class="mb-0">Recruitment Funnel</h5>
+                        <small class="hl-card-sub">33.3% conversion rate</small>
+                    </div>
+                </div>
+                <div class="hl-card-body">
+                    <div class="hl-funnel">
+                                        <div style="margin-bottom:0.6rem;">
+                        <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-weight:700;margin-bottom:0.15rem;">
+                            <span style="color:var(--hl-muted);text-transform:uppercase;letter-spacing:0.06em;">New</span>
+                            <span style="color:var(--hl-ink);">2</span>
+                        </div>
+                        <div style="height:8px;background:rgba(255,255,255,0.06);border:1px solid #111;">
+                            <div style="height:100%;width:100%;background:var(--hl-primary);"></div>
+                        </div>
+                    </div>
+                                        <div style="margin-bottom:0.6rem;">
+                        <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-weight:700;margin-bottom:0.15rem;">
+                            <span style="color:var(--hl-muted);text-transform:uppercase;letter-spacing:0.06em;">Contacted</span>
+                            <span style="color:var(--hl-ink);">0</span>
+                        </div>
+                        <div style="height:8px;background:rgba(255,255,255,0.06);border:1px solid #111;">
+                            <div style="height:100%;width:0%;background:var(--hl-primary);"></div>
+                        </div>
+                    </div>
+                                        <div style="margin-bottom:0.6rem;">
+                        <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-weight:700;margin-bottom:0.15rem;">
+                            <span style="color:var(--hl-muted);text-transform:uppercase;letter-spacing:0.06em;">Interviewed</span>
+                            <span style="color:var(--hl-ink);">0</span>
+                        </div>
+                        <div style="height:8px;background:rgba(255,255,255,0.06);border:1px solid #111;">
+                            <div style="height:100%;width:0%;background:var(--hl-primary);"></div>
+                        </div>
+                    </div>
+                                        <div style="margin-bottom:0.6rem;">
+                        <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-weight:700;margin-bottom:0.15rem;">
+                            <span style="color:var(--hl-muted);text-transform:uppercase;letter-spacing:0.06em;">Converted</span>
+                            <span style="color:var(--hl-ink);">1</span>
+                        </div>
+                        <div style="height:8px;background:rgba(255,255,255,0.06);border:1px solid #111;">
+                            <div style="height:100%;width:50%;background:var(--hl-primary);"></div>
+                        </div>
+                    </div>
+                                        <div style="margin-bottom:0.6rem;">
+                        <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-weight:700;margin-bottom:0.15rem;">
+                            <span style="color:var(--hl-muted);text-transform:uppercase;letter-spacing:0.06em;">Rejected</span>
+                            <span style="color:var(--hl-ink);">0</span>
+                        </div>
+                        <div style="height:8px;background:rgba(255,255,255,0.06);border:1px solid #111;">
+                            <div style="height:100%;width:0%;background:var(--hl-primary);"></div>
+                        </div>
+                    </div>
+                                                            <div style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:rgba(255,165,0,0.1);border-left:3px solid var(--hl-warn,#ffa500);font-size:0.78rem;">
+                        <i class="fas fa-user-clock me-1"></i>1 candidate(s) stale 14+ days
+                    </div>
+                                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CLUB ACTIVITY + DEMOGRAPHICS ============ -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-7">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-primary"><i class="fas fa-chart-line"></i></span>
+                    <div>
+                        <h5 class="mb-0">Club Activity</h5>
+                        <small class="hl-card-sub">Formations · Announcements · Tournaments</small>
+                    </div>
+                    <div class="hl-period ms-auto">
+                        <button type="button" class="hl-period-btn hl-period-active" data-days="7">7 Days</button>
+                        <button type="button" class="hl-period-btn" data-days="30">30 Days</button>
+                    </div>
+                </div>
+                <div class="hl-card-body">
+                    <div class="hl-chart-chips">
+                        <button type="button" class="hl-series hl-series-f" data-series="formations"><i class="fas fa-chess-board me-1"></i>Formations <span class="hl-series-count">3</span></button>
+                        <button type="button" class="hl-series hl-series-a" data-series="announcements"><i class="fas fa-bullhorn me-1"></i>Announcements <span class="hl-series-count">4</span></button>
+                        <button type="button" class="hl-series hl-series-t" data-series="tournaments"><i class="fas fa-trophy me-1"></i>Tournaments <span class="hl-series-count">5</span></button>
+                        <button type="button" class="hl-series hl-series-m" data-series="matches"><i class="fas fa-chess me-1"></i>Matches</button>
+                    </div>
+                    <div class="hl-chart-box">
+                        <canvas id="hlActivityChart" height="280"></canvas>
+                        <div id="hlChartFallback" class="hl-empty" hidden>Charts could not load (Chart.js CDN unreachable) — the numbers still live in the stat tiles above.</div>
+                    </div>
+                    <div class="hl-chart-foot"><i class="fas fa-mouse-pointer me-1"></i>Click a chip to isolate a series · click the legend to toggle · use the switch for 7 or 30 days</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-cyan"><i class="fas fa-user-group"></i></span>
+                    <div>
+                        <h5 class="mb-0">Member Demographics</h5>
+                        <small class="hl-card-sub">80 members on the roster</small>
+                    </div>
+                </div>
+                <div class="hl-card-body">
+                    <div class="hl-demo-grid">
+                        <div class="hl-demo-cell">
+                            <div class="hl-demo-title"><i class="fas fa-venus-mars me-1" style="color:var(--hl-primary);"></i>Gender</div>
+                            <div class="hl-demo-canvas"><canvas id="hlDemoGender"></canvas></div>
+                        </div>
+                        <div class="hl-demo-cell">
+                            <div class="hl-demo-title"><i class="fas fa-wallet me-1" style="color:var(--hl-success);"></i>Payment</div>
+                            <div class="hl-demo-canvas"><canvas id="hlDemoPayment"></canvas></div>
+                        </div>
+                        <div class="hl-demo-cell">
+                            <div class="hl-demo-title"><i class="fas fa-chess-knight me-1" style="color:var(--hl-warning);"></i>League</div>
+                            <div class="hl-demo-canvas"><canvas id="hlDemoLeague"></canvas></div>
+                        </div>
+                        <div class="hl-demo-cell">
+                            <div class="hl-demo-title"><i class="fas fa-user-tie me-1" style="color:var(--hl-accent);"></i>Bureau</div>
+                            <div class="hl-demo-canvas"><canvas id="hlDemoBureau"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ WALL MODERATION + RECENT CANDIDATES ============ -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-8">
+            <div class="hl-card hl-wall">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-violet"><i class="fas fa-comments"></i></span>
+                    <div>
+                        <h5 class="mb-0">Message Approvals</h5>
+                        <small class="hl-card-sub">Club wall moderation queue</small>
+                    </div>
+                    <div class="hl-tabs ms-auto">
+                        <button class="hl-tab hl-tab-active" id="hlTabPending" type="button"><i class="fas fa-hourglass-half me-1"></i>Pending <span class="hl-tab-count" id="hlPendingChip">1</span></button>
+                        <button class="hl-tab" id="hlTabApproved" type="button"><i class="fas fa-check me-1"></i>Approved <span class="hl-tab-count" id="hlApprovedChip">14</span></button>
+                    </div>
+                </div>
+                <div class="hl-card-body p-0">
+                    <div id="hlWallNote" class="hl-wall-note" hidden></div>
+                    <div class="hl-wall-pane" id="hlWallPanePending">
+                                                <div class="hl-wmsg" data-id="30">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">This club changed how I see chess — from memorizing openings to actually thinking 5 moves ahead. Respect to the bureau!</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>0</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-ok" data-wall-action="approve_message" title="Approve"><i class="fas fa-check me-1"></i>Approve</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                    <div class="hl-wall-pane d-none" id="hlWallPaneApproved">
+                                                <div class="hl-wmsg" data-id="39">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">First semester and already hooked. When&amp;#039;s the next admission phase? Don&amp;#039;t want friends to miss it.</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>1</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="hl-wmsg" data-id="38">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">Shoutout to the members who stay after to analyze. That&amp;#039;s where real learning happens.</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>0</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="hl-wmsg" data-id="37">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">That rook endgame formation was brutal — still thinking about it.</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>0</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="hl-wmsg" data-id="36">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">Suggestion: add a Discord for post-training analysis?</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>0</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="hl-wmsg" data-id="35">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">Performance review page actually makes sense now. Love the analytics breakdown.</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>0</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="hl-wmsg" data-id="34">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">Newbie here, zero rating but already felt welcome. Thanks for the patience!</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>0</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="hl-wmsg" data-id="33">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">Props to whoever organized the simultaneous — playing 20 boards is no joke.</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>0</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="hl-wmsg" data-id="29">
+                            <div class="hl-mini-avatar">
+                                                                <span>C</span>
+                                                            </div>
+                            <div class="hl-wmsg-main">
+                                <div class="hl-wmsg-meta">
+                                    <strong>Chess Enthusiast</strong>
+                                                                        <span class="hl-wmsg-time">Aug 24, 2026</span>
+                                </div>
+                                <div class="hl-wmsg-text">My my you&amp;#039;re all grown up</div>
+                                <div class="hl-wmsg-actions">
+                                    <span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>0<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>0</span>
+                                    <span class="hl-wmsg-btns">
+                                        <button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>
+                                        <button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-cyan"><i class="fas fa-user-plus"></i></span>
+                    <div>
+                        <h5 class="mb-0">Recent Candidates</h5>
+                        <small class="hl-card-sub">Latest recruitment submissions</small>
+                    </div>
+                    <a href="announcements-forms.html" class="hl-link ms-auto">View all <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="hl-card-body p-0">
+                                        <a href="form-candidates.html" class="hl-row" style="text-decoration:none;color:inherit;display:flex;">
+                        <div class="hl-row-main">
+                            <div class="hl-row-title">Omar exclusion</div>
+                            <div class="hl-row-sub">
+                                <span class="hl-badge hl-badge-neutral">New</span>
+                                <span>Join us for the 2026/2027 season</span>
+                            </div>
+                        </div>
+                        <span class="hl-row-date">Sep 09</span>
+                    </a>
+                                        <a href="form-candidates.html" class="hl-row" style="text-decoration:none;color:inherit;display:flex;">
+                        <div class="hl-row-main">
+                            <div class="hl-row-title">Yassine Sebti</div>
+                            <div class="hl-row-sub">
+                                <span class="hl-badge hl-badge-primary">Converted</span>
+                                <span>Join us for the 2026/2027 season</span>
+                            </div>
+                        </div>
+                        <span class="hl-row-date">Aug 24</span>
+                    </a>
+                                        <a href="form-candidates.html" class="hl-row" style="text-decoration:none;color:inherit;display:flex;">
+                        <div class="hl-row-main">
+                            <div class="hl-row-title">Mohammed Reqasse</div>
+                            <div class="hl-row-sub">
+                                <span class="hl-badge hl-badge-neutral">New</span>
+                                <span>Join us for the 2026/2027 season</span>
+                            </div>
+                        </div>
+                        <span class="hl-row-date">Aug 01</span>
+                    </a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ RECENT MEMBERS + QUICK LINKS ============ -->
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-ok"><i class="fas fa-user-check"></i></span>
+                    <div>
+                        <h5 class="mb-0">Recent Members</h5>
+                        <small class="hl-card-sub">Newest additions to the roster</small>
+                    </div>
+                    <a href="members.html" class="hl-link ms-auto">View all <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="hl-card-body p-0">
+                                        <div class="hl-row">
+                        <div class="hl-mini-avatar">
+                                                        <span>J</span>
+                                                    </div>
+                        <div class="hl-row-main">
+                            <div class="hl-row-title">Yassine Sebti</div>
+                            <div class="hl-row-sub">
+                                                                <span class="hl-badge hl-badge-primary">League</span>                                                                                            </div>
+                        </div>
+                        <span class="hl-row-date">Aug 27, 2026</span>
+                    </div>
+                                        <div class="hl-row">
+                        <div class="hl-mini-avatar">
+                                                        <img src="assets/images/placeholder.png" alt="">
+                                                    </div>
+                        <div class="hl-row-main">
+                            <div class="hl-row-title">Younes Cherkaoui</div>
+                            <div class="hl-row-sub">
+                                                                                                <span class="hl-badge hl-badge-warn">Bureau</span>                                                            </div>
+                        </div>
+                        <span class="hl-row-date">Dec 03, 2025</span>
+                    </div>
+                                        <div class="hl-row">
+                        <div class="hl-mini-avatar">
+                                                        <img src="assets/images/placeholder.png" alt="">
+                                                    </div>
+                        <div class="hl-row-main">
+                            <div class="hl-row-title">Rim Belkacem</div>
+                            <div class="hl-row-sub">
+                                                                                                <span class="hl-badge hl-badge-warn">Bureau</span>                                                            </div>
+                        </div>
+                        <span class="hl-row-date">Nov 30, 2025</span>
+                    </div>
+                                        <div class="hl-row">
+                        <div class="hl-mini-avatar">
+                                                        <img src="assets/images/placeholder.png" alt="">
+                                                    </div>
+                        <div class="hl-row-main">
+                            <div class="hl-row-title">Oumaima Mansouri</div>
+                            <div class="hl-row-sub">
+                                                                                                <span class="hl-badge hl-badge-warn">Bureau</span>                                                            </div>
+                        </div>
+                        <span class="hl-row-date">Nov 30, 2025</span>
+                    </div>
+                                        <div class="hl-row">
+                        <div class="hl-mini-avatar">
+                                                        <img src="assets/images/placeholder.png" alt="">
+                                                    </div>
+                        <div class="hl-row-main">
+                            <div class="hl-row-title">Bilal Bennani</div>
+                            <div class="hl-row-sub">
+                                                                                                <span class="hl-badge hl-badge-warn">Bureau</span>                                                            </div>
+                        </div>
+                        <span class="hl-row-date">Nov 30, 2025</span>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-accent"><i class="fas fa-bolt"></i></span>
+                    <div>
+                        <h5 class="mb-0">Quick Links</h5>
+                        <small class="hl-card-sub">Jump anywhere</small>
+                    </div>
+                    <span class="hl-chip ms-auto"><i class="fas fa-file-alt me-1"></i>1 forms</span>
+                </div>
+                <div class="hl-card-body">
+                    <div class="hl-actions">
+                        <a href="announcements.html" class="hl-action"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+                        <a href="members.html" class="hl-action"><i class="fas fa-users"></i><span>Members</span></a>
+                        <a href="tournaments.html" class="hl-action"><i class="fas fa-trophy"></i><span>League</span></a>
+                        <a href="announcements-forms.html" class="hl-action"><i class="fas fa-plus-circle"></i><span>New Form</span></a>
+                        <a href="products.html" class="hl-action"><i class="fas fa-shopping-bag"></i><span>Products</span></a>
+                        <a href="sponsors.html" class="hl-action"><i class="fas fa-handshake"></i><span>Sponsors</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ ATTENDANCE RISK + UPCOMING & DEADLINES ============ -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-warn"><i class="fas fa-triangle-exclamation"></i></span>
+                    <div>
+                        <h5 class="mb-0">Attendance Watchlist</h5>
+                        <small class="hl-card-sub">0 at risk · 0 excluded</small>
+                    </div>
+                    <a href="members.html" class="hl-link ms-auto" style="font-size:0.75rem;font-weight:700;">Open members →</a>
+                </div>
+                <div class="hl-card-body" style="padding:0.75rem 1.1rem;">
+                                            <div class="hl-empty">Squad fully healthy — nobody below 3 points ♟</div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-cyan"><i class="fas fa-calendar-check"></i></span>
+                    <div>
+                        <h5 class="mb-0">Upcoming & Deadlines</h5>
+                        <small class="hl-card-sub">What's on the calendar</small>
+                    </div>
+                </div>
+                <div class="hl-card-body" style="padding:0.75rem 1.1rem;">
+                                                                                                                                        <div class="hl-row" style="padding:0.5rem 0;">
+                            <span class="hl-badge hl-badge-ok" style="min-width:34px;text-align:center;"><i class="fas fa-trophy"></i></span>
+                            <div class="hl-row-main">
+                                <div class="hl-row-title">Chess League 25/26</div>
+                                <div class="hl-row-sub">🥇 Soufiane Mansouri · May 9, 2026</div>
+                            </div>
+                        </div>
+                                                <div class="hl-row" style="padding:0.5rem 0;">
+                            <span class="hl-badge hl-badge-ok" style="min-width:34px;text-align:center;"><i class="fas fa-trophy"></i></span>
+                            <div class="hl-row-main">
+                                <div class="hl-row-title">The Fall Crown - Women Division</div>
+                                <div class="hl-row-sub">🥇 Soukaina El Yazidi · Dec 11, 2025</div>
+                            </div>
+                        </div>
+                                                <div class="hl-row" style="padding:0.5rem 0;">
+                            <span class="hl-badge hl-badge-ok" style="min-width:34px;text-align:center;"><i class="fas fa-trophy"></i></span>
+                            <div class="hl-row-main">
+                                <div class="hl-row-title">The Fall Crown</div>
+                                <div class="hl-row-sub">🥇 Soufiane Mansouri · Dec 11, 2025</div>
+                            </div>
+                        </div>
+                                                            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ GROWTH & ENGAGEMENT + OPS ============ -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-7">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-ok"><i class="fas fa-arrow-trend-up"></i></span>
+                    <div>
+                        <h5 class="mb-0">Growth & Engagement</h5>
+                        <small class="hl-card-sub">Roster growth · newsletter · email health (7d)</small>
+                    </div>
+                </div>
+                <div class="hl-card-body" style="padding:1rem 1.1rem;">
+                    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+                        <div>
+                            <div style="font-size:0.66rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--hl-muted);">Newsletter Subs</div>
+                            <div style="font-size:1.4rem;font-weight:900;color:var(--hl-ink);">3</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.66rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--hl-muted);">Open Rate</div>
+                            <div style="font-size:1.4rem;font-weight:900;color:var(--hl-ink);">—</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.66rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--hl-muted);">CTR</div>
+                            <div style="font-size:1.4rem;font-weight:900;color:var(--hl-ink);">—</div>
+                        </div>
+                        <div>
+                            <div style="font-size:0.66rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--hl-muted);">Emails 7d</div>
+                            <div style="font-size:1.4rem;font-weight:900;color:var(--hl-ink);">40<span style="font-size:0.8rem;color:var(--hl-danger);"> / 5 failed</span></div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:flex-end;gap:4px;height:90px;">
+                                                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;" title="2025-11: 78 new member(s)">
+                            <div style="width:100%;height:100%;background:linear-gradient(180deg,var(--hl-primary),var(--hl-primary-deep));border:1.5px solid #111;"></div>
+                            <span style="font-size:0.56rem;color:var(--hl-muted);">Nov</span>
+                        </div>
+                                                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;" title="2025-12: 1 new member(s)">
+                            <div style="width:100%;height:6%;background:linear-gradient(180deg,var(--hl-primary),var(--hl-primary-deep));border:1.5px solid #111;"></div>
+                            <span style="font-size:0.56rem;color:var(--hl-muted);">Dec</span>
+                        </div>
+                                                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;" title="2026-08: 1 new member(s)">
+                            <div style="width:100%;height:6%;background:linear-gradient(180deg,var(--hl-primary),var(--hl-primary-deep));border:1.5px solid #111;"></div>
+                            <span style="font-size:0.56rem;color:var(--hl-muted);">Aug</span>
+                        </div>
+                                                                    </div>
+                    <div style="text-align:center;font-size:0.66rem;color:var(--hl-muted);margin-top:0.3rem;">New members per month</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="hl-card">
+                <div class="hl-card-head">
+                    <span class="hl-card-icon hl-card-icon-deep"><i class="fas fa-box-open"></i></span>
+                    <div>
+                        <h5 class="mb-0">Club Operations</h5>
+                        <small class="hl-card-sub">Shop & scheduled sends</small>
+                    </div>
+                </div>
+                <div class="hl-card-body" style="padding:0.75rem 1.1rem;">
+                    <dl style="margin:0;">
+                        <div style="display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:2px solid rgba(17,17,17,0.06);font-size:0.85rem;">
+                            <dt style="color:var(--hl-muted);font-weight:600;">Shop SKUs</dt>
+                            <dd style="margin:0;font-weight:800;color:var(--hl-ink);">3</dd>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:2px solid rgba(17,17,17,0.06);font-size:0.85rem;">
+                            <dt style="color:var(--hl-muted);font-weight:600;">Stock value</dt>
+                            <dd style="margin:0;font-weight:800;color:var(--hl-ink);">3,020.00 MAD</dd>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:2px solid rgba(17,17,17,0.06);font-size:0.85rem;">
+                            <dt style="color:var(--hl-muted);font-weight:600;">Low / out of stock</dt>
+                            <dd style="margin:0;font-weight:800;color:var(--hl-ink);">0 / 0</dd>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;padding:0.5rem 0;font-size:0.85rem;">
+                            <dt style="color:var(--hl-muted);font-weight:600;">Scheduled campaigns</dt>
+                            <dd style="margin:0;font-weight:800;color:var(--hl-ink);">0</dd>
+                        </div>
+                    </dl>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ===== Lavender neo-brutalist admin dashboard ===== */
+.hl-wrap {
+    --hl-card: linear-gradient(180deg, #f9f5ff 0%, #ede4fb 100%);
+    --hl-card-head: rgba(124, 58, 237, 0.07);
+    --hl-ink: #1d1330;
+    --hl-text: #2b2144;
+    --hl-muted: #6f6785;
+    --hl-primary: #7c3aed;
+    --hl-primary-deep: #4c1d95;
+    --hl-accent: #e91e8c;
+    --hl-cyan: #0e7490;
+    --hl-success: #0e9f6e;
+    --hl-danger: #dc2626;
+    --hl-warning: #d97706;
+    --hl-border: #111111;
+    --hl-font-head: 'Playfair Display', serif;
+    --hl-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+}
+.nb-topbar { background: #f6f1ff; }
+.hl-card {
+    background: var(--hl-card);
+    border: 3px solid var(--hl-border);
+    box-shadow: 4px 4px 0 var(--hl-border);
+    color: var(--hl-text);
+    overflow: hidden;
+    margin-bottom: 0;
+}
+.hl-card-head {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    border-bottom: 3px solid var(--hl-border);
+    background: var(--hl-card-head);
+}
+.hl-card-head h5 { font-family: var(--hl-font-head); font-size: 1.05rem; color: var(--hl-ink); margin: 0; }
+.hl-card-sub { color: var(--hl-muted); font-size: 0.74rem; }
+.hl-card-body { padding: 0; }
+.hl-card-icon {
+    width: 38px; height: 38px; flex: 0 0 38px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--hl-border); font-size: 1rem;
+}
+.hl-card-icon-primary { background: rgba(124,58,237,0.14); color: var(--hl-primary); }
+.hl-card-icon-deep { background: rgba(76,29,149,0.14); color: var(--hl-primary-deep); }
+.hl-card-icon-cyan { background: rgba(14,116,144,0.12); color: var(--hl-cyan); }
+.hl-card-icon-ok { background: rgba(14,159,110,0.12); color: var(--hl-success); }
+.hl-card-icon-warn { background: rgba(217,119,6,0.12); color: var(--hl-warning); }
+.hl-card-icon-accent { background: rgba(233,30,140,0.12); color: var(--hl-accent); }
+.hl-card-icon-violet { background: rgba(124,58,237,0.14); color: var(--hl-primary); }
+
+/* Hero */
+.hl-hero { padding: 1.4rem; position: relative; }
+.hl-hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+        radial-gradient(600px 220px at 88% 0%, rgba(124,58,237,0.14), transparent 60%),
+        radial-gradient(480px 200px at 0% 100%, rgba(233,30,140,0.08), transparent 60%);
+}
+.hl-hero-grid { display: grid; grid-template-columns: 1.6fr 1fr 1.1fr; gap: 1.5rem; align-items: center; position: relative; }
+.hl-hero-kicker { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--hl-accent); font-weight: 800; }
+.hl-hero-title { font-family: var(--hl-font-head); font-size: 1.9rem; font-weight: 900; color: var(--hl-ink); letter-spacing: -0.02em; line-height: 1.1; }
+.hl-name-dot { color: var(--hl-accent); }
+.hl-hero-date { font-size: 0.78rem; color: var(--hl-muted); margin-top: 0.35rem; }
+.hl-hero-status { border-left: 3px solid rgba(17,17,17,0.15); padding-left: 1.2rem; }
+.hl-status {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em;
+    padding: 0.35rem 0.7rem; border: 2px solid var(--hl-border);
+}
+.hl-status-live { background: rgba(14,159,110,0.14); color: var(--hl-success); }
+.hl-status-fin { background: rgba(217,119,6,0.14); color: var(--hl-warning); }
+.hl-status-paused { background: rgba(124,58,237,0.12); color: var(--hl-primary); }
+.hl-status-none { background: rgba(111,103,133,0.12); color: var(--hl-muted); }
+.hl-hero-season { font-weight: 700; color: var(--hl-ink); margin-top: 0.4rem; font-size: 0.92rem; }
+.hl-hero-tip { border-left: 3px solid rgba(17,17,17,0.15); padding-left: 1.2rem; }
+.hl-tip-label { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--hl-primary); font-weight: 800; margin-bottom: 0.45rem; }
+.hl-tip-value { font-size: 0.95rem; color: var(--hl-text); }
+
+/* Tiles */
+.hl-tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+.hl-tile {
+    background: var(--hl-card);
+    border: 3px solid var(--hl-border); box-shadow: 4px 4px 0 var(--hl-border);
+    padding: 1rem 1.05rem; position: relative; overflow: hidden;
+}
+.hl-tile::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--hl-primary), var(--hl-accent)); }
+.hl-tile-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.hl-tile-icon {
+    width: 32px; height: 32px; flex: 0 0 32px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--hl-border); font-size: 0.85rem;
+}
+.hl-tile-icon-primary { background: rgba(124,58,237,0.14); color: var(--hl-primary); }
+.hl-tile-icon-deep { background: rgba(76,29,149,0.14); color: var(--hl-primary-deep); }
+.hl-tile-icon-cyan { background: rgba(14,116,144,0.12); color: var(--hl-cyan); }
+.hl-tile-icon-warn { background: rgba(217,119,6,0.14); color: var(--hl-warning); }
+.hl-tile-icon-ok { background: rgba(14,159,110,0.14); color: var(--hl-success); }
+.hl-tile-value { font-family: var(--hl-font-head); font-size: 1.75rem; font-weight: 900; color: var(--hl-ink); line-height: 1; }
+.hl-tile-value-warn { color: var(--hl-warning); }
+.hl-tile-value-ok { color: var(--hl-success); }
+.hl-tile-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--hl-muted); font-weight: 700; margin-top: 0.5rem; }
+.hl-tile-note { font-size: 0.7rem; color: var(--hl-muted); margin-top: 0.12rem; }
+
+/* Rows / lists */
+.hl-row {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.75rem 1.1rem; border-bottom: 2px solid rgba(17,17,17,0.08);
+    transition: background 0.15s;
+}
+.hl-row:hover { background: rgba(124,58,237,0.08); }
+.hl-row:last-child { border-bottom: none; }
+.hl-row-main { flex: 1; min-width: 0; }
+.hl-row-title { font-size: 0.9rem; font-weight: 700; color: var(--hl-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hl-row-sub { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; color: var(--hl-muted); margin-top: 0.15rem; flex-wrap: wrap; }
+.hl-row-date { font-size: 0.72rem; color: var(--hl-muted); white-space: nowrap; }
+.hl-mini-avatar {
+    width: 40px; height: 40px; flex: 0 0 40px;
+    border: 2px solid var(--hl-border); background: rgba(124,58,237,0.16); overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+}
+.hl-mini-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.hl-mini-avatar span { font-family: var(--hl-font-head); font-weight: 900; color: var(--hl-primary-deep); font-size: 1.05rem; }
+.hl-empty { padding: 2rem 1.2rem; text-align: center; color: var(--hl-muted); font-size: 0.88rem; }
+
+/* Recruitment funnel (padded — bars/labels must never touch the card edges) */
+.hl-funnel { padding: 1rem 1.1rem; }
+.hl-funnel > div:last-child { margin-bottom: 0; }
+/* League pulse (same edge-to-edge fix as the funnel) */
+.hl-pulse { padding: 1rem 1.1rem; }
+
+/* Badges */
+.hl-badge {
+    display: inline-block; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 0.18rem 0.5rem; border: 2px solid var(--hl-border);
+}
+.hl-badge-ok { background: rgba(14,159,110,0.14); color: var(--hl-success); }
+.hl-badge-warn { background: rgba(217,119,6,0.14); color: var(--hl-warning); }
+.hl-badge-danger { background: rgba(220,38,38,0.12); color: var(--hl-danger); }
+.hl-badge-info { background: rgba(14,116,144,0.12); color: var(--hl-cyan); }
+.hl-badge-primary { background: rgba(124,58,237,0.14); color: var(--hl-primary); }
+.hl-badge-neutral { background: rgba(111,103,133,0.12); color: var(--hl-muted); }
+
+/* Wall moderation */
+.hl-tabs { display: flex; gap: 0.4rem; }
+.hl-tab {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 0.35rem 0.7rem; border: 2px solid var(--hl-border);
+    background: #f1e9fc; color: var(--hl-text); box-shadow: 2px 2px 0 var(--hl-border);
+    cursor: pointer; transition: all 0.12s;
+}
+.hl-tab:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--hl-border); }
+.hl-tab-active { background: var(--hl-primary); color: #fff; }
+.hl-tab-count {
+    font-size: 0.66rem; font-weight: 900; background: rgba(17,17,17,0.12);
+    padding: 0.1rem 0.42rem; border: 1.5px solid var(--hl-border);
+}
+.hl-tab-active .hl-tab-count { background: rgba(255,255,255,0.22); }
+.hl-wall-note { margin: 0.9rem 1.1rem 0; font-size: 0.78rem; font-weight: 700; padding: 0.5rem 0.7rem; border: 2px solid var(--hl-border); }
+.hl-wall-note-ok { background: rgba(14,159,110,0.12); color: var(--hl-success); }
+.hl-wall-note-err { background: rgba(220,38,38,0.1); color: var(--hl-danger); }
+.hl-wmsg { display: flex; gap: 0.75rem; padding: 0.85rem 1.1rem; border-bottom: 2px solid rgba(17,17,17,0.08); }
+.hl-wmsg:last-child { border-bottom: none; }
+.hl-wmsg-main { flex: 1; min-width: 0; }
+.hl-wmsg-meta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
+.hl-wmsg-meta strong { color: var(--hl-ink); }
+.hl-wmsg-time { font-size: 0.7rem; color: var(--hl-muted); margin-left: auto; white-space: nowrap; }
+.hl-wmsg-text { font-size: 0.88rem; color: var(--hl-text); line-height: 1.5; margin-top: 0.25rem; word-wrap: break-word; }
+.hl-wmsg-actions { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 0.55rem; flex-wrap: wrap; }
+.hl-votes { font-size: 0.75rem; font-weight: 700; color: var(--hl-muted); }
+.hl-wmsg-btns { display: flex; gap: 0.4rem; }
+.hl-tag-mini {
+    font-size: 0.56rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    background: rgba(124,58,237,0.14); color: var(--hl-primary); border: 2px solid var(--hl-border);
+    padding: 0.08rem 0.38rem;
+}
+
+/* Buttons */
+.hl-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;
+    font-size: 0.72rem; font-weight: 800;
+    padding: 0.32rem 0.65rem; cursor: pointer;
+    border: 2px solid var(--hl-border); box-shadow: 2px 2px 0 var(--hl-border);
+    transition: all 0.12s; font-family: var(--hl-font-body);
+}
+.hl-btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--hl-border); }
+.hl-btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--hl-border); }
+.hl-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: 2px 2px 0 var(--hl-border); }
+.hl-btn-ok { background: var(--hl-success); color: #fff; }
+.hl-btn-warn { background: #f1e9fc; color: var(--hl-warning); }
+.hl-btn-danger-ghost { background: #f1e9fc; color: var(--hl-danger); }
+
+/* Quick actions */
+.hl-chip {
+    font-size: 0.66rem; font-weight: 800; padding: 0.25rem 0.55rem;
+    border: 2px solid var(--hl-border); background: rgba(124,58,237,0.1); color: var(--hl-primary);
+    white-space: nowrap;
+}
+.hl-link { font-size: 0.76rem; font-weight: 800; color: var(--hl-primary); text-decoration: none; white-space: nowrap; }
+.hl-link:hover { color: var(--hl-primary-deep); }
+.hl-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; padding: 1.1rem; }
+.hl-action {
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    padding: 0.85rem 0.4rem; text-decoration: none;
+    background: #f1e9fc; border: 2px solid var(--hl-border); box-shadow: 2px 2px 0 var(--hl-border);
+    color: var(--hl-text); font-size: 0.72rem; font-weight: 700;
+    transition: all 0.15s;
+}
+.hl-action i { font-size: 1.05rem; color: var(--hl-primary); }
+.hl-action:hover { background: var(--hl-primary); color: #fff; transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--hl-border); }
+.hl-action:hover i { color: #fff; }
+
+/* ===== Charts ===== */
+.hl-period { display: flex; gap: 0.35rem; }
+.hl-period-btn {
+    font-size: 0.7rem; font-weight: 800; padding: 0.3rem 0.7rem;
+    border: 2px solid var(--hl-border); background: #f1e9fc; color: var(--hl-text);
+    cursor: pointer; box-shadow: 2px 2px 0 var(--hl-border); transition: all 0.12s;
+    font-family: var(--hl-font-body);
+}
+.hl-period-btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--hl-border); }
+.hl-period-active { background: var(--hl-primary); color: #fff; }
+.hl-chart-chips { display: flex; gap: 0.5rem; padding: 1rem 1.1rem 0; flex-wrap: wrap; }
+.hl-series {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.72rem; font-weight: 800;
+    padding: 0.35rem 0.7rem; border: 2px solid var(--hl-border);
+    background: #f1e9fc; color: var(--hl-text); cursor: pointer;
+    box-shadow: 2px 2px 0 var(--hl-border); transition: all 0.12s;
+    font-family: var(--hl-font-body);
+}
+.hl-series:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--hl-border); }
+.hl-series-count { font-size: 0.64rem; font-weight: 900; background: rgba(17,17,17,0.1); border: 1.5px solid var(--hl-border); padding: 0.05rem 0.4rem; }
+.hl-series-f { border-left: 6px solid #7c3aed; }
+.hl-series-a { border-left: 6px solid #d61f7f; }
+.hl-series-t { border-left: 6px solid #0e7490; }
+.hl-series-m { border-left: 6px solid #0e9f6e; }
+.hl-series-off { opacity: 0.35; }
+.hl-series-solo { box-shadow: 3px 3px 0 var(--hl-border); transform: translate(-1px, -1px); }
+.hl-chart-box { position: relative; padding: 0.6rem 1.1rem 0.4rem; height: 300px; }
+.hl-chart-foot {
+    font-size: 0.66rem; color: var(--hl-muted); padding: 0 1.1rem 0.9rem;
+    display: flex; align-items: center; gap: 0.35rem;
+}
+.hl-demo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1.1rem;
+    overflow-x: auto;
+    min-width: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #7c3aed #ece4fa;
+}
+.hl-demo-grid::-webkit-scrollbar { height: 6px; }
+.hl-demo-grid::-webkit-scrollbar-track { background: #ece4fa; border: 1px solid var(--hl-border); }
+.hl-demo-grid::-webkit-scrollbar-thumb { background: #7c3aed; border: 1px solid var(--hl-border); }
+.hl-demo-cell { border: 2px solid var(--hl-border); background: rgba(255,255,255,0.35); padding: 0.8rem 0.6rem 0.6rem; min-width: 220px; }
+.hl-demo-title { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: var(--hl-ink); margin-bottom: 0.35rem; text-align: center; }
+.hl-demo-canvas { position: relative; width: 100%; height: 150px; }
+
+@media (max-width: 1199.98px) {
+    .hl-tiles { grid-template-columns: repeat(3, 1fr); }
+    .hl-hero-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 767.98px) {
+    .hl-tiles { grid-template-columns: repeat(2, 1fr); }
+    .hl-hero-grid { grid-template-columns: 1fr; gap: 1.1rem; }
+    .hl-hero-status, .hl-hero-tip { border-left: none; padding-left: 0; border-top: 2px solid rgba(17,17,17,0.12); padding-top: 0.8rem; }
+    /* ---- Mobile-first: roomier tap targets, wrapping rows, calmer charts ---- */
+    .hl-wrap { font-size: 0.95rem; }
+    .hl-hero { padding: 1.1rem; }
+    .hl-hero-title { font-size: 1.55rem; }
+    .hl-tiles { gap: 0.65rem; }
+    .hl-tile { padding: 0.85rem 0.8rem; }
+    .hl-tile-value { font-size: 1.55rem; }
+    .hl-tile-icon { width: 30px; height: 30px; flex-basis: 30px; font-size: 0.8rem; }
+    .hl-tile-label { font-size: 0.68rem; }
+    a.hl-tile { min-height: 96px; display: block; }
+    .hl-card-head { flex-wrap: wrap; padding: 0.8rem 0.9rem; row-gap: 0.5rem; }
+    .hl-card-head h5 { font-size: 0.98rem; }
+    .hl-row { padding: 0.75rem 0.9rem; align-items: flex-start; }
+    .hl-row-title { white-space: normal; font-size: 0.92rem; }
+    .hl-row-date { margin-left: auto; }
+    .hl-actions { grid-template-columns: repeat(2, 1fr); padding: 0.85rem; }
+    .hl-action { min-height: 84px; padding: 1rem 0.4rem; font-size: 0.78rem; }
+    .hl-action i { font-size: 1.25rem; }
+    .hl-tabs { flex-wrap: wrap; }
+    .hl-tab { min-height: 42px; }
+    .hl-btn { min-height: 42px; }
+    .hl-chart-box { height: 230px; padding: 0.4rem 0.6rem 0.3rem; }
+    .hl-chart-chips { padding: 0.8rem 0.85rem 0; }
+    .hl-demo-grid { grid-template-columns: 1fr; padding: 0.85rem; }
+    .hl-demo-cell { min-width: 0; }
+    .hl-demo-canvas { height: 170px; }
+    .hl-wmsg { padding: 0.75rem 0.85rem; }
+    .hl-wmsg-btns { flex-wrap: wrap; }
+    .hl-funnel { padding: 0.85rem; }
+    .hl-pulse { padding: 0.85rem; }
+    .hl-period { flex-wrap: wrap; }
+    .hl-period-btn { min-height: 40px; }
+}
+</style>
+
+<script>
+(function () {
+    'use strict';
+    var baseUrl = 'https://moreqasse.github.io/MyCV/';
+    var panePending = document.getElementById('hlWallPanePending');
+    var paneApproved = document.getElementById('hlWallPaneApproved');
+    var tabPending = document.getElementById('hlTabPending');
+    var tabApproved = document.getElementById('hlTabApproved');
+    var note = document.getElementById('hlWallNote');
+
+    function showNote(msg, ok) {
+        note.textContent = msg;
+        note.className = 'hl-wall-note ' + (ok ? 'hl-wall-note-ok' : 'hl-wall-note-err');
+        note.hidden = false;
+        setTimeout(function () { note.hidden = true; }, 5000);
+    }
+
+    function timeAgo(ts) {
+        var diff = (Date.now() - new Date(ts.replace(' ', 'T')).getTime()) / 1000;
+        if (diff < 60) return 'just now';
+        if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+        if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+        if (diff < 604800) return Math.floor(diff / 86400) + 'd ago';
+        return new Date(ts).toLocaleDateString();
+    }
+
+    function wallName(msg) {
+        var member = ((msg.first_name || '') + ' ' + (msg.last_name || '')).trim();
+        return member ? member : ((msg.sender_name || '').trim() ? msg.sender_name : 'Chess Enthusiast');
+    }
+
+    function actionButtons(msg, status) {
+        var inner;
+        if (status === 'pending') {
+            inner = '<button type="button" class="hl-btn hl-btn-ok" data-wall-action="approve_message" title="Approve"><i class="fas fa-check me-1"></i>Approve</button>'
+                  + '<button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>';
+        } else {
+            inner = '<button type="button" class="hl-btn hl-btn-warn" data-wall-action="disapprove_message" title="Move back to pending"><i class="fas fa-undo me-1"></i>Unapprove</button>'
+                  + '<button type="button" class="hl-btn hl-btn-danger-ghost" data-wall-action="delete_message" title="Delete"><i class="fas fa-trash"></i></button>';
+        }
+        return '<span class="hl-wmsg-btns">' + inner + '</span>';
+    }
+
+    function renderList(container, messages, status) {
+        container.innerHTML = '';
+        if (!messages || !messages.length) {
+            var empty = document.createElement('div');
+            empty.className = 'hl-empty';
+            empty.innerHTML = '<i class="fas fa-inbox fa-2x mb-2 d-block" style="color:#b9aee0;"></i>';
+            empty.appendChild(document.createTextNode(status === 'pending' ? 'Nothing waiting — the queue is clear.' : 'No approved messages yet.'));
+            container.appendChild(empty);
+            return;
+        }
+        messages.forEach(function (msg) {
+            var item = document.createElement('div');
+            item.className = 'hl-wmsg';
+            item.dataset.id = msg.id;
+            var name = wallName(msg);
+            var initial = name.charAt(0).toUpperCase();
+            var avatar = (msg.profile_image && msg.profile_image.trim())
+                ? '<img src="' + baseUrl + '/' + msg.profile_image + '" alt="">'
+                : '<span>' + initial + '</span>';
+            var memberTag = msg.member_id ? '<span class="hl-tag-mini">Member</span>' : '';
+            item.innerHTML = ''
+                + '<div class="hl-mini-avatar">' + avatar + '</div>'
+                + '<div class="hl-wmsg-main">'
+                + '<div class="hl-wmsg-meta"><strong></strong>' + memberTag + '<span class="hl-wmsg-time"></span></div>'
+                + '<div class="hl-wmsg-text"></div>'
+                + '<div class="hl-wmsg-actions">'
+                + '<span class="hl-votes"><i class="fas fa-thumbs-up me-1" style="color:var(--hl-success);"></i>'
+                + '<span class="hl-like-count"></span>'
+                + '<i class="fas fa-thumbs-down ms-2 me-1" style="color:var(--hl-danger);"></i>'
+                + '<span class="hl-dislike-count"></span></span>'
+                + actionButtons(msg, status)
+                + '</div></div>';
+            item.querySelector('.hl-wmsg-meta strong').textContent = name;
+            item.querySelector('.hl-wmsg-time').textContent = timeAgo(msg.created_at);
+            item.querySelector('.hl-wmsg-text').textContent = msg.message_content;
+            item.querySelector('.hl-like-count').textContent = msg.likes || 0;
+            item.querySelector('.hl-dislike-count').textContent = msg.dislikes || 0;
+            container.appendChild(item);
+        });
+    }
+
+    function loadWall() {
+        return Promise.all([
+            fetch(baseUrl + '/messages_api.php?action=get_messages&status=pending').then(function (r) { return r.json(); }),
+            fetch(baseUrl + '/messages_api.php?action=get_messages&status=approved').then(function (r) { return r.json(); })
+        ]).then(function (res) {
+            var pending = res[0].messages || [];
+            var approved = res[1].messages || [];
+            renderList(panePending, pending, 'pending');
+            renderList(paneApproved, approved, 'approved');
+            document.getElementById('hlPendingChip').textContent = pending.length;
+            document.getElementById('hlApprovedChip').textContent = approved.length;
+            document.getElementById('hlWallPendingTile').textContent = pending.length;
+            document.getElementById('hlWallApprovedTile').textContent = approved.length;
+        }).catch(function () {
+            showNote('Failed to refresh the wall — try again.', false);
+        });
+    }
+
+    function wallAction(action, messageId) {
+        var fd = new FormData();
+        fd.append('action', action);
+        fd.append('message_id', messageId);
+        fd.append('csrf_token', 'demo-csrf-token-placeholder-000000000000000000000000');
+        return fetch(baseUrl + '/messages_api.php', { method: 'POST', body: fd })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+                if (!res.success) throw new Error(res.message || 'Action failed');
+                return res;
+            });
+    }
+
+    function setTab(activeIsPending) {
+        tabPending.classList.toggle('hl-tab-active', activeIsPending);
+        tabApproved.classList.toggle('hl-tab-active', !activeIsPending);
+        panePending.classList.toggle('d-none', !activeIsPending);
+        paneApproved.classList.toggle('d-none', activeIsPending);
+    }
+    tabPending.addEventListener('click', function () { setTab(true); });
+    tabApproved.addEventListener('click', function () { setTab(false); });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('[data-wall-action]') : null;
+        if (!btn) return;
+        var item = btn.closest('.hl-wmsg');
+        if (!item) return;
+        var action = btn.dataset.wallAction;
+        var id = item.dataset.id;
+        var run = function () { return wallAction(action, id); };
+        var done = function () {
+            showNote(action === 'approve_message' ? 'Message approved — it is now live on the wall.'
+                : action === 'disapprove_message' ? 'Message moved back to pending.'
+                : 'Message deleted.', true);
+            loadWall();
+        };
+        if (action === 'delete_message') {
+            if (typeof nbConfirm === 'function') {
+                nbConfirm({
+                    title: 'Delete Message',
+                    message: 'Permanently delete this wall message? This cannot be undone.',
+                    icon: 'fas fa-trash',
+                    tone: 'danger',
+                    confirmText: 'Delete'
+                }).then(function () {
+                    run().then(done).catch(function (err) { showNote(err.message, false); });
+                }).catch(function () {});
+            } else {
+                run().then(done).catch(function (err) { showNote(err.message, false); });
+            }
+        } else {
+            run().then(done).catch(function (err) { showNote(err.message, false); });
+        }
+    });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+    'use strict';
+    if (typeof Chart === 'undefined') {
+        var fallback = document.getElementById('hlChartFallback');
+        if (fallback) fallback.hidden = false;
+        return;
+    }
+
+    var activity = {"d7":{"labels":["Sep 06","Sep 07","Sep 08","Sep 09","Sep 10","Sep 11","Sep 12"],"formations":[0,0,0,0,0,0,0],"announcements":[0,0,0,1,0,0,0],"tournaments":[0,0,0,0,0,0,0],"matches":[0,0,0,0,0,0,0]},"d30":{"labels":["Aug 14","Aug 15","Aug 16","Aug 17","Aug 18","Aug 19","Aug 20","Aug 21","Aug 22","Aug 23","Aug 24","Aug 25","Aug 26","Aug 27","Aug 28","Aug 29","Aug 30","Aug 31","Sep 01","Sep 02","Sep 03","Sep 04","Sep 05","Sep 06","Sep 07","Sep 08","Sep 09","Sep 10","Sep 11","Sep 12"],"formations":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"announcements":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0],"tournaments":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"matches":[0,10,0,0,0,0,0,0,10,0,0,0,0,0,0,10,0,0,0,0,0,0,10,0,0,0,0,0,0,0]}};
+    var demo = {"total":80,"gender":[{"label":"Male","value":46},{"label":"Female","value":34},{"label":"Unspecified","value":0}],"payment":[{"label":"Paid","value":1},{"label":"Unpaid","value":79}],"league":[{"label":"League Players","value":3},{"label":"Non-League","value":77}],"bureau":[{"label":"Bureau","value":13},{"label":"Members","value":67}]};
+    var seriesDef = {
+        formations:   { color: '#7c3aed', label: 'Formations' },
+        announcements: { color: '#d61f7f', label: 'Announcements' },
+        tournaments:  { color: '#0e7490', label: 'Tournaments' },
+        matches:      { color: '#0e9f6e', label: 'Matches' }
+    };
+    var seriesKeys = ['formations', 'announcements', 'tournaments', 'matches'];
+    var currentDays = 7;
+
+    Chart.defaults.font.family = 'Space Grotesk, Montserrat, sans-serif';
+    Chart.defaults.color = '#2b2144';
+    Chart.defaults.borderColor = 'rgba(17,17,17,0.12)';
+
+    function buildActivityData(days) {
+        var d = days === 7 ? activity.d7 : activity.d30;
+        return {
+            labels: d.labels,
+            datasets: seriesKeys.map(function (key) {
+                var hex = seriesDef[key].color;
+                var ctx = document.getElementById('hlActivityChart').getContext('2d');
+                var grad = ctx.createLinearGradient(0, 0, 0, 280);
+                grad.addColorStop(0, hex + '55');
+                grad.addColorStop(1, hex + '05');
+                return {
+                    label: seriesDef[key].label,
+                    data: d[key],
+                    borderColor: hex,
+                    backgroundColor: grad,
+                    fill: true,
+                    tension: 0.35,
+                    borderWidth: 2.5,
+                    pointRadius: 3.5,
+                    pointBackgroundColor: hex,
+                    pointBorderColor: '#111',
+                    pointBorderWidth: 1.5,
+                    pointHoverRadius: 6
+                };
+            })
+        };
+    }
+
+    var actChart = new Chart(document.getElementById('hlActivityChart'), {
+        type: 'line',
+        data: buildActivityData(7),
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            scales: {
+                x: { grid: { display: false }, ticks: { maxTicksLimit: 10, font: { size: 10 } } },
+                y: { beginAtZero: true, ticks: { precision: 0, font: { size: 10 } }, title: { display: true, text: 'Items created', font: { size: 10, weight: 700 }, color: '#6f6785' } }
+            },
+            plugins: {
+                legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, padding: 14, font: { size: 11, weight: 700 } } },
+                tooltip: { backgroundColor: '#1a0a2e', borderColor: '#111', borderWidth: 2, titleFont: { family: 'Playfair Display', weight: 700 }, padding: 10 }
+            }
+        }
+    });
+
+    function applyPeriod(days) {
+        currentDays = days;
+        actChart.data = buildActivityData(days);
+        actChart.update();
+    }
+
+    function syncChips() {
+        var visible = seriesKeys.filter(function (k) { return !actChart.getDatasetMeta(seriesKeys.indexOf(k)).hidden; });
+        var solo = visible.length === 1 ? visible[0] : null;
+        seriesKeys.forEach(function (k) {
+            var chip = document.querySelector('.hl-series[data-series="' + k + '"]');
+            chip.classList.toggle('hl-series-off', visible.indexOf(k) === -1);
+            chip.classList.toggle('hl-series-solo', solo === k);
+        });
+    }
+
+    document.querySelectorAll('.hl-period-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.hl-period-btn').forEach(function (b) { b.classList.remove('hl-period-active'); });
+            btn.classList.add('hl-period-active');
+            applyPeriod(parseInt(btn.dataset.days, 10));
+        });
+    });
+
+    document.querySelectorAll('.hl-series').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            var key = chip.dataset.series;
+            var idx = seriesKeys.indexOf(key);
+            var meta = actChart.getDatasetMeta(idx);
+            var visible = seriesKeys.filter(function (k) { return !actChart.getDatasetMeta(seriesKeys.indexOf(k)).hidden; });
+            var isSolo = visible.length === 1 && visible[0] === key;
+            seriesKeys.forEach(function (k, i) {
+                actChart.getDatasetMeta(i).hidden = isSolo ? (k !== key) : (k === key);
+            });
+            actChart.update();
+            syncChips();
+        });
+    });
+
+    var palette = {
+        gender: { Male: '#7c3aed', Female: '#d61f7f', Unspecified: '#b9aee0' },
+        payment: { Paid: '#0e9f6e', Unpaid: '#e11d48' },
+        league: { 'League Players': '#d97706', 'Non-League': '#b9aee0' },
+        bureau: { Bureau: '#0e7490', Members: '#b9aee0' }
+    };
+    var donuts = [
+        { id: 'hlDemoGender', key: 'gender' },
+        { id: 'hlDemoPayment', key: 'payment' },
+        { id: 'hlDemoLeague', key: 'league' },
+        { id: 'hlDemoBureau', key: 'bureau' }
+    ];
+    donuts.forEach(function (cfg) {
+        var rows = demo[cfg.key].filter(function (r) { return r.value > 0; });
+        var el = document.getElementById(cfg.id);
+        if (!el) return;
+        new Chart(el, {
+            type: 'doughnut',
+            data: {
+                labels: rows.map(function (r) { return r.label; }),
+                datasets: [{
+                    data: rows.map(function (r) { return r.value; }),
+                    backgroundColor: rows.map(function (r) { return palette[cfg.key][r.label] || '#7c3aed'; }),
+                    borderColor: '#111',
+                    borderWidth: 2,
+                    hoverOffset: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '62%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { usePointStyle: true, boxWidth: 8, padding: 10, font: { size: 10, weight: 700 } }
+                    },
+                    tooltip: {
+                        backgroundColor: '#1a0a2e', borderColor: '#111', borderWidth: 2,
+                        callbacks: { label: function (c) { return ' ' + c.label + ': ' + c.parsed + ' (' + Math.round(c.parsed / demo[cfg.key].reduce(function (s, r) { return s + r.value; }, 0) * 100) + '%)'; } }
+                    }
+                }
+            }
+        });
+    });
+})();
+</script>
+    </div> <!-- End .nb-main -->
+
+    <!-- Admin Footer -->
+    <footer class="nb-admin-footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    <i class="fas fa-copyright me-1"></i>&copy; 2026 Chess Club ENSAS Administration Panel
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-shield-alt me-1"></i>Secure Management System
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    Developed by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank">Mohammed Reqasse</a>
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-palette me-1"></i>Professional Web Development
+                </p>
+            </div>
+            <div class="text-md-end">
+                <button class="btn btn-outline-light btn-sm mb-2" onclick="openContactSupport()">
+                    <i class="fas fa-headset me-2"></i>Contact Support
+                </button>
+                <div>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block"><i class="fas fa-user me-1"></i>Mohammed Reqasse</small>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block">
+                        <i class="fas fa-phone me-1"></i>
+                        <a href="tel:+212600000000" style="color: rgba(255,255,255,0.55);">+212 610 100 100</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal -->
+    <div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contactSupportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px solid #111; box-shadow: 4px 4px 0 #111;">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h6 class="fw-bold">Mohammed Reqasse</h6>
+                        <p class="text-muted mb-3">Website Creator</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Phone Support</h6>
+                                <a href="tel:+212600000000" class="text-decoration-none fw-bold">+212 610 100 100</a>
+                                <p class="text-muted small mb-0">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Email Support</h6>
+                                <a href="mailto:reqasse@gmail.com" class="text-decoration-none fw-bold">reqasse@gmail.com</a>
+                                <p class="text-muted small mb-0">Response within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Web Support</h6>
+                                <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" class="text-decoration-none fw-bold">https://moreqasse.github.io/MyCV/</a>
+                                <p class="text-muted small mb-0">Online resources & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <a href="tel:+212600000000" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Reusable Confirmation Modal Component (nbConfirm) -->
+    <!-- ===== Reusable Confirm Modal Component ===== -->
+<div class="modal fade" id="nbConfirmModal" tabindex="-1" aria-labelledby="nbConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111;overflow:hidden;">
+            <div class="modal-header" style="background:#1a0a2e;border-bottom:3px solid #111;border-radius:0;padding:0.9rem 1.25rem;">
+                <h5 class="modal-title text-white fw-bold mb-0" id="nbConfirmModalLabel" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.1rem;">
+                    <i class="fas fa-question-circle me-2" style="color:#ff2d95;"></i>Confirmation
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div id="nbConfirmIcon" class="d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+                     style="width:72px;height:72px;border:3px solid #111;box-shadow:4px 4px 0 #111;background:#7c3aed;color:#fff;font-size:1.9rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h6 class="fw-bold mb-2" id="nbConfirmTitle" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.15rem;color:#111;">Are you sure?</h6>
+                <p class="text-muted mb-0" id="nbConfirmMessage" style="font-size:0.92rem;line-height:1.5;"></p>
+            </div>
+            <div class="modal-footer" style="border-top:3px solid #111;border-radius:0;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="nbConfirmCancel">
+                    <i class="fas fa-times me-2"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="nbConfirmOk">
+                    <i class="fas fa-check me-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var modalEl = document.getElementById('nbConfirmModal');
+    if (!modalEl || typeof bootstrap === 'undefined') return;
+
+    var modal = new bootstrap.Modal(modalEl);
+    var okBtn = document.getElementById('nbConfirmOk');
+    var cancelBtn = document.getElementById('nbConfirmCancel');
+    var titleEl = document.getElementById('nbConfirmTitle');
+    var msgEl = document.getElementById('nbConfirmMessage');
+    var iconEl = document.getElementById('nbConfirmIcon');
+    var pending = null;
+
+    var tones = {
+        danger:  { iconBg: '#ff1744', btn: 'btn-danger' },
+        success: { iconBg: '#00ff88', btn: 'btn-success' },
+        warning: { iconBg: '#ffa500', btn: 'btn-warning' },
+        info:    { iconBg: '#00f0ff', btn: 'btn-info' },
+        primary: { iconBg: '#7c3aed', btn: 'btn-primary' }
+    };
+
+    function readOptions(el) {
+        return {
+            title: el.getAttribute('data-nb-confirm-title') || 'Are you sure?',
+            message: el.getAttribute('data-nb-confirm') || 'This action cannot be undone.',
+            tone: el.getAttribute('data-nb-confirm-tone') || 'danger',
+            icon: el.getAttribute('data-nb-confirm-icon') || 'fas fa-exclamation-triangle',
+            confirmText: el.getAttribute('data-nb-confirm-text') || 'Confirm'
+        };
+    }
+
+    window.nbConfirm = function (options) {
+        options = options || {};
+        var tone = tones[options.tone] || tones.primary;
+        var title = options.title || 'Are you sure?';
+        var message = options.message || 'This action cannot be undone.';
+        var icon = options.icon || 'fas fa-exclamation-triangle';
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.innerHTML = '<i class="' + icon + '"></i>';
+        iconEl.style.background = tone.iconBg;
+        iconEl.style.color = (options.tone === 'success' || options.tone === 'warning') ? '#111' : '#fff';
+        okBtn.className = 'btn ' + (options.confirmClass || tone.btn);
+        okBtn.innerHTML = '<i class="fas fa-check me-2"></i>' + (options.confirmText || 'Confirm');
+
+        pending = null;
+
+        return new Promise(function (resolve, reject) {
+            pending = { resolve: resolve, reject: reject };
+
+            function cleanup() {
+                okBtn.onclick = null;
+                cancelBtn.onclick = null;
+                modalEl.removeEventListener('hidden.bs.modal', onHidden);
+            }
+            function onHidden() {
+                cleanup();
+                if (pending) {
+                    pending.reject(new Error('cancelled'));
+                    pending = null;
+                }
+            }
+
+            modalEl.addEventListener('hidden.bs.modal', onHidden);
+
+            okBtn.onclick = function () {
+                modal.hide();
+                cleanup();
+                if (pending) {
+                    pending.resolve();
+                    pending = null;
+                }
+            };
+            cancelBtn.onclick = function () {
+                modal.hide();
+            };
+
+            modal.show();
+        });
+    };
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[data-nb-confirm]') : null;
+        if (!link) return;
+        e.preventDefault();
+        var href = link.getAttribute('href');
+        nbConfirm(readOptions(link)).then(function () {
+            window.location.href = href;
+        }).catch(function () {});
+    });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-nb-confirm]') : null;
+        if (!btn || btn.type !== 'submit' || !btn.form) return;
+        e.preventDefault();
+        var opts = readOptions(btn);
+        if (btn.hasAttribute('data-nb-confirm-text')) {
+            opts.confirmText = btn.getAttribute('data-nb-confirm-text');
+        }
+        nbConfirm(opts).then(function () {
+            var clone = document.createElement('input');
+            clone.type = 'hidden';
+            clone.name = btn.name;
+            clone.value = btn.value;
+            btn.form.appendChild(clone);
+            btn.form.submit();
+        }).catch(function () {});
+    });
+
+    document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.hasAttribute('data-nb-confirm')) return;
+        e.preventDefault();
+        nbConfirm(readOptions(form)).then(function () {
+            form.submit();
+        }).catch(function () {});
+    });
+})();
+</script>
+
+    <!-- Custom scripts -->
+    <script>
+        // Toggle sidebar on mobile (+ dim backdrop via body class)
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            var sb = document.getElementById('adminSidebar');
+            if (!sb) return;
+            sb.classList.toggle('active');
+            document.body.classList.toggle('nb-nav-open', sb.classList.contains('active'));
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('adminSidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar && sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                sidebarToggle && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('nb-nav-open');
+            }
+        });
+
+        // Mobile tables → lists: copy each <th> label into its column's <td>
+        // as data-th (used by admin-mobile.css). Skips .nb-keep-table
+        // (members page) and header-less tables. Checkbox-only cells and
+        // action cells get docking classes instead of labels.
+        (function nbResponsiveTables() {
+            function isCheckCell(td) {
+                var kids = Array.prototype.filter.call(td.childNodes, function (n) {
+                    if (n.nodeType === 3) return n.textContent.trim() !== '';
+                    if (n.nodeType !== 1) return false;
+                    var tag = n.tagName.toLowerCase();
+                    return !(tag === 'input' && (n.type === 'checkbox' || n.type === 'radio'));
+                });
+                return kids.length === 0 && td.querySelector('input[type="checkbox"], input[type="radio"]');
+            }
+            document.querySelectorAll('table.table:not(.nb-keep-table)').forEach(function (table) {
+                var headers = Array.prototype.map.call(
+                    table.querySelectorAll('thead tr:last-child th'),
+                    function (th) { return th.textContent.trim().replace(/\s+/g, ' '); }
+                );
+                if (!headers.length) return;
+                table.querySelectorAll('tbody tr').forEach(function (tr) {
+                    Array.prototype.forEach.call(tr.children, function (td, i) {
+                        if (td.tagName.toLowerCase() !== 'td') return;
+                        if (td.hasAttribute('colspan')) { td.classList.add('nb-no-label'); return; }
+                        if (isCheckCell(td)) { td.classList.add('nb-cell-check'); return; }
+                        if (td.querySelector('.btn, .btn-group, .dropdown')) { td.classList.add('nb-cell-actions'); return; }
+                        if (headers[i]) td.setAttribute('data-th', headers[i]);
+                        else td.classList.add('nb-no-label');
+                    });
+                });
+            });
+        })();
+
+        // Initialize tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(function(el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // Initialize popovers
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(function(el) {
+            return new bootstrap.Popover(el);
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert.alert-dismissible').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+
+        // Confirm before deleting (uses the shared nbConfirm component when available)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    if (typeof nbConfirm === 'function') {
+                        e.preventDefault();
+                        nbConfirm({
+                            title: 'Delete Item',
+                            message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                            icon: 'fas fa-trash',
+                            tone: 'danger',
+                            confirmText: 'Delete'
+                        }).then(function() {
+                            if (button.tagName === 'A') {
+                                window.location.href = button.href;
+                            } else if (button.form) {
+                                button.form.submit();
+                            }
+                        }).catch(function() {});
+                    } else if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            var togglePassword = document.querySelector('.toggle-password');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    var passwordInput = document.querySelector('#password');
+                    var icon = this.querySelector('i');
+                    if (passwordInput && passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else if (passwordInput) {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+        });
+
+        // Contact Support Modal Function
+        function openContactSupport() {
+            var modal = new bootstrap.Modal(document.getElementById('contactSupportModal'));
+            modal.show();
+        }
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>

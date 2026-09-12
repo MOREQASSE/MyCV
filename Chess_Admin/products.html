@@ -1,0 +1,1700 @@
+
+<style>
+/* Enhanced form styling with color feedback */
+.form-label i {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.form-label:hover i {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.input-group-text {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-right: 2px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.input-group:focus-within .input-group-text {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border-right-color: #2196f3;
+}
+
+.form-control:focus {
+    border-color: #2196f3;
+    box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+}
+
+.form-select:focus {
+    border-color: #2196f3;
+    box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+}
+
+/* Enhanced checkboxes */
+.form-check-input:checked {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.form-check-input:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+.form-switch .form-check-input:checked {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+/* Button enhancements */
+.btn-primary {
+    background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #5a6268 0%, #495057 100%);
+    transform: translateY(-1px);
+}
+
+/* Input group hover effects */
+.input-group:hover .input-group-text {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+}
+
+/* Badge animations */
+.badge {
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    transform: scale(1.05);
+}
+
+/* Form text styling */
+.form-text {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Products Management</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin mobile-first layer (tables→lists, touch targets, stacking) -->
+    <link rel="stylesheet" href="assets/css/admin-mobile.css?v=3">
+
+    <style>
+        :root {
+            --nb-bg: #1a0a2e;
+            --nb-bg-dark: #0d0d0d;
+            --nb-surface: #f5f0ff;
+            --nb-surface-2: #ece4fa;
+            --nb-primary: #7c3aed;
+            --nb-primary-dark: #4c1d95;
+            --nb-primary-light: #a78bfa;
+            --nb-accent: #ff2d95;
+            --nb-accent-alt: #00f0ff;
+            --nb-ink: #111111;
+            --nb-text: #111111;
+            --nb-muted: #6b7280;
+            --nb-border: #111111;
+            --nb-success: #00ff88;
+            --nb-danger: #ff1744;
+            --nb-warning: #ffa500;
+            --nb-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+            --nb-font-heading: 'Playfair Display', serif;
+            --nb-shadow-sm: 3px 3px 0 #111;
+            --nb-shadow-md: 6px 6px 0 #111;
+            --nb-shadow-lg: 8px 8px 0 #111;
+            --nb-radius: 0px;
+            --nb-radius-sm: 4px;
+            --nb-sidebar-width: 250px;
+            --nb-header-height: 64px;
+        }
+
+        body {
+            font-family: var(--nb-font-body);
+            background-color: var(--nb-surface);
+            color: var(--nb-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6, .card-header {
+            font-family: var(--nb-font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Sidebar ===== */
+        .nb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--nb-sidebar-width);
+            z-index: 1000;
+            background: var(--nb-bg);
+            color: #fff;
+            border-right: 3px solid var(--nb-border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nb-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.25rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nb-sidebar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .nb-sidebar-title {
+            font-family: var(--nb-font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            display: block;
+        }
+        .nb-sidebar-title em {
+            color: var(--nb-accent-alt);
+            font-style: normal;
+        }
+        .nb-sidebar-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nb-sidebar-nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .nb-sidebar-section {
+            display: block;
+            padding: 0.9rem 1.25rem 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--nb-primary-light);
+        }
+
+        .nb-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.15rem 0.6rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--nb-radius-sm);
+            transition: all 0.15s;
+        }
+        .nb-nav-link i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .nb-nav-link:hover {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            transform: translate(-1px, -1px);
+        }
+        .nb-nav-link.active {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            font-weight: 700;
+        }
+        .nb-nav-link.active::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-accent);
+            flex-shrink: 0;
+        }
+        .nb-nav-link.nb-nav-danger:hover {
+            background: var(--nb-danger);
+        }
+
+        .nb-sidebar-footer {
+            border-top: 3px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0;
+        }
+
+        /* ===== Topbar ===== */
+        .nb-topbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--nb-sidebar-width);
+            z-index: 999;
+            height: var(--nb-header-height);
+            background: #fff;
+            border-bottom: 3px solid var(--nb-border);
+            box-shadow: var(--nb-shadow-sm);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nb-topbar .nb-toggle {
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            border-radius: var(--nb-radius-sm);
+            font-size: 1.1rem;
+            padding: 0.35rem 0.65rem;
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-topbar .nb-toggle:hover {
+            background: var(--nb-primary);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+
+        .nb-user-dropdown .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--nb-text);
+            text-decoration: none;
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+            border-radius: var(--nb-radius-sm);
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-user-dropdown .dropdown-toggle:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .nb-user-dropdown img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+        }
+
+        /* ===== Main content ===== */
+        .nb-main {
+            margin-left: var(--nb-sidebar-width);
+            padding: calc(var(--nb-header-height) + 24px) 24px 24px;
+            flex: 1;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-md);
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background: var(--nb-surface-2);
+            border-bottom: 3px solid var(--nb-border);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            font-weight: 600;
+            transition: all 0.12s;
+        }
+        .btn-primary {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #111;
+        }
+        .btn-outline-primary {
+            color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            box-shadow: 2px 2px 0 #111;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--nb-primary);
+            color: #fff;
+        }
+        .btn-success { background-color: var(--nb-success); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-danger { background-color: var(--nb-danger); border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-warning { background-color: var(--nb-warning); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-info { background-color: var(--nb-accent-alt); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-secondary { background-color: #d1d5db; border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-accent { background-color: var(--nb-accent); border-color: var(--nb-border); color: #fff; box-shadow: 3px 3px 0 #111; }
+        .btn-accent:hover { background-color: #e11d7d; color: #fff; }
+        .btn-sm { box-shadow: 2px 2px 0 #111; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111 !important; }
+
+        /* ===== Forms ===== */
+        .form-control, .form-select {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-family: var(--nb-font-body);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--nb-primary);
+            box-shadow: 3px 3px 0 var(--nb-primary-light);
+        }
+        .form-check-input:checked {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+        }
+
+        /* ===== Tables ===== */
+        .table {
+            border: 2px solid var(--nb-border);
+            background: #fff;
+        }
+        .table thead th {
+            background: var(--nb-bg);
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 3px solid var(--nb-border);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--nb-surface);
+        }
+        .table-hover tbody tr:hover {
+            background-color: var(--nb-surface-2);
+        }
+        .table td {
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* ===== Badges & alerts ===== */
+        .badge {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-weight: 600;
+        }
+        .alert {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-sm);
+        }
+        .alert-success { background-color: var(--nb-success); color: var(--nb-text); }
+        .alert-danger { background-color: var(--nb-danger); color: #fff; }
+        .alert-warning { background-color: var(--nb-warning); color: var(--nb-text); }
+        .alert-info { background-color: var(--nb-accent-alt); color: var(--nb-text); }
+
+        /* ===== Modals ===== */
+        .modal {
+            z-index: 99999 !important;
+        }
+        .modal-backdrop {
+            z-index: 99998 !important;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        .modal-dialog {
+            z-index: 99999 !important;
+        }
+        .modal-content {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-lg);
+        }
+        .modal-header {
+            border-bottom: 3px solid var(--nb-border);
+            font-family: var(--nb-font-heading);
+        }
+        .modal-footer {
+            border-top: 3px solid var(--nb-border);
+        }
+
+        /* ===== Pills/tabs ===== */
+        .nav-pills .nav-link {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            margin-right: 0.35rem;
+            color: var(--nb-text);
+            background: #fff;
+            box-shadow: 2px 2px 0 #111;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--nb-primary);
+            color: #fff;
+        }
+
+        /* ===== Admin footer ===== */
+        .nb-admin-footer {
+            border-top: 3px solid var(--nb-border);
+            background: var(--nb-bg);
+            color: #fff;
+            padding: 1.25rem 24px;
+            margin-left: var(--nb-sidebar-width);
+        }
+        .nb-admin-footer a {
+            color: var(--nb-primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nb-admin-footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nb-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .nb-sidebar.active {
+                transform: translateX(0);
+            }
+            .nb-main, .nb-admin-footer {
+                margin-left: 0;
+            }
+            .nb-topbar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+
+
+<nav class="nb-sidebar" id="adminSidebar">
+    <div class="nb-sidebar-brand">
+        <img src="assets/images/CHESS club logo ups.webp" alt="Chess Club ENSAS Logo" class="nb-sidebar-logo" width="40" height="40" loading="lazy" decoding="async">
+        <div>
+            <span class="nb-sidebar-title">Chess Club <em>ENSAS</em></span>
+            <small class="nb-sidebar-sub">Admin Panel</small>
+        </div>
+    </div>
+
+    <div class="nb-sidebar-nav">
+        <span class="nb-sidebar-section">Main</span>
+
+        <a class="nb-nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </a>
+                <a class="nb-nav-link " href="members.html">
+            <i class="fas fa-users"></i><span>Members</span>
+        </a>
+                        <a class="nb-nav-link " href="tournaments.html">
+            <i class="fas fa-trophy"></i><span>League & Tournaments</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Media</span>
+                <a class="nb-nav-link " href="announcements.html">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+                        <a class="nb-nav-link " href="formations.html">
+            <i class="fas fa-chess-board"></i><span>Formations</span>
+        </a>
+                        <a class="nb-nav-link " href="newsletter.html">
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Business</span>
+                <a class="nb-nav-link " href="sponsors.html">
+            <i class="fas fa-handshake"></i><span>Sponsors</span>
+        </a>
+                        <a class="nb-nav-link " href="products.html">
+            <i class="fas fa-shopping-bag"></i><span>Products</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Recruitment</span>
+        <a class="nb-nav-link " href="announcements-forms.html">
+            <i class="fas fa-file-alt"></i><span>Recruitment Forms</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Administration</span>
+        <a class="nb-nav-link " href="admins.html">
+            <i class="fas fa-user-shield"></i><span>Admins</span>
+        </a>
+        <a class="nb-nav-link " href="settings.html">
+            <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+        
+        <span class="nb-sidebar-section">Account</span>
+        <a class="nb-nav-link " href="profile.html">
+            <i class="fas fa-user-cog"></i><span>Profile</span>
+        </a>
+    </div>
+
+    <div class="nb-sidebar-footer">
+        <a class="nb-nav-link" href="https://moreqasse.github.io/MyCV/" target="_blank">
+            <i class="fas fa-external-link-alt"></i><span>Visit Website</span>
+        </a>
+        <a class="nb-nav-link nb-nav-danger" href="login.html">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Topbar -->
+<nav class="nb-topbar">
+    <div>
+        <button class="nb-toggle d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="d-none d-lg-inline text-muted small">
+            <i class="fas fa-desktop me-1"></i> Best on PC for full features
+        </span>
+    </div>
+
+    <div class="nb-user-dropdown">
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/placeholder.png" alt="User">
+                <span class="d-none d-md-inline">DemoAdmin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="nb-main">
+    
+            
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Products Management</h1>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
+            <i class="fas fa-plus"></i> Add Product
+        </button>
+    </div>
+
+    
+    
+    <!-- Filters -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Filters</h6>
+        </div>
+        <div class="card-body">
+            <form method="GET" class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label"><i class="fas fa-search me-2 text-primary"></i>Search</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-search text-primary"></i></span>
+                        <input type="text" name="search" class="form-control" placeholder="Search products..." value="">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label"><i class="fas fa-list me-2 text-info"></i>Type</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-th-large text-info"></i></span>
+                        <select name="type" class="form-select">
+                            <option value="">All Types</option>
+                            <option value="chess_set" >♟️ Chess Set</option>
+                            <option value="clock" >⏰ Clock</option>
+                            <option value="board" >📋 Board</option>
+                            <option value="piece" >♟️ Piece</option>
+                            <option value="accessory" >🔧 Accessory</option>
+                            <option value="book" >📚 Book</option>
+                            <option value="software" >💻 Software</option>
+                            <option value="merch" >👕 Merch</option>
+                            <option value="other" >📦 Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label"><i class="fas fa-star me-2 text-warning"></i>Featured</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-award text-warning"></i></span>
+                        <select name="featured" class="form-select">
+                            <option value="">All</option>
+                            <option value="1" >⭐ Featured Only</option>
+                            <option value="0" >Not Featured</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label"><i class="fas fa-filter me-2 text-secondary"></i>&nbsp;</label>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary flex-fill">
+                            <i class="fas fa-filter me-2"></i>Apply Filters
+                        </button>
+                        <a href="products.html" class="btn btn-secondary">
+                            <i class="fas fa-times me-2"></i>Clear
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Products Table -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Products List</h6>
+            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteAllModal">
+                <i class="fas fa-trash-alt"></i> Delete All Products
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Photos</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Promo Price</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                                    <tr>
+                                <td>38</td>
+                                <td>Club Chess Set — Boxwood</td>
+                                <td>
+                                                                                                                        <img src="uploads/products/691caa7b1636e.webp" 
+                                                 alt="Club Chess Set — Boxwood" 
+                                                 class="img-thumbnail me-1" style="width: 40px; height: 40px; object-fit: cover;">
+                                                                                                                                                    </td>
+                                <td>
+                                    <span class="badge bg-info">
+                                        Chess set                                    </span>
+                                </td>
+                                <td><strong>$120.00</strong></td>
+                                <td>
+                                                                            <span class="text-muted">-</span>
+                                                                    </td>
+                                <td>
+                                    <span class="badge bg-success">
+                                        12                                    </span>
+                                </td>
+                                <td>
+                                                                            <span class="badge bg-primary me-1">NEW</span>
+                                                                                                                <span class="badge bg-warning me-1">FEATURED</span>
+                                                                        <form method="POST" class="d-inline">
+                                        <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                                        <input type="hidden" name="product_id" value="38">
+                                        <input type="hidden" name="current_displayed" value="1">
+                                        <button type="submit" name="toggle_displayed" 
+                                                class="btn btn-sm btn-success rounded-pill"
+                                                title="Click to hide product">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="products.html" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form method="POST" class="d-inline"
+                                              data-nb-confirm="This product and its associated images will be permanently deleted."
+                                              data-nb-confirm-title="Delete Product"
+                                              data-nb-confirm-icon="fas fa-trash"
+                                              data-nb-confirm-text="Delete"
+                                              data-nb-confirm-tone="danger">
+                                            <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                                            <input type="hidden" name="id" value="38">
+                                            <button type="submit" name="delete_product" class="btn btn-sm btn-outline-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                                                    <tr>
+                                <td>39</td>
+                                <td>Digital Chess Clock</td>
+                                <td>
+                                                                                                                        <img src="uploads/products/691b2c34f1b5c.webp" 
+                                                 alt="Digital Chess Clock" 
+                                                 class="img-thumbnail me-1" style="width: 40px; height: 40px; object-fit: cover;">
+                                                                                                                                                    </td>
+                                <td>
+                                    <span class="badge bg-info">
+                                        Clock                                    </span>
+                                </td>
+                                <td><strong>$85.00</strong></td>
+                                <td>
+                                                                            <span class="text-muted">-</span>
+                                                                    </td>
+                                <td>
+                                    <span class="badge bg-warning">
+                                        8                                    </span>
+                                </td>
+                                <td>
+                                                                            <span class="badge bg-primary me-1">NEW</span>
+                                                                                                                <span class="badge bg-warning me-1">FEATURED</span>
+                                                                        <form method="POST" class="d-inline">
+                                        <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                                        <input type="hidden" name="product_id" value="39">
+                                        <input type="hidden" name="current_displayed" value="1">
+                                        <button type="submit" name="toggle_displayed" 
+                                                class="btn btn-sm btn-success rounded-pill"
+                                                title="Click to hide product">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="products.html" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form method="POST" class="d-inline"
+                                              data-nb-confirm="This product and its associated images will be permanently deleted."
+                                              data-nb-confirm-title="Delete Product"
+                                              data-nb-confirm-icon="fas fa-trash"
+                                              data-nb-confirm-text="Delete"
+                                              data-nb-confirm-tone="danger">
+                                            <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                                            <input type="hidden" name="id" value="39">
+                                            <button type="submit" name="delete_product" class="btn btn-sm btn-outline-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                                                    <tr>
+                                <td>40</td>
+                                <td>ENSAS Club T-Shirt</td>
+                                <td>
+                                                                                                                        <img src="uploads/products/691cf4f065da5.webp" 
+                                                 alt="ENSAS Club T-Shirt" 
+                                                 class="img-thumbnail me-1" style="width: 40px; height: 40px; object-fit: cover;">
+                                                                                                                                                    </td>
+                                <td>
+                                    <span class="badge bg-info">
+                                        Merch                                    </span>
+                                </td>
+                                <td><strong>$45.00</strong></td>
+                                <td>
+                                                                            <span class="text-muted">-</span>
+                                                                    </td>
+                                <td>
+                                    <span class="badge bg-success">
+                                        20                                    </span>
+                                </td>
+                                <td>
+                                                                            <span class="badge bg-primary me-1">NEW</span>
+                                                                                                                <span class="badge bg-warning me-1">FEATURED</span>
+                                                                        <form method="POST" class="d-inline">
+                                        <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                                        <input type="hidden" name="product_id" value="40">
+                                        <input type="hidden" name="current_displayed" value="1">
+                                        <button type="submit" name="toggle_displayed" 
+                                                class="btn btn-sm btn-success rounded-pill"
+                                                title="Click to hide product">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="products.html" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form method="POST" class="d-inline"
+                                              data-nb-confirm="This product and its associated images will be permanently deleted."
+                                              data-nb-confirm-title="Delete Product"
+                                              data-nb-confirm-icon="fas fa-trash"
+                                              data-nb-confirm-text="Delete"
+                                              data-nb-confirm-tone="danger">
+                                            <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                                            <input type="hidden" name="id" value="40">
+                                            <button type="submit" name="delete_product" class="btn btn-sm btn-outline-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product Modal -->
+<div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                <div class="modal-body">
+                    <input type="hidden" name="id" value="">
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="fas fa-tag me-2 text-primary"></i>Product Name *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-box text-primary"></i></span>
+                                <input type="text" name="name" class="form-control" required 
+                                       value=""
+                                       placeholder="Enter product name...">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label"><i class="fas fa-list me-2 text-info"></i>Type</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-th-large text-info"></i></span>
+                                <select name="type" class="form-select">
+                                    <option value="">Select Type</option>
+                                    <option value="chess_set" >♟️ Chess Set</option>
+                                    <option value="clock" >⏰ Clock</option>
+                                    <option value="board" >📋 Board</option>
+                                    <option value="piece" >♟️ Piece</option>
+                                    <option value="accessory" >🔧 Accessory</option>
+                                    <option value="book" >📚 Book</option>
+                                    <option value="software" >💻 Software</option>
+                                    <option value="merch" >👕 Merch</option>
+                                    <option value="other" >📦 Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-palette me-2 text-warning"></i>Color</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-paint-brush text-warning"></i></span>
+                                <input type="text" name="color" class="form-control" 
+                                       value=""
+                                       placeholder="e.g., Black, White, Brown...">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-ruler me-2 text-success"></i>Size (for merch)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-tshirt text-success"></i></span>
+                                <select name="size" class="form-select">
+                                    <option value="">No Size</option>
+                                    <option value="XS" >XS</option>
+                                    <option value="S" >S</option>
+                                    <option value="M" >M</option>
+                                    <option value="L" >L</option>
+                                    <option value="XL" >XL</option>
+                                    <option value="XXL" >XXL</option>
+                                    <option value="All sizes" >All sizes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-arrows-alt-v me-2 text-info"></i>Height (cm)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-ruler-vertical text-info"></i></span>
+                                <input type="number" step="0.1" name="height" class="form-control" 
+                                       value=""
+                                       placeholder="0.0">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-arrows-alt-h me-2 text-info"></i>Width (cm)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-ruler-horizontal text-info"></i></span>
+                                <input type="number" step="0.1" name="width" class="form-control" 
+                                       value=""
+                                       placeholder="0.0">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-arrows-alt me-2 text-info"></i>Length (cm)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-ruler-combined text-info"></i></span>
+                                <input type="number" step="0.1" name="length" class="form-control" 
+                                       value=""
+                                       placeholder="0.0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-weight me-2 text-secondary"></i>Weight (g)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-dumbbell text-secondary"></i></span>
+                                <input type="number" step="0.01" name="weight" class="form-control" 
+                                       value=""
+                                       placeholder="0.00">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-money-bill-wave me-2 text-success"></i>Price (MAD)*</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-tag text-success"></i></span>
+                                <input type="number" step="0.01" name="price" class="form-control" required 
+                                       value=""
+                                       placeholder="0.00">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-percentage me-2 text-warning"></i>Promo Price (MAD)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-gift text-warning"></i></span>
+                                <input type="number" step="0.01" name="promo_price" class="form-control" 
+                                       value=""
+                                       placeholder="0.00">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label"><i class="fas fa-cubes me-2 text-primary"></i>Quantity</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-warehouse text-primary"></i></span>
+                                <input type="number" name="quantity" class="form-control" 
+                                       value="0"
+                                       placeholder="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><i class="fas fa-align-left me-2 text-info"></i>Description</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-file-alt text-info"></i></span>
+                            <textarea name="description" class="form-control" rows="3" 
+                                      placeholder="Enter product description..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><i class="fas fa-images me-2 text-primary"></i>Product Images</label>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="fas fa-camera text-primary"></i></span>
+                            <input type="file" class="form-control" id="product_images" name="product_images[]" 
+                                   accept="image/*" multiple>
+                        </div>
+                        <input type="hidden" name="current_photo_urls" value="">
+                        <div class="form-text text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            You can upload multiple images. Allowed formats: jpg, jpeg, png, gif, webp
+                        </div>
+                        
+                        <!-- Preview container for new uploads -->
+                        <div id="image_preview_container" class="mt-3" style="display: none;">
+                            <small class="text-muted">New Images Preview:</small>
+                            <div id="new_images_preview" class="row mt-2"></div>
+                        </div>
+                        
+                                            </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="is_new" 
+                                       >
+                                <label class="form-check-label">
+                                    <i class="fas fa-sparkles text-warning me-2"></i>
+                                    <span class="badge bg-warning text-dark">NEW</span> New Product
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="is_featured" 
+                                       >
+                                <label class="form-check-label">
+                                    <i class="fas fa-star text-warning me-2"></i>
+                                    <span class="badge bg-warning text-dark">⭐</span> Featured Product
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Cancel
+                    </button>
+                    <button type="submit" name="add_product" 
+                            class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>
+                        Add Product                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Main JavaScript for modal and image preview functionality -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Reset modal form when hidden (only if not editing)
+    var productModal = document.getElementById('productModal');
+    productModal.addEventListener('hidden.bs.modal', function () {
+        // Reset form only if not in edit mode
+        if (!window.location.search.includes('edit=')) {
+            productModal.querySelector('form').reset();
+            // Clear image previews
+            document.getElementById('image_preview_container').style.display = 'none';
+            document.getElementById('new_images_preview').innerHTML = '';
+        }
+    });
+    
+    // Image preview functionality
+    document.getElementById('product_images').addEventListener('change', function(e) {
+        var files = e.target.files;
+        var previewContainer = document.getElementById('image_preview_container');
+        var previewDiv = document.getElementById('new_images_preview');
+        
+        // Clear previous previews
+        previewDiv.innerHTML = '';
+        
+        if (files.length > 0) {
+            previewContainer.style.display = 'block';
+            
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                
+                // Only process image files
+                if (!file.type.match('image.*')) {
+                    continue;
+                }
+                
+                var reader = new FileReader();
+                
+                reader.onload = (function(index) {
+                    return function(e) {
+                        var colDiv = document.createElement('div');
+                        colDiv.className = 'col-md-3 mb-2 position-relative';
+                        
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'img-thumbnail';
+                        img.style.maxHeight = '100px';
+                        img.style.objectFit = 'cover';
+                        img.style.width = '100%';
+                        
+                        // Add X button for preview images
+                        var deleteBtn = document.createElement('button');
+                        deleteBtn.type = 'button';
+                        deleteBtn.className = 'btn btn-danger btn-sm position-absolute top-0 end-0 m-1';
+                        deleteBtn.style.cssText = 'border-radius: 50%; width: 25px; height: 25px; padding: 0; font-size: 12px;';
+                        deleteBtn.innerHTML = '×';
+                        deleteBtn.onclick = function() {
+                            removePreviewImage(colDiv, index);
+                        };
+                        
+                        var fileName = document.createElement('div');
+                        fileName.className = 'text-muted small mt-1';
+                        fileName.textContent = 'File ' + (index + 1) + ': ' + file.name;
+                        fileName.style.fontSize = '0.75rem';
+                        fileName.style.wordBreak = 'break-all';
+                        
+                        colDiv.appendChild(img);
+                        colDiv.appendChild(deleteBtn);
+                        colDiv.appendChild(fileName);
+                        previewDiv.appendChild(colDiv);
+                    };
+                })(i);
+                
+                reader.readAsDataURL(file);
+            }
+        } else {
+            previewContainer.style.display = 'none';
+        }
+    });
+});
+
+// Function to toggle existing image deletion
+function toggleExistingImage(button, imagePath) {
+    // Find the checkbox by value
+    var checkbox = document.querySelector('input[name="delete_images[]"][value="' + imagePath + '"]');
+    
+    if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+        
+        // Visual feedback - add/remove deleted class
+        var imageContainer = button.closest('.position-relative');
+        if (checkbox.checked) {
+            button.classList.remove('btn-danger');
+            button.classList.add('btn-secondary');
+            button.style.opacity = '0.7';
+            // Add visual indicator that image will be deleted
+            imageContainer.style.opacity = '0.5';
+            button.innerHTML = '✓'; // Show checkmark when marked for deletion
+        } else {
+            button.classList.remove('btn-secondary');
+            button.classList.add('btn-danger');
+            button.style.opacity = '1';
+            // Remove visual indicator
+            imageContainer.style.opacity = '1';
+            button.innerHTML = '×'; // Back to X
+        }
+    } else {
+        // Try alternative selector if primary fails
+        var altCheckbox = document.querySelector('input[value="' + imagePath + '"]');
+        if (altCheckbox) {
+            altCheckbox.checked = !altCheckbox.checked;
+            // Apply same visual feedback
+            var imageContainer = button.closest('.position-relative');
+            if (altCheckbox.checked) {
+                button.classList.remove('btn-danger');
+                button.classList.add('btn-secondary');
+                button.style.opacity = '0.7';
+                imageContainer.style.opacity = '0.5';
+                button.innerHTML = '✓';
+            } else {
+                button.classList.remove('btn-secondary');
+                button.classList.add('btn-danger');
+                button.style.opacity = '1';
+                imageContainer.style.opacity = '1';
+                button.innerHTML = '×';
+            }
+        }
+    }
+}
+
+// Function to remove preview image
+function removePreviewImage(element, index) {
+    element.remove();
+    
+    // Check if there are any remaining preview images
+    var previewDiv = document.getElementById('new_images_preview');
+    if (previewDiv.children.length === 0) {
+        document.getElementById('image_preview_container').style.display = 'none';
+    }
+    
+    // Update file input to remove the deleted file
+    var fileInput = document.getElementById('product_images');
+    var files = Array.from(fileInput.files);
+    files.splice(index, 1);
+    
+    // Create new FileList
+    var dt = new DataTransfer();
+    files.forEach(function(file) {
+        dt.items.add(file);
+    });
+    fileInput.files = dt.files;
+}
+</script>
+
+<!-- Delete All Products Confirmation Modal -->
+<div class="modal fade" id="deleteAllModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    Confirm Delete All Products
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Warning:</strong> This action cannot be undone!
+                </div>
+                <p>Are you sure you want to delete <strong>ALL</strong> products?</p>
+                <p>This will permanently delete:</p>
+                <ul>
+                    <li>All product records from the database</li>
+                    <li>All associated image files from the server</li>
+                    <li>All product data including prices, descriptions, and settings</li>
+                </ul>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="confirmDeleteAll" required>
+                    <label class="form-check-label" for="confirmDeleteAll">
+                        I understand that this action cannot be undone
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-1"></i> Cancel
+                </button>
+                <form method="POST" class="d-inline"
+                      data-nb-confirm="FINAL WARNING: This will permanently delete ALL products and their images. Are you absolutely sure?"
+                      data-nb-confirm-title="Delete All Products"
+                      data-nb-confirm-icon="fas fa-trash-alt"
+                      data-nb-confirm-text="Delete Everything"
+                      data-nb-confirm-tone="danger">
+                    <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                    <button type="submit" name="delete_all_products" class="btn btn-danger" disabled id="deleteAllBtn">
+                        <i class="fas fa-trash-alt me-1"></i> Delete All Products
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Enable/disable delete button based on checkbox
+document.getElementById('confirmDeleteAll').addEventListener('change', function() {
+    document.getElementById('deleteAllBtn').disabled = !this.checked;
+});
+
+// Reset checkbox when modal is hidden
+document.getElementById('deleteAllModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('confirmDeleteAll').checked = false;
+    document.getElementById('deleteAllBtn').disabled = true;
+});
+</script>
+
+    </div> <!-- End .nb-main -->
+
+    <!-- Admin Footer -->
+    <footer class="nb-admin-footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    <i class="fas fa-copyright me-1"></i>&copy; 2026 Chess Club ENSAS Administration Panel
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-shield-alt me-1"></i>Secure Management System
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    Developed by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank">Mohammed Reqasse</a>
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-palette me-1"></i>Professional Web Development
+                </p>
+            </div>
+            <div class="text-md-end">
+                <button class="btn btn-outline-light btn-sm mb-2" onclick="openContactSupport()">
+                    <i class="fas fa-headset me-2"></i>Contact Support
+                </button>
+                <div>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block"><i class="fas fa-user me-1"></i>Mohammed Reqasse</small>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block">
+                        <i class="fas fa-phone me-1"></i>
+                        <a href="tel:+212600000000" style="color: rgba(255,255,255,0.55);">+212 610 100 100</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal -->
+    <div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contactSupportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px solid #111; box-shadow: 4px 4px 0 #111;">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h6 class="fw-bold">Mohammed Reqasse</h6>
+                        <p class="text-muted mb-3">Website Creator</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Phone Support</h6>
+                                <a href="tel:+212600000000" class="text-decoration-none fw-bold">+212 610 100 100</a>
+                                <p class="text-muted small mb-0">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Email Support</h6>
+                                <a href="mailto:reqasse@gmail.com" class="text-decoration-none fw-bold">reqasse@gmail.com</a>
+                                <p class="text-muted small mb-0">Response within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Web Support</h6>
+                                <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" class="text-decoration-none fw-bold">https://moreqasse.github.io/MyCV/</a>
+                                <p class="text-muted small mb-0">Online resources & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <a href="tel:+212600000000" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Reusable Confirmation Modal Component (nbConfirm) -->
+    <!-- ===== Reusable Confirm Modal Component ===== -->
+<div class="modal fade" id="nbConfirmModal" tabindex="-1" aria-labelledby="nbConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111;overflow:hidden;">
+            <div class="modal-header" style="background:#1a0a2e;border-bottom:3px solid #111;border-radius:0;padding:0.9rem 1.25rem;">
+                <h5 class="modal-title text-white fw-bold mb-0" id="nbConfirmModalLabel" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.1rem;">
+                    <i class="fas fa-question-circle me-2" style="color:#ff2d95;"></i>Confirmation
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div id="nbConfirmIcon" class="d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+                     style="width:72px;height:72px;border:3px solid #111;box-shadow:4px 4px 0 #111;background:#7c3aed;color:#fff;font-size:1.9rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h6 class="fw-bold mb-2" id="nbConfirmTitle" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.15rem;color:#111;">Are you sure?</h6>
+                <p class="text-muted mb-0" id="nbConfirmMessage" style="font-size:0.92rem;line-height:1.5;"></p>
+            </div>
+            <div class="modal-footer" style="border-top:3px solid #111;border-radius:0;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="nbConfirmCancel">
+                    <i class="fas fa-times me-2"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="nbConfirmOk">
+                    <i class="fas fa-check me-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var modalEl = document.getElementById('nbConfirmModal');
+    if (!modalEl || typeof bootstrap === 'undefined') return;
+
+    var modal = new bootstrap.Modal(modalEl);
+    var okBtn = document.getElementById('nbConfirmOk');
+    var cancelBtn = document.getElementById('nbConfirmCancel');
+    var titleEl = document.getElementById('nbConfirmTitle');
+    var msgEl = document.getElementById('nbConfirmMessage');
+    var iconEl = document.getElementById('nbConfirmIcon');
+    var pending = null;
+
+    var tones = {
+        danger:  { iconBg: '#ff1744', btn: 'btn-danger' },
+        success: { iconBg: '#00ff88', btn: 'btn-success' },
+        warning: { iconBg: '#ffa500', btn: 'btn-warning' },
+        info:    { iconBg: '#00f0ff', btn: 'btn-info' },
+        primary: { iconBg: '#7c3aed', btn: 'btn-primary' }
+    };
+
+    function readOptions(el) {
+        return {
+            title: el.getAttribute('data-nb-confirm-title') || 'Are you sure?',
+            message: el.getAttribute('data-nb-confirm') || 'This action cannot be undone.',
+            tone: el.getAttribute('data-nb-confirm-tone') || 'danger',
+            icon: el.getAttribute('data-nb-confirm-icon') || 'fas fa-exclamation-triangle',
+            confirmText: el.getAttribute('data-nb-confirm-text') || 'Confirm'
+        };
+    }
+
+    window.nbConfirm = function (options) {
+        options = options || {};
+        var tone = tones[options.tone] || tones.primary;
+        var title = options.title || 'Are you sure?';
+        var message = options.message || 'This action cannot be undone.';
+        var icon = options.icon || 'fas fa-exclamation-triangle';
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.innerHTML = '<i class="' + icon + '"></i>';
+        iconEl.style.background = tone.iconBg;
+        iconEl.style.color = (options.tone === 'success' || options.tone === 'warning') ? '#111' : '#fff';
+        okBtn.className = 'btn ' + (options.confirmClass || tone.btn);
+        okBtn.innerHTML = '<i class="fas fa-check me-2"></i>' + (options.confirmText || 'Confirm');
+
+        pending = null;
+
+        return new Promise(function (resolve, reject) {
+            pending = { resolve: resolve, reject: reject };
+
+            function cleanup() {
+                okBtn.onclick = null;
+                cancelBtn.onclick = null;
+                modalEl.removeEventListener('hidden.bs.modal', onHidden);
+            }
+            function onHidden() {
+                cleanup();
+                if (pending) {
+                    pending.reject(new Error('cancelled'));
+                    pending = null;
+                }
+            }
+
+            modalEl.addEventListener('hidden.bs.modal', onHidden);
+
+            okBtn.onclick = function () {
+                modal.hide();
+                cleanup();
+                if (pending) {
+                    pending.resolve();
+                    pending = null;
+                }
+            };
+            cancelBtn.onclick = function () {
+                modal.hide();
+            };
+
+            modal.show();
+        });
+    };
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[data-nb-confirm]') : null;
+        if (!link) return;
+        e.preventDefault();
+        var href = link.getAttribute('href');
+        nbConfirm(readOptions(link)).then(function () {
+            window.location.href = href;
+        }).catch(function () {});
+    });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-nb-confirm]') : null;
+        if (!btn || btn.type !== 'submit' || !btn.form) return;
+        e.preventDefault();
+        var opts = readOptions(btn);
+        if (btn.hasAttribute('data-nb-confirm-text')) {
+            opts.confirmText = btn.getAttribute('data-nb-confirm-text');
+        }
+        nbConfirm(opts).then(function () {
+            var clone = document.createElement('input');
+            clone.type = 'hidden';
+            clone.name = btn.name;
+            clone.value = btn.value;
+            btn.form.appendChild(clone);
+            btn.form.submit();
+        }).catch(function () {});
+    });
+
+    document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.hasAttribute('data-nb-confirm')) return;
+        e.preventDefault();
+        nbConfirm(readOptions(form)).then(function () {
+            form.submit();
+        }).catch(function () {});
+    });
+})();
+</script>
+
+    <!-- Custom scripts -->
+    <script>
+        // Toggle sidebar on mobile (+ dim backdrop via body class)
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            var sb = document.getElementById('adminSidebar');
+            if (!sb) return;
+            sb.classList.toggle('active');
+            document.body.classList.toggle('nb-nav-open', sb.classList.contains('active'));
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('adminSidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar && sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                sidebarToggle && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('nb-nav-open');
+            }
+        });
+
+        // Mobile tables → lists: copy each <th> label into its column's <td>
+        // as data-th (used by admin-mobile.css). Skips .nb-keep-table
+        // (members page) and header-less tables. Checkbox-only cells and
+        // action cells get docking classes instead of labels.
+        (function nbResponsiveTables() {
+            function isCheckCell(td) {
+                var kids = Array.prototype.filter.call(td.childNodes, function (n) {
+                    if (n.nodeType === 3) return n.textContent.trim() !== '';
+                    if (n.nodeType !== 1) return false;
+                    var tag = n.tagName.toLowerCase();
+                    return !(tag === 'input' && (n.type === 'checkbox' || n.type === 'radio'));
+                });
+                return kids.length === 0 && td.querySelector('input[type="checkbox"], input[type="radio"]');
+            }
+            document.querySelectorAll('table.table:not(.nb-keep-table)').forEach(function (table) {
+                var headers = Array.prototype.map.call(
+                    table.querySelectorAll('thead tr:last-child th'),
+                    function (th) { return th.textContent.trim().replace(/\s+/g, ' '); }
+                );
+                if (!headers.length) return;
+                table.querySelectorAll('tbody tr').forEach(function (tr) {
+                    Array.prototype.forEach.call(tr.children, function (td, i) {
+                        if (td.tagName.toLowerCase() !== 'td') return;
+                        if (td.hasAttribute('colspan')) { td.classList.add('nb-no-label'); return; }
+                        if (isCheckCell(td)) { td.classList.add('nb-cell-check'); return; }
+                        if (td.querySelector('.btn, .btn-group, .dropdown')) { td.classList.add('nb-cell-actions'); return; }
+                        if (headers[i]) td.setAttribute('data-th', headers[i]);
+                        else td.classList.add('nb-no-label');
+                    });
+                });
+            });
+        })();
+
+        // Initialize tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(function(el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // Initialize popovers
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(function(el) {
+            return new bootstrap.Popover(el);
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert.alert-dismissible').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+
+        // Confirm before deleting (uses the shared nbConfirm component when available)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    if (typeof nbConfirm === 'function') {
+                        e.preventDefault();
+                        nbConfirm({
+                            title: 'Delete Item',
+                            message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                            icon: 'fas fa-trash',
+                            tone: 'danger',
+                            confirmText: 'Delete'
+                        }).then(function() {
+                            if (button.tagName === 'A') {
+                                window.location.href = button.href;
+                            } else if (button.form) {
+                                button.form.submit();
+                            }
+                        }).catch(function() {});
+                    } else if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            var togglePassword = document.querySelector('.toggle-password');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    var passwordInput = document.querySelector('#password');
+                    var icon = this.querySelector('i');
+                    if (passwordInput && passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else if (passwordInput) {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+        });
+
+        // Contact Support Modal Function
+        function openContactSupport() {
+            var modal = new bootstrap.Modal(document.getElementById('contactSupportModal'));
+            modal.show();
+        }
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>

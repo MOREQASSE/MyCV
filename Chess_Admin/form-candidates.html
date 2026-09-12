@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Announcements - Admin Panel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin mobile-first layer (tables→lists, touch targets, stacking) -->
+    <link rel="stylesheet" href="assets/css/admin-mobile.css?v=3">
+
+    <style>
+        :root {
+            --nb-bg: #1a0a2e;
+            --nb-bg-dark: #0d0d0d;
+            --nb-surface: #f5f0ff;
+            --nb-surface-2: #ece4fa;
+            --nb-primary: #7c3aed;
+            --nb-primary-dark: #4c1d95;
+            --nb-primary-light: #a78bfa;
+            --nb-accent: #ff2d95;
+            --nb-accent-alt: #00f0ff;
+            --nb-ink: #111111;
+            --nb-text: #111111;
+            --nb-muted: #6b7280;
+            --nb-border: #111111;
+            --nb-success: #00ff88;
+            --nb-danger: #ff1744;
+            --nb-warning: #ffa500;
+            --nb-font-body: 'Space Grotesk', 'Montserrat', sans-serif;
+            --nb-font-heading: 'Playfair Display', serif;
+            --nb-shadow-sm: 3px 3px 0 #111;
+            --nb-shadow-md: 6px 6px 0 #111;
+            --nb-shadow-lg: 8px 8px 0 #111;
+            --nb-radius: 0px;
+            --nb-radius-sm: 4px;
+            --nb-sidebar-width: 250px;
+            --nb-header-height: 64px;
+        }
+
+        body {
+            font-family: var(--nb-font-body);
+            background-color: var(--nb-surface);
+            color: var(--nb-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6, .card-header {
+            font-family: var(--nb-font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Sidebar ===== */
+        .nb-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--nb-sidebar-width);
+            z-index: 1000;
+            background: var(--nb-bg);
+            color: #fff;
+            border-right: 3px solid var(--nb-border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nb-sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.25rem;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nb-sidebar-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .nb-sidebar-title {
+            font-family: var(--nb-font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+            display: block;
+        }
+        .nb-sidebar-title em {
+            color: var(--nb-accent-alt);
+            font-style: normal;
+        }
+        .nb-sidebar-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nb-sidebar-nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        .nb-sidebar-section {
+            display: block;
+            padding: 0.9rem 1.25rem 0.3rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--nb-primary-light);
+        }
+
+        .nb-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.15rem 0.6rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--nb-radius-sm);
+            transition: all 0.15s;
+        }
+        .nb-nav-link i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        .nb-nav-link:hover {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            transform: translate(-1px, -1px);
+        }
+        .nb-nav-link.active {
+            color: #fff;
+            background: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+            font-weight: 700;
+        }
+        .nb-nav-link.active::before {
+            content: "";
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--nb-accent);
+            flex-shrink: 0;
+        }
+        .nb-nav-link.nb-nav-danger:hover {
+            background: var(--nb-danger);
+        }
+
+        .nb-sidebar-footer {
+            border-top: 3px solid rgba(255, 255, 255, 0.08);
+            padding: 0.5rem 0;
+        }
+
+        /* ===== Topbar ===== */
+        .nb-topbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--nb-sidebar-width);
+            z-index: 999;
+            height: var(--nb-header-height);
+            background: #fff;
+            border-bottom: 3px solid var(--nb-border);
+            box-shadow: var(--nb-shadow-sm);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nb-topbar .nb-toggle {
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            border-radius: var(--nb-radius-sm);
+            font-size: 1.1rem;
+            padding: 0.35rem 0.65rem;
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-topbar .nb-toggle:hover {
+            background: var(--nb-primary);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+
+        .nb-user-dropdown .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--nb-text);
+            text-decoration: none;
+            border: 2px solid var(--nb-border);
+            background: var(--nb-surface);
+            padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+            border-radius: var(--nb-radius-sm);
+            box-shadow: 2px 2px 0 #111;
+            transition: all 0.15s;
+        }
+        .nb-user-dropdown .dropdown-toggle:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .nb-user-dropdown img {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+        }
+
+        /* ===== Main content ===== */
+        .nb-main {
+            margin-left: var(--nb-sidebar-width);
+            padding: calc(var(--nb-header-height) + 24px) 24px 24px;
+            flex: 1;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* ===== Cards ===== */
+        .card {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-md);
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background: var(--nb-surface-2);
+            border-bottom: 3px solid var(--nb-border);
+            font-weight: 700;
+            padding: 0.9rem 1.25rem;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            font-weight: 600;
+            transition: all 0.12s;
+        }
+        .btn-primary {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+            box-shadow: 3px 3px 0 #111;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            color: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #111;
+        }
+        .btn-outline-primary {
+            color: var(--nb-primary-dark);
+            border-color: var(--nb-border);
+            box-shadow: 2px 2px 0 #111;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--nb-primary);
+            color: #fff;
+        }
+        .btn-success { background-color: var(--nb-success); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-danger { background-color: var(--nb-danger); border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-warning { background-color: var(--nb-warning); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-info { background-color: var(--nb-accent-alt); border-color: var(--nb-border); color: var(--nb-text); box-shadow: 3px 3px 0 #111; }
+        .btn-secondary { background-color: #d1d5db; border-color: var(--nb-border); box-shadow: 3px 3px 0 #111; }
+        .btn-accent { background-color: var(--nb-accent); border-color: var(--nb-border); color: #fff; box-shadow: 3px 3px 0 #111; }
+        .btn-accent:hover { background-color: #e11d7d; color: #fff; }
+        .btn-sm { box-shadow: 2px 2px 0 #111; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 #111 !important; }
+
+        /* ===== Forms ===== */
+        .form-control, .form-select {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-family: var(--nb-font-body);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--nb-primary);
+            box-shadow: 3px 3px 0 var(--nb-primary-light);
+        }
+        .form-check-input:checked {
+            background-color: var(--nb-primary);
+            border-color: var(--nb-border);
+        }
+
+        /* ===== Tables ===== */
+        .table {
+            border: 2px solid var(--nb-border);
+            background: #fff;
+        }
+        .table thead th {
+            background: var(--nb-bg);
+            color: #fff;
+            font-weight: 700;
+            border-bottom: 3px solid var(--nb-border);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--nb-surface);
+        }
+        .table-hover tbody tr:hover {
+            background-color: var(--nb-surface-2);
+        }
+        .table td {
+            border-top: 2px solid #e5e7eb;
+        }
+
+        /* ===== Badges & alerts ===== */
+        .badge {
+            border: 2px solid var(--nb-border);
+            border-radius: var(--nb-radius-sm);
+            font-weight: 600;
+        }
+        .alert {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-sm);
+        }
+        .alert-success { background-color: var(--nb-success); color: var(--nb-text); }
+        .alert-danger { background-color: var(--nb-danger); color: #fff; }
+        .alert-warning { background-color: var(--nb-warning); color: var(--nb-text); }
+        .alert-info { background-color: var(--nb-accent-alt); color: var(--nb-text); }
+
+        /* ===== Modals ===== */
+        .modal {
+            z-index: 99999 !important;
+        }
+        .modal-backdrop {
+            z-index: 99998 !important;
+            background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        .modal-dialog {
+            z-index: 99999 !important;
+        }
+        .modal-content {
+            border: 3px solid var(--nb-border);
+            border-radius: var(--nb-radius);
+            box-shadow: var(--nb-shadow-lg);
+        }
+        .modal-header {
+            border-bottom: 3px solid var(--nb-border);
+            font-family: var(--nb-font-heading);
+        }
+        .modal-footer {
+            border-top: 3px solid var(--nb-border);
+        }
+
+        /* ===== Pills/tabs ===== */
+        .nav-pills .nav-link {
+            border-radius: var(--nb-radius-sm);
+            border: 2px solid var(--nb-border);
+            margin-right: 0.35rem;
+            color: var(--nb-text);
+            background: #fff;
+            box-shadow: 2px 2px 0 #111;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--nb-primary);
+            color: #fff;
+        }
+
+        /* ===== Admin footer ===== */
+        .nb-admin-footer {
+            border-top: 3px solid var(--nb-border);
+            background: var(--nb-bg);
+            color: #fff;
+            padding: 1.25rem 24px;
+            margin-left: var(--nb-sidebar-width);
+        }
+        .nb-admin-footer a {
+            color: var(--nb-primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nb-admin-footer a:hover {
+            color: #fff;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nb-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .nb-sidebar.active {
+                transform: translateX(0);
+            }
+            .nb-main, .nb-admin-footer {
+                margin-left: 0;
+            }
+            .nb-topbar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+
+
+<nav class="nb-sidebar" id="adminSidebar">
+    <div class="nb-sidebar-brand">
+        <img src="assets/images/CHESS club logo ups.webp" alt="Chess Club ENSAS Logo" class="nb-sidebar-logo" width="40" height="40" loading="lazy" decoding="async">
+        <div>
+            <span class="nb-sidebar-title">Chess Club <em>ENSAS</em></span>
+            <small class="nb-sidebar-sub">Admin Panel</small>
+        </div>
+    </div>
+
+    <div class="nb-sidebar-nav">
+        <span class="nb-sidebar-section">Main</span>
+
+        <a class="nb-nav-link active" href="dashboard.html">
+            <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+        </a>
+                <a class="nb-nav-link " href="members.html">
+            <i class="fas fa-users"></i><span>Members</span>
+        </a>
+                        <a class="nb-nav-link " href="tournaments.html">
+            <i class="fas fa-trophy"></i><span>League & Tournaments</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Media</span>
+                <a class="nb-nav-link " href="announcements.html">
+            <i class="fas fa-bullhorn"></i><span>Announcements</span>
+        </a>
+                        <a class="nb-nav-link " href="formations.html">
+            <i class="fas fa-chess-board"></i><span>Formations</span>
+        </a>
+                        <a class="nb-nav-link " href="newsletter.html">
+            <i class="fas fa-paper-plane"></i><span>Newsletter</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Business</span>
+                <a class="nb-nav-link " href="sponsors.html">
+            <i class="fas fa-handshake"></i><span>Sponsors</span>
+        </a>
+                        <a class="nb-nav-link " href="products.html">
+            <i class="fas fa-shopping-bag"></i><span>Products</span>
+        </a>
+                
+                <span class="nb-sidebar-section">Recruitment</span>
+        <a class="nb-nav-link " href="announcements-forms.html">
+            <i class="fas fa-file-alt"></i><span>Recruitment Forms</span>
+        </a>
+        
+                <span class="nb-sidebar-section">Administration</span>
+        <a class="nb-nav-link " href="admins.html">
+            <i class="fas fa-user-shield"></i><span>Admins</span>
+        </a>
+        <a class="nb-nav-link " href="settings.html">
+            <i class="fas fa-cog"></i><span>Settings</span>
+        </a>
+        
+        <span class="nb-sidebar-section">Account</span>
+        <a class="nb-nav-link " href="profile.html">
+            <i class="fas fa-user-cog"></i><span>Profile</span>
+        </a>
+    </div>
+
+    <div class="nb-sidebar-footer">
+        <a class="nb-nav-link" href="https://moreqasse.github.io/MyCV/" target="_blank">
+            <i class="fas fa-external-link-alt"></i><span>Visit Website</span>
+        </a>
+        <a class="nb-nav-link nb-nav-danger" href="login.html">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Topbar -->
+<nav class="nb-topbar">
+    <div>
+        <button class="nb-toggle d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="d-none d-lg-inline text-muted small">
+            <i class="fas fa-desktop me-1"></i> Best on PC for full features
+        </span>
+    </div>
+
+    <div class="nb-user-dropdown">
+        <div class="dropdown">
+            <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/placeholder.png" alt="User">
+                <span class="d-none d-md-inline">DemoAdmin</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="nb-main">
+    
+            
+<!-- Year-End Cleanup Advisory -->
+<div class="alert alert-warning fade show" role="alert" id="yearEndCleanupAlert" style="position: relative;">
+    <div class="d-flex align-items-start">
+        <i class="fas fa-exclamation-triangle me-3 mt-1"></i>
+        <div class="flex-grow-1">
+            <h6 class="alert-heading mb-2">
+                <strong>📅 Year-End Server Cleanup Reminder</strong>
+            </h6>
+            <p class="mb-2">
+                <strong>Storage Budget Notice:</strong> Please delete all announcements and reports from the previous year to save server space and reduce hosting costs.
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-bullhorn text-primary me-2"></i>
+                        <span><strong>Announcements:</strong> Use "Delete All Announcements" button</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-file-alt text-success me-2"></i>
+                        <span><strong>Reports:</strong> Use "Delete All Reports" button</span>
+                    </div>
+                </div>
+            </div>
+            <p class="mb-0 text-muted">
+                <small><i class="fas fa-info-circle"></i> This helps maintain optimal server performance and keeps storage costs within budget.</small>
+            </p>
+        </div>
+        <button type="button" class="btn-close" id="manualCloseAlert" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+    </div>
+</div>
+
+<script>
+// Complete control over alert timing - no Bootstrap interference
+document.addEventListener('DOMContentLoaded', function() {
+    const yearEndAlert = document.getElementById('yearEndCleanupAlert');
+    const manualCloseBtn = document.getElementById('manualCloseAlert');
+    
+    if (yearEndAlert && manualCloseBtn) {
+        // Set the 40-second timer
+        const alertTimer = setTimeout(function() {
+            if (yearEndAlert && document.body.contains(yearEndAlert)) {
+                yearEndAlert.classList.remove('show');
+                setTimeout(function() {
+                    if (yearEndAlert && document.body.contains(yearEndAlert)) {
+                        yearEndAlert.remove();
+                    }
+                }, 150); // Allow fade out animation
+            }
+        }, 40000); // 40 seconds
+        
+        // Manual close functionality
+        manualCloseBtn.addEventListener('click', function() {
+            clearTimeout(alertTimer); // Cancel the auto-close timer
+            yearEndAlert.classList.remove('show');
+            setTimeout(function() {
+                if (yearEndAlert && document.body.contains(yearEndAlert)) {
+                    yearEndAlert.remove();
+                }
+            }, 150); // Allow fade out animation
+        });
+        
+        // Prevent any Bootstrap alert initialization
+        yearEndAlert.removeAttribute('data-bs-dismiss');
+        manualCloseBtn.removeAttribute('data-bs-dismiss');
+        
+        // Override any Bootstrap alert attempts
+        yearEndAlert.addEventListener('closed.bs.alert', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        
+        yearEndAlert.addEventListener('close.bs.alert', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    }
+});
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar removed - using header sidebar only -->
+        
+        <!-- Main Content -->
+        <main class="col-12 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div>
+                    <h1 class="h2">Forms</h1>
+                    <!-- Navigation Tabs -->
+                    <ul class="nav nav-tabs mt-3">
+                        <li class="nav-item">
+                            <a class="nav-link " href="announcements.html">
+                                <i class="fas fa-bullhorn"></i> Announcements
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="announcements-forms.html">
+                                <i class="fas fa-clipboard-list"></i> Forms
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="announcements-reports.html">
+                                <i class="fas fa-file-alt"></i> Reports
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                                            <a href="form-add.html" class="btn btn-sm btn-primary">
+                            <i class="fas fa-plus"></i> New Form
+                        </a>
+                                    </div>
+            </div>
+            
+            <!-- Flash Messages -->
+                        
+                            <!-- List View -->
+                                                                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h5 class="mb-0">Candidates — Join us for the 2026/2027 season</h5>
+                            <a href="announcements-forms.html" class="text-muted small">← Back to forms</a>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2 mb-4 flex-wrap">
+                        <a href="form-candidates.html?id=5" class="btn btn-primary btn-sm">All</a>
+                                                <a href="form-candidates.html?id=5" class="btn btn-outline btn-sm">
+                            New (2)
+                        </a>
+                                                <a href="form-candidates.html?id=5" class="btn btn-outline btn-sm">
+                            Contacted (0)
+                        </a>
+                                                <a href="form-candidates.html?id=5" class="btn btn-outline btn-sm">
+                            Interviewed (0)
+                        </a>
+                                                <a href="form-candidates.html?id=5" class="btn btn-outline btn-sm">
+                            Accepted (0)
+                        </a>
+                                                <a href="form-candidates.html?id=5" class="btn btn-outline btn-sm">
+                            Rejected (0)
+                        </a>
+                                                <a href="form-candidates.html?id=5" class="btn btn-outline btn-sm">
+                            Converted (1)
+                        </a>
+                                            </div>
+
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Submitted</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                                                                                                        <tr class="" style="">
+                                            <td class="fw-bold">
+                                                Omar exclusion                                                                                            </td>
+                                            <td>
+                                                subscriber01@example.com                                                                                            </td>
+                                            <td>+212 610 100 100</td>
+                                            <td><small>Sep 09, 2026 12:19</small></td>
+                                            <td>
+                                                                                                <span class="badge bg-secondary">New</span>
+                                                                                            </td>
+                                            <td>
+                                                <a href="form-candidates.html" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-eye"></i> View
+                                                </a>
+                                                                                                <form method="post" action="#" data-demo-form="1" class="d-inline accept-form" data-candidate-id="4">
+                                                    <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">                                                    <button type="submit" class="btn btn-sm btn-success accept-btn">
+                                                        <i class="fas fa-user-check"></i> Accept
+                                                    </button>
+                                                </form>
+                                                <div class="accept-progress mt-2" id="progress-4" style="display:none; min-width:180px;">
+                                                    <div class="progress" style="height: 10px; background: #f5f0ff; border:2px solid #111; border-radius:0; box-shadow:2px 2px 0 #111; overflow:hidden;">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.4s ease;"></div>
+                                                    </div>
+                                                    <small class="progress-text d-block mt-1" style="font-size:0.7rem; font-weight:700; color:var(--primary);"><i class="fas fa-spinner fa-spin me-1"></i>Creating account...</small>
+                                                </div>
+                                                                                            </td>
+                                        </tr>
+                                                                                <tr class="table-success" style="background:rgba(0,255,136,0.08);">
+                                            <td class="fw-bold">
+                                                Yassine Sebti                                                                                                <span class="badge bg-success ms-1" title="Already a member — #106"><i class="fas fa-user-check"></i> Member</span>
+                                                                                            </td>
+                                            <td>
+                                                yassine.sebti58@gmail.com                                                                                            </td>
+                                            <td>+212 610 100 100</td>
+                                            <td><small>Aug 24, 2026 22:17</small></td>
+                                            <td>
+                                                                                                <span class="badge bg-primary">Converted</span>
+                                                                                                <div class="mt-1">
+                                                    <a href="members.html?search=m.Tazi3260%40uca.ac.ma" class="badge bg-dark text-decoration-none" style="font-size:0.7rem;"><i class="fas fa-external-link-alt me-1"></i>#106 Yassine Sebti</a>
+                                                </div>
+                                                                                            </td>
+                                            <td>
+                                                <a href="form-candidates.html" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-eye"></i> View
+                                                </a>
+                                                                                                <span class="btn btn-sm btn-success disabled" title="Already converted to member #106"><i class="fas fa-check"></i> Accepted</span>
+                                                                                            </td>
+                                        </tr>
+                                                                                <tr class="table-warning" style="">
+                                            <td class="fw-bold">
+                                                Mohammed Reqasse                                                                                                <span class="badge bg-warning text-dark ms-1" title="This email already exists in members"><i class="fas fa-exclamation-triangle"></i> Duplicate email</span>
+                                                                                            </td>
+                                            <td>
+                                                reqasse@gmail.com                                                                                                <div><small class="text-warning" style="font-weight:600;">⚠️ Email already a member</small></div>
+                                                                                            </td>
+                                            <td>+212 610 100 100</td>
+                                            <td><small>Aug 01, 2026 16:03</small></td>
+                                            <td>
+                                                                                                <span class="badge bg-secondary">New</span>
+                                                                                            </td>
+                                            <td>
+                                                <a href="form-candidates.html" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-eye"></i> View
+                                                </a>
+                                                                                                <span class="btn btn-sm btn-secondary disabled" title="This email already exists in members — cannot accept" style="opacity:0.6;cursor:not-allowed;"><i class="fas fa-ban"></i> Already member</span>
+                                                                                            </td>
+                                        </tr>
+                                                                                                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.querySelectorAll('.accept-form').forEach(function(form) {
+                            form.addEventListener('submit', function(e) {
+                                e.preventDefault();
+                                const candidateId = form.dataset.candidateId;
+                                const progressEl = document.getElementById('progress-' + candidateId);
+                                const progressBar = progressEl ? progressEl.querySelector('.progress-bar') : null;
+                                const progressText = progressEl ? progressEl.querySelector('.progress-text') : null;
+                                const submitBtn = form.querySelector('.accept-btn');
+                                const row = form.closest('tr');
+                                function showProgress(percent, text, icon) {
+                                    if (!progressEl) return;
+                                    progressEl.style.display = 'block';
+                                    if (progressBar) progressBar.style.width = percent + '%';
+                                    if (progressText) progressText.innerHTML = '<i class="fas ' + icon + ' me-1"></i>' + text;
+                                }
+                                const doSubmit = function() {
+                                    if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...'; }
+                                    showProgress(30, 'Creating account...', 'fa-spinner fa-spin');
+                                    setTimeout(() => showProgress(60, 'Sending welcome email...', 'fa-envelope fa-bounce'), 800);
+                                    const formData = new FormData(form);
+                                    fetch(form.action, {
+                                        method: 'POST',
+                                        body: formData,
+                                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                                    })
+                                    .then(r => r.json().catch(() => ({success:false, message:'Invalid response'})))
+                                    .then(data => {
+                                        showProgress(100, data.success ? 'Done!' : 'Error', data.success ? 'fa-check' : 'fa-exclamation-triangle');
+                                        if (data.success) {
+                                            if (progressText) {
+                                                let emailMsg = '';
+                                                if (data.emailSent) {
+                                                    emailMsg = ' <span style="color:var(--success);">✉️ Email sent to ' + data.email + '</span>';
+                                                } else {
+                                                    emailMsg = ' <span style="color:var(--warning);">⚠️ Email not sent' + (data.emailError ? ': <small style="color:var(--danger);">' + data.emailError + '</small>' : '') + '</span>';
+                                                }
+                                                progressText.innerHTML = '<i class="fas fa-check me-1" style="color:var(--success);"></i>Account created!' + emailMsg + '<br><small style="color:var(--text-muted);">Temp password: <code style="background:#111;color:#0ff;padding:2px 6px;">' + data.tempPassword + '</code></small>';
+                                                if (progressBar) progressBar.style.background = data.emailSent ? 'var(--success)' : 'var(--warning)';
+                                            }
+                                            if (submitBtn) submitBtn.outerHTML = '<span class="btn btn-sm btn-success disabled"><i class="fas fa-check"></i> Accepted</span>';
+                                            const statusCell = row ? row.querySelector('td:nth-child(5)') : null;
+                                            if (statusCell) {
+                                                const badge = statusCell.querySelector('.badge');
+                                                if (badge) { badge.className = 'badge bg-primary'; badge.textContent = 'Converted'; }
+                                            }
+                                            if (row) { row.style.background = 'rgba(0,255,136,0.08)'; row.classList.add('table-success'); }
+                                            setTimeout(() => { if(progressEl) progressEl.style.display='none'; }, 6000);
+                                        } else {
+                                            if (progressText) progressText.innerHTML = '<i class="fas fa-exclamation-triangle me-1" style="color:var(--danger);"></i>' + (data.message || 'Failed');
+                                            if (progressBar) progressBar.style.background = 'var(--danger)';
+                                            if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-user-check"></i> Accept'; }
+                                            setTimeout(() => { if(progressEl) progressEl.style.display='none'; }, 4000);
+                                        }
+                                    })
+                                    .catch(err => {
+                                        showProgress(100, 'Network error', 'fa-exclamation-triangle');
+                                        if (progressBar) progressBar.style.background = 'var(--danger)';
+                                        if (progressText) progressText.innerHTML = '<i class="fas fa-wifi me-1"></i> Network error — try again';
+                                        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-user-check"></i> Accept'; }
+                                        setTimeout(() => { if(progressEl) progressEl.style.display='none'; }, 4000);
+                                        console.error(err);
+                                    });
+                                };
+                                if (typeof nbConfirm === 'function') {
+                                    nbConfirm({ title: 'Accept Candidate', message: 'Create member account and send welcome email with temporary password? This will create the account immediately.', icon: 'fas fa-user-check', tone: 'success', confirmText: 'Accept & Send Email' }).then(doSubmit).catch(()=>{});
+                                } else {
+                                    if (confirm('Accept this candidate? Their member account will be created and welcome email sent automatically.')) doSubmit();
+                                }
+                            });
+                        });
+                    });
+                    </script>
+                                                                            </main>
+    </div>
+</div>
+
+<style>
+.file-preview {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f8f9fa;
+}
+</style>
+
+<script>
+function toggleReportFile(button) {
+    const checkbox = document.getElementById('delete_report_file');
+    const filePreview = button.closest('.mt-3');
+    
+    if (checkbox.checked) {
+        checkbox.checked = false;
+        filePreview.style.opacity = '1';
+        button.innerHTML = '<i class="fas fa-trash"></i> Delete';
+        button.classList.remove('btn-danger');
+        button.classList.add('btn-outline-danger');
+    } else {
+        checkbox.checked = true;
+        filePreview.style.opacity = '0.5';
+        button.innerHTML = '<i class="fas fa-undo"></i> Keep File';
+        button.classList.remove('btn-outline-danger');
+        button.classList.add('btn-danger');
+    }
+}
+</script>
+
+<!-- Delete All Reports Confirmation Modal -->
+<div class="modal fade" id="deleteAllReportsModal" tabindex="-1" aria-labelledby="deleteAllReportsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteAllReportsModalLabel">
+                    <i class="fas fa-exclamation-triangle"></i> Delete All Reports
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    <strong>Warning:</strong> This action cannot be undone!
+                </div>
+                
+                <p>This will permanently delete ALL reports and their associated files from the system.</p>
+                
+                <p>To confirm, please type <code class="bg-danger text-white px-2 py-1 rounded">DELETE</code> in the field below:</p>
+                
+                <div class="mb-3">
+                    <label for="deleteConfirmText" class="form-label">Type DELETE to confirm:</label>
+                    <input type="text" class="form-control" id="deleteConfirmText" placeholder="Type DELETE here">
+                    <div class="invalid-feedback">
+                        You must type DELETE exactly to proceed
+                    </div>
+                </div>
+                
+                <div id="deleteAllError" class="alert alert-danger d-none" role="alert">
+                    <!-- Error message will be shown here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="deleteAllReportsBtn" class="btn btn-danger" disabled>
+                    <i class="fas fa-trash-alt"></i> Delete All Reports
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete All Announcements Confirmation Modal -->
+<div class="modal fade" id="deleteAllAnnouncementsModal" tabindex="-1" aria-labelledby="deleteAllAnnouncementsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteAllAnnouncementsModalLabel">
+                    <i class="fas fa-exclamation-triangle"></i> Delete All Announcements
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    <strong>Warning:</strong> This action cannot be undone!
+                </div>
+                
+                <p>This will permanently delete ALL announcements and their associated thumbnail images from the system.</p>
+                
+                <p>To confirm, please type <code class="bg-danger text-white px-2 py-1 rounded">DELETE</code> in the field below:</p>
+                
+                <div class="mb-3">
+                    <label for="deleteConfirmAnnouncementsText" class="form-label">Type DELETE to confirm:</label>
+                    <input type="text" class="form-control" id="deleteConfirmAnnouncementsText" placeholder="Type DELETE here">
+                    <div class="invalid-feedback">
+                        You must type DELETE exactly to proceed
+                    </div>
+                </div>
+                
+                <div id="deleteAllAnnouncementsError" class="alert alert-danger d-none" role="alert">
+                    <!-- Error message will be shown here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="deleteAllAnnouncementsBtn" class="btn btn-danger" disabled>
+                    <i class="fas fa-trash-alt"></i> Delete All Announcements
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Delete All Reports functionality
+    const deleteAllReportsModal = document.getElementById('deleteAllReportsModal');
+    const deleteConfirmText = document.getElementById('deleteConfirmText');
+    const deleteAllReportsBtn = document.getElementById('deleteAllReportsBtn');
+    const deleteAllError = document.getElementById('deleteAllError');
+    
+    // Enable/disable delete button based on input
+    deleteConfirmText.addEventListener('input', function() {
+        const isValid = this.value.trim() === 'DELETE';
+        deleteAllReportsBtn.disabled = !isValid;
+        
+        if (isValid) {
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+        } else if (this.value.trim() !== '') {
+            this.classList.remove('is-valid');
+            this.classList.add('is-invalid');
+        } else {
+            this.classList.remove('is-valid', 'is-invalid');
+        }
+    });
+    
+    // Handle delete all reports button click
+    deleteAllReportsBtn.addEventListener('click', function() {
+        if (deleteConfirmText.value.trim() === 'DELETE') {
+            // Show loading state
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+            
+            // Make AJAX request to delete all reports
+            fetch('announcements.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'action': 'delete_all_reports',
+                    'csrf_token': 'demo-csrf-token-placeholder-000000000000000000000000'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Close modal and refresh page
+                    bootstrap.Modal.getInstance(deleteAllReportsModal).hide();
+                    location.reload();
+                } else {
+                    // Show error message
+                    deleteAllError.textContent = data.message || 'Error deleting reports. Please try again.';
+                    deleteAllError.classList.remove('d-none');
+                    this.disabled = false;
+                    this.innerHTML = '<i class="fas fa-trash-alt"></i> Delete All Reports';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                deleteAllError.textContent = 'Network error. Please try again.';
+                deleteAllError.classList.remove('d-none');
+                this.disabled = false;
+                this.innerHTML = '<i class="fas fa-trash-alt"></i> Delete All Reports';
+            });
+        }
+    });
+    
+    // Reset modal when hidden
+    deleteAllReportsModal.addEventListener('hidden.bs.modal', function() {
+        deleteConfirmText.value = '';
+        deleteConfirmText.classList.remove('is-valid', 'is-invalid');
+        deleteAllReportsBtn.disabled = true;
+        deleteAllReportsBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Delete All Reports';
+        deleteAllError.classList.add('d-none');
+    });
+    
+    // Delete All Announcements functionality
+    const deleteAllAnnouncementsModal = document.getElementById('deleteAllAnnouncementsModal');
+    const deleteConfirmAnnouncementsText = document.getElementById('deleteConfirmAnnouncementsText');
+    const deleteAllAnnouncementsBtn = document.getElementById('deleteAllAnnouncementsBtn');
+    const deleteAllAnnouncementsError = document.getElementById('deleteAllAnnouncementsError');
+    
+    // Enable/disable delete button based on input
+    deleteConfirmAnnouncementsText.addEventListener('input', function() {
+        const isValid = this.value.trim() === 'DELETE';
+        deleteAllAnnouncementsBtn.disabled = !isValid;
+        
+        if (isValid) {
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+        } else if (this.value.trim() !== '') {
+            this.classList.remove('is-valid');
+            this.classList.add('is-invalid');
+        } else {
+            this.classList.remove('is-valid', 'is-invalid');
+        }
+    });
+    
+    // Handle delete all announcements button click
+    deleteAllAnnouncementsBtn.addEventListener('click', function() {
+        if (deleteConfirmAnnouncementsText.value.trim() === 'DELETE') {
+            // Show loading state
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+            
+            // Make AJAX request to delete all announcements
+            fetch('announcements.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'action': 'delete_all_announcements',
+                    'csrf_token': 'demo-csrf-token-placeholder-000000000000000000000000'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Close modal and refresh page
+                    bootstrap.Modal.getInstance(deleteAllAnnouncementsModal).hide();
+                    location.reload();
+                } else {
+                    // Show error message
+                    deleteAllAnnouncementsError.textContent = data.message || 'Error deleting announcements. Please try again.';
+                    deleteAllAnnouncementsError.classList.remove('d-none');
+                    this.disabled = false;
+                    this.innerHTML = '<i class="fas fa-trash-alt"></i> Delete All Announcements';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                deleteAllAnnouncementsError.textContent = 'Network error. Please try again.';
+                deleteAllAnnouncementsError.classList.remove('d-none');
+                this.disabled = false;
+                this.innerHTML = '<i class="fas fa-trash-alt"></i> Delete All Announcements';
+            });
+        }
+    });
+    
+    // Reset modal when hidden
+    deleteAllAnnouncementsModal.addEventListener('hidden.bs.modal', function() {
+        deleteConfirmAnnouncementsText.value = '';
+        deleteConfirmAnnouncementsText.classList.remove('is-valid', 'is-invalid');
+        deleteAllAnnouncementsBtn.disabled = true;
+        deleteAllAnnouncementsBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Delete All Announcements';
+        deleteAllAnnouncementsError.classList.add('d-none');
+    });
+});
+</script>
+
+    </div> <!-- End .nb-main -->
+
+    <!-- Admin Footer -->
+    <footer class="nb-admin-footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    <i class="fas fa-copyright me-1"></i>&copy; 2026 Chess Club ENSAS Administration Panel
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-shield-alt me-1"></i>Secure Management System
+                </p>
+            </div>
+            <div class="text-center">
+                <p class="mb-0" style="font-size: 0.85rem;">
+                    Developed by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank">Mohammed Reqasse</a>
+                </p>
+                <p class="mb-0 mt-1" style="font-size: 0.78rem; color: rgba(255,255,255,0.55);">
+                    <i class="fas fa-palette me-1"></i>Professional Web Development
+                </p>
+            </div>
+            <div class="text-md-end">
+                <button class="btn btn-outline-light btn-sm mb-2" onclick="openContactSupport()">
+                    <i class="fas fa-headset me-2"></i>Contact Support
+                </button>
+                <div>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block"><i class="fas fa-user me-1"></i>Mohammed Reqasse</small>
+                    <small style="color: rgba(255,255,255,0.55);" class="d-block">
+                        <i class="fas fa-phone me-1"></i>
+                        <a href="tel:+212600000000" style="color: rgba(255,255,255,0.55);">+212 610 100 100</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal -->
+    <div class="modal fade" id="contactSupportModal" tabindex="-1" aria-labelledby="contactSupportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="contactSupportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px; border: 3px solid #111; box-shadow: 4px 4px 0 #111;">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h6 class="fw-bold">Mohammed Reqasse</h6>
+                        <p class="text-muted mb-3">Website Creator</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Phone Support</h6>
+                                <a href="tel:+212600000000" class="text-decoration-none fw-bold">+212 610 100 100</a>
+                                <p class="text-muted small mb-0">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3 p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Email Support</h6>
+                                <a href="mailto:reqasse@gmail.com" class="text-decoration-none fw-bold">reqasse@gmail.com</a>
+                                <p class="text-muted small mb-0">Response within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center p-3" style="border: 2px solid #111; background: var(--nb-surface); box-shadow: 2px 2px 0 #111;">
+                            <div class="flex-shrink-0">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; border: 2px solid #111;">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">Web Support</h6>
+                                <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" class="text-decoration-none fw-bold">https://moreqasse.github.io/MyCV/</a>
+                                <p class="text-muted small mb-0">Online resources & documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Close
+                    </button>
+                    <a href="tel:+212600000000" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Reusable Confirmation Modal Component (nbConfirm) -->
+    <!-- ===== Reusable Confirm Modal Component ===== -->
+<div class="modal fade" id="nbConfirmModal" tabindex="-1" aria-labelledby="nbConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111;overflow:hidden;">
+            <div class="modal-header" style="background:#1a0a2e;border-bottom:3px solid #111;border-radius:0;padding:0.9rem 1.25rem;">
+                <h5 class="modal-title text-white fw-bold mb-0" id="nbConfirmModalLabel" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.1rem;">
+                    <i class="fas fa-question-circle me-2" style="color:#ff2d95;"></i>Confirmation
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div id="nbConfirmIcon" class="d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+                     style="width:72px;height:72px;border:3px solid #111;box-shadow:4px 4px 0 #111;background:#7c3aed;color:#fff;font-size:1.9rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h6 class="fw-bold mb-2" id="nbConfirmTitle" style="font-family:var(--nb-font-heading,'Playfair Display',serif);font-size:1.15rem;color:#111;">Are you sure?</h6>
+                <p class="text-muted mb-0" id="nbConfirmMessage" style="font-size:0.92rem;line-height:1.5;"></p>
+            </div>
+            <div class="modal-footer" style="border-top:3px solid #111;border-radius:0;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="nbConfirmCancel">
+                    <i class="fas fa-times me-2"></i>Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="nbConfirmOk">
+                    <i class="fas fa-check me-2"></i>Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    'use strict';
+    var modalEl = document.getElementById('nbConfirmModal');
+    if (!modalEl || typeof bootstrap === 'undefined') return;
+
+    var modal = new bootstrap.Modal(modalEl);
+    var okBtn = document.getElementById('nbConfirmOk');
+    var cancelBtn = document.getElementById('nbConfirmCancel');
+    var titleEl = document.getElementById('nbConfirmTitle');
+    var msgEl = document.getElementById('nbConfirmMessage');
+    var iconEl = document.getElementById('nbConfirmIcon');
+    var pending = null;
+
+    var tones = {
+        danger:  { iconBg: '#ff1744', btn: 'btn-danger' },
+        success: { iconBg: '#00ff88', btn: 'btn-success' },
+        warning: { iconBg: '#ffa500', btn: 'btn-warning' },
+        info:    { iconBg: '#00f0ff', btn: 'btn-info' },
+        primary: { iconBg: '#7c3aed', btn: 'btn-primary' }
+    };
+
+    function readOptions(el) {
+        return {
+            title: el.getAttribute('data-nb-confirm-title') || 'Are you sure?',
+            message: el.getAttribute('data-nb-confirm') || 'This action cannot be undone.',
+            tone: el.getAttribute('data-nb-confirm-tone') || 'danger',
+            icon: el.getAttribute('data-nb-confirm-icon') || 'fas fa-exclamation-triangle',
+            confirmText: el.getAttribute('data-nb-confirm-text') || 'Confirm'
+        };
+    }
+
+    window.nbConfirm = function (options) {
+        options = options || {};
+        var tone = tones[options.tone] || tones.primary;
+        var title = options.title || 'Are you sure?';
+        var message = options.message || 'This action cannot be undone.';
+        var icon = options.icon || 'fas fa-exclamation-triangle';
+
+        titleEl.textContent = title;
+        msgEl.textContent = message;
+        iconEl.innerHTML = '<i class="' + icon + '"></i>';
+        iconEl.style.background = tone.iconBg;
+        iconEl.style.color = (options.tone === 'success' || options.tone === 'warning') ? '#111' : '#fff';
+        okBtn.className = 'btn ' + (options.confirmClass || tone.btn);
+        okBtn.innerHTML = '<i class="fas fa-check me-2"></i>' + (options.confirmText || 'Confirm');
+
+        pending = null;
+
+        return new Promise(function (resolve, reject) {
+            pending = { resolve: resolve, reject: reject };
+
+            function cleanup() {
+                okBtn.onclick = null;
+                cancelBtn.onclick = null;
+                modalEl.removeEventListener('hidden.bs.modal', onHidden);
+            }
+            function onHidden() {
+                cleanup();
+                if (pending) {
+                    pending.reject(new Error('cancelled'));
+                    pending = null;
+                }
+            }
+
+            modalEl.addEventListener('hidden.bs.modal', onHidden);
+
+            okBtn.onclick = function () {
+                modal.hide();
+                cleanup();
+                if (pending) {
+                    pending.resolve();
+                    pending = null;
+                }
+            };
+            cancelBtn.onclick = function () {
+                modal.hide();
+            };
+
+            modal.show();
+        });
+    };
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[data-nb-confirm]') : null;
+        if (!link) return;
+        e.preventDefault();
+        var href = link.getAttribute('href');
+        nbConfirm(readOptions(link)).then(function () {
+            window.location.href = href;
+        }).catch(function () {});
+    });
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('button[data-nb-confirm]') : null;
+        if (!btn || btn.type !== 'submit' || !btn.form) return;
+        e.preventDefault();
+        var opts = readOptions(btn);
+        if (btn.hasAttribute('data-nb-confirm-text')) {
+            opts.confirmText = btn.getAttribute('data-nb-confirm-text');
+        }
+        nbConfirm(opts).then(function () {
+            var clone = document.createElement('input');
+            clone.type = 'hidden';
+            clone.name = btn.name;
+            clone.value = btn.value;
+            btn.form.appendChild(clone);
+            btn.form.submit();
+        }).catch(function () {});
+    });
+
+    document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || !form.hasAttribute('data-nb-confirm')) return;
+        e.preventDefault();
+        nbConfirm(readOptions(form)).then(function () {
+            form.submit();
+        }).catch(function () {});
+    });
+})();
+</script>
+
+    <!-- Custom scripts -->
+    <script>
+        // Toggle sidebar on mobile (+ dim backdrop via body class)
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            var sb = document.getElementById('adminSidebar');
+            if (!sb) return;
+            sb.classList.toggle('active');
+            document.body.classList.toggle('nb-nav-open', sb.classList.contains('active'));
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('adminSidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar && sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                sidebarToggle && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('nb-nav-open');
+            }
+        });
+
+        // Mobile tables → lists: copy each <th> label into its column's <td>
+        // as data-th (used by admin-mobile.css). Skips .nb-keep-table
+        // (members page) and header-less tables. Checkbox-only cells and
+        // action cells get docking classes instead of labels.
+        (function nbResponsiveTables() {
+            function isCheckCell(td) {
+                var kids = Array.prototype.filter.call(td.childNodes, function (n) {
+                    if (n.nodeType === 3) return n.textContent.trim() !== '';
+                    if (n.nodeType !== 1) return false;
+                    var tag = n.tagName.toLowerCase();
+                    return !(tag === 'input' && (n.type === 'checkbox' || n.type === 'radio'));
+                });
+                return kids.length === 0 && td.querySelector('input[type="checkbox"], input[type="radio"]');
+            }
+            document.querySelectorAll('table.table:not(.nb-keep-table)').forEach(function (table) {
+                var headers = Array.prototype.map.call(
+                    table.querySelectorAll('thead tr:last-child th'),
+                    function (th) { return th.textContent.trim().replace(/\s+/g, ' '); }
+                );
+                if (!headers.length) return;
+                table.querySelectorAll('tbody tr').forEach(function (tr) {
+                    Array.prototype.forEach.call(tr.children, function (td, i) {
+                        if (td.tagName.toLowerCase() !== 'td') return;
+                        if (td.hasAttribute('colspan')) { td.classList.add('nb-no-label'); return; }
+                        if (isCheckCell(td)) { td.classList.add('nb-cell-check'); return; }
+                        if (td.querySelector('.btn, .btn-group, .dropdown')) { td.classList.add('nb-cell-actions'); return; }
+                        if (headers[i]) td.setAttribute('data-th', headers[i]);
+                        else td.classList.add('nb-no-label');
+                    });
+                });
+            });
+        })();
+
+        // Initialize tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).forEach(function(el) {
+            return new bootstrap.Tooltip(el);
+        });
+
+        // Initialize popovers
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).forEach(function(el) {
+            return new bootstrap.Popover(el);
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert.alert-dismissible').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+
+        // Confirm before deleting (uses the shared nbConfirm component when available)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    if (typeof nbConfirm === 'function') {
+                        e.preventDefault();
+                        nbConfirm({
+                            title: 'Delete Item',
+                            message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                            icon: 'fas fa-trash',
+                            tone: 'danger',
+                            confirmText: 'Delete'
+                        }).then(function() {
+                            if (button.tagName === 'A') {
+                                window.location.href = button.href;
+                            } else if (button.form) {
+                                button.form.submit();
+                            }
+                        }).catch(function() {});
+                    } else if (!confirm('Are you sure you want to delete this item? This action cannot be undone.')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            var togglePassword = document.querySelector('.toggle-password');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    var passwordInput = document.querySelector('#password');
+                    var icon = this.querySelector('i');
+                    if (passwordInput && passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else if (passwordInput) {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+        });
+
+        // Contact Support Modal Function
+        function openContactSupport() {
+            var modal = new bootstrap.Modal(document.getElementById('contactSupportModal'));
+            modal.show();
+        }
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>
+

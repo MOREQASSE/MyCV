@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Chess Club ENSAS</title>
+        <meta name="description" content="Chess Club ENSAS — the official chess club of ENSA Safi, Morocco. Tournaments, training formations, league matches and a vibrant student chess community.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="login.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Chess Club ENSAS">
+    <meta property="og:title" content="Admin Login - Chess Club ENSAS">
+    <meta property="og:description" content="Chess Club ENSAS — the official chess club of ENSA Safi, Morocco. Tournaments, training formations, league matches and a vibrant student chess community.">
+    <meta property="og:url" content="login.html">
+    <meta property="og:image" content="assets/images/CHESS%20club%20logo%20ups.webp">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Admin Login - Chess Club ENSAS">
+    <meta name="twitter:description" content="Chess Club ENSAS — the official chess club of ENSA Safi, Morocco. Tournaments, training formations, league matches and a vibrant student chess community.">
+    <meta name="twitter:image" content="assets/images/CHESS%20club%20logo%20ups.webp">
+        <meta name="theme-color" content="#1a0a2e">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://code.jquery.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"></noscript>
+    
+    <link rel="stylesheet" href="assets/css/neo-critical.css?v=6">
+    <link rel="stylesheet" href="assets/css/neo-desktop.css?v=2" media="(min-width: 992px)">
+    <link rel="stylesheet" href="assets/css/neo-mobile.css?v=5" media="(max-width: 991.98px)">
+    <link rel="icon" type="image/jpeg" href="assets/images/CHESS%20club%20logo%20sm.webp">
+        
+</head>
+<body class="">
+<div id="demoRibbon" style="position:sticky;top:0;z-index:2000;background:#111;color:#fff;text-align:center;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;padding:0.4rem 0.75rem;border-bottom:3px solid #7c3aed;">PORTFOLIO DEMO — sample data, actions disabled · <a href="login.html" style="color:#a78bfa;">Logout</a></div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="https://moreqasse.github.io/MyCV/">
+                <img src="assets/images/CHESS%20club%20logo%20sm.webp" alt="Chess Club ENSAS logo" class="brand-logo" width="40" height="40" loading="eager" fetchpriority="high" decoding="async">
+                Chess Club <span class="highlight">ENSAS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link " href="https://moreqasse.github.io/MyCV/"><i class="fas fa-home nav-icon"></i><span>Home</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="https://moreqasse.github.io/MyCV/"><i class="fas fa-bullhorn nav-icon"></i><span>Announcements</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="https://moreqasse.github.io/MyCV/"><i class="fas fa-chess-board nav-icon"></i><span>Formations</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="https://moreqasse.github.io/MyCV/"><i class="fas fa-trophy nav-icon"></i><span>Tournaments</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="https://moreqasse.github.io/MyCV/"><i class="fas fa-users nav-icon"></i><span>Members</span></a></li>
+                    <li class="nav-item"><a class="nav-link " href="https://moreqasse.github.io/MyCV/"><i class="fas fa-shopping-bag nav-icon"></i><span>Shop</span></a></li>
+                                        <li class="nav-item nav-login-bottom"><a class="nav-link " href="https://moreqasse.github.io/MyCV/"><i class="fas fa-sign-in-alt nav-icon"></i><span>Login</span></a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="member-topbar d-lg-none">
+        <a class="member-brand" href="https://moreqasse.github.io/MyCV/">
+            <img src="assets/images/CHESS%20club%20logo%20sm.webp" alt="Chess Club ENSAS logo" class="brand-logo" width="40" height="40" loading="eager" fetchpriority="high" decoding="async">
+            <span class="member-brand-name">Chess Club <span class="highlight">ENSAS</span></span>
+        </a>
+                    <a href="https://moreqasse.github.io/MyCV/" class="btn btn-sm btn-primary" style="background:var(--primary);color:#fff;border:2px solid #111;box-shadow:2px 2px 0 #111;font-weight:700;padding:0.45rem 1rem;white-space:nowrap;">Login</a>
+            </nav>
+
+        
+    <main class="main-content">
+        <section style="background:var(--bg-secondary);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 0;position:relative;overflow:hidden;">
+    <!-- Background watermark chess pieces — admin weight -->
+    <div style="position:absolute;top:-30px;left:-30px;font-size:16rem;color:rgba(255,255,255,0.03);transform:rotate(-12deg);user-select:none;pointer-events:none;font-family:serif;line-height:1;">♔</div>
+    <div style="position:absolute;bottom:-20px;right:-20px;font-size:14rem;color:rgba(124,58,237,0.06);transform:rotate(18deg);user-select:none;pointer-events:none;font-family:serif;line-height:1;">♜</div>
+    <div style="position:absolute;top:12%;right:8%;font-size:5rem;color:rgba(255,45,149,0.035);transform:rotate(-18deg);user-select:none;pointer-events:none;font-family:serif;line-height:1;">♛</div>
+    <div style="position:absolute;bottom:18%;left:6%;font-size:3.5rem;color:rgba(0,240,255,0.04);user-select:none;pointer-events:none;font-family:serif;line-height:1;">♝</div>
+
+    <!-- Subtle grid pattern -->
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
+
+    <div class="container" style="position:relative;z-index:1;max-width:520px;">
+        <!-- Top badge — admin only -->
+        <div style="text-align:center;margin-bottom:1.25rem;">
+            <span style="display:inline-flex;align-items:center;gap:0.5rem;background:#111;color:var(--accent);border:2px solid #111;padding:0.35rem 0.9rem;font-size:0.68rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;box-shadow:3px 3px 0 #111;">
+                <i class="fas fa-shield-alt"></i> RESTRICTED — BUREAU ONLY
+            </span>
+        </div>
+
+        <div style="background:#111;border:4px solid #111;box-shadow:10px 10px 0 #111;overflow:hidden;">
+            <!-- Header — dark, not white -->
+            <div style="background:linear-gradient(135deg, #1a0a2e 0%, #0d0d0d 100%);border-bottom:4px solid #111;padding:1.75rem 1.75rem 1.5rem;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:-18px;right:-10px;font-size:7rem;color:rgba(255,255,255,0.04);transform:rotate(12deg);user-select:none;pointer-events:none;font-family:serif;">♚</div>
+                <div style="position:relative;z-index:1;display:flex;align-items:center;gap:1rem;">
+                    <div style="width:64px;height:64px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--accent);border:3px solid #111;box-shadow:4px 4px 0 #111;font-size:1.9rem;color:#fff;line-height:1;">
+                        <i class="fas fa-chess-king"></i>
+                    </div>
+                    <div>
+                        <h1 style="font-family:var(--font-heading);font-size:1.65rem;font-weight:900;color:#fff;margin:0;line-height:1;letter-spacing:-0.02em;text-shadow:2px 2px 0 #111;">Admin Login</h1>
+                        <p style="color:rgba(255,255,255,0.55);font-size:0.8rem;margin:0.2rem 0 0;font-weight:500;letter-spacing:0.02em;">Chess Club ENSAS — Bureau Access</p>
+                        <div style="display:flex;align-items:center;gap:0.4rem;margin-top:0.5rem;">
+                            <span style="width:6px;height:6px;background:var(--success);border-radius:50%;box-shadow:0 0 6px var(--success);display:inline-block;"></span>
+                            <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Secure Session</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Body — NOT white, dark neo-brutalist -->
+            <div style="background:#1a0a2e;padding:1.75rem 1.75rem 1.5rem;position:relative;">
+                <!-- Inner subtle border highlight -->
+                <div style="position:absolute;inset:0;border:2px solid rgba(255,255,255,0.04);pointer-events:none;"></div>
+
+                
+                <form method="post" action="#" data-demo-form="1" id="adminLoginForm" style="position:relative;z-index:1;">
+                    <input type="hidden" name="csrf_token" value="demo-csrf-token-placeholder-000000000000000000000000">
+                    <div style="margin-bottom:1.1rem;">
+                        <label for="admin-email" style="display:flex;align-items:center;gap:0.45rem;font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.65);margin-bottom:0.45rem;">
+                            <i class="fas fa-envelope" style="color:var(--primary-light);font-size:0.7rem;"></i> Email
+                        </label>
+                        <div style="position:relative;">
+                            <input type="email" name="email" id="admin-email" class="form-control" placeholder="admin@demo.com" required autocomplete="email" autofocus
+                                   style="background:#0d0d0d;border:3px solid #111;border-radius:0;color:#fff;padding:0.85rem 1rem 0.85rem 2.7rem;font-size:0.92rem;box-shadow:4px 4px 0 #111;transition:border-color 0.15s, box-shadow 0.15s; width:100%;">
+                            <span style="position:absolute;left:0;top:0;bottom:0;width:2.7rem;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);font-size:0.9rem;pointer-events:none;border-right:3px solid #111;"><i class="fas fa-user-shield"></i></span>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:1.35rem;">
+                        <label for="admin-password" style="display:flex;align-items:center;gap:0.45rem;font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.65);margin-bottom:0.45rem;">
+                            <i class="fas fa-key" style="color:var(--primary-light);font-size:0.7rem;"></i> Password
+                        </label>
+                        <div style="position:relative;display:flex;align-items:stretch;">
+                            <span style="position:absolute;left:0;top:0;bottom:0;width:2.7rem;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);font-size:0.9rem;pointer-events:none;border-right:3px solid #111;z-index:1;"><i class="fas fa-lock"></i></span>
+                            <input type="password" name="password" id="admin-password" class="form-control" placeholder="••••••••" required autocomplete="current-password"
+                                   style="flex:1;background:#0d0d0d;border:3px solid #111;border-radius:0;color:#fff;padding:0.85rem 1rem 0.85rem 2.7rem;font-size:0.92rem;box-shadow:4px 4px 0 #111;transition:border-color 0.15s, box-shadow 0.15s;">
+                            <button type="button" id="toggleAdminPassword" tabindex="-1" aria-label="Show password"
+                                    style="width:48px;flex-shrink:0;background:#0d0d0d;border:3px solid #111;border-left:none;border-radius:0;color:rgba(255,255,255,0.5);box-shadow:4px 4px 0 #111;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:color 0.15s;">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.6rem;">
+                            <span style="font-size:0.68rem;color:rgba(255,255,255,0.35);"><i class="fas fa-info-circle me-1"></i> Bureau credentials only</span>
+                            <span style="font-size:0.68rem;color:rgba(255,255,255,0.25);">Caps Lock sensitive</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="adminSigninBtn" style="width:100%;background:var(--accent);border:3px solid #111;border-radius:0;color:#fff;font-family:var(--font-heading);font-weight:900;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.95rem 1rem;box-shadow:5px 5px 0 #111;display:flex;align-items:center;justify-content:center;gap:0.6rem;cursor:pointer;transition:transform 0.12s, box-shadow 0.12s, filter 0.12s;"
+                            onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='7px 7px 0 #111';this.style.filter='brightness(1.05)';"
+                            onmouseout="this.style.transform='none';this.style.boxShadow='5px 5px 0 #111';this.style.filter='none';"
+                            onmousedown="this.style.transform='translate(1px,1px)';this.style.boxShadow='3px 3px 0 #111';"
+                            onmouseup="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='7px 7px 0 #111';">
+                        <i class="fas fa-shield-alt"></i> Sign In
+                    </button>
+
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin:1.25rem 0 0;">
+                        <span style="flex:1;height:2px;background:rgba(255,255,255,0.06);"></span>
+                        <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);">Secure</span>
+                        <span style="flex:1;height:2px;background:rgba(255,255,255,0.06);"></span>
+                    </div>
+                </form>
+
+                <div style="text-align:center;margin-top:1.1rem;position:relative;z-index:1;">
+                    <a href="https://moreqasse.github.io/MyCV/" style="display:inline-flex;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.45);font-size:0.78rem;font-weight:600;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.45)';">
+                        <i class="fas fa-arrow-left" style="font-size:0.7rem;"></i> Back to Website
+                    </a>
+                    <span style="display:inline-block;margin:0 0.6rem;color:rgba(255,255,255,0.12);">·</span>
+                    <span style="font-size:0.7rem;color:rgba(255,255,255,0.25);"><i class="fas fa-lock me-1"></i> Encrypted</span>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align:center;color:rgba(255,255,255,0.22);font-size:0.68rem;margin:1.25rem 0 0;letter-spacing:0.04em;">
+            <i class="fas fa-exclamation-triangle me-1" style="color:rgba(255,255,255,0.2);"></i>
+            Unauthorized access is prohibited and monitored.
+        </p>
+    </div>
+</section>
+
+<style>
+/* Sign-in button busy state — morphs while reCAPTCHA + login resolve */
+#adminSigninBtn.is-busy { pointer-events: none; filter: saturate(1.15); }
+#adminSigninBtn .busy-spin { display: inline-block; animation: busy-spin 0.9s linear infinite; }
+@keyframes busy-spin { to { transform: rotate(360deg); } }
+#adminSigninBtn .busy-dots::after { content: ''; animation: busy-dots 1.2s steps(4) infinite; }
+@keyframes busy-dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
+#adminSigninBtn .busy-fade { animation: busy-fade 0.25s ease; }
+@keyframes busy-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+#admin-email:focus, #admin-password:focus {
+    outline: none !important;
+    border-color: var(--primary-light) !important;
+    box-shadow: 5px 5px 0 #111 !important;
+    background: #111 !important;
+}
+#admin-email::placeholder, #admin-password::placeholder { color: rgba(255,255,255,0.28); }
+#toggleAdminPassword:hover { color: #fff !important; background: #111 !important; }
+@media (max-width: 480px) {
+    section { padding: 1.25rem 0 !important; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.getElementById('toggleAdminPassword');
+    var pwd = document.getElementById('admin-password');
+    if (toggle && pwd) {
+        toggle.addEventListener('click', function() {
+            var isPwd = pwd.type === 'password';
+            pwd.type = isPwd ? 'text' : 'password';
+            var icon = toggle.querySelector('i');
+            if (icon) icon.className = isPwd ? 'fas fa-eye-slash' : 'fas fa-eye';
+            pwd.focus();
+        });
+    }
+    /* reCAPTCHA v3 — brute-force shield (server fails closed without it) */
+    var form = document.getElementById('adminLoginForm');
+    if (!form) return;
+    var tokenInput = document.createElement('input');
+    tokenInput.type = 'hidden';
+    tokenInput.name = 'g-recaptcha-response';
+    form.appendChild(tokenInput);
+    var signinBtn = document.getElementById('adminSigninBtn');
+    var busyTimer = null;
+    var busyOrig = signinBtn ? signinBtn.innerHTML : '';
+    var busyPhrases = [
+        '<i class="fas fa-shield-alt busy-spin"></i><span class="busy-fade">Verifying security measures<span class="busy-dots"></span></span>',
+        '<i class="fas fa-key busy-spin"></i><span class="busy-fade">Authenticating<span class="busy-dots"></span></span>',
+        '<i class="fas fa-user-shield busy-spin"></i><span class="busy-fade">Opening the control room<span class="busy-dots"></span></span>'
+    ];
+    function busyStart() {
+        if (!signinBtn || signinBtn.classList.contains('is-busy')) return;
+        signinBtn.style.minHeight = signinBtn.offsetHeight + 'px';
+        signinBtn.classList.add('is-busy');
+        signinBtn.disabled = true;
+        var i = 0;
+        function show() {
+            signinBtn.innerHTML = busyPhrases[i % busyPhrases.length];
+            i++;
+        }
+        show();
+        busyTimer = setInterval(show, 1500);
+    }
+    function busyStop() {
+        if (busyTimer) { clearInterval(busyTimer); busyTimer = null; }
+        if (!signinBtn) return;
+        signinBtn.classList.remove('is-busy');
+        signinBtn.disabled = false;
+        signinBtn.style.minHeight = '';
+        signinBtn.innerHTML = busyOrig;
+    }
+    form.addEventListener('submit', function(e){
+        if (tokenInput.value) return;
+        e.preventDefault();
+        if (!window.chessCaptcha) { form.submit(); return; }
+        busyStart();
+        window.chessCaptcha('admin_login').then(function(token){
+            tokenInput.value = token;
+            form.submit();
+        }, function(){
+            busyStop();
+            alert('Spam check could not load — please refresh the page and try again.');
+        });
+    });
+});
+</script>
+    </main>
+
+    <footer style="background:var(--bg-primary);border-top:3px solid #111;padding:2.5rem 0 0;color:#ccc;font-family:var(--font-body);">
+        <div class="container">
+
+            <!-- Top Bar: Logo + Social (inline on mobile) -->
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:1.5rem;border-bottom:3px solid rgba(255,255,255,0.06);">
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <img src="assets/images/CHESS%20club%20logo%20sm.webp" alt="Chess Club ENSAS" style="height:40px;width:auto;display:block;" width="40" height="40" loading="lazy" fetchpriority="low" decoding="async">
+                    <span style="font-family:var(--font-heading);font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:-0.02em;">Chess Club <span style="color:var(--primary);">ENSAS</span></span>
+                </div>
+                <div style="display:flex;gap:0.5rem;">
+                    <a href="https://facebook.com/chessclub.ensas" target="_blank" title="Facebook" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:2px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:0.95rem;text-decoration:none;transition:all 0.15s;" onmouseover="this.style.background='var(--primary)';this.style.color='#fff';this.style.borderColor='#111';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(255,255,255,0.12)';"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/chessclub.ensas" target="_blank" title="Instagram" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:2px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:0.95rem;text-decoration:none;transition:all 0.15s;" onmouseover="this.style.background='var(--accent)';this.style.color='#fff';this.style.borderColor='#111';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(255,255,255,0.12)';"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/chess-club-ensas" target="_blank" title="LinkedIn" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:2px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:0.95rem;text-decoration:none;transition:all 0.15s;" onmouseover="this.style.background='#0A66C2';this.style.color='#fff';this.style.borderColor='#111';" onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.6)';this.style.borderColor='rgba(255,255,255,0.12)';"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- Middle Row: Links + Contact + Newsletter -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:1.5rem;padding:1.5rem 0;border-bottom:3px solid rgba(255,255,255,0.06);">
+                <!-- Quick Links -->
+                <div>
+                    <h6 style="font-family:var(--font-heading);font-size:0.85rem;font-weight:700;color:#fff;margin:0 0 0.75rem;text-transform:uppercase;letter-spacing:0.08em;">♜ Links</h6>
+                    <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                        <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.6)';">Announcements</a>
+                        <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.6)';">Formations</a>
+                        <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.6)';">Tournaments</a>
+                        <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.6)';">Members</a>
+                        <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.6)';">Shop</a>
+                        <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.6)';">Privacy Policy</a>
+                        <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.6)';">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h6 style="font-family:var(--font-heading);font-size:0.85rem;font-weight:700;color:#fff;margin:0 0 0.75rem;text-transform:uppercase;letter-spacing:0.08em;">♚ Contact</h6>
+                    <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.85rem;color:rgba(255,255,255,0.6);">
+                        <span>ENSA Safi, <br class="d-none d-lg-inline">Route Sidi Bouzid</span>
+                        <a href="mailto:support@demo-club.example" style="color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.6)';">support@demo-club.example</a>
+                        <span>+212 600-000000</span>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h6 style="font-family:var(--font-heading);font-size:0.85rem;font-weight:700;color:#fff;margin:0 0 0.75rem;text-transform:uppercase;letter-spacing:0.08em;">✉ Newsletter</h6>
+                                                            <p style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin:0 0 0.75rem;line-height:1.5;">Stay updated with the latest chess events, tournaments, and club news.</p>
+                    <form id="footerNewsletterForm" method="post" action="#" data-demo-form="1" style="display:flex;gap:0.5rem;">
+                        <input type="email" name="email" id="nlEmail" placeholder="your@email.com" required style="flex:1;min-width:0;padding:0.65rem 0.75rem;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);color:#fff;font-size:0.85rem;font-family:inherit;outline:none;transition:border-color 0.15s;" onfocus="this.style.borderColor='var(--primary)';" onblur="this.style.borderColor='rgba(255,255,255,0.12)';">
+                        <button type="submit" style="padding:0.65rem 1.25rem;background:var(--accent);color:#fff;border:2px solid #111;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:3px 3px 0 #111;transition:all 0.15s;white-space:nowrap;" onmouseover="this.style.boxShadow='5px 5px 0 #111';this.style.transform='translate(-2px,-2px)';" onmouseout="this.style.boxShadow='3px 3px 0 #111';this.style.transform='none';">Subscribe ♞</button>
+                    </form>
+                    <div id="nlFeedback" style="display:none;margin-top:0.6rem;padding:0.55rem 0.75rem;font-size:0.78rem;font-weight:700;border:2px solid #111;"></div>
+                    <script>
+                    (function(){
+                        var f = document.getElementById('footerNewsletterForm');
+                        if (!f) return;
+                        var fb = document.getElementById('nlFeedback');
+                        var btn = f.querySelector('button[type="submit"]');
+                        f.addEventListener('submit', function(e){
+                            e.preventDefault();
+                            fb.style.display = 'none';
+                            var original = btn.textContent;
+                            btn.disabled = true;
+                            btn.textContent = '...';
+                            function doSubscribe(token){
+                                var body = new URLSearchParams(new FormData(f));
+                                if (token) body.append('g-recaptcha-response', token);
+                                fetch('https://moreqasse.github.io/MyCV/', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'fetch' },
+                                    body: body.toString()
+                                })
+                            .then(function(r){ return r.json(); })
+                            .then(function(d){
+                                fb.style.display = 'block';
+                                fb.textContent = d.message || (d.success ? 'Subscribed!' : 'Something went wrong.');
+                                fb.style.background = d.success ? 'rgba(0,255,136,0.12)' : 'rgba(255,23,68,0.12)';
+                                fb.style.color = d.success ? '#00ff88' : '#ff6b8a';
+                                fb.style.borderColor = d.success ? 'rgba(0,255,136,0.4)' : 'rgba(255,23,68,0.4)';
+                                if (d.success) {
+                                    f.querySelector('input[name="email"]').value = '';
+                                    setTimeout(function(){ fb.style.display='none'; }, 6000);
+                                }
+                            })
+                            .catch(function(){
+                                fb.style.display = 'block';
+                                fb.textContent = 'Network error — please try again.';
+                                fb.style.background = 'rgba(255,23,68,0.12)';
+                                fb.style.color = '#ff6b8a';
+                            })
+                            .finally(function(){ btn.disabled = false; btn.textContent = original; });
+                            }
+                            if (window.chessCaptcha) {
+                                window.chessCaptcha('newsletter').then(doSubscribe, function(){
+                                    fb.style.display = 'block';
+                                    fb.textContent = 'Spam check could not load — please refresh the page and try again.';
+                                    fb.style.background = 'rgba(255,23,68,0.12)';
+                                    fb.style.color = '#ff6b8a';
+                                    btn.disabled = false; btn.textContent = original;
+                                });
+                            } else { doSubscribe(null); }
+                        });
+                    })();
+                    </script>
+                                    </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.5rem;padding:1rem 0;font-size:0.78rem;color:rgba(255,255,255,0.35);">
+                <span>&copy; 2026 Chess Club ENSAS · <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.5);text-decoration:none;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.5)';">Privacy</a> · <a href="https://moreqasse.github.io/MyCV/" style="color:rgba(255,255,255,0.5);text-decoration:none;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.5)';">Terms</a></span>
+                <span>Project by <a href="https://https://moreqasse.github.io/MyCV/" target="_blank" style="color:rgba(255,255,255,0.5);font-weight:600;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#fff';" onmouseout="this.style.color='rgba(255,255,255,0.5)';">Mohammed Reqasse</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+    /* Desktop nav — sticky on all pages */
+    @media (min-width: 992px) {
+        .navbar {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1030 !important;
+        }
+    }
+    /* Mobile + Tablet bottom nav — fixed icon bar, covers 0-991.98px (no gap) */
+    @media (max-width: 991.98px) {
+        .navbar { position:fixed !important; top:auto !important; bottom:0 !important; left:0; right:0; z-index:1050 !important; background: var(--bg-secondary) !important; border-top:3px solid #111 !important; border-bottom:none !important; padding:0 !important; height: var(--bottom-nav-height) !important; display:flex !important; align-items:center !important; box-shadow: 0 -4px 0 var(--border-color) !important; }
+        .navbar .container { max-width:100% !important; padding:0 !important; }
+        .navbar-brand { display:none !important; }
+        .navbar-toggler, .hamburger { display:none !important; }
+        .navbar-collapse { display:block !important; position:static !important; background:none !important; padding:0 !important; box-shadow:none !important; }
+        .navbar-nav { flex-direction:row !important; justify-content:space-around !important; align-items:center !important; gap:0 !important; padding:0 !important; margin:0 !important; width:100% !important; }
+        .navbar-nav .nav-link { padding:0.35rem 0.25rem !important; display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important; gap:0 !important; color: var(--text-muted) !important; font-size:0.65rem !important; background:none !important; }
+        .navbar-nav .nav-link span, .navbar-nav .nav-link .nav-text { display:block !important; font-size:0.6rem !important; line-height:1 !important; }
+        .navbar-nav .nav-link .nav-icon { font-size:1.2rem !important; margin:0 0 0.15rem 0 !important; }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover { color: var(--text-light) !important; }
+        .nav-login-bottom { display:none !important; }
+        body { padding-bottom: var(--bottom-nav-height) !important; }
+        .main-content { padding-bottom: var(--bottom-nav-height) !important; min-height: calc(100vh - var(--bottom-nav-height)) !important; }
+    }
+    /* Footer — compact horizontal mobile */
+    @media (max-width: 640px) {
+        footer > div > div:nth-child(2) { grid-template-columns:1fr !important; gap:1rem !important; }
+        footer > div > div:nth-child(2) > div { padding-bottom:0.75rem; border-bottom:2px solid rgba(255,255,255,0.05); }
+        footer > div > div:nth-child(2) > div:last-child { padding-bottom:0; border-bottom:0; }
+        footer > div > div:nth-child(2) h6 { margin-bottom:0.5rem !important; font-size:0.75rem !important; }
+        footer > div > div:nth-child(2) a,
+        footer > div > div:nth-child(2) span { font-size:0.8rem !important; display:inline !important; }
+        footer > div > div:nth-child(2) a:not(:last-child)::after,
+        footer > div > div:nth-child(2) span:not(:last-child)::after { content:"·"; margin:0 0.4rem; color:rgba(255,255,255,0.2); }
+        footer > div > div:nth-child(2) > div > div { flex-direction:row !important; flex-wrap:wrap !important; gap:0 !important; }
+        footer > div > div:nth-child(2) form { flex-direction:column !important; }
+    }
+    </style>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>window.CHESS_BASE_URL = './';</script>
+    <script>
+    /* Shared lazy reCAPTCHA v3 loader — Google's script is fetched only when a
+       protected form (newsletter / wall / recruitment) actually needs a token,
+       so normal page loads pay zero extra cost. Usage:
+       chessCaptcha('newsletter').then(token => ...).catch(showFriendlyError) */
+    window.chessCaptcha = (function(){
+        var siteKey = "demo-recaptcha-site-key-00000000000000";
+        var loading = null;
+        function load(){
+            if (window.grecaptcha && window.grecaptcha.execute) return Promise.resolve();
+            if (loading) return loading;
+            loading = new Promise(function(res, rej){
+                var s = document.createElement('script');
+                s.src = 'https://www.google.com/recaptcha/api.js?render=' + encodeURIComponent(siteKey);
+                s.async = true; s.defer = true;
+                s.onload = function(){ res(); };
+                s.onerror = function(){ loading = null; rej(new Error('captcha-load')); };
+                document.head.appendChild(s);
+            });
+            return loading;
+        }
+        return function(action){
+            if (!siteKey) return Promise.reject(new Error('captcha-unconfigured'));
+            return load().then(function(){
+                return new Promise(function(res, rej){
+                    try {
+                        window.grecaptcha.ready(function(){
+                            window.grecaptcha.execute(siteKey, {action: action || 'submit'}).then(res, rej);
+                        });
+                    } catch (e) { rej(e); }
+                });
+            });
+        };
+    })();
+    </script>
+    <script defer src="assets/js/app.js?v=7"></script>
+    <script>
+    // Desktop hover reveal for member pages — keeps click fallback, mobile untouched
+    (function(){
+        var wrap = document.querySelector('.member-menu-wrap.d-none');
+        if(!wrap) wrap = document.querySelector('.member-menu-wrap');
+        if(!wrap) return;
+        var mq = window.matchMedia('(min-width: 992px)');
+        var toggle = wrap.querySelector('.dropdown-toggle');
+        var menu = wrap.querySelector('.dropdown-menu');
+        var enterTimer, leaveTimer;
+        function open(){
+            clearTimeout(leaveTimer);
+            enterTimer = setTimeout(function(){
+                wrap.classList.add('is-hover-open');
+                if(toggle) toggle.setAttribute('aria-expanded','true');
+                if(menu) menu.classList.add('show');
+            }, 80);
+        }
+        function close(){
+            clearTimeout(enterTimer);
+            leaveTimer = setTimeout(function(){
+                if(wrap.matches(':hover') || wrap.contains(document.activeElement)) return;
+                wrap.classList.remove('is-hover-open');
+                if(toggle) toggle.setAttribute('aria-expanded','false');
+                if(menu) menu.classList.remove('show');
+            }, 150);
+        }
+        function bind(){
+            if(!mq.matches) return;
+            wrap.addEventListener('mouseenter', open);
+            wrap.addEventListener('mouseleave', close);
+            wrap.addEventListener('focusin', open);
+            wrap.addEventListener('focusout', close);
+            if(menu){
+                menu.addEventListener('mouseenter', open);
+                menu.addEventListener('mouseleave', close);
+            }
+        }
+        function unbind(){
+            wrap.removeEventListener('mouseenter', open);
+            wrap.removeEventListener('mouseleave', close);
+            wrap.removeEventListener('focusin', open);
+            wrap.removeEventListener('focusout', close);
+            if(menu){
+                menu.removeEventListener('mouseenter', open);
+                menu.removeEventListener('mouseleave', close);
+            }
+        }
+        bind();
+        if(mq.addEventListener) mq.addEventListener('change', function(){ if(mq.matches) bind(); else { unbind(); wrap.classList.remove('is-hover-open'); }});
+        else if(mq.addListener) mq.addListener(function(e){ if(e.matches) bind(); else { unbind(); wrap.classList.remove('is-hover-open'); }});
+        document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ clearTimeout(enterTimer); clearTimeout(leaveTimer); wrap.classList.remove('is-hover-open'); if(menu) menu.classList.remove('show'); if(toggle) toggle.setAttribute('aria-expanded','false'); }});
+    })();
+    </script>
+<script src="assets/js/demo.js"></script>
+</body>
+</html>

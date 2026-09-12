@@ -1391,6 +1391,23 @@ window.changeLanguage = changeLanguage;
 function initWebPortfolioCarousel() {
     var projects = [
         {
+            tag: { en: 'Sports & Community', fr: 'Sport & Communauté', ar: 'الرياضة والمجتمع' },
+            title: { en: 'Chess Club ENSAS — Club Platform', fr: 'Chess Club ENSAS — Plateforme du Club', ar: 'نادي الشطرنج ENSAS — منصة النادي' },
+            desc: {
+                en: 'Complete chess club platform built with PHP and modern CSS — a public site with news, tournaments, training formations and merch, a full member space with league standings, match history, graded performance reviews with coaching insights, attendance tracking and a community wall, plus a powerful admin suite with dashboard analytics, recruitment funnels, bulk member management and automated emails, all wrapped in a custom neo-brutalist design with a security-first architecture throughout.',
+                fr: 'Plateforme complète de club d’échecs en PHP et CSS moderne — site public avec actualités, tournois, formations et boutique, espace membre complet avec classements de ligue, historique des matchs, évaluations notées avec conseils de coaching, suivi de présence et mur communautaire, plus une suite admin puissante avec analytiques, tunnel de recrutement, gestion des membres en masse et emails automatisés, le tout dans un design néo-brutaliste sur mesure avec une architecture axée sécurité.',
+                ar: 'منصة متكاملة لنادي الشطرنج مبنية بـ PHP وCSS الحديث — موقع عام بالأخبار والبطولات والتكوينات والمتجر، وفضاء كامل للأعضاء بترتيب الدوري وسجل المباريات وتقييمات مصنفة مع نصائح التدريب وتتبع الحضور وجدار المجتمع، إضافة إلى حزمة إدارة قوية بلوحة التحليلات وقمع التوظيف وإدارة الأعضاء بالجملة والرسائل الآلية، كل ذلك بتصميم مخصص بأسلوب وحشي جديد وبنية تعطي الأولوية للأمان.'
+            },
+            techs: ['PHP', 'SQLite', 'Custom MVC', 'Statistics Api', 'Automated Emails', 'Security-First'],
+            links: [
+                { label: { en: 'Live Demo', fr: 'Démo Live', ar: 'عرض مباشر' }, url: 'https://clubchessensas.com/', primary: true },
+                { label: { en: 'See Admin Pages', fr: 'Voir les Pages Admin', ar: 'عرض صفحات الإدارة' }, modal: 'adminDemo', demoKey: 'chess', demoUrl: 'Chess_Admin/index.html', primary: true, magic: { en: 'Where the magic happens', fr: 'Là où la magie opère', ar: 'حيث يحدث السحر' } },
+                { label: { en: 'Contact for Similar', fr: 'Contact pour similaire', ar: 'تواصل لمشروع مشابه' }, url: '#contact', primary: false }
+            ],
+            image: 'images/chesswebsite.webp',
+            alt: { en: 'Chess Club ENSAS — Club Platform', fr: 'Chess Club ENSAS — Plateforme du Club', ar: 'نادي الشطرنج ENSAS — منصة النادي' }
+        },
+        {
             tag: { en: 'Nonprofit · Charity Platform', fr: 'Nonprofit · Plateforme Caritative', ar: 'غير ربحي · منصة خيرية' },
             title: { en: 'Taourirt — Charity Association Platform', fr: 'Taourirt — Plateforme Associative Caritative', ar: 'تاوريرت — منصة الجمعية الخيرية' },
             desc: {
@@ -1401,7 +1418,7 @@ function initWebPortfolioCarousel() {
             techs: ['PHP', 'SQLite', 'AI Translation', 'Admin Dashboard'],
             links: [
                 { label: { en: 'View Website', fr: 'Voir le Site', ar: 'عرض الموقع' }, url: 'https://abit.ct.ws/', primary: true },
-                { label: { en: 'See Admin Pages', fr: 'Voir les Pages Admin', ar: 'عرض صفحات الإدارة' }, modal: 'adminDemo', primary: true, magic: { en: 'Where the magic happens', fr: 'Là où la magie opère', ar: 'حيث يحدث السحر' } },
+                { label: { en: 'See Admin Pages', fr: 'Voir les Pages Admin', ar: 'عرض صفحات الإدارة' }, modal: 'adminDemo', demoKey: 'taourirt', demoUrl: 'Admin_Demo/login.html', primary: true, magic: { en: 'Where the magic happens', fr: 'Là où la magie opère', ar: 'حيث يحدث السحر' } },
                 { label: { en: 'Contact for Similar', fr: 'Contact pour similaire', ar: 'تواصل لمشروع مشابه' }, url: '#contact', primary: false }
             ],
             image: 'images/association.webp',
@@ -1569,7 +1586,8 @@ function initWebPortfolioCarousel() {
                     var btn = document.createElement('button');
                     btn.type = 'button';
                     btn.className = 'project-link project-link--gold';
-                    btn.setAttribute('data-admin-demo', '');
+                    btn.setAttribute('data-admin-demo', lk.demoKey || 'taourirt');
+                    btn.setAttribute('data-demo-url', lk.demoUrl || 'Admin_Demo/login.html');
                     btn.textContent = (lk.label && lk.label[lang]) || lk.label || '';
                     wrap.appendChild(magic);
                     wrap.appendChild(btn);
@@ -1667,8 +1685,9 @@ function initWebPortfolioCarousel() {
     window.rerenderWebPortfolio = function () { render(current); };
 }
 
-// ===== ADMIN DEMO MODAL (Taourirt slide) =====
-var adminModalCopy = {
+// ===== ADMIN DEMO MODALS (portfolio slides) =====
+var modalCopies = {
+taourirt: {
     tag: { en: 'Where the magic happens', fr: 'Là où la magie opère', ar: 'حيث يحدث السحر' },
     title: { en: 'Admin Panel — Frontend Mockup', fr: 'Panneau Admin — Maquette Frontend', ar: 'لوحة الإدارة — نموذج واجهة' },
     body: {
@@ -1678,19 +1697,34 @@ var adminModalCopy = {
     },
     go: { en: 'Enter the Demo »', fr: 'Entrer dans la Démo »', ar: 'ادخل إلى النموذج »' },
     close: { en: 'Close', fr: 'Fermer', ar: 'إغلاق' }
+},
+chess: {
+    tag: { en: 'Where the magic happens', fr: 'Là où la magie opère', ar: 'حيث يحدث السحر' },
+    title: { en: 'Admin Panel — Frontend Mockup', fr: 'Panneau Admin — Maquette Frontend', ar: 'لوحة الإدارة — نموذج واجهة' },
+    body: {
+        en: 'The real admin panel is live in production — it manages real members, league matches and content, so access simply can’t be shared. What you can open here is a static frontend mockup showing where the majority of the work went: analytics dashboard, recruitment funnel, bulk member management, league standings engine, automated emails and more. No backend, no real data — just the full idea. Log in with:',
+        fr: 'Le vrai panneau admin est en production — il gère de vrais membres, matchs de ligue et contenus, son accès ne peut donc tout simplement pas être partagé. Ce que vous pouvez ouvrir ici est une maquette frontend statique qui montre où est allée la majorité du travail : tableau de bord analytique, tunnel de recrutement, gestion des membres en masse, moteur de classement de ligue, emails automatisés et plus. Sans backend ni données réelles — juste l’idée complète. Connectez-vous avec :',
+        ar: 'لوحة الإدارة الحقيقية تعمل في الإنتاج — تدير أعضاء حقيقيين ومباريات الدوري والمحتوى، لذا لا يمكن مشاركة الوصول إليها إطلاقًا. ما يمكنك فتحه هنا هو نموذج واجهة ثابت يُظهر أين ذهب معظم العمل: لوحة التحليلات، وقمع التوظيف، وإدارة الأعضاء بالجملة، ومحرك ترتيب الدوري، ورسائل البريد الآلي والمزيد. بدون backend أو بيانات حقيقية — فقط الفكرة الكاملة. سجل الدخول بـ:'
+    },
+    go: { en: 'Enter the Demo »', fr: 'Entrer dans la Démo »', ar: 'ادخل إلى النموذج »' },
+    close: { en: 'Close', fr: 'Fermer', ar: 'إغلاق' }
+}
 };
 
-function fillAdminModal() {
+function fillAdminModal(key, url) {
     var lang = currentLang || 'en';
     var ov = document.getElementById('adminDemoModal');
     if (!ov) return;
+    var c = modalCopies[key] || modalCopies.taourirt;
     var pick = function (o) { return (o && o[lang]) || (o && o.en) || ''; };
     var set = function (sel, txt) { var el = ov.querySelector(sel); if (el) el.textContent = txt; };
-    set('[data-am-tag]', pick(adminModalCopy.tag));
-    set('[data-am-title]', pick(adminModalCopy.title));
-    set('[data-am-body]', pick(adminModalCopy.body));
-    set('[data-am-go]', pick(adminModalCopy.go));
-    set('[data-am-close]', pick(adminModalCopy.close));
+    set('[data-am-tag]', pick(c.tag));
+    set('[data-am-title]', pick(c.title));
+    set('[data-am-body]', pick(c.body));
+    set('[data-am-go]', pick(c.go));
+    set('[data-am-close]', pick(c.close));
+    var go = ov.querySelector('[data-am-go]');
+    if (go && url) go.href = url;
 }
 
 function refreshAdminModal() {
@@ -1700,11 +1734,11 @@ function refreshAdminModal() {
 
 var adminModalTrigger = null;
 
-function openAdminModal() {
+function openAdminModal(key, url) {
     var ov = document.getElementById('adminDemoModal');
     if (!ov) return;
     adminModalTrigger = document.activeElement;
-    fillAdminModal();
+    fillAdminModal(key, url);
     ov.hidden = false;
     document.body.style.overflow = 'hidden';
     var go = ov.querySelector('[data-am-go]');
@@ -1723,7 +1757,11 @@ function closeAdminModal() {
 }
 
 document.addEventListener('click', function (e) {
-    if (e.target.closest && e.target.closest('[data-admin-demo]')) { openAdminModal(); return; }
+    var trigger = e.target.closest && e.target.closest('[data-admin-demo]');
+    if (trigger) {
+        openAdminModal(trigger.getAttribute('data-admin-demo'), trigger.getAttribute('data-demo-url'));
+        return;
+    }
     if (e.target.closest && e.target.closest('[data-am-close]')) { closeAdminModal(); return; }
     var ov = document.getElementById('adminDemoModal');
     if (ov && !ov.hidden && e.target === ov) closeAdminModal();
